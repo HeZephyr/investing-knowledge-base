@@ -1,0 +1,35 @@
+name: 知识与来源更新
+description: 新增市场、资产、行业主题，或更新已过时规则与来源
+title: "data: "
+labels: [content]
+body:
+  - type: dropdown
+    id: layer
+    attributes:
+      label: 内容层
+      options: [Raw 来源, Wiki 知识, 索引与导航, 研究模板]
+    validations: {required: true}
+  - type: input
+    id: source
+    attributes:
+      label: 一手来源 URL
+      placeholder: https://...
+    validations: {required: true}
+  - type: input
+    id: asof
+    attributes:
+      label: 适用日期或版本
+      placeholder: YYYY-MM-DD
+    validations: {required: true}
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议变更与理由
+    validations: {required: true}
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 公开边界
+      options:
+        - label: 不包含个人持仓、账户、Cookie、Token 或付费材料全文
+          required: true

@@ -1,0 +1,134 @@
+site_name: 全球投资知识库
+site_description: 面向完全新手、可追溯来源的全球多市场、多资产与行业量化研究知识库
+site_url: https://hezephyr.github.io/investing-knowledge-base/
+repo_url: https://github.com/HeZephyr/investing-knowledge-base
+repo_name: HeZephyr/investing-knowledge-base
+docs_dir: .site-docs
+site_dir: site-build
+strict: true
+not_in_nav: |
+  404.md
+  raw/**
+  output/README.md
+
+nav:
+  - 首页: index.md
+  - 开始学习:
+      - 学习仪表盘: wiki/dashboard.md
+      - 新手路线: wiki/learning-path.md
+      - 知识总索引: wiki/index.md
+  - 市场:
+      - 全球市场: wiki/markets/全球市场.md
+      - A 股市场: wiki/markets/A股市场.md
+      - 港股市场: wiki/markets/港股市场.md
+      - 美股市场: wiki/markets/美股市场.md
+      - 韩国股市: wiki/markets/韩国股市.md
+      - 沪深港通: wiki/markets/沪深港通.md
+      - 交易时段: wiki/markets/交易时段.md
+      - 交易费用: wiki/markets/交易费用.md
+  - 资产与产品:
+      - 黄金: wiki/assets/黄金.md
+      - 股票: wiki/products/股票.md
+      - 指数: wiki/products/指数.md
+      - ETF: wiki/products/ETF.md
+      - 海外 ETF: wiki/products/海外ETF.md
+      - 公募基金: wiki/products/公募基金.md
+      - 货币基金: wiki/products/货币基金.md
+      - REIT: wiki/products/REIT.md
+      - 可转债: wiki/products/可转债.md
+  - 行业研究:
+      - 周期行业研究: wiki/sectors/周期行业研究.md
+      - 存储半导体: wiki/sectors/存储半导体.md
+  - 核心概念:
+      - 收益率: wiki/concepts/收益率.md
+      - 基准: wiki/concepts/基准.md
+      - 波动率: wiki/concepts/波动率.md
+      - 最大回撤: wiki/risk/最大回撤.md
+      - 分散化: wiki/concepts/分散化.md
+      - 复权: wiki/concepts/复权.md
+      - 汇率风险: wiki/concepts/汇率风险.md
+      - 估值: wiki/concepts/估值.md
+      - 财务三表: wiki/concepts/财务三表.md
+      - 盈利质量: wiki/concepts/盈利质量.md
+  - 风险:
+      - 不懂不买: wiki/risk/不懂不买.md
+      - 仓位管理: wiki/risk/仓位管理.md
+      - 流动性风险: wiki/risk/流动性风险.md
+      - 行为偏差: wiki/risk/行为偏差.md
+      - 投资骗局: wiki/risk/投资骗局.md
+  - 量化研究:
+      - 数据质量: wiki/quant/数据质量.md
+      - 回测基础: wiki/quant/回测基础.md
+      - 未来函数: wiki/quant/未来函数.md
+      - 幸存者偏差: wiki/quant/幸存者偏差.md
+      - 过拟合: wiki/quant/过拟合.md
+      - 样本外测试: wiki/quant/样本外测试.md
+      - 换手与交易成本: wiki/quant/换手与交易成本.md
+      - 因子研究: wiki/quant/因子研究.md
+  - 原始资料:
+      - 来源目录: raw/source-catalog.md
+      - 参考代码库: raw/repositories/catalog.md
+  - 研究模板:
+      - 交易前检查: output/templates/交易前检查.md
+      - 公司分析: output/templates/公司分析.md
+      - 基金分析: output/templates/基金分析.md
+      - 回测计划: output/templates/回测计划.md
+      - 复盘: output/templates/复盘.md
+      - 投资政策书: output/templates/投资政策书.md
+  - 互动:
+      - 投资计算器: tools.md
+      - 知识图谱: graph.md
+  - 维护日志: wiki/log.md
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/app.js
+
+copyright: 学习与研究用途 · 不构成投资建议 · 数据与规则请回到原始来源核验

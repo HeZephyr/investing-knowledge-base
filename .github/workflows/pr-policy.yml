@@ -1,0 +1,32 @@
+name: PR Policy
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-policy-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    env:
+      PR_TITLE: ${{ github.event.pull_request.title }}
+      PR_BODY: ${{ github.event.pull_request.body }}
+    steps:
+      - name: Validate conventional title and useful body
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$PR_TITLE" =~ ^(feat|fix|docs|data|refactor|test|ci|chore)(\([a-z0-9._-]+\))?:\ .+ ]]; then
+            echo "PR title must use Conventional Commits, for example: feat(site): add market index"
+            exit 1
+          fi
+          if [[ ${#PR_BODY} -lt 40 ]]; then
+            echo "PR body must explain the change, evidence, risk, and checklist."
+            exit 1
+          fi

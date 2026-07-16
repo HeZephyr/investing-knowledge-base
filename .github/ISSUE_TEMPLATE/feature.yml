@@ -1,0 +1,29 @@
+name: 功能与架构提案
+description: 提议新的数据适配器、研究能力、网页工具或工程改进
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决的问题
+      description: 先描述用户和研究场景，不要只描述实现。
+    validations: {required: true}
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案与替代方案
+    validations: {required: true}
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 可验证的验收标准
+      placeholder: "- [ ] ..."
+    validations: {required: true}
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: 范围确认
+      options:
+        - label: 方案可公开复用，不依赖共享个人凭证或持仓
+          required: true

@@ -1,6 +1,6 @@
-# A 股与港股理财知识库
+# 全球投资知识库
 
-面向完全新手的中文投资学习与量化研究仓库。它把原始来源、持续维护的 Wiki、免费行情代码和可复现研究放在一起，并可直接作为 Obsidian 仓库打开。
+面向完全新手的中文全球投资学习与量化研究仓库。它把原始来源、持续维护的 Wiki、免费行情代码和可复现研究放在一起，并可直接作为 Obsidian 仓库打开。首批可交易实现聚焦 A/HK，知识范围已扩展到美股、韩国市场、全球 ETF/基金、黄金和存储半导体，并可继续增加地区、资产与行业。
 
 > [!WARNING]
 > 本项目用于学习和研究，不构成投资建议，也不承诺盈利。历史回测不代表未来表现。第一版不连接券商、不自动下单，只研究 A 股和港股的日线/周线数据。
@@ -11,6 +11,10 @@
 2. 打开 [学习仪表盘](wiki/dashboard.md)，从风险与市场规则开始。
 3. 阅读 [学习路线](wiki/learning-path.md)，不要跳过交易成本、复权和未来函数。
 4. 需要追溯结论时，从 Wiki 页的 `sources` 返回 `raw/` 来源卡。
+
+仓库的分层、地区/资产/行业索引和公开/私人边界见 [项目总索引](docs/INDEX.md)。贡献必须从 Issue 开始并通过 PR；详见 [贡献指南](CONTRIBUTING.md)。
+
+网页版本会由 GitHub Pages 自动发布，提供中文全文搜索、知识图谱、学习进度与复利/费用/回撤计算器。学习进度仅保存在浏览器本地。
 
 ## 三层结构
 
@@ -24,7 +28,7 @@
 
 ```bash
 /Users/zephyr/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -m venv .venv
-.venv/bin/pip install -e '.[dev,data]'
+.venv/bin/pip install -e '.[dev,data,site]'
 .venv/bin/pytest -q
 ```
 
@@ -36,6 +40,8 @@ investkb wiki lint
 investkb data fetch CN 510300 --start 2024-01-01 --end 2024-12-31 --adjustment none
 investkb fund nav 000001 --start 2024-01-01 --end 2024-12-31
 investkb demo backtest --offline
+python -m investkb.site
+mkdocs serve
 ```
 
 ## 研究纪律

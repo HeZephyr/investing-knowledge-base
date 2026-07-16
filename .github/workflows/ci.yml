@@ -64,3 +64,27 @@ jobs:
       - run: python -m pip install -e '.[dev]'
       - run: python -m investkb.cli demo backtest --offline
       - run: test -s output/reports/demo/report.md && test -s output/reports/demo/equity.png
+
+  static-site:
+    name: Strict static site build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -e '.[site]'
+      - run: python -m investkb.site
+      - run: mkdocs build --strict
+
+  public-boundary:
+    name: Public/private boundary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -e .
+      - run: python -m investkb.publication
