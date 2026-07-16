@@ -1,7 +1,7 @@
 [project]
 name = "investkb"
 version = "0.1.0"
-description = "Obsidian-friendly A-share and Hong Kong investing knowledge base"
+description = "Obsidian-friendly global investing knowledge base with reproducible research"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -17,6 +17,7 @@ dependencies = [
 [project.optional-dependencies]
 data = ["akshare>=1.17", "baostock>=0.8.9"]
 dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.6"]
+site = ["mkdocs-material>=9,<10"]
 
 [project.scripts]
 investkb = "investkb.cli:app"

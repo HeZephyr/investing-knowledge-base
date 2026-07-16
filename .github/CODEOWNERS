@@ -1,0 +1,8 @@
+# Default stewardship. Add active maintainers here through a reviewed PR.
+* @HeZephyr
+
+# Changes to sources, automation, and public boundaries require explicit review.
+/raw/ @HeZephyr
+/.github/ @HeZephyr
+/src/investkb/publication.py @HeZephyr
+/AGENTS.md @HeZephyr

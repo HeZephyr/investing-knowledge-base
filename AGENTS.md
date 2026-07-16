@@ -10,6 +10,8 @@
 4. 不承诺收益、不输出“必涨”结论、不把回测描述为实盘业绩。
 5. 第一版禁止连接券商、自动交易、分钟/Tick 高频、杠杆和做空。
 6. 不提交 API 密钥、账户、持仓、个人资产、行情缓存或第三方完整仓库。
+7. 禁止直接在 `main` 开发或推送；所有变更必须关联 Issue，经独立分支、PR、CI 与 Review 合并。
+8. 公共内容只进入 `raw/wiki/output/site`；个人研究进入本地 `private/`，提交前运行公开边界审计。
 
 ## 来源等级
 
@@ -56,6 +58,7 @@
 ```bash
 .venv/bin/ruff check src tests
 .venv/bin/pytest -q
+python -m investkb.publication
 ```
 
 ## Lint 与日志
