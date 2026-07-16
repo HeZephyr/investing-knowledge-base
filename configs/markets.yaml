@@ -1,0 +1,10 @@
+CN:
+  currency: CNY
+  board_lot: 100
+  default_slippage_bps: 5
+  note: 费率和交易单位应按证券类型及有效日期核验
+HK:
+  currency: HKD
+  board_lot: null
+  default_slippage_bps: 8
+  note: 每手股数因证券而异，运行前必须显式填写

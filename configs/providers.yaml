@@ -1,0 +1,12 @@
+default: akshare
+providers:
+  akshare:
+    markets: [CN, HK]
+    asset_types: [stock, etf, fund, index]
+    service_level: none
+    intended_use: personal-research
+  baostock:
+    markets: [CN]
+    asset_types: [stock, etf, index]
+    service_level: none
+    intended_use: fallback-and-cross-check

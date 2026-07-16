@@ -1,0 +1,25 @@
+repositories:
+  - name: ExploreFinance
+    url: https://github.com/hiboys/ExploreFinance
+    commit: 28bc9ee8823ae20950c483df706fc10d3b4e7e0c
+  - name: akshare
+    url: https://github.com/akfamily/akshare
+    commit: fcdbf25aa864a218c54864c3f6ab6a2ed19cce28
+  - name: baostock
+    url: https://www.baostock.com/
+    commit: official-release-0.9.3
+  - name: qlib
+    url: https://github.com/microsoft/qlib
+    commit: d5379c520f66a39953bad76234a7019a72796fd0
+  - name: rqalpha
+    url: https://github.com/ricequant/rqalpha
+    commit: c5882241780f245108b57fb6685f19435c11ef7f
+  - name: backtesting.py
+    url: https://github.com/kernc/backtesting.py
+    commit: 6e9016c7b30d985137cde3fe24e1d39785c5e3a7
+  - name: pyfolio
+    url: https://github.com/quantopian/pyfolio
+    commit: 4b901f6d73aa02ceb6d04b7d83502e5c6f2e81aa
+  - name: awesome-quant
+    url: https://github.com/wilsonfreitas/awesome-quant
+    commit: 92892479d7a70b2d49f3eade35d32c85be200dba

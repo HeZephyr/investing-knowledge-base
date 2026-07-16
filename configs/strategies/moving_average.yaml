@@ -1,0 +1,15 @@
+name: moving-average-example
+strategy: moving_average
+market: CN
+symbol: "510300"
+parameters:
+  fast: 20
+  slow: 120
+initial_cash: 100000
+benchmark: "510300"
+execution: next_open
+fees:
+  commission_rate: 0.0003
+  minimum_commission: 5
+  stamp_duty_rate: 0
+slippage_bps: 5

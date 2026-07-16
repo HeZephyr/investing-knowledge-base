@@ -1,0 +1,16 @@
+market_data:
+  primary_key: [market, symbol, date]
+  maximum_calendar_gap_days: 10
+  extreme_daily_return: 0.50
+  errors:
+    - schema-missing
+    - empty
+    - duplicate-key
+    - date-order
+    - non-positive-price
+    - ohlc-inconsistent
+    - negative-activity
+    - mixed-adjustment
+  warnings:
+    - large-date-gap
+    - extreme-return
