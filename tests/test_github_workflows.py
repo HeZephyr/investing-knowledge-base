@@ -8,6 +8,7 @@ def test_required_github_automation_files_exist_and_parse() -> None:
         Path(".github/workflows/ci.yml"),
         Path(".github/workflows/codeql.yml"),
         Path(".github/workflows/link-check.yml"),
+        Path(".github/workflows/provider-smoke.yml"),
         Path(".github/dependabot.yml"),
     ]
 
@@ -22,3 +23,16 @@ def test_workflows_use_least_privilege_and_avoid_pull_request_target() -> None:
         assert "pull_request_target" not in text
         assert "permissions:" in text
         assert "contents: read" in text
+
+
+def test_ci_and_provider_checks_have_deliberate_schedules() -> None:
+    ci = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
+    provider = Path(".github/workflows/provider-smoke.yml").read_text(encoding="utf-8")
+
+    assert 'cron: "20 22 * * 0"' in ci
+    assert 'cron: "10 23 * * 1,4"' in provider
+
+
+def test_test_helpers_are_explicit_python_packages() -> None:
+    assert Path("tests/__init__.py").is_file()
+    assert Path("tests/data/__init__.py").is_file()

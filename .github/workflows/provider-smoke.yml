@@ -1,0 +1,35 @@
+name: Free provider smoke tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Tuesday and Friday 07:10 Asia/Shanghai (GitHub cron uses UTC).
+    - cron: "10 23 * * 1,4"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: provider-smoke
+  cancel-in-progress: true
+
+jobs:
+  live-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install data providers
+        run: python -m pip install --upgrade pip && python -m pip install -e '.[data]'
+      - name: A-share daily bars
+        run: investkb data fetch CN 600000 --start 2024-01-02 --end 2024-01-10 --adjustment qfq --store-root "${{ runner.temp }}/cache"
+      - name: Hong Kong daily bars
+        run: investkb data fetch HK 00700 --start 2024-01-02 --end 2024-01-10 --adjustment none --store-root "${{ runner.temp }}/cache"
+      - name: Mainland ETF daily bars
+        run: investkb data fetch CN 510300 --start 2024-01-02 --end 2024-01-10 --adjustment none --store-root "${{ runner.temp }}/cache"
+      - name: Open-end fund NAV
+        run: investkb fund nav 000001 --start 2024-01-02 --end 2024-01-10 --output "${{ runner.temp }}/fund-000001.parquet"
