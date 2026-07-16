@@ -23,6 +23,7 @@
 - `src/investkb/site.py`：Obsidian 内容转静态站与知识图谱。
 - `src/investkb/publication.py`：公开/私人边界检查。
 - `.github/workflows/`：CI、安全、定时数据健康检查与 Pages 发布。
+- `skills/maintain-investing-knowledge-base/`：可移植的知识库维护 Skill、来源评估参考与脚手架。
 
 ## 维护入口
 

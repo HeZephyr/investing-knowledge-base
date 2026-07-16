@@ -39,6 +39,8 @@ nav:
   - 行业研究:
       - 周期行业研究: wiki/sectors/周期行业研究.md
       - 存储半导体: wiki/sectors/存储半导体.md
+  - 研究方法:
+      - 公开投资框架: wiki/methods/公开投资框架.md
   - 核心概念:
       - 收益率: wiki/concepts/收益率.md
       - 基准: wiki/concepts/基准.md
@@ -68,6 +70,7 @@ nav:
   - 原始资料:
       - 来源目录: raw/source-catalog.md
       - 参考代码库: raw/repositories/catalog.md
+      - 公开投资框架目录: raw/experts/catalog.md
   - 研究模板:
       - 交易前检查: output/templates/交易前检查.md
       - 公司分析: output/templates/公司分析.md

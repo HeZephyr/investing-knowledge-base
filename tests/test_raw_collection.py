@@ -36,4 +36,13 @@ def test_reference_repo_cards_record_license_and_commit() -> None:
 
 def test_reference_manifest_is_parseable() -> None:
     manifest = yaml.safe_load(Path("raw/repositories/manifest.yaml").read_text(encoding="utf-8"))
-    assert len(manifest["repositories"]) >= 8
+    assert len(manifest["repositories"]) >= 16
+
+
+def test_expert_materials_are_artifact_first_not_endorsements() -> None:
+    cards = list(Path("raw/experts/cards").glob("*.md"))
+
+    assert len(cards) >= 4
+    catalog = Path("raw/experts/catalog.md").read_text(encoding="utf-8")
+    assert "不构成认可" in catalog
+    assert "Star" not in catalog

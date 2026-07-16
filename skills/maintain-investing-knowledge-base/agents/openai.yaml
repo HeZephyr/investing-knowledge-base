@@ -1,0 +1,4 @@
+interface:
+  display_name: "维护投资知识库"
+  short_description: "摄取可信来源并维护可验证、可协作的全球投资知识库工作流"
+  default_prompt: "Use $maintain-investing-knowledge-base to add a well-sourced topic and update every affected index."
