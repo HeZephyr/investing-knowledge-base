@@ -17,6 +17,7 @@
 - `books-and-papers/`：论文、教材与方法论入口。
 - `community/`：只作为线索或经验参考的公开材料。
 - `repositories/`：外部开源或公开代码库档案。
+- `experts/`：从专家或机构公开原始作品提炼的可检验框架，不做人物背书。
 
 首批研究材料包含组合理论、市场有效性、基金绩效和回测过拟合；外部项目包含 ExploreFinance、AKShare、BaoStock、Qlib、RQAlpha、Backtesting.py、Pyfolio 与 Awesome Quant。
 

@@ -14,6 +14,8 @@
 
 仓库的分层、地区/资产/行业索引和公开/私人边界见 [项目总索引](docs/INDEX.md)。贡献必须从 Issue 开始并通过 PR；详见 [贡献指南](CONTRIBUTING.md)。
 
+维护者和 AI 代理可复用仓库内的 [`maintain-investing-knowledge-base` Skill](skills/maintain-investing-knowledge-base/SKILL.md)，统一执行来源摄取、知识合成、索引、数据验证、公开边界和 PR 发布。
+
 网页版本会由 GitHub Pages 自动发布，提供中文全文搜索、知识图谱、学习进度与复利/费用/回撤计算器。学习进度仅保存在浏览器本地。
 
 ## 三层结构

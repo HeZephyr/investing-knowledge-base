@@ -23,3 +23,27 @@ repositories:
   - name: awesome-quant
     url: https://github.com/wilsonfreitas/awesome-quant
     commit: 92892479d7a70b2d49f3eade35d32c85be200dba
+  - name: FinanceDataReader
+    url: https://github.com/FinanceData/FinanceDataReader
+    commit: addcbb7e887f0db6176a87d323de5de28357b5f4
+  - name: OpenDartReader
+    url: https://github.com/FinanceData/OpenDartReader
+    commit: c22e8b754ca9aa0419ada8ffdae8d68627b9e878
+  - name: yfinance
+    url: https://github.com/ranaroussi/yfinance
+    commit: 38c73ce33fb1ee77d37a0998c95c06e60356298e
+  - name: quantstats
+    url: https://github.com/ranaroussi/quantstats
+    commit: fbd10daed0227aa0d10da6513f1b15e7e98d7fae
+  - name: vectorbt
+    url: https://github.com/polakowo/vectorbt
+    commit: f9897528f675114e6b34790178dbb2ca137acb51
+  - name: PyPortfolioOpt
+    url: https://github.com/PyPortfolio/PyPortfolioOpt
+    commit: a6638d2e06dae6f444fd022cfd4b3c528902a85b
+  - name: FinRL
+    url: https://github.com/AI4Finance-Foundation/FinRL
+    commit: 2334a5fe6d30629157f13c3b0319e1637e15e123
+  - name: OpenBB
+    url: https://github.com/OpenBB-finance/OpenBB
+    commit: ebee248ed0bccca65bdfc78e7faae676488f4e5b
