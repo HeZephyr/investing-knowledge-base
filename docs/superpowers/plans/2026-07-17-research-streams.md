@@ -162,7 +162,7 @@ Use this exact frontmatter and section contract:
 id: raw-expert-gmo-research-library
 title: GMO Research Library
 publisher: GMO LLC
-url: https://www.gmo.com/americas/research-library/
+url: https://www.gmo.com/
 retrieved: 2026-07-17
 source_grade: C
 markets: [全球, 美股]
@@ -182,7 +182,7 @@ license: NOASSERTION
 ## 局限与失效条件
 ```
 
-Record the library filters, seven-year forecast stream, valuation and mean-reversion focus, asset-manager incentives, personal/informational-use terms, public-reproduction restriction, proprietary-model limits, forecast versioning, and unknown timing of mean reversion.
+Record the library filters, seven-year forecast stream, valuation and mean-reversion focus, asset-manager incentives, personal/informational-use terms, public-reproduction and deep-link restrictions, proprietary-model limits, forecast versioning, and unknown timing of mean reversion. Keep only the GMO website root in public frontmatter; do not deep-link the research library.
 
 - [ ] **Step 4: Update both Raw catalogs**
 

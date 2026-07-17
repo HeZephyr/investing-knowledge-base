@@ -95,3 +95,8 @@ def test_research_stream_cards_disclose_provenance_conflicts_and_limits(
         assert "### 字段与频率" in update_section, path
         for term in ("月度", "日度", "假设组合", "时间偏差"):
             assert term in update_section, f"{path}: missing {term} in ## 更新频率与数据"
+
+    if filename == "gmo-research-library.md":
+        assert metadata["url"] == "https://www.gmo.com/", path
+        terms = section_body(text, "许可与条款", path)
+        assert "不深链" in terms, path

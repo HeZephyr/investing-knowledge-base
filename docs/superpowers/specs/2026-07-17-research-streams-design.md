@@ -26,7 +26,7 @@ Create one stable card for each public artifact:
 
 Each card records the canonical URL, retrieval date, source grade, markets, artifact scope, update frequency, publisher incentives, license or terms, limitations, and invalidation conditions. The AQR card additionally records available return-series types, monthly/daily frequency where applicable, hypothetical-portfolio status, citation request, point-in-time risks, and the distinction between frozen paper samples and updated extensions.
 
-No course transcript, spreadsheet, forecast, chart, or article copy will be committed. Yale material is summarized and linked under its non-commercial share-alike terms; AQR and GMO material is link-and-analyze only with `NOASSERTION` where no reusable data license is stated.
+No course transcript, spreadsheet, forecast, chart, or article copy will be committed. Yale material is summarized and linked under its non-commercial share-alike terms; AQR is link-and-analyze only with `NOASSERTION`. GMO terms restrict public deep links, so the public card records only the website root and a short independent assessment, without linking to the research library or redistributing material.
 
 ### Wiki layer
 
