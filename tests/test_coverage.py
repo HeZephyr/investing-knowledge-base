@@ -119,6 +119,23 @@ def test_validated_requires_two_distinct_evidence_kinds(tmp_path: Path) -> None:
     assert any("validated requires at least two evidence kinds" in error for error in errors)
 
 
+def test_validation_rejects_unknown_evidence_kind(tmp_path: Path) -> None:
+    path = _write_manifest(
+        tmp_path,
+        [
+            _requirement(
+                status="reviewed",
+                evidence=[{"path": "wiki/markets/A股市场.md", "kind": "invented"}],
+                gap="补复验",
+            )
+        ],
+    )
+
+    errors = validate_coverage(load_coverage(path), tmp_path, TODAY)
+
+    assert any("unknown evidence kind: invented" in error for error in errors)
+
+
 def test_score_uses_declared_state_weights(tmp_path: Path) -> None:
     requirements = [
         _requirement("missing", status="missing", evidence=[], gap="尚未开始"),
@@ -150,3 +167,17 @@ def test_report_is_deterministic_and_discloses_gaps(tmp_path: Path) -> None:
     assert "仓库就绪度，不是预期收益" in first
     assert "50.0%" in first
     assert "缺日本交易所与监管来源" in first
+
+
+def test_repository_manifest_covers_every_declared_axis() -> None:
+    root = Path(__file__).parents[1]
+    manifest = load_coverage(root / "config/knowledge-coverage.yaml")
+
+    assert validate_coverage(manifest, root, TODAY) == []
+    assert {item.axis for item in manifest.requirements} == {
+        "markets",
+        "assets",
+        "sectors",
+        "methods",
+        "engineering",
+    }

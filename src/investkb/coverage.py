@@ -12,9 +12,31 @@ import yaml
 ALLOWED_AXES = ("markets", "assets", "sectors", "methods", "engineering")
 ALLOWED_STATES = ("missing", "seed", "reviewed", "validated")
 STATE_WEIGHTS = {"missing": 0.0, "seed": 0.25, "reviewed": 0.65, "validated": 1.0}
-EVIDENCE_ROOTS = {"wiki", "raw", "output", "tests", "src", ".github", "docs", "config", "site"}
+EVIDENCE_ROOTS = {
+    "wiki",
+    "raw",
+    "output",
+    "tests",
+    "src",
+    ".github",
+    "docs",
+    "config",
+    "site",
+    "skills",
+}
 EVIDENCE_SUFFIXES = {".md", ".py", ".yml", ".yaml", ".toml", ".json"}
 ROOT_EVIDENCE_FILES = {"AGENTS.md", "README.md", "mkdocs.yml", "pyproject.toml"}
+ALLOWED_EVIDENCE_KINDS = {
+    "source",
+    "synthesis",
+    "template",
+    "report",
+    "implementation",
+    "test",
+    "workflow",
+    "configuration",
+    "runtime",
+}
 AXIS_LABELS = {
     "markets": "市场",
     "assets": "资产与产品",
@@ -162,6 +184,8 @@ def validate_coverage(
         evidence_kinds: set[str] = set()
         for evidence in requirement.evidence:
             evidence_kinds.add(evidence.kind)
+            if evidence.kind not in ALLOWED_EVIDENCE_KINDS:
+                errors.append(f"{prefix}: unknown evidence kind: {evidence.kind}")
             if not _valid_evidence_path(evidence.path):
                 errors.append(f"{prefix}: invalid evidence path: {evidence.path}")
             elif not (repository / evidence.path).is_file():

@@ -338,6 +338,15 @@ requirements:
       - {path: config/knowledge-coverage.yaml, kind: configuration}
       - {path: tests/test_coverage.py, kind: test}
     gap: ""
+  - id: engineering-maintenance-skill
+    axis: engineering
+    title: 可复用知识库维护 Skill
+    status: validated
+    verified: 2026-07-17
+    evidence:
+      - {path: skills/maintain-investing-knowledge-base/SKILL.md, kind: implementation}
+      - {path: tests/test_knowledge_skill.py, kind: test}
+    gap: ""
   - id: engineering-private-research
     axis: engineering
     title: 私人观察池、持仓与决策日志

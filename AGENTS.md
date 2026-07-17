@@ -14,6 +14,8 @@
 6. 不提交 API 密钥、账户、持仓、个人资产、行情缓存或第三方完整仓库。
 7. 禁止直接在 `main` 开发或推送；所有变更必须关联 Issue，经独立分支、PR、CI 与 Review 合并。
 8. 公共内容只进入 `raw/wiki/output/site`；个人研究进入本地 `private/`，提交前运行公开边界审计。
+9. 不用页面数量宣称完成；状态提升必须更新 `config/knowledge-coverage.yaml`，并由来源、合成、测试/输出等适当证据支持。
+10. 失败假设、数据事故、许可拒绝和 CI 根因是正式知识；公开可复用部分进入 `[[经验与失败教训]]`，私人部分只进入本地 `private/`。
 
 ## 来源等级
 
@@ -60,6 +62,7 @@
 ```bash
 .venv/bin/ruff check src tests
 .venv/bin/pytest -q
+.venv/bin/python -m investkb.cli coverage validate
 python -m investkb.publication
 ```
 

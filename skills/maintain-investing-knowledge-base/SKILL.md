@@ -9,7 +9,7 @@ Maintain evidence lineage and public reuse before maximizing page count. Treat m
 
 ## Start safely
 
-1. Read the repository `AGENTS.md`, `docs/INDEX.md`, `wiki/index.md`, and the nearest relevant index.
+1. Read the repository `AGENTS.md`, `docs/INDEX.md`, `wiki/index.md`, `config/knowledge-coverage.yaml`, and the nearest relevant index.
 2. Confirm the working branch is not `main` or `master`. Create or link an Issue before material work.
 3. Run the repository's baseline verification. Preserve unrelated user changes.
 4. Keep holdings, accounts, costs, broker exports, Cookie, Token, personal assets, caches, and paid-source copies in the ignored private layer.
@@ -39,6 +39,8 @@ Read [content-model.md](references/content-model.md) before changing schemas or 
 3. Cover market-specific differences, examples, failure modes, a checklist, related pages, and source IDs.
 4. Link the page across every relevant axis: region, asset/product, sector, and method. Avoid duplicating the same fact in multiple pages.
 5. Update the learning route, Wiki index, Raw catalog, repository catalog, site navigation, and append-only maintenance log where applicable.
+6. Update `config/knowledge-coverage.yaml` with the actual evidence, status, verification date, and remaining gap. Never promote an item merely because a page exists.
+7. When work exposes a failed hypothesis, data accident, licensing rejection, CI failure, or repeated mistake, append the reusable pattern to `[[经验与失败教训]]` and add a regression check where possible.
 
 ## Validate code and data
 
@@ -51,7 +53,7 @@ Read [content-model.md](references/content-model.md) before changing schemas or 
 
 ## Publish through review
 
-1. Run formatting, unit tests, Raw/Wiki integrity, public-boundary audit, offline research smoke, and strict site build.
+1. Run formatting, unit tests, `coverage validate`, Raw/Wiki integrity, public-boundary audit, offline research smoke, and strict site build.
 2. Inspect the public diff for personal material, secrets, generated caches, copyright problems, and broken indexes.
 3. Commit conventionally on a topic branch and push it.
 4. Open a PR that closes its Issue and records sources, data cutoff, tests, risks, and public-boundary checks.

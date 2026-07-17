@@ -1,8 +1,8 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**54.6%**
-- 需求总数：41
+- 仓库就绪度，不是预期收益：**55.7%**
+- 需求总数：42
 
 > validated 只表示当前清单所列证据通过仓库规则；不保证投资收益，也不免除后续更新。
 
@@ -14,7 +14,7 @@
 | 资产与产品 | 2 | 3 | 3 | 1 | 41.1% |
 | 行业 | 5 | 0 | 2 | 0 | 18.6% |
 | 研究方法 | 0 | 1 | 4 | 4 | 76.1% |
-| 工程与维护 | 1 | 1 | 0 | 7 | 80.6% |
+| 工程与维护 | 1 | 1 | 0 | 8 | 82.5% |
 
 ## 逐项证据与缺口
 
@@ -33,6 +33,7 @@
 | `engineering-coverage` | 工程与维护 | 机器可审计覆盖报告 | validated | 2026-07-17 | `configuration:config/knowledge-coverage.yaml`<br>`test:tests/test_coverage.py` | — |
 | `engineering-data-adapters` | 工程与维护 | A/HK 与基金免费数据适配 | validated | 2026-07-17 | `implementation:src/investkb/data/providers.py`<br>`test:tests/data/test_providers.py` | — |
 | `engineering-global-data` | 工程与维护 | 美股、韩国与全球免费数据适配 | seed | 2026-07-17 | `source:raw/repositories/cards/yfinance.md` | 缺标准化适配器、公司行动、限频处理和离线契约测试 |
+| `engineering-maintenance-skill` | 工程与维护 | 可复用知识库维护 Skill | validated | 2026-07-17 | `implementation:skills/maintain-investing-knowledge-base/SKILL.md`<br>`test:tests/test_knowledge_skill.py` | — |
 | `engineering-monitoring` | 工程与维护 | 定时数据与链接健康检查 | validated | 2026-07-17 | `workflow:.github/workflows/provider-smoke.yml`<br>`test:tests/test_github_workflows.py` | — |
 | `engineering-pages` | 工程与维护 | 可搜索互动 GitHub Pages | validated | 2026-07-17 | `configuration:mkdocs.yml`<br>`test:tests/test_site.py` | — |
 | `engineering-private-research` | 工程与维护 | 私人观察池、持仓与决策日志 | missing | 2026-07-17 | — | 用户暂无持仓；需在本地 private 层建立不公开的投资政策与观察池 |
