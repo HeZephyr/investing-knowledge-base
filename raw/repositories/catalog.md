@@ -29,4 +29,11 @@
 - [PyPortfolioOpt](cards/pyportfolioopt.md)：组合优化与风险模型。
 - [FinRL](cards/finrl.md)：强化学习研究环境，只作高级实验参考。
 
+## 金融、统计与计算课程
+
+- [SciPy](cards/scipy.md)：概率分布、检验、优化和数值算法参考。
+- [statsmodels](cards/statsmodels.md)：回归、诊断、稳健协方差和时间序列参考。
+- [ISLP Labs](cards/islp-labs.md)：BSD-2 的 Python 章节实验环境参考，不复制 Notebook。
+- [QuantEcon Python Intro](cards/quantecon-python-intro.md)：计算经济学课程结构；根许可证未确认，仅分析链接。
+
 候选项目先进入 Issue；只有许可证、固定 commit、适用范围、失败模式和可验证用途齐全后才进入目录。

@@ -47,3 +47,15 @@ repositories:
   - name: OpenBB
     url: https://github.com/OpenBB-finance/OpenBB
     commit: ebee248ed0bccca65bdfc78e7faae676488f4e5b
+  - name: SciPy
+    url: https://github.com/scipy/scipy
+    commit: 826ccec78f7310c43aebfef69f28832ef2eda103
+  - name: statsmodels
+    url: https://github.com/statsmodels/statsmodels
+    commit: bc36bea58df9b613e4027e1ac6b10f17e05c3e64
+  - name: ISLP_labs
+    url: https://github.com/intro-stat-learning/ISLP_labs
+    commit: 4854ffe66a58d6055ea5fbb01d98b61515519dbe
+  - name: QuantEcon lecture-python-intro
+    url: https://github.com/QuantEcon/lecture-python-intro
+    commit: 48659c24b5bc7c250b3c9f46e229cfbcac8bec40
