@@ -21,6 +21,17 @@ hide:
   <div class="stat-card"><strong>—</strong><span>研究模板</span></div>
 </div>
 
+## 可审计的完成度
+
+当前 v2 把知识库拆成 **8 个轴、135 项原子能力**，仓库就绪度为 **36.5%**。旧版 60.4% 的下降来自更严格、更完整的分母，不是删除成果；冻结公开数据案例目前仍是 **0 / 11**，会作为后续建设的硬缺口保留。
+
+<div class="path-grid">
+  <a class="path-card" href="output/reports/knowledge-coverage/"><b>内容就绪</b><span>权威来源 + 中文合成。</span></a>
+  <a class="path-card" href="output/reports/knowledge-coverage/"><b>练习已测</b><span>实现或合成 + 自动测试。</span></a>
+  <a class="path-card" href="output/reports/knowledge-coverage/"><b>案例验证</b><span>冻结来源 + 报告 + 测试。</span></a>
+  <a class="path-card" href="output/reports/knowledge-coverage/"><b>维护在线</b><span>工作流 + 回归测试。</span></a>
+</div>
+
 ## 三种行业研究语言
 
 <div class="path-grid">

@@ -6,7 +6,7 @@ markets: [A股, 港股]
 level: beginner
 status: active
 sources: []
-updated: 2026-07-16
+updated: 2026-07-17
 ---
 
 # 维护日志
@@ -40,3 +40,8 @@ updated: 2026-07-16
 - changed: [[能源]], [[金融]], [[消费]], [[周期行业研究]], [[经验与失败教训]]
 - sources: raw-us-eia-open-data, raw-global-opec-asb, raw-global-bis-basel-framework, raw-us-fdic-bankfind-call-reports, raw-us-census-monthly-retail-trade, raw-cn-nbs-retail-sales-methodology
 - result: 建立三种行业研究语言与预注册证据卡，明确宏观总量、历史修订、来源激励和本地监管口径不能直接替代公司结论。
+
+## [2026-07-17] research | 八轴四阶段覆盖体系
+- changed: [[经验与失败教训]], [[index]], [[dashboard]]
+- sources: 仓库现有 Raw、Wiki、Output、测试与工作流证据
+- result: 将 42 个粗主题重构为 135 项原子能力，基线从 60.4% 调整为 36.5%，并公开 11 项冻结案例全部尚未验证的真实缺口。
