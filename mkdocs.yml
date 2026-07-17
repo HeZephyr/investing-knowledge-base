@@ -77,6 +77,7 @@ nav:
       - 公司分析: output/templates/公司分析.md
       - 基金分析: output/templates/基金分析.md
       - 回测计划: output/templates/回测计划.md
+      - 实证证据卡: output/templates/实证证据卡.md
       - 复盘: output/templates/复盘.md
       - 投资政策书: output/templates/投资政策书.md
   - 互动:
