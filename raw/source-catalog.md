@@ -22,3 +22,5 @@
 首批研究材料包含组合理论、市场有效性、基金绩效和回测过拟合；外部项目包含 ExploreFinance、AKShare、BaoStock、Qlib、RQAlpha、Backtesting.py、Pyfolio 与 Awesome Quant。
 
 扩展批次覆盖美股、韩国股市、海外 ETF、黄金、汇率与存储半导体。行业协会和标准组织资料为 B 级，涉及价格与标准全文时必须单独核验许可。
+
+Issue #9 批次加入 Yale/Shiller 金融市场课程、AQR Data Library 与 GMO Research Library，用于对照行为、因子、估值和资产配置研究流。可下载序列、报告、逐字稿和图表不进入仓库；这里只保存规范链接、许可或条款边界、方法元数据与独立摘要。
