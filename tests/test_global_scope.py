@@ -27,3 +27,19 @@ def test_global_hubs_are_reachable_from_primary_indexes() -> None:
         assert link in index
     assert "[[公开投资框架]]" in index
     assert "[[全球市场]]" in dashboard
+
+
+def test_research_evidence_matrix_and_output_template_are_reachable() -> None:
+    matrix_path = ROOT / "wiki/methods/投资研究证据矩阵.md"
+    template_path = ROOT / "output/templates/实证证据卡.md"
+    assert matrix_path.is_file(), matrix_path
+    assert template_path.is_file(), template_path
+
+    for index_path in ("wiki/index.md", "wiki/dashboard.md"):
+        path = ROOT / index_path
+        index = path.read_text(encoding="utf-8")
+        assert "[[投资研究证据矩阵]]" in index, path
+
+    output_readme_path = ROOT / "output/README.md"
+    output_readme = output_readme_path.read_text(encoding="utf-8")
+    assert "templates/实证证据卡.md" in output_readme, output_readme_path
