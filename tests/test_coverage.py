@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
+import pytest
 import yaml
 
 from investkb.coverage import (
@@ -20,6 +21,7 @@ def _requirement(
     requirement_id: str = "market-cn-rules",
     *,
     axis: str = "markets",
+    stage: str = "exercise-tested",
     status: str = "validated",
     verified: str = "2026-07-17",
     evidence: list[dict[str, str]] | None = None,
@@ -28,6 +30,7 @@ def _requirement(
     return {
         "id": requirement_id,
         "axis": axis,
+        "stage": stage,
         "title": "A 股市场规则",
         "status": status,
         "verified": verified,
@@ -49,7 +52,7 @@ def _write_manifest(tmp_path: Path, requirements: list[dict], *, as_of: str = "2
     path = tmp_path / "coverage.yaml"
     path.write_text(
         yaml.safe_dump(
-            {"schema_version": 1, "as_of": as_of, "requirements": requirements},
+            {"schema_version": 2, "as_of": as_of, "requirements": requirements},
             allow_unicode=True,
             sort_keys=False,
         ),
@@ -63,21 +66,36 @@ def test_valid_manifest_loads_and_validates(tmp_path: Path) -> None:
 
     manifest = load_coverage(path)
 
-    assert manifest.schema_version == 1
+    assert manifest.schema_version == 2
     assert manifest.requirements[0].id == "market-cn-rules"
+    assert manifest.requirements[0].stage == "exercise-tested"
     assert validate_coverage(manifest, tmp_path, TODAY) == []
 
 
-def test_validation_rejects_duplicate_ids_and_unknown_state(tmp_path: Path) -> None:
+def test_load_rejects_schema_v1(tmp_path: Path) -> None:
+    path = _write_manifest(tmp_path, [_requirement()])
+    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    payload["schema_version"] = 1
+    path.write_text(yaml.safe_dump(payload, allow_unicode=True), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="schema_version must be 2"):
+        load_coverage(path)
+
+
+def test_validation_rejects_duplicate_ids_unknown_state_and_stage(tmp_path: Path) -> None:
     path = _write_manifest(
         tmp_path,
-        [_requirement(status="invented"), _requirement(status="reviewed", gap="补复验")],
+        [
+            _requirement(status="invented", stage="invented"),
+            _requirement(status="reviewed", gap="补复验"),
+        ],
     )
 
     errors = validate_coverage(load_coverage(path), tmp_path, TODAY)
 
     assert any("duplicate requirement id: market-cn-rules" in error for error in errors)
     assert any("unknown status: invented" in error for error in errors)
+    assert any("unknown stage: invented" in error for error in errors)
 
 
 def test_validation_rejects_future_dates_and_missing_evidence(tmp_path: Path) -> None:
@@ -101,22 +119,66 @@ def test_validation_rejects_future_dates_and_missing_evidence(tmp_path: Path) ->
     assert any("evidence path does not exist: wiki/missing.md" in error for error in errors)
 
 
-def test_validated_requires_two_distinct_evidence_kinds(tmp_path: Path) -> None:
+def _stage_evidence(tmp_path: Path) -> dict[str, dict[str, str]]:
+    files = {
+        "source": "raw/source.md",
+        "synthesis": "wiki/markets/A股市场.md",
+        "report": "output/report.md",
+        "implementation": "src/implementation.py",
+        "test": "tests/test_global_scope.py",
+        "workflow": ".github/workflows/ci.yml",
+    }
+    for relative_path in files.values():
+        path = tmp_path / relative_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("evidence", encoding="utf-8")
+    return {kind: {"path": path, "kind": kind} for kind, path in files.items()}
+
+
+@pytest.mark.parametrize(
+    ("stage", "required_kinds"),
+    [
+        ("content-ready", {"source", "synthesis"}),
+        ("exercise-tested", {"implementation", "test"}),
+        ("case-validated", {"source", "report", "test"}),
+        ("maintenance-live", {"workflow", "test"}),
+    ],
+)
+def test_validated_stage_requires_matching_evidence(
+    tmp_path: Path, stage: str, required_kinds: set[str]
+) -> None:
+    evidence = _stage_evidence(tmp_path)
+    incomplete = sorted(required_kinds)[:-1]
     path = _write_manifest(
         tmp_path,
-        [
-            _requirement(
-                evidence=[
-                    {"path": "wiki/markets/A股市场.md", "kind": "synthesis"},
-                    {"path": "wiki/markets/A股市场.md", "kind": "synthesis"},
-                ]
-            )
-        ],
+        [_requirement(stage=stage, evidence=[evidence[kind] for kind in incomplete])],
     )
 
     errors = validate_coverage(load_coverage(path), tmp_path, TODAY)
 
-    assert any("validated requires at least two evidence kinds" in error for error in errors)
+    assert any(f"validated stage {stage} requires one of" in error for error in errors)
+
+    path = _write_manifest(
+        tmp_path,
+        [_requirement(stage=stage, evidence=[evidence[kind] for kind in required_kinds])],
+    )
+    errors = validate_coverage(load_coverage(path), tmp_path, TODAY)
+    assert not any("validated stage" in error for error in errors)
+
+
+def test_exercise_stage_accepts_synthesis_and_test(tmp_path: Path) -> None:
+    evidence = _stage_evidence(tmp_path)
+    path = _write_manifest(
+        tmp_path,
+        [
+            _requirement(
+                stage="exercise-tested",
+                evidence=[evidence["synthesis"], evidence["test"]],
+            )
+        ],
+    )
+
+    assert validate_coverage(load_coverage(path), tmp_path, TODAY) == []
 
 
 def test_validation_rejects_unknown_evidence_kind(tmp_path: Path) -> None:
@@ -167,6 +229,10 @@ def test_report_is_deterministic_and_discloses_gaps(tmp_path: Path) -> None:
     assert "仓库就绪度，不是预期收益" in first
     assert "50.0%" in first
     assert "缺日本交易所与监管来源" in first
+    assert "## 分能力阶段状态" in first
+    for stage in ("content-ready", "exercise-tested", "case-validated", "maintenance-live"):
+        assert stage in first
+    assert "| ID | 维度 | 阶段 | 要求 |" in first
 
 
 def test_repository_manifest_covers_every_declared_axis() -> None:
@@ -174,10 +240,20 @@ def test_repository_manifest_covers_every_declared_axis() -> None:
     manifest = load_coverage(root / "config/knowledge-coverage.yaml")
 
     assert validate_coverage(manifest, root, TODAY) == []
+    assert len(manifest.requirements) == 135
     assert {item.axis for item in manifest.requirements} == {
+        "foundations",
         "markets",
         "assets",
         "sectors",
+        "company",
         "methods",
+        "portfolio",
         "engineering",
+    }
+    assert {item.stage for item in manifest.requirements} == {
+        "content-ready",
+        "exercise-tested",
+        "case-validated",
+        "maintenance-live",
     }
