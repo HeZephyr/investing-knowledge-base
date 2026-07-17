@@ -25,3 +25,8 @@ updated: 2026-07-16
 - changed: [[数据质量]], [[未来函数]], [[回测基础]], [[换手与交易成本]]
 - sources: raw-repo-akshare, raw-repo-baostock, raw-repo-rqalpha
 - result: A/HK 日线适配、质量检查、次日开盘成交、费用和复现报告均可测试运行。
+
+## [2026-07-17] ingest | 行为、因子与估值研究流
+- changed: [[投资研究证据矩阵]], [[公开投资框架]]
+- sources: raw-expert-shiller-yale-financial-markets, raw-research-aqr-data-library, raw-expert-gmo-research-library
+- result: 建立跨流派可证伪矩阵与许可安全的实证证据模板，不再分发第三方原始数据。
