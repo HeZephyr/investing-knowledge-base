@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**52.2%**
+- 仓库就绪度，不是预期收益：**54.6%**
 - 需求总数：41
 
 > validated 只表示当前清单所列证据通过仓库规则；不保证投资收益，也不免除后续更新。
@@ -13,7 +13,7 @@
 | 市场 | 3 | 0 | 2 | 2 | 47.1% |
 | 资产与产品 | 2 | 3 | 3 | 1 | 41.1% |
 | 行业 | 5 | 0 | 2 | 0 | 18.6% |
-| 研究方法 | 1 | 1 | 4 | 3 | 65.0% |
+| 研究方法 | 0 | 1 | 4 | 4 | 76.1% |
 | 工程与维护 | 1 | 1 | 0 | 7 | 80.6% |
 
 ## 逐项证据与缺口
@@ -50,7 +50,7 @@
 | `method-behavior` | 研究方法 | 行为金融与决策纪律 | reviewed | 2026-07-17 | `synthesis:wiki/risk/行为偏差.md`<br>`source:raw/experts/cards/shiller-yale-financial-markets.md` | 缺预承诺、决策日志和偏差复盘案例 |
 | `method-data-quality` | 研究方法 | 数据质量与历史时点 | validated | 2026-07-17 | `synthesis:wiki/quant/数据质量.md`<br>`test:tests/validation/test_market.py` | — |
 | `method-empirical` | 研究方法 | 因子与跨流派实证 | reviewed | 2026-07-17 | `synthesis:wiki/methods/投资研究证据矩阵.md`<br>`template:output/templates/实证证据卡.md` | 缺使用公开冻结数据的完整正负结果研究 |
-| `method-lessons` | 研究方法 | 经验、失败假设与事故复盘 | missing | 2026-07-17 | — | 缺统一经验账本、事故模板和回归复验规则 |
+| `method-lessons` | 研究方法 | 经验、失败假设与事故复盘 | validated | 2026-07-17 | `synthesis:wiki/methods/经验与失败教训.md`<br>`template:output/templates/研究事故与教训.md` | — |
 | `method-portfolio` | 研究方法 | 组合构建与再平衡 | seed | 2026-07-17 | `synthesis:wiki/concepts/分散化.md` | 缺投资政策、相关性失稳、约束优化与再平衡案例 |
 | `method-risk` | 研究方法 | 风险、回撤与仓位 | validated | 2026-07-17 | `synthesis:wiki/risk/最大回撤.md`<br>`test:tests/test_metrics.py` | — |
 | `method-valuation` | 研究方法 | 估值与反向估值 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/估值.md`<br>`source:raw/experts/cards/damodaran-valuation.md` | 缺多情景、敏感性和真实公司反向估值案例 |

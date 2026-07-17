@@ -30,3 +30,8 @@ updated: 2026-07-16
 - changed: [[投资研究证据矩阵]], [[公开投资框架]]
 - sources: raw-expert-shiller-yale-financial-markets, raw-research-aqr-data-library, raw-expert-gmo-research-library
 - result: 建立跨流派可证伪矩阵与许可安全的实证证据模板，不再分发第三方原始数据。
+
+## [2026-07-17] research | 覆盖审计与失败教训
+- changed: [[经验与失败教训]], [[index]], [[dashboard]]
+- sources: raw-research-aqr-data-library, raw-expert-gmo-research-library
+- result: 用证据清单报告真实缺口，并把 CI、许可、数据修订、SSE 与负结果经验转成防复发规则。

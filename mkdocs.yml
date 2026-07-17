@@ -17,6 +17,7 @@ nav:
       - 学习仪表盘: wiki/dashboard.md
       - 新手路线: wiki/learning-path.md
       - 知识总索引: wiki/index.md
+      - 覆盖审计: output/reports/knowledge-coverage.md
   - 市场:
       - 全球市场: wiki/markets/全球市场.md
       - A 股市场: wiki/markets/A股市场.md
@@ -42,6 +43,7 @@ nav:
   - 研究方法:
       - 公开投资框架: wiki/methods/公开投资框架.md
       - 投资研究证据矩阵: wiki/methods/投资研究证据矩阵.md
+      - 经验与失败教训: wiki/methods/经验与失败教训.md
   - 核心概念:
       - 收益率: wiki/concepts/收益率.md
       - 基准: wiki/concepts/基准.md
@@ -78,6 +80,7 @@ nav:
       - 基金分析: output/templates/基金分析.md
       - 回测计划: output/templates/回测计划.md
       - 实证证据卡: output/templates/实证证据卡.md
+      - 研究事故与教训: output/templates/研究事故与教训.md
       - 复盘: output/templates/复盘.md
       - 投资政策书: output/templates/投资政策书.md
   - 互动:

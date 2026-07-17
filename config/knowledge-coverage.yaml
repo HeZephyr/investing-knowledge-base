@@ -260,10 +260,12 @@ requirements:
   - id: method-lessons
     axis: methods
     title: 经验、失败假设与事故复盘
-    status: missing
+    status: validated
     verified: 2026-07-17
-    evidence: []
-    gap: 缺统一经验账本、事故模板和回归复验规则
+    evidence:
+      - {path: wiki/methods/经验与失败教训.md, kind: synthesis}
+      - {path: output/templates/研究事故与教训.md, kind: template}
+    gap: ""
 
   - id: engineering-source-lineage
     axis: engineering
