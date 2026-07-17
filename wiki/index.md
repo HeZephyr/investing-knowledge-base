@@ -2,7 +2,7 @@
 title: 知识库索引
 aliases: [Index]
 category: navigation
-markets: [A股, 港股]
+markets: [全球, A股, 港股, 美股, 韩国股市]
 level: beginner
 status: seed
 sources: []
@@ -28,7 +28,7 @@ updated: 2026-07-17
 ## 资产与行业
 
 - [[黄金]]、[[汇率风险]]
-- [[周期行业研究]]、[[存储半导体]]
+- [[周期行业研究]]、[[存储半导体]]、[[能源]]、[[金融]]、[[消费]]
 
 ## 分析与核心概念
 

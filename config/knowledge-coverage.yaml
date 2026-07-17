@@ -140,7 +140,7 @@ requirements:
     verified: 2026-07-17
     evidence:
       - {path: wiki/sectors/周期行业研究.md, kind: synthesis}
-    gap: 缺至少三个不同行业的完整应用与失败复盘
+    gap: 缺能源、银行、消费三个使用冻结公开数据的完整正负结果案例
   - id: sector-memory
     axis: sectors
     title: 存储半导体
@@ -153,24 +153,33 @@ requirements:
   - id: sector-energy
     axis: sectors
     title: 能源
-    status: missing
+    status: reviewed
     verified: 2026-07-17
-    evidence: []
-    gap: 缺产业链、成本曲线、库存、资本开支和公司案例
+    evidence:
+      - {path: wiki/sectors/能源.md, kind: synthesis}
+      - {path: raw/official/united-states/eia-open-data.md, kind: source}
+      - {path: output/templates/能源周期证据卡.md, kind: template}
+    gap: 缺冻结历史 vintage 的供需、价格与公司财务端到端正负结果案例
   - id: sector-financials
     axis: sectors
     title: 银行、保险与券商
-    status: missing
+    status: reviewed
     verified: 2026-07-17
-    evidence: []
-    gap: 缺资产负债表、监管资本、信用周期和公司案例
+    evidence:
+      - {path: wiki/sectors/金融.md, kind: synthesis}
+      - {path: raw/official/global/bis-basel-framework.md, kind: source}
+      - {path: output/templates/银行资产负债表证据卡.md, kind: template}
+    gap: 缺当地监管口径、历史可得 Call Report/披露与压力情景案例
   - id: sector-consumer
     axis: sectors
     title: 消费
-    status: missing
+    status: reviewed
     verified: 2026-07-17
-    evidence: []
-    gap: 缺品牌、渠道、单店、库存、定价权和公司案例
+    evidence:
+      - {path: wiki/sectors/消费.md, kind: synthesis}
+      - {path: raw/official/united-states/census-monthly-retail-trade.md, kind: source}
+      - {path: output/templates/消费单位经济证据卡.md, kind: template}
+    gap: 缺宏观、终端、渠道库存与公司三表对齐的冻结数据案例
   - id: sector-healthcare
     axis: sectors
     title: 医药与医疗

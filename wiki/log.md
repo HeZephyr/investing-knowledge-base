@@ -35,3 +35,8 @@ updated: 2026-07-16
 - changed: [[经验与失败教训]], [[index]], [[dashboard]]
 - sources: raw-research-aqr-data-library, raw-expert-gmo-research-library
 - result: 用证据清单报告真实缺口，并把 CI、许可、数据修订、SSE 与负结果经验转成防复发规则。
+
+## [2026-07-17] ingest | 能源、金融与消费行业研究包
+- changed: [[能源]], [[金融]], [[消费]], [[周期行业研究]], [[经验与失败教训]]
+- sources: raw-us-eia-open-data, raw-global-opec-asb, raw-global-bis-basel-framework, raw-us-fdic-bankfind-call-reports, raw-us-census-monthly-retail-trade, raw-cn-nbs-retail-sales-methodology
+- result: 建立三种行业研究语言与预注册证据卡，明确宏观总量、历史修订、来源激励和本地监管口径不能直接替代公司结论。

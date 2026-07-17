@@ -7,7 +7,7 @@ hide:
 <section class="hero">
   <span class="eyebrow">全球市场 · 多资产 · 行业研究 · 量化验证</span>
   <h1>把投资变成一套可验证的学习系统</h1>
-  <p>从 A/HK 延伸到美股与韩国市场，从基金、黄金到存储半导体；沿着原始来源学习，用免费数据与可复现代码验证观点。</p>
+  <p>从 A/HK 延伸到美股与韩国市场，从基金、黄金到存储、能源、金融与消费；沿着原始来源学习，用免费数据与可复现代码验证观点。</p>
   <div class="hero-actions">
     <a class="md-button md-button--primary" href="wiki/learning-path/">开始学习</a>
     <a class="md-button" href="tools/">打开互动工具</a>
@@ -19,6 +19,14 @@ hide:
   <div class="stat-card"><strong>—</strong><span>Wiki 页面</span></div>
   <div class="stat-card"><strong>—</strong><span>Raw 来源卡</span></div>
   <div class="stat-card"><strong>—</strong><span>研究模板</span></div>
+</div>
+
+## 三种行业研究语言
+
+<div class="path-grid">
+  <a class="path-card" href="wiki/sectors/能源/"><b>商品与产能</b><span>库存、成本曲线、价格与资本开支。</span></a>
+  <a class="path-card" href="wiki/sectors/金融/"><b>资产负债表</b><span>资金、信用损失、资本与流动性。</span></a>
+  <a class="path-card" href="wiki/sectors/消费/"><b>品牌与渠道</b><span>量价结构、同店、库存与单位经济。</span></a>
 </div>
 
 ## 新手的第一条路线

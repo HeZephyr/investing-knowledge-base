@@ -8,9 +8,9 @@
 - `official/hong-kong/`：港交所、香港证监会、投委会等。
 - `official/united-states/`：美国 SEC 投资者教育、EDGAR 与基金披露。
 - `official/korea/`：韩国交易所交易和公司披露。
-- `official/global/`：黄金基准、技术标准、汇率等跨市场来源。
+- `official/global/`：黄金基准、技术标准、汇率、能源统计与全球银行监管框架。
 
-首批覆盖：中国证监会、上交所、深交所、北交所、中基协、巨潮资讯、港交所、香港证监会和投委会，共 21 张来源卡。
+截至 2026-07-17，官方层共 36 张来源卡；全仓共有 63 张可审计来源卡。来源数量只用于库存管理，不代表知识要求已经完成。
 
 ## 研究与社区来源
 
@@ -22,5 +22,7 @@
 首批研究材料包含组合理论、市场有效性、基金绩效和回测过拟合；外部项目包含 ExploreFinance、AKShare、BaoStock、Qlib、RQAlpha、Backtesting.py、Pyfolio 与 Awesome Quant。
 
 扩展批次覆盖美股、韩国股市、海外 ETF、黄金、汇率与存储半导体。行业协会和标准组织资料为 B 级，涉及价格与标准全文时必须单独核验许可。
+
+Issue #15 批次加入 EIA Open Data、OPEC Annual Statistical Bulletin、BIS Basel Framework、FDIC BankFind/Call Reports、美国 Census Monthly Retail Trade 与中国国家统计局社会消费品零售方法。六个入口分别支撑能源、金融和消费；聚合统计不能直接替代公司披露，更新后的历史值也不能冒充当时可得数据。
 
 Issue #9 批次加入 Yale/Shiller 金融市场课程、AQR Data Library 与 GMO Research Library，用于对照行为、因子、估值和资产配置研究流。可下载序列、报告、逐字稿和图表不进入仓库；这里只保存规范链接、许可或条款边界、方法元数据与独立摘要。
