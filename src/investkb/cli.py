@@ -12,6 +12,13 @@ import yaml
 
 from investkb.backtest.engine import run_backtest
 from investkb.backtest.models import FeeModel, MarketRules
+from investkb.coverage import (
+    CoverageFormatError,
+    coverage_score,
+    load_coverage,
+    render_coverage_report,
+    validate_coverage,
+)
 from investkb.data.models import normalize_bars
 from investkb.data.providers import AKShareProvider, BaoStockProvider, DataUnavailableError
 from investkb.data.store import ParquetStore
@@ -28,12 +35,14 @@ data_app = typer.Typer(help="免费日线数据", no_args_is_help=True)
 fund_app = typer.Typer(help="开放式基金净值数据", no_args_is_help=True)
 backtest_app = typer.Typer(help="策略回测", no_args_is_help=True)
 demo_app = typer.Typer(help="可离线运行的教程示例", no_args_is_help=True)
+coverage_app = typer.Typer(help="知识覆盖与完成证据", no_args_is_help=True)
 app.add_typer(sources_app, name="sources")
 app.add_typer(wiki_app, name="wiki")
 app.add_typer(data_app, name="data")
 app.add_typer(fund_app, name="fund")
 app.add_typer(backtest_app, name="backtest")
 app.add_typer(demo_app, name="demo")
+app.add_typer(coverage_app, name="coverage")
 
 NON_CARDS = {"README.md", "catalog.md", "source-catalog.md"}
 
@@ -73,6 +82,46 @@ def wiki_lint(wiki_path: Path = Path("wiki"), raw_path: Path = Path("raw")) -> N
             typer.echo(failure, err=True)
         raise typer.Exit(1)
     typer.echo("PASS: wiki links, sources, and reachability")
+
+
+def _coverage_or_exit(config: Path, root: Path):
+    try:
+        manifest = load_coverage(config)
+    except CoverageFormatError as exc:
+        typer.echo(f"ERROR: {exc}", err=True)
+        raise typer.Exit(1) from exc
+    errors = validate_coverage(manifest, root)
+    if errors:
+        for error in errors:
+            typer.echo(f"ERROR: {error}", err=True)
+        raise typer.Exit(1)
+    return manifest
+
+
+@coverage_app.command("validate")
+def coverage_validate(
+    config: Path = typer.Option(Path("config/knowledge-coverage.yaml")),
+    root: Path = typer.Option(Path(".")),
+) -> None:
+    """验证覆盖状态、日期和证据文件。"""
+    manifest = _coverage_or_exit(config, root)
+    typer.echo(
+        f"PASS: {len(manifest.requirements)} requirements, "
+        f"repository readiness={coverage_score(manifest):.1f}%"
+    )
+
+
+@coverage_app.command("report")
+def coverage_report(
+    config: Path = typer.Option(Path("config/knowledge-coverage.yaml")),
+    output: Path = typer.Option(Path("output/reports/knowledge-coverage.md")),
+    root: Path = typer.Option(Path(".")),
+) -> None:
+    """验证清单并生成确定性的公开覆盖报告。"""
+    manifest = _coverage_or_exit(config, root)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(render_coverage_report(manifest), encoding="utf-8")
+    typer.echo(f"PASS: {coverage_score(manifest):.1f}% -> {output}")
 
 
 @data_app.command("fetch")

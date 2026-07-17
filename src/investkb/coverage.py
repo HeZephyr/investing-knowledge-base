@@ -14,6 +14,7 @@ ALLOWED_STATES = ("missing", "seed", "reviewed", "validated")
 STATE_WEIGHTS = {"missing": 0.0, "seed": 0.25, "reviewed": 0.65, "validated": 1.0}
 EVIDENCE_ROOTS = {"wiki", "raw", "output", "tests", "src", ".github", "docs", "config", "site"}
 EVIDENCE_SUFFIXES = {".md", ".py", ".yml", ".yaml", ".toml", ".json"}
+ROOT_EVIDENCE_FILES = {"AGENTS.md", "README.md", "mkdocs.yml", "pyproject.toml"}
 AXIS_LABELS = {
     "markets": "市场",
     "assets": "资产与产品",
@@ -130,7 +131,7 @@ def _valid_evidence_path(raw_path: str) -> bool:
         not path.is_absolute()
         and ".." not in path.parts
         and bool(path.parts)
-        and path.parts[0] in EVIDENCE_ROOTS
+        and (path.parts[0] in EVIDENCE_ROOTS or raw_path in ROOT_EVIDENCE_FILES)
         and path.suffix in EVIDENCE_SUFFIXES
     )
 

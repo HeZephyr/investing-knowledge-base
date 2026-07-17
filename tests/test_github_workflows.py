@@ -46,6 +46,7 @@ def test_ci_builds_the_static_site_strictly() -> None:
     assert "python -m investkb.site" in workflow
     assert "mkdocs build --strict" in workflow
     assert "investkb.publication" in workflow
+    assert "investkb.cli coverage validate" in workflow
 
 
 def test_pr_policy_enforces_conventional_titles_and_body() -> None:

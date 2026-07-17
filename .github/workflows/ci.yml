@@ -51,6 +51,7 @@ jobs:
       - run: python -m pip install -e '.[dev]'
       - run: python -m investkb.cli sources audit raw
       - run: python -m investkb.cli wiki lint
+      - run: python -m investkb.cli coverage validate
 
   offline-report:
     name: Offline backtest report
