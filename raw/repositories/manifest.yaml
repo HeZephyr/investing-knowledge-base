@@ -59,3 +59,12 @@ repositories:
   - name: QuantEcon lecture-python-intro
     url: https://github.com/QuantEcon/lecture-python-intro
     commit: 48659c24b5bc7c250b3c9f46e229cfbcac8bec40
+  - name: myhhub-stock
+    url: https://github.com/myhhub/stock
+    commit: b6e0ca2268cfbadd02f5ed052159c187b6670231
+  - name: AI-Trader
+    url: https://github.com/HKUDS/AI-Trader
+    commit: d03ff6c056b32ced735adf7c19ed8175adb1c8df
+  - name: ai_quant_trade
+    url: https://github.com/charliedream1/ai_quant_trade
+    commit: 275b62509340ce2a730886886ed2618e1bb0ca97
