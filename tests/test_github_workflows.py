@@ -49,6 +49,21 @@ def test_ci_builds_the_static_site_strictly() -> None:
     assert "investkb.cli coverage validate" in workflow
 
 
+def test_local_verify_script_matches_required_ci_gates() -> None:
+    script = Path("scripts/verify.sh").read_text(encoding="utf-8")
+
+    for command in (
+        "investkb.cli sources audit raw",
+        "investkb.cli wiki lint",
+        "investkb.cli coverage validate",
+        "investkb.publication",
+        "investkb.site",
+        "mkdocs build --strict",
+        "investkb.cli demo backtest --offline",
+    ):
+        assert command in script, f"local verification is missing: {command}"
+
+
 def test_pr_policy_enforces_conventional_titles_and_body() -> None:
     workflow = Path(".github/workflows/pr-policy.yml").read_text(encoding="utf-8")
 
