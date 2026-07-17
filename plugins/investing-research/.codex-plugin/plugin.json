@@ -1,0 +1,29 @@
+{
+  "name": "investing-research",
+  "version": "0.1.0",
+  "description": "Read-only, evidence-first audits of finance repositories and research tooling",
+  "author": {
+    "name": "Investing Knowledge Base contributors",
+    "url": "https://github.com/HeZephyr/investing-knowledge-base"
+  },
+  "homepage": "https://hezephyr.github.io/investing-knowledge-base/wiki/engineering/金融研究代码库审计/",
+  "repository": "https://github.com/HeZephyr/investing-knowledge-base",
+  "license": "MIT",
+  "keywords": ["finance", "repository-audit", "research", "read-only"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Investing Research Auditor",
+    "shortDescription": "Audit finance repositories without credentials or trading.",
+    "longDescription": "Evidence-first local repository audits for licenses, data providers, backtests, authentication boundaries, and automated-trading risk. Defaults to offline, read-only analysis.",
+    "developerName": "Investing Knowledge Base contributors",
+    "category": "Productivity",
+    "capabilities": ["Read", "Analyze"],
+    "websiteURL": "https://hezephyr.github.io/investing-knowledge-base/",
+    "defaultPrompt": [
+      "Audit a local finance repository without networking or credentials.",
+      "Compare finance data projects by evidence, license, and safety.",
+      "Turn a repository audit into Raw and Wiki knowledge cards."
+    ],
+    "brandColor": "#0F766E"
+  }
+}

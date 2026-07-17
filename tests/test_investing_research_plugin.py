@@ -6,8 +6,6 @@ from pathlib import Path
 import subprocess
 import sys
 
-import yaml
-
 from investkb.coverage import load_coverage
 from investkb.sources import parse_frontmatter
 
