@@ -2,15 +2,15 @@ schema_version: 2
 as_of: 2026-07-17
 requirements:
   # 基础学科：20
-  - {id: foundation-tvm, axis: foundations, stage: content-ready, title: 货币时间价值, status: missing, verified: 2026-07-17, evidence: [], gap: 缺权威来源、中文推导与练习}
-  - {id: foundation-compounding, axis: foundations, stage: exercise-tested, title: 复利、贴现与年化换算, status: missing, verified: 2026-07-17, evidence: [], gap: 缺手算、Python 实现和边界测试}
-  - {id: foundation-probability, axis: foundations, stage: content-ready, title: 概率与条件概率, status: missing, verified: 2026-07-17, evidence: [], gap: 缺教材来源与投资语境合成}
-  - {id: foundation-random-variables, axis: foundations, stage: content-ready, title: 随机变量与期望方差, status: missing, verified: 2026-07-17, evidence: [], gap: 缺定义、直觉和收益分布应用}
-  - {id: foundation-distributions, axis: foundations, stage: content-ready, title: 常见分布与厚尾, status: missing, verified: 2026-07-17, evidence: [], gap: 缺正态、t、二项与厚尾风险体系}
-  - {id: foundation-sampling, axis: foundations, stage: content-ready, title: 抽样、选择偏差与误差, status: missing, verified: 2026-07-17, evidence: [], gap: 缺抽样框架和市场数据偏差案例}
-  - {id: foundation-estimation, axis: foundations, stage: exercise-tested, title: 点估计、区间估计与不确定性, status: missing, verified: 2026-07-17, evidence: [], gap: 缺推导、练习和置信区间代码}
-  - {id: foundation-hypothesis, axis: foundations, stage: exercise-tested, title: 假设检验、效应量与多重检验, status: missing, verified: 2026-07-17, evidence: [], gap: 缺功效、效应量和多重比较练习}
-  - {id: foundation-regression, axis: foundations, stage: exercise-tested, title: 线性回归与诊断, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 OLS 假设、稳健误差和诊断练习}
+  - {id: foundation-tvm, axis: foundations, stage: content-ready, title: 货币时间价值, status: validated, verified: 2026-07-17, evidence: [{path: raw/books-and-papers/openstax-principles-finance.md, kind: source}, {path: wiki/foundations/复利与贴现.md, kind: synthesis}], gap: ""}
+  - {id: foundation-compounding, axis: foundations, stage: exercise-tested, title: 复利、贴现与年化换算, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: ""}
+  - {id: foundation-probability, axis: foundations, stage: content-ready, title: 概率与条件概率, status: validated, verified: 2026-07-17, evidence: [{path: raw/books-and-papers/openintro-statistics.md, kind: source}, {path: wiki/foundations/概率与收益分布.md, kind: synthesis}], gap: ""}
+  - {id: foundation-random-variables, axis: foundations, stage: content-ready, title: 随机变量与期望方差, status: validated, verified: 2026-07-17, evidence: [{path: raw/books-and-papers/openintro-statistics.md, kind: source}, {path: wiki/foundations/概率与收益分布.md, kind: synthesis}], gap: ""}
+  - {id: foundation-distributions, axis: foundations, stage: content-ready, title: 常见分布与厚尾, status: validated, verified: 2026-07-17, evidence: [{path: raw/books-and-papers/openintro-statistics.md, kind: source}, {path: wiki/foundations/概率与收益分布.md, kind: synthesis}], gap: ""}
+  - {id: foundation-sampling, axis: foundations, stage: content-ready, title: 抽样、选择偏差与误差, status: validated, verified: 2026-07-17, evidence: [{path: raw/books-and-papers/openintro-statistics.md, kind: source}, {path: wiki/foundations/抽样与估计.md, kind: synthesis}], gap: ""}
+  - {id: foundation-estimation, axis: foundations, stage: exercise-tested, title: 点估计、区间估计与不确定性, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: ""}
+  - {id: foundation-hypothesis, axis: foundations, stage: exercise-tested, title: 假设检验、效应量与多重检验, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/foundations/假设检验与多重比较.md, kind: synthesis}, {path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: 已测 Bonferroni；仍缺效应量、功效和依赖检验练习}
+  - {id: foundation-regression, axis: foundations, stage: exercise-tested, title: 线性回归与诊断, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/foundations/回归与诊断.md, kind: synthesis}, {path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: 已测一元 OLS；仍缺稳健误差、残差和影响点诊断练习}
   - {id: foundation-linear-algebra, axis: foundations, stage: content-ready, title: 投资所需线性代数, status: missing, verified: 2026-07-17, evidence: [], gap: 缺向量、矩阵、协方差与优化基础}
   - {id: foundation-calculus, axis: foundations, stage: content-ready, title: 投资所需微积分与优化, status: missing, verified: 2026-07-17, evidence: [], gap: 缺导数、凸性和约束优化基础}
   - {id: foundation-microeconomics, axis: foundations, stage: content-ready, title: 微观经济与产业组织, status: missing, verified: 2026-07-17, evidence: [], gap: 缺供需、弹性、竞争结构和定价权体系}
@@ -18,10 +18,10 @@ requirements:
   - {id: foundation-monetary-policy, axis: foundations, stage: content-ready, title: 货币政策与利率传导, status: missing, verified: 2026-07-17, evidence: [], gap: 缺央行工具、收益率曲线和资产价格传导}
   - {id: foundation-accounting-statements, axis: foundations, stage: content-ready, title: 会计恒等式与三张报表, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/财务三表.md, kind: synthesis}], gap: 缺准则来源、练习与勾稽案例}
   - {id: foundation-accounting-accrual, axis: foundations, stage: content-ready, title: 权责发生制与会计判断, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/盈利质量.md, kind: synthesis}], gap: 缺准则来源和应计项目拆解练习}
-  - {id: foundation-corporate-finance, axis: foundations, stage: content-ready, title: 公司金融基础, status: missing, verified: 2026-07-17, evidence: [], gap: 缺资本成本、融资、分红和项目评价体系}
+  - {id: foundation-corporate-finance, axis: foundations, stage: content-ready, title: 公司金融基础, status: validated, verified: 2026-07-17, evidence: [{path: raw/courses/mit-finance-theory.md, kind: source}, {path: wiki/foundations/公司金融基础.md, kind: synthesis}], gap: ""}
   - {id: foundation-market-history, axis: foundations, stage: content-ready, title: 金融史与市场危机, status: missing, verified: 2026-07-17, evidence: [], gap: 缺跨市场危机时间线与机制复盘}
-  - {id: foundation-reading-papers, axis: foundations, stage: exercise-tested, title: 阅读论文与复现实证, status: missing, verified: 2026-07-17, evidence: [], gap: 缺论文拆解清单和小型复现练习}
-  - {id: foundation-statistical-coding, axis: foundations, stage: exercise-tested, title: Python 统计计算基础, status: missing, verified: 2026-07-17, evidence: [], gap: 缺数组、表格、随机数和可重复性测试}
+  - {id: foundation-reading-papers, axis: foundations, stage: exercise-tested, title: 阅读论文与复现实证, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/foundations/论文阅读与复现.md, kind: synthesis}, {path: tests/test_foundations_curriculum.py, kind: test}], gap: 已有阅读合同；仍缺一篇论文的公开冻结数据复现练习}
+  - {id: foundation-statistical-coding, axis: foundations, stage: exercise-tested, title: Python 统计计算基础, status: reviewed, verified: 2026-07-17, evidence: [{path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: 已测数组与确定性纯函数；仍缺表格、随机种子和环境锁定练习}
 
   # 市场制度：16
   - {id: market-cn-rules, axis: markets, stage: content-ready, title: A 股交易与披露规则, status: validated, verified: 2026-07-17, evidence: [{path: wiki/markets/A股市场.md, kind: synthesis}, {path: raw/official/mainland/sse-trading-rules.md, kind: source}], gap: ""}
@@ -46,9 +46,9 @@ requirements:
   - {id: asset-etf, axis: assets, stage: content-ready, title: ETF 结构、交易与跟踪误差, status: validated, verified: 2026-07-17, evidence: [{path: wiki/products/ETF.md, kind: synthesis}, {path: raw/official/mainland/sse-etf.md, kind: source}], gap: ""}
   - {id: asset-mutual-fund, axis: assets, stage: content-ready, title: 公募基金结构与费用, status: validated, verified: 2026-07-17, evidence: [{path: wiki/products/公募基金.md, kind: synthesis}, {path: raw/official/mainland/csrc-fund-law.md, kind: source}], gap: ""}
   - {id: asset-cash, axis: assets, stage: content-ready, title: 现金与货币基金, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/货币基金.md, kind: synthesis}], gap: 缺收益来源、流动性和信用风险官方来源}
-  - {id: asset-government-bonds, axis: assets, stage: content-ready, title: 国债与收益率曲线, status: missing, verified: 2026-07-17, evidence: [], gap: 缺主要市场官方来源和曲线体系}
+  - {id: asset-government-bonds, axis: assets, stage: content-ready, title: 国债与收益率曲线, status: reviewed, verified: 2026-07-17, evidence: [{path: raw/courses/mit-finance-theory.md, kind: source}, {path: wiki/foundations/债券与利率基础.md, kind: synthesis}], gap: 已有债券入门；仍缺主要市场官方曲线来源和市场制度}
   - {id: asset-credit-bonds, axis: assets, stage: content-ready, title: 信用债、评级与违约, status: missing, verified: 2026-07-17, evidence: [], gap: 缺信用利差、回收率、契约与违约案例}
-  - {id: asset-bond-math, axis: assets, stage: exercise-tested, title: 债券定价、久期与凸性, status: missing, verified: 2026-07-17, evidence: [], gap: 缺公式推导、实现和测试}
+  - {id: asset-bond-math, axis: assets, stage: exercise-tested, title: 债券定价、久期与凸性, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/foundations/债券与利率基础.md, kind: synthesis}, {path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: 已测平坦收益率价格和 Macaulay 久期；仍缺曲线、修正久期与凸性练习}
   - {id: asset-convertible, axis: assets, stage: content-ready, title: 可转债条款与风险, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/可转债.md, kind: synthesis}], gap: 缺赎回、转股、信用与估值来源}
   - {id: asset-reit, axis: assets, stage: content-ready, title: REIT 结构与现金流, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/REIT.md, kind: synthesis}], gap: 缺 A股、港股和美股制度对比}
   - {id: asset-gold, axis: assets, stage: content-ready, title: 黄金定价与基准, status: validated, verified: 2026-07-17, evidence: [{path: wiki/assets/黄金.md, kind: synthesis}, {path: raw/official/global/lbma-gold-benchmark.md, kind: source}], gap: ""}
@@ -113,7 +113,7 @@ requirements:
   - {id: method-evidence-matrix, axis: methods, stage: content-ready, title: 跨流派证据矩阵, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/methods/投资研究证据矩阵.md, kind: synthesis}], gap: 缺论文层级、外部效度和更新日期审计}
   - {id: method-preregistration, axis: methods, stage: exercise-tested, title: 研究预注册与假设锁定, status: seed, verified: 2026-07-17, evidence: [{path: output/templates/实证证据卡.md, kind: template}], gap: 缺示例、机器校验和一次真实使用}
   - {id: method-causal-inference, axis: methods, stage: content-ready, title: 因果推断与识别假设, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 DAG、匹配、双重差分和工具变量体系}
-  - {id: method-time-series, axis: methods, stage: exercise-tested, title: 金融时间序列建模, status: missing, verified: 2026-07-17, evidence: [], gap: 缺平稳性、自相关、波动模型和测试}
+  - {id: method-time-series, axis: methods, stage: exercise-tested, title: 金融时间序列建模, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/foundations/时间序列与预测.md, kind: synthesis}, {path: src/investkb/education.py, kind: implementation}, {path: tests/test_education.py, kind: test}], gap: 已测滚动起点切分；仍缺平稳性、自相关、基线预测和波动模型练习}
   - {id: method-event-study, axis: methods, stage: exercise-tested, title: 事件研究与公告反应, status: missing, verified: 2026-07-17, evidence: [], gap: 缺事件窗、基准模型、重叠事件和测试}
   - {id: method-factor-replication, axis: methods, stage: case-validated, title: 公开因子冻结复现, status: missing, verified: 2026-07-17, evidence: [], gap: 缺来源、冻结数据、报告和测试}
   - {id: method-negative-results, axis: methods, stage: case-validated, title: 无效策略与负结果复现, status: missing, verified: 2026-07-17, evidence: [], gap: 缺预注册失败策略、报告和测试}
