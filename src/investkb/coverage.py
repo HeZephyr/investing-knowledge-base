@@ -9,7 +9,22 @@ from typing import Any
 
 import yaml
 
-ALLOWED_AXES = ("markets", "assets", "sectors", "methods", "engineering")
+ALLOWED_AXES = (
+    "foundations",
+    "markets",
+    "assets",
+    "sectors",
+    "company",
+    "methods",
+    "portfolio",
+    "engineering",
+)
+ALLOWED_STAGES = (
+    "content-ready",
+    "exercise-tested",
+    "case-validated",
+    "maintenance-live",
+)
 ALLOWED_STATES = ("missing", "seed", "reviewed", "validated")
 STATE_WEIGHTS = {"missing": 0.0, "seed": 0.25, "reviewed": 0.65, "validated": 1.0}
 EVIDENCE_ROOTS = {
@@ -38,11 +53,29 @@ ALLOWED_EVIDENCE_KINDS = {
     "runtime",
 }
 AXIS_LABELS = {
+    "foundations": "基础学科",
     "markets": "市场",
     "assets": "资产与产品",
     "sectors": "行业",
+    "company": "公司研究",
     "methods": "研究方法",
+    "portfolio": "组合与风控",
     "engineering": "工程与维护",
+}
+STAGE_LABELS = {
+    "content-ready": "内容就绪",
+    "exercise-tested": "练习已测",
+    "case-validated": "案例验证",
+    "maintenance-live": "维护在线",
+}
+STAGE_EVIDENCE_OPTIONS = {
+    "content-ready": (frozenset({"source", "synthesis"}),),
+    "exercise-tested": (
+        frozenset({"implementation", "test"}),
+        frozenset({"synthesis", "test"}),
+    ),
+    "case-validated": (frozenset({"source", "report", "test"}),),
+    "maintenance-live": (frozenset({"workflow", "test"}),),
 }
 
 
@@ -60,6 +93,7 @@ class Evidence:
 class CoverageRequirement:
     id: str
     axis: str
+    stage: str
     title: str
     status: str
     verified: date
@@ -106,8 +140,8 @@ def load_coverage(path: str | Path) -> CoverageManifest:
     except (OSError, yaml.YAMLError) as exc:
         raise CoverageFormatError(f"cannot read coverage manifest: {exc}") from exc
     root = _mapping(data, "manifest")
-    if root.get("schema_version") != 1:
-        raise CoverageFormatError("schema_version must be 1")
+    if root.get("schema_version") != 2:
+        raise CoverageFormatError("schema_version must be 2")
     raw_requirements = root.get("requirements")
     if not isinstance(raw_requirements, list):
         raise CoverageFormatError("requirements must be a list")
@@ -133,6 +167,7 @@ def load_coverage(path: str | Path) -> CoverageManifest:
             CoverageRequirement(
                 id=_text(item, "id", label),
                 axis=_text(item, "axis", label),
+                stage=_text(item, "stage", label),
                 title=_text(item, "title", label),
                 status=_text(item, "status", label),
                 verified=_date(item.get("verified"), f"{label}.verified"),
@@ -141,7 +176,7 @@ def load_coverage(path: str | Path) -> CoverageManifest:
             )
         )
     return CoverageManifest(
-        schema_version=1,
+        schema_version=2,
         as_of=_date(root.get("as_of"), "as_of"),
         requirements=tuple(requirements),
     )
@@ -176,6 +211,8 @@ def validate_coverage(
         seen.add(requirement.id)
         if requirement.axis not in ALLOWED_AXES:
             errors.append(f"{prefix}: unknown axis: {requirement.axis}")
+        if requirement.stage not in ALLOWED_STAGES:
+            errors.append(f"{prefix}: unknown stage: {requirement.stage}")
         if requirement.status not in ALLOWED_STATES:
             errors.append(f"{prefix}: unknown status: {requirement.status}")
         if requirement.verified > reference_date:
@@ -195,8 +232,19 @@ def validate_coverage(
             errors.append(f"{prefix}: seed requires at least one evidence item")
         if requirement.status == "reviewed" and not requirement.evidence:
             errors.append(f"{prefix}: reviewed requires at least one evidence item")
-        if requirement.status == "validated" and len(evidence_kinds) < 2:
-            errors.append(f"{prefix}: validated requires at least two evidence kinds")
+        stage_options = STAGE_EVIDENCE_OPTIONS.get(requirement.stage)
+        if (
+            requirement.status == "validated"
+            and stage_options is not None
+            and not any(option <= evidence_kinds for option in stage_options)
+        ):
+            descriptions = " or ".join(
+                "+".join(sorted(option)) for option in stage_options
+            )
+            errors.append(
+                f"{prefix}: validated stage {requirement.stage} requires one of: "
+                f"{descriptions}"
+            )
         if requirement.status == "validated" and requirement.gap:
             errors.append(f"{prefix}: validated requirement must have an empty gap")
         if requirement.status != "validated" and not requirement.gap:
@@ -236,7 +284,7 @@ def render_coverage_report(manifest: CoverageManifest) -> str:
     for axis in ALLOWED_AXES:
         items = [item for item in manifest.requirements if item.axis == axis]
         counts = {state: sum(item.status == state for item in items) for state in ALLOWED_STATES}
-        axis_manifest = CoverageManifest(1, manifest.as_of, tuple(items))
+        axis_manifest = CoverageManifest(2, manifest.as_of, tuple(items))
         lines.append(
             f"| {AXIS_LABELS[axis]} | {counts['missing']} | {counts['seed']} | "
             f"{counts['reviewed']} | {counts['validated']} | {coverage_score(axis_manifest):.1f}% |"
@@ -245,10 +293,29 @@ def render_coverage_report(manifest: CoverageManifest) -> str:
     lines.extend(
         [
             "",
+            "## 分能力阶段状态",
+            "",
+            "| 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |",
+            "|---|---|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for stage in ALLOWED_STAGES:
+        items = [item for item in manifest.requirements if item.stage == stage]
+        counts = {state: sum(item.status == state for item in items) for state in ALLOWED_STATES}
+        stage_manifest = CoverageManifest(2, manifest.as_of, tuple(items))
+        lines.append(
+            f"| `{stage}` | {STAGE_LABELS[stage]} | {counts['missing']} | {counts['seed']} | "
+            f"{counts['reviewed']} | {counts['validated']} | "
+            f"{coverage_score(stage_manifest):.1f}% |"
+        )
+
+    lines.extend(
+        [
+            "",
             "## 逐项证据与缺口",
             "",
-            "| ID | 维度 | 要求 | 状态 | 最后核验 | 证据 | 缺口 |",
-            "|---|---|---|---|---|---|---|",
+            "| ID | 维度 | 阶段 | 要求 | 状态 | 最后核验 | 证据 | 缺口 |",
+            "|---|---|---|---|---|---|---|---|",
         ]
     )
     for item in sorted(manifest.requirements, key=lambda value: (value.axis, value.id)):
@@ -256,7 +323,8 @@ def render_coverage_report(manifest: CoverageManifest) -> str:
         gap = _escape_cell(item.gap) if item.gap else "—"
         lines.append(
             f"| `{item.id}` | {AXIS_LABELS.get(item.axis, item.axis)} | "
-            f"{_escape_cell(item.title)} | {item.status} | {item.verified.isoformat()} | "
+            f"`{item.stage}` | {_escape_cell(item.title)} | {item.status} | "
+            f"{item.verified.isoformat()} | "
             f"{evidence} | {gap} |"
         )
     lines.append("")
