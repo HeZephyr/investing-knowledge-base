@@ -45,3 +45,8 @@ updated: 2026-07-17
 - changed: [[经验与失败教训]], [[index]], [[dashboard]]
 - sources: 仓库现有 Raw、Wiki、Output、测试与工作流证据
 - result: 将 42 个粗主题重构为 135 项原子能力，基线从 60.4% 调整为 36.5%，并公开 11 项冻结案例全部尚未验证的真实缺口。
+
+## [2026-07-17] ingest | 金融与统计课程主干
+- changed: [[金融与统计基础]], [[复利与贴现]], [[概率与收益分布]], [[抽样与估计]], [[假设检验与多重比较]], [[回归与诊断]], [[时间序列与预测]], [[债券与利率基础]], [[公司金融基础]], [[论文阅读与复现]], [[经验与失败教训]]
+- sources: raw-book-openintro-statistics, raw-book-openstax-principles-finance, raw-book-fpp3, raw-book-islp, raw-official-nist-stat-handbook, raw-course-mit-finance-theory, raw-repo-scipy, raw-repo-statsmodels, raw-repo-islp-labs, raw-repo-quantecon-python-intro
+- result: 建立九模块课程、八组手算纯函数与非法输入测试；许可冲突使用 link-only，部分练习不冒充完整能力，覆盖就绪度从 36.5% 提升到 45.8%。

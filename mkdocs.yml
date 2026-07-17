@@ -18,6 +18,17 @@ nav:
       - 新手路线: wiki/learning-path.md
       - 知识总索引: wiki/index.md
       - 覆盖审计: output/reports/knowledge-coverage.md
+  - 金融与统计基础:
+      - 课程地图: wiki/foundations/金融与统计基础.md
+      - 复利与贴现: wiki/foundations/复利与贴现.md
+      - 概率与收益分布: wiki/foundations/概率与收益分布.md
+      - 抽样与估计: wiki/foundations/抽样与估计.md
+      - 假设检验与多重比较: wiki/foundations/假设检验与多重比较.md
+      - 回归与诊断: wiki/foundations/回归与诊断.md
+      - 时间序列与预测: wiki/foundations/时间序列与预测.md
+      - 债券与利率基础: wiki/foundations/债券与利率基础.md
+      - 公司金融基础: wiki/foundations/公司金融基础.md
+      - 论文阅读与复现: wiki/foundations/论文阅读与复现.md
   - 市场:
       - 全球市场: wiki/markets/全球市场.md
       - A 股市场: wiki/markets/A股市场.md

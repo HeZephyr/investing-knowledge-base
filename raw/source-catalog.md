@@ -10,7 +10,7 @@
 - `official/korea/`：韩国交易所交易和公司披露。
 - `official/global/`：黄金基准、技术标准、汇率、能源统计与全球银行监管框架。
 
-截至 2026-07-17，官方层共 36 张来源卡；全仓共有 63 张可审计来源卡。来源数量只用于库存管理，不代表知识要求已经完成。
+截至 2026-07-17，官方层新增 NIST/SEMATECH 统计手册，课程层新增 MIT OCW Finance Theory I。来源数量只用于库存管理，不代表知识要求已经完成。
 
 ## 研究与社区来源
 
@@ -26,3 +26,5 @@
 Issue #15 批次加入 EIA Open Data、OPEC Annual Statistical Bulletin、BIS Basel Framework、FDIC BankFind/Call Reports、美国 Census Monthly Retail Trade 与中国国家统计局社会消费品零售方法。六个入口分别支撑能源、金融和消费；聚合统计不能直接替代公司披露，更新后的历史值也不能冒充当时可得数据。
 
 Issue #9 批次加入 Yale/Shiller 金融市场课程、AQR Data Library 与 GMO Research Library，用于对照行为、因子、估值和资产配置研究流。可下载序列、报告、逐字稿和图表不进入仓库；这里只保存规范链接、许可或条款边界、方法元数据与独立摘要。
+
+Issue #17 批次加入 `openintro-statistics.md`、`openstax-principles-finance.md`、`forecasting-principles-practice.md`、`islp.md`、`nist-statistical-handbook.md` 与 `mit-finance-theory.md`，并审计 SciPy、statsmodels、ISLP Labs 和 QuantEcon 教学仓库。免费 PDF、公开 GitHub 和网页可读性均不自动授予复制或 LLM 摄取权；许可冲突或缺失时只链接并写独立摘要。
