@@ -21,6 +21,14 @@ def test_knowledge_skill_has_valid_metadata_and_resources() -> None:
     assert len(list((SKILL / "references").glob("*.md"))) == 3
 
 
+def test_knowledge_skill_requires_coverage_and_lessons_updates() -> None:
+    text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+
+    assert "config/knowledge-coverage.yaml" in text
+    assert "coverage validate" in text
+    assert "经验与失败教训" in text
+
+
 def test_source_card_scaffold_creates_valid_card_and_refuses_overwrite(tmp_path: Path) -> None:
     command = [
         sys.executable,

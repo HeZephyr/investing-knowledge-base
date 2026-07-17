@@ -43,3 +43,19 @@ def test_research_evidence_matrix_and_output_template_are_reachable() -> None:
     output_readme_path = ROOT / "output/README.md"
     output_readme = output_readme_path.read_text(encoding="utf-8")
     assert "templates/实证证据卡.md" in output_readme, output_readme_path
+
+
+def test_lessons_ledger_and_incident_template_are_reachable() -> None:
+    lessons_path = ROOT / "wiki/methods/经验与失败教训.md"
+    incident_path = ROOT / "output/templates/研究事故与教训.md"
+    index = (ROOT / "wiki/index.md").read_text(encoding="utf-8")
+    dashboard = (ROOT / "wiki/dashboard.md").read_text(encoding="utf-8")
+
+    assert lessons_path.is_file(), lessons_path
+    assert incident_path.is_file(), incident_path
+    assert "[[经验与失败教训]]" in index
+    assert "[[经验与失败教训]]" in dashboard
+
+    incident = incident_path.read_text(encoding="utf-8")
+    for heading in ("事件", "证据", "根因", "影响", "修复", "预防", "复验"):
+        assert f"## {heading}" in incident
