@@ -100,3 +100,27 @@ def test_research_stream_cards_disclose_provenance_conflicts_and_limits(
         assert metadata["url"] == "https://www.gmo.com/", path
         terms = section_body(text, "许可与条款", path)
         assert "不深链" in terms, path
+
+
+def test_aqr_data_library_discloses_terms_restrictions() -> None:
+    path = Path("raw/experts/cards/aqr-data-library.md")
+    terms = section_body(path.read_text(encoding="utf-8"), "许可与条款", path)
+
+    restriction = "限制未经 AQR 事先书面同意而复制、修改、分发或发布网站信息"
+    assert restriction in terms, f"{path}: missing terms restriction in ## 许可与条款"
+
+
+def test_gmo_research_library_uses_official_market_commentary_label() -> None:
+    path = Path("raw/experts/cards/gmo-research-library.md")
+    scope = section_body(path.read_text(encoding="utf-8"), "原始材料与范围", path)
+
+    assert "Market Commentary" in scope, path
+
+
+def test_gmo_research_library_qualifies_archive_guarantees() -> None:
+    path = Path("raw/experts/cards/gmo-research-library.md")
+    text = path.read_text(encoding="utf-8")
+    update_section = section_body(text, "更新频率与数据", path)
+
+    assert "历史档案的完整性、长期可访问性和不可变性没有保证" in update_section, path
+    assert "不为其保留可复现历史" not in text, path
