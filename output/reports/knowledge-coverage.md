@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**55.7%**
+- 仓库就绪度，不是预期收益：**60.4%**
 - 需求总数：42
 
 > validated 只表示当前清单所列证据通过仓库规则；不保证投资收益，也不免除后续更新。
@@ -12,7 +12,7 @@
 |---|---:|---:|---:|---:|---:|
 | 市场 | 3 | 0 | 2 | 2 | 47.1% |
 | 资产与产品 | 2 | 3 | 3 | 1 | 41.1% |
-| 行业 | 5 | 0 | 2 | 0 | 18.6% |
+| 行业 | 2 | 0 | 5 | 0 | 46.4% |
 | 研究方法 | 0 | 1 | 4 | 4 | 76.1% |
 | 工程与维护 | 1 | 1 | 0 | 8 | 82.5% |
 
@@ -55,10 +55,10 @@
 | `method-portfolio` | 研究方法 | 组合构建与再平衡 | seed | 2026-07-17 | `synthesis:wiki/concepts/分散化.md` | 缺投资政策、相关性失稳、约束优化与再平衡案例 |
 | `method-risk` | 研究方法 | 风险、回撤与仓位 | validated | 2026-07-17 | `synthesis:wiki/risk/最大回撤.md`<br>`test:tests/test_metrics.py` | — |
 | `method-valuation` | 研究方法 | 估值与反向估值 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/估值.md`<br>`source:raw/experts/cards/damodaran-valuation.md` | 缺多情景、敏感性和真实公司反向估值案例 |
-| `sector-consumer` | 行业 | 消费 | missing | 2026-07-17 | — | 缺品牌、渠道、单店、库存、定价权和公司案例 |
-| `sector-energy` | 行业 | 能源 | missing | 2026-07-17 | — | 缺产业链、成本曲线、库存、资本开支和公司案例 |
-| `sector-financials` | 行业 | 银行、保险与券商 | missing | 2026-07-17 | — | 缺资产负债表、监管资本、信用周期和公司案例 |
-| `sector-framework` | 行业 | 可复用行业研究框架 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/周期行业研究.md` | 缺至少三个不同行业的完整应用与失败复盘 |
+| `sector-consumer` | 行业 | 消费 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/消费.md`<br>`source:raw/official/united-states/census-monthly-retail-trade.md`<br>`template:output/templates/消费单位经济证据卡.md` | 缺宏观、终端、渠道库存与公司三表对齐的冻结数据案例 |
+| `sector-energy` | 行业 | 能源 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/能源.md`<br>`source:raw/official/united-states/eia-open-data.md`<br>`template:output/templates/能源周期证据卡.md` | 缺冻结历史 vintage 的供需、价格与公司财务端到端正负结果案例 |
+| `sector-financials` | 行业 | 银行、保险与券商 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/金融.md`<br>`source:raw/official/global/bis-basel-framework.md`<br>`template:output/templates/银行资产负债表证据卡.md` | 缺当地监管口径、历史可得 Call Report/披露与压力情景案例 |
+| `sector-framework` | 行业 | 可复用行业研究框架 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/周期行业研究.md` | 缺能源、银行、消费三个使用冻结公开数据的完整正负结果案例 |
 | `sector-healthcare` | 行业 | 医药与医疗 | missing | 2026-07-17 | — | 缺研发概率、专利、支付体系、监管和公司案例 |
 | `sector-internet` | 行业 | 互联网与平台 | missing | 2026-07-17 | — | 缺网络效应、获客、变现、监管和公司案例 |
 | `sector-memory` | 行业 | 存储半导体 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/存储半导体.md`<br>`source:raw/official/global/jedec-memory-standards.md` | 缺供需、价格、库存和公司财务的时间序列验证 |

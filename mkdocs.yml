@@ -40,6 +40,9 @@ nav:
   - 行业研究:
       - 周期行业研究: wiki/sectors/周期行业研究.md
       - 存储半导体: wiki/sectors/存储半导体.md
+      - 能源: wiki/sectors/能源.md
+      - 金融: wiki/sectors/金融.md
+      - 消费: wiki/sectors/消费.md
   - 研究方法:
       - 公开投资框架: wiki/methods/公开投资框架.md
       - 投资研究证据矩阵: wiki/methods/投资研究证据矩阵.md
@@ -80,6 +83,9 @@ nav:
       - 基金分析: output/templates/基金分析.md
       - 回测计划: output/templates/回测计划.md
       - 实证证据卡: output/templates/实证证据卡.md
+      - 能源周期证据卡: output/templates/能源周期证据卡.md
+      - 银行资产负债表证据卡: output/templates/银行资产负债表证据卡.md
+      - 消费单位经济证据卡: output/templates/消费单位经济证据卡.md
       - 研究事故与教训: output/templates/研究事故与教训.md
       - 复盘: output/templates/复盘.md
       - 投资政策书: output/templates/投资政策书.md
