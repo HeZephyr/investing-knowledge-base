@@ -28,12 +28,12 @@ def test_plugin_manifest_marketplace_and_skill_are_complete() -> None:
     marketplace = json.loads(
         (ROOT / ".agents/plugins/marketplace.json").read_text(encoding="utf-8")
     )
-    skill = (PLUGIN / "skills/audit-finance-repositories/SKILL.md").read_text(
-        encoding="utf-8"
-    )
+    skill = (PLUGIN / "skills/audit-finance-repositories/SKILL.md").read_text(encoding="utf-8")
 
     assert manifest["name"] == "investing-research"
     assert manifest["version"].startswith("0.1.0")
+    assert manifest["license"] == "MIT"
+    assert (ROOT / "LICENSE").read_text(encoding="utf-8").startswith("MIT License")
     assert manifest["skills"] == "./skills/"
     assert "mcpServers" not in manifest
     assert "apps" not in manifest

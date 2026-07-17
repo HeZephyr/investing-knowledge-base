@@ -30,6 +30,7 @@
 - `src/investkb/publication.py`：公开/私人边界检查。
 - `.github/workflows/`：CI、安全、定时数据健康检查与 Pages 发布。
 - `skills/maintain-investing-knowledge-base/`：可移植的知识库维护 Skill、来源评估参考与脚手架。
+- `plugins/investing-research/`：可安装的只读金融仓库审计插件；采用规则见 `wiki/engineering/金融研究代码库审计.md`。
 - `config/knowledge-coverage.yaml`：版本化完成要求与证据；生成 `output/reports/knowledge-coverage.md`，不以页面数量冒充完成。
 
 ## 维护入口

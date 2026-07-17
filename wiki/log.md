@@ -50,3 +50,8 @@ updated: 2026-07-17
 - changed: [[金融与统计基础]], [[复利与贴现]], [[概率与收益分布]], [[抽样与估计]], [[假设检验与多重比较]], [[回归与诊断]], [[时间序列与预测]], [[债券与利率基础]], [[公司金融基础]], [[论文阅读与复现]], [[经验与失败教训]]
 - sources: raw-book-openintro-statistics, raw-book-openstax-principles-finance, raw-book-fpp3, raw-book-islp, raw-official-nist-stat-handbook, raw-course-mit-finance-theory, raw-repo-scipy, raw-repo-statsmodels, raw-repo-islp-labs, raw-repo-quantecon-python-intro
 - result: 建立九模块课程、八组手算纯函数与非法输入测试；许可冲突使用 link-only，部分练习不冒充完整能力，覆盖就绪度从 36.5% 提升到 45.8%。
+
+## [2026-07-17] audit | 四个金融代码库与只读插件
+- changed: [[金融研究代码库审计]], [[经验与失败教训]], [[index]], [[dashboard]]
+- sources: raw-repo-openbb, raw-repo-myhhub-stock, raw-repo-ai-trader, raw-repo-ai-quant-trade
+- result: 固定 commit 审计 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_trade；新增离线安全扫描器、Codex 插件清单与 fixture 测试，默认隔离凭据、远端 agent、复制交易和自动下单。

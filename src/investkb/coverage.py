@@ -38,6 +38,7 @@ EVIDENCE_ROOTS = {
     "config",
     "site",
     "skills",
+    "plugins",
 }
 EVIDENCE_SUFFIXES = {".md", ".py", ".yml", ".yaml", ".toml", ".json"}
 ROOT_EVIDENCE_FILES = {"AGENTS.md", "README.md", "mkdocs.yml", "pyproject.toml"}

@@ -181,6 +181,26 @@ def test_exercise_stage_accepts_synthesis_and_test(tmp_path: Path) -> None:
     assert validate_coverage(load_coverage(path), tmp_path, TODAY) == []
 
 
+def test_exercise_stage_accepts_versioned_plugin_implementation(tmp_path: Path) -> None:
+    plugin = tmp_path / "plugins/investing-research/scripts/audit_repository.py"
+    plugin.parent.mkdir(parents=True)
+    plugin.write_text("# offline implementation", encoding="utf-8")
+    path = _write_manifest(
+        tmp_path,
+        [
+            _requirement(
+                stage="exercise-tested",
+                evidence=[
+                    {"path": str(plugin.relative_to(tmp_path)), "kind": "implementation"},
+                    {"path": "tests/test_global_scope.py", "kind": "test"},
+                ],
+            )
+        ],
+    )
+
+    assert validate_coverage(load_coverage(path), tmp_path, TODAY) == []
+
+
 def test_validation_rejects_unknown_evidence_kind(tmp_path: Path) -> None:
     path = _write_manifest(
         tmp_path,
