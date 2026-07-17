@@ -9,6 +9,7 @@ from investkb.education import (
     bond_price,
     bond_convexity,
     bonferroni_threshold,
+    commodity_roll_yield,
     expected_credit_loss,
     discrete_moments,
     effective_annual_rate,
@@ -99,6 +100,9 @@ def test_expected_credit_loss_and_futures_basis_match_hand_calculation() -> None
     assert annualized_futures_basis(spot=100, futures=103, days_to_expiry=90) == pytest.approx(
         (103 / 100 - 1) * 365 / 90
     )
+    assert commodity_roll_yield(near_contract=100, next_contract=104) == pytest.approx(
+        100 / 104 - 1
+    )
 
 
 @pytest.mark.parametrize(
@@ -119,6 +123,7 @@ def test_expected_credit_loss_and_futures_basis_match_hand_calculation() -> None
         (lambda: expected_credit_loss(100, 0.1, 1.1), "recovery"),
         (lambda: annualized_futures_basis(0, 100, 30), "spot"),
         (lambda: annualized_futures_basis(100, 101, 0), "days"),
+        (lambda: commodity_roll_yield(100, -1), "positive"),
     ],
 )
 def test_education_functions_reject_misleading_inputs(call, match: str) -> None:
