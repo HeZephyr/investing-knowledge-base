@@ -98,19 +98,29 @@ def test_coverage_separates_curriculum_content_from_exercises_and_cases() -> Non
         "foundation-distributions": "content-ready",
         "foundation-sampling": "content-ready",
         "foundation-estimation": "exercise-tested",
-        "foundation-hypothesis": "exercise-tested",
-        "foundation-regression": "exercise-tested",
         "foundation-corporate-finance": "content-ready",
-        "foundation-reading-papers": "exercise-tested",
-        "foundation-statistical-coding": "exercise-tested",
-        "asset-government-bonds": "content-ready",
-        "asset-bond-math": "exercise-tested",
     }
     for requirement_id, stage in validated.items():
         requirement = requirements[requirement_id]
         assert requirement.stage == stage
         assert requirement.status == "validated"
         assert not requirement.gap
+
+    reviewed = {
+        "foundation-hypothesis": "exercise-tested",
+        "foundation-regression": "exercise-tested",
+        "foundation-reading-papers": "exercise-tested",
+        "foundation-statistical-coding": "exercise-tested",
+        "asset-government-bonds": "content-ready",
+        "asset-bond-math": "exercise-tested",
+        "method-time-series": "exercise-tested",
+    }
+    for requirement_id, stage in reviewed.items():
+        requirement = requirements[requirement_id]
+        assert requirement.stage == stage
+        assert requirement.status == "reviewed"
+        assert requirement.evidence
+        assert requirement.gap
 
     assert requirements["method-negative-results"].status == "missing"
     assert requirements["method-negative-results"].stage == "case-validated"

@@ -64,9 +64,7 @@ def test_rolling_origin_splits_never_train_on_future_observations() -> None:
 
 def test_bond_price_and_duration_match_two_year_annual_coupon() -> None:
     price = bond_price(100, coupon_rate=0.05, yield_to_maturity=0.05, years=2)
-    duration = macaulay_duration(
-        100, coupon_rate=0.05, yield_to_maturity=0.05, years=2
-    )
+    duration = macaulay_duration(100, coupon_rate=0.05, yield_to_maturity=0.05, years=2)
 
     expected_duration = ((1 * 5 / 1.05) + (2 * 105 / 1.05**2)) / 100
     assert price == pytest.approx(100)
