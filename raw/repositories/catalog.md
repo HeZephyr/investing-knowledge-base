@@ -22,6 +22,12 @@
 - [yfinance](cards/yfinance.md)：全球便利行情回退层，非官方且无 SLA。
 - [OpenBB](cards/openbb.md)：多供应商数据集成架构，注意 AGPL 与插件条款。
 
+## A 股筛选与 AI 交易审计
+
+- [myhhub/stock](cards/myhhub-stock.md)：A 股抓取、指标、筛选与回测参考；自动交易排除。
+- [HKUDS/AI-Trader](cards/ai-trader.md)：根许可证缺失且涉及远端注册、broker sync 与 copy trade，仅链接分析。
+- [ai_quant_trade](cards/ai-quant-trade.md)：Apache-2.0 的大型教学/示例集合，逐示例审计，不采信收益宣传。
+
 ## 组合、回测与高级研究
 
 - [QuantStats](cards/quantstats.md)：绩效指标和 tear sheet。

@@ -16,11 +16,13 @@
 
 维护者和 AI 代理可复用仓库内的 [`maintain-investing-knowledge-base` Skill](skills/maintain-investing-knowledge-base/SKILL.md)，统一执行来源摄取、知识合成、索引、数据验证、公开边界和 PR 发布。
 
+对外部金融代码库的采用先经过[金融研究代码库审计](wiki/engineering/金融研究代码库审计.md)。仓库内的 `investing-research` 插件只扫描已经合法下载的本地代码，不联网、不读取 Cookie/Token、不连接券商或自动下单；安装和更新命令见 [`plugins/investing-research/README.md`](plugins/investing-research/README.md)。
+
 网页版本会由 GitHub Pages 自动发布，提供中文全文搜索、知识图谱、学习进度与复利/费用/回撤计算器。学习进度仅保存在浏览器本地。
 
 ## 完成度怎么计算
 
-[覆盖审计](output/reports/knowledge-coverage.md)把体系拆成基础学科、市场、资产、行业、公司、方法、组合和工程 8 个轴，共 135 项原子能力。v2 初始基线为 36.5%；完成首批金融统计课程后为 **45.8%**。它仍低于旧版粗粒度的 60.4%，因为分母已经加入此前未统计的训练、案例和维护缺口。
+[覆盖审计](output/reports/knowledge-coverage.md)把体系拆成基础学科、市场、资产、行业、公司、方法、组合和工程 8 个轴，共 135 项原子能力。v2 初始基线为 36.5%；完成首批金融统计课程与只读代码库审计插件后为 **46.5%**。它仍低于旧版粗粒度的 60.4%，因为分母已经加入此前未统计的训练、案例和维护缺口。
 
 - `content-ready`：权威来源与中文合成均就绪。
 - `exercise-tested`：计算、代码或练习有自动测试。

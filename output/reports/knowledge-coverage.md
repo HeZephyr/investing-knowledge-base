@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**45.8%**
+- 仓库就绪度，不是预期收益：**46.5%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -18,14 +18,14 @@
 | 公司研究 | 12 | 0 | 3 | 1 | 18.4% |
 | 研究方法 | 4 | 1 | 8 | 5 | 58.1% |
 | 组合与风控 | 7 | 2 | 4 | 1 | 29.3% |
-| 工程与维护 | 2 | 1 | 0 | 12 | 81.7% |
+| 工程与维护 | 1 | 1 | 0 | 13 | 88.3% |
 
 ## 分能力阶段状态
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
 | `content-ready` | 内容就绪 | 29 | 0 | 23 | 21 | 49.2% |
-| `exercise-tested` | 练习已测 | 18 | 4 | 9 | 14 | 46.3% |
+| `exercise-tested` | 练习已测 | 17 | 4 | 9 | 15 | 48.6% |
 | `case-validated` | 案例验证 | 11 | 0 | 0 | 0 | 0.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
@@ -67,7 +67,7 @@
 | `company-scenarios` | 公司研究 | `exercise-tested` | 多情景估值与敏感性 | missing | 2026-07-17 | — | 缺概率加权场景、龙卷风图和测试 |
 | `company-three-statements` | 公司研究 | `content-ready` | 三表结构与勾稽关系 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/财务三表.md` | 缺准则来源和真实报表勾稽 |
 | `company-valuation-content` | 公司研究 | `content-ready` | 绝对与相对估值框架 | validated | 2026-07-17 | `synthesis:wiki/concepts/估值.md`<br>`source:raw/experts/cards/damodaran-valuation.md` | — |
-| `engineering-audit-plugin` | 工程与维护 | `exercise-tested` | 第三方仓库审计与只读研究插件 | missing | 2026-07-17 | — | 缺四仓库审计矩阵、离线 fixture、插件清单和安装验证 |
+| `engineering-audit-plugin` | 工程与维护 | `exercise-tested` | 第三方仓库审计与只读研究插件 | validated | 2026-07-17 | `implementation:plugins/investing-research/scripts/audit_repository.py`<br>`test:tests/test_investing_research_plugin.py` | — |
 | `engineering-ci` | 工程与维护 | `maintenance-live` | 多版本 CI 与保护检查 | validated | 2026-07-17 | `workflow:.github/workflows/ci.yml`<br>`test:tests/test_github_workflows.py` | — |
 | `engineering-coverage` | 工程与维护 | `exercise-tested` | 机器可审计覆盖报告 | validated | 2026-07-17 | `implementation:src/investkb/coverage.py`<br>`test:tests/test_coverage.py` | — |
 | `engineering-data-adapters` | 工程与维护 | `exercise-tested` | A股、港股与基金免费数据适配 | validated | 2026-07-17 | `implementation:src/investkb/data/providers.py`<br>`test:tests/data/test_providers.py` | — |

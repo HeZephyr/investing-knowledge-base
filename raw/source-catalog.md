@@ -28,3 +28,5 @@ Issue #15 批次加入 EIA Open Data、OPEC Annual Statistical Bulletin、BIS Ba
 Issue #9 批次加入 Yale/Shiller 金融市场课程、AQR Data Library 与 GMO Research Library，用于对照行为、因子、估值和资产配置研究流。可下载序列、报告、逐字稿和图表不进入仓库；这里只保存规范链接、许可或条款边界、方法元数据与独立摘要。
 
 Issue #17 批次加入 `openintro-statistics.md`、`openstax-principles-finance.md`、`forecasting-principles-practice.md`、`islp.md`、`nist-statistical-handbook.md` 与 `mit-finance-theory.md`，并审计 SciPy、statsmodels、ISLP Labs 和 QuantEcon 教学仓库。免费 PDF、公开 GitHub 和网页可读性均不自动授予复制或 LLM 摄取权；许可冲突或缺失时只链接并写独立摘要。
+
+Issue #22 批次固定并审计 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_trade。代码事实、上游声明和我们的推断分栏记录；完整 clone 只留在 ignored 本地目录。OpenBB 的 provider 分层可借鉴，A 股筛选与 AI/自动交易声明必须另做可证伪测试；无根许可证、远端认证、复制交易和自动下单默认隔离。
