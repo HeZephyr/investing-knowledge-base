@@ -238,12 +238,9 @@ def validate_coverage(
             and stage_options is not None
             and not any(option <= evidence_kinds for option in stage_options)
         ):
-            descriptions = " or ".join(
-                "+".join(sorted(option)) for option in stage_options
-            )
+            descriptions = " or ".join("+".join(sorted(option)) for option in stage_options)
             errors.append(
-                f"{prefix}: validated stage {requirement.stage} requires one of: "
-                f"{descriptions}"
+                f"{prefix}: validated stage {requirement.stage} requires one of: {descriptions}"
             )
         if requirement.status == "validated" and requirement.gap:
             errors.append(f"{prefix}: validated requirement must have an empty gap")
@@ -274,7 +271,8 @@ def render_coverage_report(manifest: CoverageManifest) -> str:
         f"- 仓库就绪度，不是预期收益：**{score:.1f}%**",
         f"- 需求总数：{len(manifest.requirements)}",
         "",
-        "> validated 只表示当前清单所列证据通过仓库规则；不保证投资收益，也不免除后续更新。",
+        "> v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。",
+        "> validated 只证明所声明的原子阶段满足证据组合；不保证投资收益，也不替代其他阶段。",
         "",
         "## 分轴状态",
         "",

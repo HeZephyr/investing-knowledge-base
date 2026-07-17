@@ -140,14 +140,26 @@ def test_sector_coverage_records_reviewed_evidence_without_fake_validation() -> 
     manifest = load_coverage(ROOT / "config/knowledge-coverage.yaml")
     requirements = {item.id: item for item in manifest.requirements}
 
-    for requirement_id in ("sector-energy", "sector-financials", "sector-consumer"):
+    for requirement_id in (
+        "sector-energy-content",
+        "sector-financial-content",
+        "sector-consumer-content",
+    ):
         requirement = requirements[requirement_id]
-        assert requirement.status == "reviewed"
-        assert {item.kind for item in requirement.evidence} == {
-            "synthesis",
-            "source",
-            "template",
-        }
+        assert requirement.stage == "content-ready"
+        assert requirement.status == "validated"
+        assert {item.kind for item in requirement.evidence} == {"synthesis", "source"}
+        assert not requirement.gap
+
+    for requirement_id in (
+        "sector-energy-case",
+        "sector-bank-case",
+        "sector-consumer-case",
+    ):
+        requirement = requirements[requirement_id]
+        assert requirement.stage == "case-validated"
+        assert requirement.status == "missing"
+        assert not requirement.evidence
         assert requirement.gap
 
     framework = requirements["sector-framework"]

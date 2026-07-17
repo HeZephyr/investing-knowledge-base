@@ -1,365 +1,153 @@
-schema_version: 1
+schema_version: 2
 as_of: 2026-07-17
 requirements:
-  - id: market-cn-rules
-    axis: markets
-    title: A 股交易、披露与产品规则
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/markets/A股市场.md, kind: synthesis}
-      - {path: raw/official/mainland/sse-trading-rules.md, kind: source}
-    gap: ""
-  - id: market-hk-rules
-    axis: markets
-    title: 港股交易、披露与产品规则
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/markets/港股市场.md, kind: synthesis}
-      - {path: raw/official/hong-kong/hkex-trading-rules.md, kind: source}
-    gap: ""
-  - id: market-us-rules
-    axis: markets
-    title: 美股市场、披露与投资者保护
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/markets/美股市场.md, kind: synthesis}
-      - {path: raw/official/united-states/sec-edgar.md, kind: source}
-    gap: 补齐订单执行、费用、税务和公司行动的当前官方来源与案例
-  - id: market-korea-rules
-    axis: markets
-    title: 韩国市场、交易与披露
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/markets/韩国股市.md, kind: synthesis}
-      - {path: raw/official/korea/krx-investment-guide.md, kind: source}
-    gap: 补齐税务、公司行动、KRX 数据复现实例和一家公司披露案例
-  - id: market-japan-rules
-    axis: markets
-    title: 日本市场
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺 JPX/FSA 官方来源、Wiki、费用与披露案例
-  - id: market-europe-rules
-    axis: markets
-    title: 欧洲主要市场
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺 EU/英国监管、交易所、UCITS 和跨币种研究
-  - id: market-emerging-rules
-    axis: markets
-    title: 新兴市场框架
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺市场分类、资本管制、托管和代表性市场案例
+  # 基础学科：20
+  - {id: foundation-tvm, axis: foundations, stage: content-ready, title: 货币时间价值, status: missing, verified: 2026-07-17, evidence: [], gap: 缺权威来源、中文推导与练习}
+  - {id: foundation-compounding, axis: foundations, stage: exercise-tested, title: 复利、贴现与年化换算, status: missing, verified: 2026-07-17, evidence: [], gap: 缺手算、Python 实现和边界测试}
+  - {id: foundation-probability, axis: foundations, stage: content-ready, title: 概率与条件概率, status: missing, verified: 2026-07-17, evidence: [], gap: 缺教材来源与投资语境合成}
+  - {id: foundation-random-variables, axis: foundations, stage: content-ready, title: 随机变量与期望方差, status: missing, verified: 2026-07-17, evidence: [], gap: 缺定义、直觉和收益分布应用}
+  - {id: foundation-distributions, axis: foundations, stage: content-ready, title: 常见分布与厚尾, status: missing, verified: 2026-07-17, evidence: [], gap: 缺正态、t、二项与厚尾风险体系}
+  - {id: foundation-sampling, axis: foundations, stage: content-ready, title: 抽样、选择偏差与误差, status: missing, verified: 2026-07-17, evidence: [], gap: 缺抽样框架和市场数据偏差案例}
+  - {id: foundation-estimation, axis: foundations, stage: exercise-tested, title: 点估计、区间估计与不确定性, status: missing, verified: 2026-07-17, evidence: [], gap: 缺推导、练习和置信区间代码}
+  - {id: foundation-hypothesis, axis: foundations, stage: exercise-tested, title: 假设检验、效应量与多重检验, status: missing, verified: 2026-07-17, evidence: [], gap: 缺功效、效应量和多重比较练习}
+  - {id: foundation-regression, axis: foundations, stage: exercise-tested, title: 线性回归与诊断, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 OLS 假设、稳健误差和诊断练习}
+  - {id: foundation-linear-algebra, axis: foundations, stage: content-ready, title: 投资所需线性代数, status: missing, verified: 2026-07-17, evidence: [], gap: 缺向量、矩阵、协方差与优化基础}
+  - {id: foundation-calculus, axis: foundations, stage: content-ready, title: 投资所需微积分与优化, status: missing, verified: 2026-07-17, evidence: [], gap: 缺导数、凸性和约束优化基础}
+  - {id: foundation-microeconomics, axis: foundations, stage: content-ready, title: 微观经济与产业组织, status: missing, verified: 2026-07-17, evidence: [], gap: 缺供需、弹性、竞争结构和定价权体系}
+  - {id: foundation-macroeconomics, axis: foundations, stage: content-ready, title: 宏观经济账户与周期, status: missing, verified: 2026-07-17, evidence: [], gap: 缺国民账户、通胀、就业和周期框架}
+  - {id: foundation-monetary-policy, axis: foundations, stage: content-ready, title: 货币政策与利率传导, status: missing, verified: 2026-07-17, evidence: [], gap: 缺央行工具、收益率曲线和资产价格传导}
+  - {id: foundation-accounting-statements, axis: foundations, stage: content-ready, title: 会计恒等式与三张报表, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/财务三表.md, kind: synthesis}], gap: 缺准则来源、练习与勾稽案例}
+  - {id: foundation-accounting-accrual, axis: foundations, stage: content-ready, title: 权责发生制与会计判断, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/盈利质量.md, kind: synthesis}], gap: 缺准则来源和应计项目拆解练习}
+  - {id: foundation-corporate-finance, axis: foundations, stage: content-ready, title: 公司金融基础, status: missing, verified: 2026-07-17, evidence: [], gap: 缺资本成本、融资、分红和项目评价体系}
+  - {id: foundation-market-history, axis: foundations, stage: content-ready, title: 金融史与市场危机, status: missing, verified: 2026-07-17, evidence: [], gap: 缺跨市场危机时间线与机制复盘}
+  - {id: foundation-reading-papers, axis: foundations, stage: exercise-tested, title: 阅读论文与复现实证, status: missing, verified: 2026-07-17, evidence: [], gap: 缺论文拆解清单和小型复现练习}
+  - {id: foundation-statistical-coding, axis: foundations, stage: exercise-tested, title: Python 统计计算基础, status: missing, verified: 2026-07-17, evidence: [], gap: 缺数组、表格、随机数和可重复性测试}
 
-  - id: asset-equity
-    axis: assets
-    title: 股票所有权与公司研究
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/products/股票.md, kind: synthesis}
-    gap: 缺真实公司披露、财务和估值的端到端案例
-  - id: asset-fund-etf
-    axis: assets
-    title: 公募基金与 ETF
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/products/ETF.md, kind: synthesis}
-      - {path: tests/data/test_providers.py, kind: test}
-    gap: ""
-  - id: asset-gold
-    axis: assets
-    title: 黄金与基准
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/assets/黄金.md, kind: synthesis}
-      - {path: raw/official/global/lbma-gold-benchmark.md, kind: source}
-    gap: 缺币种、实际利率、持有成本和产品差异的可复现实证案例
-  - id: asset-fx
-    axis: assets
-    title: 汇率风险
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/concepts/汇率风险.md, kind: synthesis}
-      - {path: raw/official/global/fred-exchange-rates.md, kind: source}
-    gap: 缺对冲与不对冲组合的成本和情景案例
-  - id: asset-cash
-    axis: assets
-    title: 现金与货币基金
-    status: seed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/products/货币基金.md, kind: synthesis}
-    gap: 补收益来源、流动性、信用与利率风险的官方来源和案例
-  - id: asset-reit
-    axis: assets
-    title: REIT
-    status: seed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/products/REIT.md, kind: synthesis}
-    gap: 补 A/HK/US 制度差异、现金流和估值案例
-  - id: asset-convertible
-    axis: assets
-    title: 可转债
-    status: seed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/products/可转债.md, kind: synthesis}
-    gap: 补条款、赎回、转股、信用与估值的官方来源和案例
-  - id: asset-bonds
-    axis: assets
-    title: 债券与利率
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺国债、信用债、久期、凸性、违约与市场制度体系
-  - id: asset-commodities
-    axis: assets
-    title: 大宗商品
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺期货曲线、展期、库存、基差和代表性品种案例
+  # 市场制度：16
+  - {id: market-cn-rules, axis: markets, stage: content-ready, title: A 股交易与披露规则, status: validated, verified: 2026-07-17, evidence: [{path: wiki/markets/A股市场.md, kind: synthesis}, {path: raw/official/mainland/sse-trading-rules.md, kind: source}], gap: ""}
+  - {id: market-cn-execution, axis: markets, stage: exercise-tested, title: A 股订单、涨跌停与结算练习, status: missing, verified: 2026-07-17, evidence: [], gap: 缺订单状态机、费用和异常交易练习}
+  - {id: market-hk-rules, axis: markets, stage: content-ready, title: 港股交易与披露规则, status: validated, verified: 2026-07-17, evidence: [{path: wiki/markets/港股市场.md, kind: synthesis}, {path: raw/official/hong-kong/hkex-trading-rules.md, kind: source}], gap: ""}
+  - {id: market-hk-fees, axis: markets, stage: content-ready, title: 港股费用与风险, status: validated, verified: 2026-07-17, evidence: [{path: wiki/markets/交易费用.md, kind: synthesis}, {path: raw/official/hong-kong/hkex-transaction-fees.md, kind: source}], gap: ""}
+  - {id: market-us-disclosure, axis: markets, stage: content-ready, title: 美股披露与投资者保护, status: validated, verified: 2026-07-17, evidence: [{path: wiki/markets/美股市场.md, kind: synthesis}, {path: raw/official/united-states/sec-edgar.md, kind: source}], gap: ""}
+  - {id: market-us-execution, axis: markets, stage: exercise-tested, title: 美股订单执行、费用与公司行动, status: missing, verified: 2026-07-17, evidence: [], gap: 缺官方规则、费用计算和公司行动测试}
+  - {id: market-korea-rules, axis: markets, stage: content-ready, title: 韩国交易与披露规则, status: validated, verified: 2026-07-17, evidence: [{path: wiki/markets/韩国股市.md, kind: synthesis}, {path: raw/official/korea/krx-investment-guide.md, kind: source}], gap: ""}
+  - {id: market-japan-rules, axis: markets, stage: content-ready, title: 日本交易与披露规则, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 JPX 与 FSA 官方来源和 Wiki}
+  - {id: market-europe-rules, axis: markets, stage: content-ready, title: 欧盟主要市场与 UCITS, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 ESMA、交易所和 UCITS 来源}
+  - {id: market-uk-rules, axis: markets, stage: content-ready, title: 英国交易与披露规则, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 FCA、LSE 与税费来源}
+  - {id: market-emerging-rules, axis: markets, stage: content-ready, title: 新兴市场访问框架, status: missing, verified: 2026-07-17, evidence: [], gap: 缺市场分类、资本管制和托管框架}
+  - {id: market-cross-border, axis: markets, stage: content-ready, title: 沪深港通与跨境访问, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/markets/沪深港通.md, kind: synthesis}], gap: 缺额度、假日、币种、税费和公司行动官方来源}
+  - {id: market-microstructure, axis: markets, stage: content-ready, title: 市场微观结构, status: missing, verified: 2026-07-17, evidence: [], gap: 缺价差、深度、冲击成本和价格发现体系}
+  - {id: market-settlement, axis: markets, stage: content-ready, title: 清算、结算与托管, status: missing, verified: 2026-07-17, evidence: [], gap: 缺各市场结算周期、失败与托管风险}
+  - {id: market-corporate-actions, axis: markets, stage: exercise-tested, title: 分红、拆并股、配股与退市处理, status: missing, verified: 2026-07-17, evidence: [], gap: 缺跨市场公司行动数据模型和测试}
+  - {id: market-calendar-monitor, axis: markets, stage: maintenance-live, title: 全球交易日历持续校验, status: missing, verified: 2026-07-17, evidence: [], gap: 缺免费来源、离线契约和定时监控}
 
-  - id: sector-framework
-    axis: sectors
-    title: 可复用行业研究框架
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/sectors/周期行业研究.md, kind: synthesis}
-    gap: 缺能源、银行、消费三个使用冻结公开数据的完整正负结果案例
-  - id: sector-memory
-    axis: sectors
-    title: 存储半导体
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/sectors/存储半导体.md, kind: synthesis}
-      - {path: raw/official/global/jedec-memory-standards.md, kind: source}
-    gap: 缺供需、价格、库存和公司财务的时间序列验证
-  - id: sector-energy
-    axis: sectors
-    title: 能源
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/sectors/能源.md, kind: synthesis}
-      - {path: raw/official/united-states/eia-open-data.md, kind: source}
-      - {path: output/templates/能源周期证据卡.md, kind: template}
-    gap: 缺冻结历史 vintage 的供需、价格与公司财务端到端正负结果案例
-  - id: sector-financials
-    axis: sectors
-    title: 银行、保险与券商
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/sectors/金融.md, kind: synthesis}
-      - {path: raw/official/global/bis-basel-framework.md, kind: source}
-      - {path: output/templates/银行资产负债表证据卡.md, kind: template}
-    gap: 缺当地监管口径、历史可得 Call Report/披露与压力情景案例
-  - id: sector-consumer
-    axis: sectors
-    title: 消费
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/sectors/消费.md, kind: synthesis}
-      - {path: raw/official/united-states/census-monthly-retail-trade.md, kind: source}
-      - {path: output/templates/消费单位经济证据卡.md, kind: template}
-    gap: 缺宏观、终端、渠道库存与公司三表对齐的冻结数据案例
-  - id: sector-healthcare
-    axis: sectors
-    title: 医药与医疗
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺研发概率、专利、支付体系、监管和公司案例
-  - id: sector-internet
-    axis: sectors
-    title: 互联网与平台
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 缺网络效应、获客、变现、监管和公司案例
+  # 资产与产品：18
+  - {id: asset-equity, axis: assets, stage: content-ready, title: 股票所有权与现金流权利, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/股票.md, kind: synthesis}], gap: 缺公司法和市场官方来源}
+  - {id: asset-etf, axis: assets, stage: content-ready, title: ETF 结构、交易与跟踪误差, status: validated, verified: 2026-07-17, evidence: [{path: wiki/products/ETF.md, kind: synthesis}, {path: raw/official/mainland/sse-etf.md, kind: source}], gap: ""}
+  - {id: asset-mutual-fund, axis: assets, stage: content-ready, title: 公募基金结构与费用, status: validated, verified: 2026-07-17, evidence: [{path: wiki/products/公募基金.md, kind: synthesis}, {path: raw/official/mainland/csrc-fund-law.md, kind: source}], gap: ""}
+  - {id: asset-cash, axis: assets, stage: content-ready, title: 现金与货币基金, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/货币基金.md, kind: synthesis}], gap: 缺收益来源、流动性和信用风险官方来源}
+  - {id: asset-government-bonds, axis: assets, stage: content-ready, title: 国债与收益率曲线, status: missing, verified: 2026-07-17, evidence: [], gap: 缺主要市场官方来源和曲线体系}
+  - {id: asset-credit-bonds, axis: assets, stage: content-ready, title: 信用债、评级与违约, status: missing, verified: 2026-07-17, evidence: [], gap: 缺信用利差、回收率、契约与违约案例}
+  - {id: asset-bond-math, axis: assets, stage: exercise-tested, title: 债券定价、久期与凸性, status: missing, verified: 2026-07-17, evidence: [], gap: 缺公式推导、实现和测试}
+  - {id: asset-convertible, axis: assets, stage: content-ready, title: 可转债条款与风险, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/可转债.md, kind: synthesis}], gap: 缺赎回、转股、信用与估值来源}
+  - {id: asset-reit, axis: assets, stage: content-ready, title: REIT 结构与现金流, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/REIT.md, kind: synthesis}], gap: 缺 A股、港股和美股制度对比}
+  - {id: asset-gold, axis: assets, stage: content-ready, title: 黄金定价与基准, status: validated, verified: 2026-07-17, evidence: [{path: wiki/assets/黄金.md, kind: synthesis}, {path: raw/official/global/lbma-gold-benchmark.md, kind: source}], gap: ""}
+  - {id: asset-commodities, axis: assets, stage: content-ready, title: 大宗商品现货与期货曲线, status: missing, verified: 2026-07-17, evidence: [], gap: 缺基差、库存、期限结构和展期体系}
+  - {id: asset-fx, axis: assets, stage: content-ready, title: 外汇报价与汇率风险, status: validated, verified: 2026-07-17, evidence: [{path: wiki/concepts/汇率风险.md, kind: synthesis}, {path: raw/official/global/fred-exchange-rates.md, kind: source}], gap: ""}
+  - {id: asset-derivatives, axis: assets, stage: content-ready, title: 衍生品权利义务与保证金, status: missing, verified: 2026-07-17, evidence: [], gap: 缺期权、期货、互换的统一框架}
+  - {id: asset-options-math, axis: assets, stage: exercise-tested, title: 期权收益、希腊字母与波动率, status: missing, verified: 2026-07-17, evidence: [], gap: 缺收益图、定价实现和边界测试}
+  - {id: asset-futures, axis: assets, stage: content-ready, title: 期货合约、交割与保证金, status: missing, verified: 2026-07-17, evidence: [], gap: 缺交易所规则与连续合约处理}
+  - {id: asset-overseas-etf, axis: assets, stage: content-ready, title: 海外 ETF 与跨币种暴露, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/海外ETF.md, kind: synthesis}], gap: 缺税务、遗产税、预扣税和产品来源}
+  - {id: asset-index, axis: assets, stage: content-ready, title: 指数编制与基准治理, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/products/指数.md, kind: synthesis}, {path: wiki/concepts/基准.md, kind: synthesis}], gap: 缺指数公司方法论和调整案例}
+  - {id: asset-structured-products, axis: assets, stage: content-ready, title: 结构化产品与路径依赖, status: missing, verified: 2026-07-17, evidence: [], gap: 缺条款拆解、发行人信用和压力情景}
 
-  - id: method-risk
-    axis: methods
-    title: 风险、回撤与仓位
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/risk/最大回撤.md, kind: synthesis}
-      - {path: tests/test_metrics.py, kind: test}
-    gap: ""
-  - id: method-valuation
-    axis: methods
-    title: 估值与反向估值
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/concepts/估值.md, kind: synthesis}
-      - {path: raw/experts/cards/damodaran-valuation.md, kind: source}
-    gap: 缺多情景、敏感性和真实公司反向估值案例
-  - id: method-accounting
-    axis: methods
-    title: 财务报表与盈利质量
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/concepts/财务三表.md, kind: synthesis}
-      - {path: wiki/concepts/盈利质量.md, kind: synthesis}
-    gap: 缺公告时点、重述、现金流勾稽和真实公司案例
-  - id: method-empirical
-    axis: methods
-    title: 因子与跨流派实证
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/methods/投资研究证据矩阵.md, kind: synthesis}
-      - {path: output/templates/实证证据卡.md, kind: template}
-    gap: 缺使用公开冻结数据的完整正负结果研究
-  - id: method-backtest
-    axis: methods
-    title: 无未来函数日线回测
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/quant/回测基础.md, kind: synthesis}
-      - {path: tests/backtest/test_engine.py, kind: test}
-    gap: ""
-  - id: method-data-quality
-    axis: methods
-    title: 数据质量与历史时点
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/quant/数据质量.md, kind: synthesis}
-      - {path: tests/validation/test_market.py, kind: test}
-    gap: ""
-  - id: method-portfolio
-    axis: methods
-    title: 组合构建与再平衡
-    status: seed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/concepts/分散化.md, kind: synthesis}
-    gap: 缺投资政策、相关性失稳、约束优化与再平衡案例
-  - id: method-behavior
-    axis: methods
-    title: 行为金融与决策纪律
-    status: reviewed
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/risk/行为偏差.md, kind: synthesis}
-      - {path: raw/experts/cards/shiller-yale-financial-markets.md, kind: source}
-    gap: 缺预承诺、决策日志和偏差复盘案例
-  - id: method-lessons
-    axis: methods
-    title: 经验、失败假设与事故复盘
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: wiki/methods/经验与失败教训.md, kind: synthesis}
-      - {path: output/templates/研究事故与教训.md, kind: template}
-    gap: ""
+  # 行业研究：18
+  - {id: sector-framework, axis: sectors, stage: content-ready, title: 可复用行业研究框架, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/sectors/周期行业研究.md, kind: synthesis}], gap: 缺通用官方分类来源和跨行业练习}
+  - {id: sector-memory-content, axis: sectors, stage: content-ready, title: 存储半导体供需与技术代际, status: validated, verified: 2026-07-17, evidence: [{path: wiki/sectors/存储半导体.md, kind: synthesis}, {path: raw/official/global/jedec-memory-standards.md, kind: source}], gap: ""}
+  - {id: sector-memory-case, axis: sectors, stage: case-validated, title: 存储周期冻结数据案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺价格、库存、供给和公司财务正负结果报告}
+  - {id: sector-energy-content, axis: sectors, stage: content-ready, title: 能源供需、成本曲线与公司传导, status: validated, verified: 2026-07-17, evidence: [{path: wiki/sectors/能源.md, kind: synthesis}, {path: raw/official/united-states/eia-open-data.md, kind: source}], gap: ""}
+  - {id: sector-energy-case, axis: sectors, stage: case-validated, title: 能源周期冻结数据案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺历史 vintage、公司财务和反例报告}
+  - {id: sector-financial-content, axis: sectors, stage: content-ready, title: 银行、保险与券商分析, status: validated, verified: 2026-07-17, evidence: [{path: wiki/sectors/金融.md, kind: synthesis}, {path: raw/official/global/bis-basel-framework.md, kind: source}], gap: ""}
+  - {id: sector-bank-case, axis: sectors, stage: case-validated, title: 银行资产负债表冻结案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺历史 Call Report、压力情景和负结果报告}
+  - {id: sector-insurance-content, axis: sectors, stage: content-ready, title: 保险负债、准备金与投资端, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/sectors/金融.md, kind: synthesis}], gap: 缺偿付能力与会计准则官方来源}
+  - {id: sector-consumer-content, axis: sectors, stage: content-ready, title: 消费量价、渠道与单位经济, status: validated, verified: 2026-07-17, evidence: [{path: wiki/sectors/消费.md, kind: synthesis}, {path: raw/official/united-states/census-monthly-retail-trade.md, kind: source}], gap: ""}
+  - {id: sector-consumer-case, axis: sectors, stage: case-validated, title: 消费单位经济冻结案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺渠道库存、公司三表和反例报告}
+  - {id: sector-healthcare-content, axis: sectors, stage: content-ready, title: 医药研发、支付与监管, status: missing, verified: 2026-07-17, evidence: [], gap: 缺研发概率、专利、支付体系和监管来源}
+  - {id: sector-healthcare-case, axis: sectors, stage: case-validated, title: 医药公司冻结数据案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺管线概率、现金消耗和估值报告}
+  - {id: sector-internet-content, axis: sectors, stage: content-ready, title: 互联网平台网络效应与变现, status: missing, verified: 2026-07-17, evidence: [], gap: 缺获客、留存、变现和监管体系}
+  - {id: sector-internet-case, axis: sectors, stage: case-validated, title: 互联网平台冻结数据案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺用户、广告、电商和公司财务报告}
+  - {id: sector-technology-hardware, axis: sectors, stage: content-ready, title: 硬件与半导体产业链, status: missing, verified: 2026-07-17, evidence: [], gap: 缺晶圆、封测、设备和终端周期体系}
+  - {id: sector-industrials, axis: sectors, stage: content-ready, title: 工业、资本品与订单周期, status: missing, verified: 2026-07-17, evidence: [], gap: 缺订单、积压、产能和售后经济体系}
+  - {id: sector-real-estate, axis: sectors, stage: content-ready, title: 地产开发、运营与融资, status: missing, verified: 2026-07-17, evidence: [], gap: 缺销售、土地、杠杆和区域供需体系}
+  - {id: sector-materials-mining, axis: sectors, stage: content-ready, title: 材料与矿业成本曲线, status: missing, verified: 2026-07-17, evidence: [], gap: 缺品位、回收率、资本开支和成本曲线体系}
 
-  - id: engineering-source-lineage
-    axis: engineering
-    title: Raw 来源谱系审计
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: src/investkb/sources.py, kind: implementation}
-      - {path: tests/test_sources.py, kind: test}
-    gap: ""
-  - id: engineering-data-adapters
-    axis: engineering
-    title: A/HK 与基金免费数据适配
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: src/investkb/data/providers.py, kind: implementation}
-      - {path: tests/data/test_providers.py, kind: test}
-    gap: ""
-  - id: engineering-global-data
-    axis: engineering
-    title: 美股、韩国与全球免费数据适配
-    status: seed
-    verified: 2026-07-17
-    evidence:
-      - {path: raw/repositories/cards/yfinance.md, kind: source}
-    gap: 缺标准化适配器、公司行动、限频处理和离线契约测试
-  - id: engineering-ci
-    axis: engineering
-    title: 多版本 CI 与保护检查
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: .github/workflows/ci.yml, kind: workflow}
-      - {path: tests/test_github_workflows.py, kind: test}
-    gap: ""
-  - id: engineering-pages
-    axis: engineering
-    title: 可搜索互动 GitHub Pages
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: mkdocs.yml, kind: configuration}
-      - {path: tests/test_site.py, kind: test}
-    gap: ""
-  - id: engineering-public-boundary
-    axis: engineering
-    title: 公开与私人边界
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: src/investkb/publication.py, kind: implementation}
-      - {path: tests/test_public_boundary.py, kind: test}
-    gap: ""
-  - id: engineering-monitoring
-    axis: engineering
-    title: 定时数据与链接健康检查
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: .github/workflows/provider-smoke.yml, kind: workflow}
-      - {path: tests/test_github_workflows.py, kind: test}
-    gap: ""
-  - id: engineering-coverage
-    axis: engineering
-    title: 机器可审计覆盖报告
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: config/knowledge-coverage.yaml, kind: configuration}
-      - {path: tests/test_coverage.py, kind: test}
-    gap: ""
-  - id: engineering-maintenance-skill
-    axis: engineering
-    title: 可复用知识库维护 Skill
-    status: validated
-    verified: 2026-07-17
-    evidence:
-      - {path: skills/maintain-investing-knowledge-base/SKILL.md, kind: implementation}
-      - {path: tests/test_knowledge_skill.py, kind: test}
-    gap: ""
-  - id: engineering-private-research
-    axis: engineering
-    title: 私人观察池、持仓与决策日志
-    status: missing
-    verified: 2026-07-17
-    evidence: []
-    gap: 用户暂无持仓；需在本地 private 层建立不公开的投资政策与观察池
+  # 公司研究：16
+  - {id: company-disclosure, axis: company, stage: content-ready, title: 法定披露与公告检索, status: reviewed, verified: 2026-07-17, evidence: [{path: raw/official/united-states/sec-edgar.md, kind: source}, {path: wiki/concepts/财务三表.md, kind: synthesis}], gap: 缺跨市场表单、公告层级和检索演练}
+  - {id: company-point-in-time, axis: company, stage: exercise-tested, title: 按当时可得信息重建公司档案, status: missing, verified: 2026-07-17, evidence: [], gap: 缺披露时点模型、重述与测试}
+  - {id: company-three-statements, axis: company, stage: content-ready, title: 三表结构与勾稽关系, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/财务三表.md, kind: synthesis}], gap: 缺准则来源和真实报表勾稽}
+  - {id: company-reconciliation, axis: company, stage: exercise-tested, title: 三表重建与勾稽练习, status: missing, verified: 2026-07-17, evidence: [], gap: 缺标准化工作簿、代码和测试}
+  - {id: company-revenue, axis: company, stage: content-ready, title: 收入确认与合同经济, status: missing, verified: 2026-07-17, evidence: [], gap: 缺准则、递延收入和行业案例}
+  - {id: company-earnings-quality, axis: company, stage: content-ready, title: 盈利质量与应计分析, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/盈利质量.md, kind: synthesis}], gap: 缺准则来源、红旗清单和实例}
+  - {id: company-cash-conversion, axis: company, stage: exercise-tested, title: 营运资本与现金转换, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 DSO、DIO、DPO 和自由现金流练习}
+  - {id: company-capital-allocation, axis: company, stage: content-ready, title: 资本配置与再投资回报, status: missing, verified: 2026-07-17, evidence: [], gap: 缺并购、回购、分红、债务和再投资框架}
+  - {id: company-governance, axis: company, stage: content-ready, title: 治理、激励与关联交易, status: missing, verified: 2026-07-17, evidence: [], gap: 缺董事会、薪酬、控股股东和治理案例}
+  - {id: company-dilution, axis: company, stage: exercise-tested, title: 股权激励、增发与稀释计算, status: missing, verified: 2026-07-17, evidence: [], gap: 缺完全摊薄股数模型和测试}
+  - {id: company-valuation-content, axis: company, stage: content-ready, title: 绝对与相对估值框架, status: validated, verified: 2026-07-17, evidence: [{path: wiki/concepts/估值.md, kind: synthesis}, {path: raw/experts/cards/damodaran-valuation.md, kind: source}], gap: ""}
+  - {id: company-reverse-dcf, axis: company, stage: exercise-tested, title: 反向 DCF 与市场隐含预期, status: missing, verified: 2026-07-17, evidence: [], gap: 缺模型实现、敏感性和测试}
+  - {id: company-scenarios, axis: company, stage: exercise-tested, title: 多情景估值与敏感性, status: missing, verified: 2026-07-17, evidence: [], gap: 缺概率加权场景、龙卷风图和测试}
+  - {id: company-comparables, axis: company, stage: content-ready, title: 可比公司与估值倍数, status: missing, verified: 2026-07-17, evidence: [], gap: 缺业务可比性、口径调整和周期归一化}
+  - {id: company-case-positive, axis: company, stage: case-validated, title: 公司研究正结果冻结案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺来源、冻结数据、报告和自动校验}
+  - {id: company-case-negative, axis: company, stage: case-validated, title: 公司研究负结果与放弃案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺证伪过程、放弃理由和可复现报告}
+
+  # 研究方法：18
+  - {id: method-return-metrics, axis: methods, stage: exercise-tested, title: 收益率、年化与复权计算, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/metrics.py, kind: implementation}, {path: tests/test_metrics.py, kind: test}], gap: ""}
+  - {id: method-risk-metrics, axis: methods, stage: exercise-tested, title: 波动率、回撤与风险指标, status: validated, verified: 2026-07-17, evidence: [{path: wiki/risk/最大回撤.md, kind: synthesis}, {path: tests/test_metrics.py, kind: test}], gap: ""}
+  - {id: method-data-quality, axis: methods, stage: exercise-tested, title: 数据质量与历史时点校验, status: validated, verified: 2026-07-17, evidence: [{path: wiki/quant/数据质量.md, kind: synthesis}, {path: tests/validation/test_market.py, kind: test}], gap: ""}
+  - {id: method-backtest, axis: methods, stage: exercise-tested, title: 无未来函数日线回测, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/backtest/engine.py, kind: implementation}, {path: tests/backtest/test_engine.py, kind: test}], gap: ""}
+  - {id: method-lookahead, axis: methods, stage: exercise-tested, title: 未来函数识别与防护, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/quant/未来函数.md, kind: synthesis}], gap: 缺专门的披露时点与特征滞后测试}
+  - {id: method-survivorship, axis: methods, stage: content-ready, title: 幸存者偏差与退市样本, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/quant/幸存者偏差.md, kind: synthesis}], gap: 缺权威来源和含退市样本案例}
+  - {id: method-costs, axis: methods, stage: exercise-tested, title: 换手、费用、滑点与冲击成本, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/quant/换手与交易成本.md, kind: synthesis}], gap: 缺分市场费用模型和冲击成本测试}
+  - {id: method-out-of-sample, axis: methods, stage: exercise-tested, title: 样本外、滚动与走步验证, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/quant/样本外测试.md, kind: synthesis}], gap: 缺时间切分实现和测试}
+  - {id: method-overfitting, axis: methods, stage: content-ready, title: 回测过拟合与选择偏差, status: validated, verified: 2026-07-17, evidence: [{path: wiki/quant/过拟合.md, kind: synthesis}, {path: raw/books-and-papers/backtest-overfitting.md, kind: source}], gap: ""}
+  - {id: method-factor-content, axis: methods, stage: content-ready, title: 因子定义、组合与风险调整, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/quant/因子研究.md, kind: synthesis}, {path: raw/experts/cards/kenneth-french-data-library.md, kind: source}], gap: 缺完整因子谱系和口径比较}
+  - {id: method-evidence-matrix, axis: methods, stage: content-ready, title: 跨流派证据矩阵, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/methods/投资研究证据矩阵.md, kind: synthesis}], gap: 缺论文层级、外部效度和更新日期审计}
+  - {id: method-preregistration, axis: methods, stage: exercise-tested, title: 研究预注册与假设锁定, status: seed, verified: 2026-07-17, evidence: [{path: output/templates/实证证据卡.md, kind: template}], gap: 缺示例、机器校验和一次真实使用}
+  - {id: method-causal-inference, axis: methods, stage: content-ready, title: 因果推断与识别假设, status: missing, verified: 2026-07-17, evidence: [], gap: 缺 DAG、匹配、双重差分和工具变量体系}
+  - {id: method-time-series, axis: methods, stage: exercise-tested, title: 金融时间序列建模, status: missing, verified: 2026-07-17, evidence: [], gap: 缺平稳性、自相关、波动模型和测试}
+  - {id: method-event-study, axis: methods, stage: exercise-tested, title: 事件研究与公告反应, status: missing, verified: 2026-07-17, evidence: [], gap: 缺事件窗、基准模型、重叠事件和测试}
+  - {id: method-factor-replication, axis: methods, stage: case-validated, title: 公开因子冻结复现, status: missing, verified: 2026-07-17, evidence: [], gap: 缺来源、冻结数据、报告和测试}
+  - {id: method-negative-results, axis: methods, stage: case-validated, title: 无效策略与负结果复现, status: missing, verified: 2026-07-17, evidence: [], gap: 缺预注册失败策略、报告和测试}
+  - {id: method-behavior-lessons, axis: methods, stage: content-ready, title: 行为偏差、经验与失败教训, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/risk/行为偏差.md, kind: synthesis}, {path: raw/experts/cards/shiller-yale-financial-markets.md, kind: source}, {path: wiki/methods/经验与失败教训.md, kind: synthesis}], gap: 缺预承诺练习与真实决策日志复盘}
+
+  # 组合与风控：14
+  - {id: portfolio-ips, axis: portfolio, stage: exercise-tested, title: 投资政策书与治理, status: seed, verified: 2026-07-17, evidence: [{path: output/templates/投资政策书.md, kind: template}], gap: 缺新手示例、校验规则和年度复核流程}
+  - {id: portfolio-goals, axis: portfolio, stage: content-ready, title: 目标、期限与约束, status: missing, verified: 2026-07-17, evidence: [], gap: 缺现金需求、期限、税务和能力边界框架}
+  - {id: portfolio-allocation, axis: portfolio, stage: exercise-tested, title: 战略与战术资产配置, status: missing, verified: 2026-07-17, evidence: [], gap: 缺长期假设、约束配置和测试}
+  - {id: portfolio-diversification, axis: portfolio, stage: content-ready, title: 分散化与相关性失稳, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/分散化.md, kind: synthesis}, {path: raw/books-and-papers/markowitz-portfolio-selection.md, kind: source}], gap: 缺危机相关性和集中度案例}
+  - {id: portfolio-position-sizing, axis: portfolio, stage: content-ready, title: 仓位、容量与风险承受, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/risk/仓位管理.md, kind: synthesis}], gap: 缺风险预算来源与数值练习}
+  - {id: portfolio-rebalancing, axis: portfolio, stage: exercise-tested, title: 再平衡规则与成本权衡, status: missing, verified: 2026-07-17, evidence: [], gap: 缺日历、阈值和现金流再平衡测试}
+  - {id: portfolio-liquidity, axis: portfolio, stage: content-ready, title: 流动性、容量与变现风险, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/risk/流动性风险.md, kind: synthesis}], gap: 缺成交量、价差和极端赎回案例}
+  - {id: portfolio-drawdown, axis: portfolio, stage: exercise-tested, title: 最大回撤与恢复期, status: validated, verified: 2026-07-17, evidence: [{path: wiki/risk/最大回撤.md, kind: synthesis}, {path: tests/test_metrics.py, kind: test}], gap: ""}
+  - {id: portfolio-stress, axis: portfolio, stage: exercise-tested, title: 情景分析与压力测试, status: missing, verified: 2026-07-17, evidence: [], gap: 缺历史、假设和反向压力测试}
+  - {id: portfolio-risk-budget, axis: portfolio, stage: exercise-tested, title: 风险预算与贡献分解, status: missing, verified: 2026-07-17, evidence: [], gap: 缺边际风险、成分风险实现和测试}
+  - {id: portfolio-benchmark, axis: portfolio, stage: content-ready, title: 基准选择与主动风险, status: reviewed, verified: 2026-07-17, evidence: [{path: wiki/concepts/基准.md, kind: synthesis}, {path: raw/books-and-papers/sharpe-mutual-fund-performance.md, kind: source}], gap: 缺基准错配和风格漂移案例}
+  - {id: portfolio-attribution, axis: portfolio, stage: exercise-tested, title: 绩效归因与费用后评价, status: missing, verified: 2026-07-17, evidence: [], gap: 缺配置、选择、交互和多期链接测试}
+  - {id: portfolio-decision-journal, axis: portfolio, stage: exercise-tested, title: 决策日志与过程评分, status: seed, verified: 2026-07-17, evidence: [{path: output/templates/复盘.md, kind: template}], gap: 用户暂无持仓；缺私人层示例与偏差复盘校验}
+  - {id: portfolio-public-case, axis: portfolio, stage: case-validated, title: 公开多资产组合冻结案例, status: missing, verified: 2026-07-17, evidence: [], gap: 缺假设、冻结数据、费用后报告和自动测试}
+
+  # 工程与维护：15
+  - {id: engineering-source-lineage, axis: engineering, stage: exercise-tested, title: Raw 来源谱系审计, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/sources.py, kind: implementation}, {path: tests/test_sources.py, kind: test}], gap: ""}
+  - {id: engineering-data-adapters, axis: engineering, stage: exercise-tested, title: A股、港股与基金免费数据适配, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/data/providers.py, kind: implementation}, {path: tests/data/test_providers.py, kind: test}], gap: ""}
+  - {id: engineering-global-data, axis: engineering, stage: exercise-tested, title: 美股、韩国与全球免费数据适配, status: seed, verified: 2026-07-17, evidence: [{path: raw/repositories/cards/yfinance.md, kind: source}], gap: 缺标准化适配器、公司行动和离线契约测试}
+  - {id: engineering-ci, axis: engineering, stage: maintenance-live, title: 多版本 CI 与保护检查, status: validated, verified: 2026-07-17, evidence: [{path: .github/workflows/ci.yml, kind: workflow}, {path: tests/test_github_workflows.py, kind: test}], gap: ""}
+  - {id: engineering-pages, axis: engineering, stage: maintenance-live, title: 可搜索互动 GitHub Pages, status: validated, verified: 2026-07-17, evidence: [{path: .github/workflows/pages.yml, kind: workflow}, {path: tests/test_site.py, kind: test}], gap: ""}
+  - {id: engineering-public-boundary, axis: engineering, stage: exercise-tested, title: 公开与私人边界, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/publication.py, kind: implementation}, {path: tests/test_public_boundary.py, kind: test}], gap: ""}
+  - {id: engineering-provider-monitoring, axis: engineering, stage: maintenance-live, title: 免费数据源定时烟测, status: validated, verified: 2026-07-17, evidence: [{path: .github/workflows/provider-smoke.yml, kind: workflow}, {path: tests/test_github_workflows.py, kind: test}], gap: ""}
+  - {id: engineering-coverage, axis: engineering, stage: exercise-tested, title: 机器可审计覆盖报告, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/coverage.py, kind: implementation}, {path: tests/test_coverage.py, kind: test}], gap: ""}
+  - {id: engineering-maintenance-skill, axis: engineering, stage: exercise-tested, title: 可复用知识库维护 Skill, status: validated, verified: 2026-07-17, evidence: [{path: skills/maintain-investing-knowledge-base/SKILL.md, kind: implementation}, {path: tests/test_knowledge_skill.py, kind: test}], gap: ""}
+  - {id: engineering-private-research, axis: engineering, stage: exercise-tested, title: 私人观察池、持仓与决策日志, status: missing, verified: 2026-07-17, evidence: [], gap: 用户暂无持仓；需在本地 private 层建立不公开的投资政策与观察池}
+  - {id: engineering-offline-store, axis: engineering, stage: exercise-tested, title: 离线数据缓存与可重复运行, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/data/store.py, kind: implementation}, {path: tests/data/test_store.py, kind: test}], gap: ""}
+  - {id: engineering-reporting, axis: engineering, stage: exercise-tested, title: 可复现研究报告生成, status: validated, verified: 2026-07-17, evidence: [{path: src/investkb/reporting.py, kind: implementation}, {path: tests/test_reporting.py, kind: test}], gap: ""}
+  - {id: engineering-dependencies, axis: engineering, stage: maintenance-live, title: 依赖更新与兼容性守护, status: validated, verified: 2026-07-17, evidence: [{path: .github/dependabot.yml, kind: workflow}, {path: tests/test_github_workflows.py, kind: test}], gap: ""}
+  - {id: engineering-link-health, axis: engineering, stage: maintenance-live, title: 来源链接健康检查, status: validated, verified: 2026-07-17, evidence: [{path: .github/workflows/link-check.yml, kind: workflow}, {path: tests/test_github_workflows.py, kind: test}], gap: ""}
+  - {id: engineering-audit-plugin, axis: engineering, stage: exercise-tested, title: 第三方仓库审计与只读研究插件, status: missing, verified: 2026-07-17, evidence: [], gap: 缺四仓库审计矩阵、离线 fixture、插件清单和安装验证}

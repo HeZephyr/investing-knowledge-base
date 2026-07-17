@@ -227,6 +227,7 @@ def test_report_is_deterministic_and_discloses_gaps(tmp_path: Path) -> None:
 
     assert first == second
     assert "仓库就绪度，不是预期收益" in first
+    assert "v2 基线变更" in first
     assert "50.0%" in first
     assert "缺日本交易所与监管来源" in first
     assert "## 分能力阶段状态" in first
