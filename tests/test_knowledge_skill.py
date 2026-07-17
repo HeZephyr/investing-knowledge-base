@@ -27,6 +27,13 @@ def test_knowledge_skill_requires_coverage_and_lessons_updates() -> None:
     assert "config/knowledge-coverage.yaml" in text
     assert "coverage validate" in text
     assert "经验与失败教训" in text
+    for stage in (
+        "content-ready",
+        "exercise-tested",
+        "case-validated",
+        "maintenance-live",
+    ):
+        assert stage in text
 
 
 def test_source_card_scaffold_creates_valid_card_and_refuses_overwrite(tmp_path: Path) -> None:

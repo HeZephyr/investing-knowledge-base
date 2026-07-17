@@ -42,6 +42,15 @@ Read [content-model.md](references/content-model.md) before changing schemas or 
 6. Update `config/knowledge-coverage.yaml` with the actual evidence, status, verification date, and remaining gap. Never promote an item merely because a page exists.
 7. When work exposes a failed hypothesis, data accident, licensing rejection, CI failure, or repeated mistake, append the reusable pattern to `[[经验与失败教训]]` and add a regression check where possible.
 
+Map each change to one atomic capability stage instead of treating a topic page as complete:
+
+- `content-ready`: validate only with an authoritative `source` plus a maintained `synthesis`.
+- `exercise-tested`: validate only with `implementation + test` or `synthesis + test`.
+- `case-validated`: validate only with a frozen public `source + report + test`, including negative results where relevant.
+- `maintenance-live`: validate only with a scheduled or protected `workflow + test`.
+
+`status` and `stage` answer different questions. Keep an explicit gap for every missing, seed, or reviewed capability; never upgrade an unrelated stage because another stage passed.
+
 ## Validate code and data
 
 - Use adjusted/unadjusted prices deliberately and document the convention.
