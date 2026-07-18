@@ -35,11 +35,15 @@ nav:
       - 港股市场: wiki/markets/港股市场.md
       - 美股市场: wiki/markets/美股市场.md
       - 韩国股市: wiki/markets/韩国股市.md
+      - 日本市场: wiki/markets/日本市场.md
+      - 欧盟市场: wiki/markets/欧盟市场.md
+      - 新兴市场访问: wiki/markets/新兴市场访问.md
       - 沪深港通: wiki/markets/沪深港通.md
       - 交易时段: wiki/markets/交易时段.md
       - 交易费用: wiki/markets/交易费用.md
   - 资产与产品:
       - 黄金: wiki/assets/黄金.md
+      - 大宗商品: wiki/assets/大宗商品.md
       - 股票: wiki/products/股票.md
       - 指数: wiki/products/指数.md
       - ETF: wiki/products/ETF.md
@@ -48,6 +52,7 @@ nav:
       - 货币基金: wiki/products/货币基金.md
       - REIT: wiki/products/REIT.md
       - 可转债: wiki/products/可转债.md
+      - 债券: wiki/products/债券.md
   - 行业研究:
       - 周期行业研究: wiki/sectors/周期行业研究.md
       - 存储半导体: wiki/sectors/存储半导体.md

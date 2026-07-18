@@ -15,6 +15,7 @@ MODULES = {
     "wiki/markets/欧盟市场.md": {
         "raw-official-esma-trading",
         "raw-official-eu-transparency-settlement",
+        "raw-official-eu-investment-funds-ucits",
     },
     "wiki/markets/新兴市场访问.md": {
         "raw-official-imf-areaer",
@@ -61,6 +62,7 @@ def test_new_sources_are_catalogued_with_dynamic_boundaries() -> None:
         "raw/official/japan/fsa-edinet.md",
         "raw/official/europe/esma-trading.md",
         "raw/official/europe/eu-transparency-settlement.md",
+        "raw/official/europe/eu-investment-funds-ucits.md",
         "raw/official/global/imf-areaer.md",
         "raw/official/global/world-bank-gfdd.md",
         "raw/official/global/bis-debt-statistics.md",
@@ -73,7 +75,7 @@ def test_new_sources_are_catalogued_with_dynamic_boundaries() -> None:
         path = ROOT / relative_path
         text = path.read_text(encoding="utf-8")
         metadata = parse_frontmatter(text)
-        assert metadata["retrieved"] == "2026-07-17", path
+        assert metadata["retrieved"].isoformat() == "2026-07-17", path
         assert metadata["usage"] == "link-and-summarize", path
         assert "失效" in text or "修订" in text, path
         assert path.name in catalog, f"{path}: missing from catalog"
@@ -111,4 +113,3 @@ def test_coverage_only_upgrades_supported_atomic_capabilities() -> None:
     assert requirements["asset-bond-math"].status == "validated"
     assert requirements["asset-futures"].status == "reviewed"
     assert requirements["market-calendar-monitor"].status == "missing"
-

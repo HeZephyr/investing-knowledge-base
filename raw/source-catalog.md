@@ -8,6 +8,8 @@
 - `official/hong-kong/`：港交所、香港证监会、投委会等。
 - `official/united-states/`：美国 SEC 投资者教育、EDGAR 与基金披露。
 - `official/korea/`：韩国交易所交易和公司披露。
+- `official/japan/`：JPX 交易清算与 FSA/EDINET 法定披露。
+- `official/europe/`：ESMA 交易框架与欧盟披露/结算规则。
 - `official/global/`：黄金基准、技术标准、汇率、能源统计与全球银行监管框架。
 
 截至 2026-07-17，官方层新增 NIST/SEMATECH 统计手册，课程层新增 MIT OCW Finance Theory I。来源数量只用于库存管理，不代表知识要求已经完成。
@@ -30,3 +32,5 @@ Issue #9 批次加入 Yale/Shiller 金融市场课程、AQR Data Library 与 GMO
 Issue #17 批次加入 `openintro-statistics.md`、`openstax-principles-finance.md`、`forecasting-principles-practice.md`、`islp.md`、`nist-statistical-handbook.md` 与 `mit-finance-theory.md`，并审计 SciPy、statsmodels、ISLP Labs 和 QuantEcon 教学仓库。免费 PDF、公开 GitHub 和网页可读性均不自动授予复制或 LLM 摄取权；许可冲突或缺失时只链接并写独立摘要。
 
 Issue #22 批次固定并审计 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_trade。代码事实、上游声明和我们的推断分栏记录；完整 clone 只留在 ignored 本地目录。OpenBB 的 provider 分层可借鉴，A 股筛选与 AI/自动交易声明必须另做可证伪测试；无根许可证、远端认证、复制交易和自动下单默认隔离。
+
+Issue #18 批次加入 `jpx-trading-clearing.md`、`fsa-edinet.md`、`esma-trading.md`、`eu-transparency-settlement.md`、`eu-investment-funds-ucits.md`、`imf-areaer.md`、`world-bank-gfdd.md`、`bis-debt-statistics.md`、`sec-bond-bulletins.md` 与 `cftc-futures-basics.md`。它们支撑日本、欧盟、新兴市场访问、债券与商品；动态规则按 2026-07-17 核验，未来生效文本、最终修订数据和当前分类不得回填历史。
