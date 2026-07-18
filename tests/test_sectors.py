@@ -52,6 +52,9 @@ def test_semiconductor_output_exposes_each_yield_stage() -> None:
         "shippable_units": 380_000.0,
         "end_to_end_yield": 0.76,
     }
+    zero_yield = semiconductor_output(100, 10, fab_yield=0.0, package_test_yield=0.95)
+    assert zero_yield["shippable_units"] == 0.0
+    assert zero_yield["end_to_end_yield"] == 0.0
 
 
 def test_industrial_backlog_and_capacity_do_not_treat_orders_as_revenue() -> None:
@@ -68,6 +71,7 @@ def test_industrial_backlog_and_capacity_do_not_treat_orders_as_revenue() -> Non
         "book_to_bill": pytest.approx(400 / 350),
     }
     assert capacity_utilization(actual_output=80, practical_capacity=100) == pytest.approx(0.8)
+    assert capacity_utilization(actual_output=120, practical_capacity=100) == pytest.approx(1.2)
 
 
 def test_property_bridge_and_credit_metrics_reconcile_cash_and_financing() -> None:
@@ -126,7 +130,7 @@ def test_classification_preserves_scheme_revision_activity_and_effective_date() 
         (lambda: solvency_coverage(10, 0), "required_capital"),
         (lambda: semiconductor_output(10, 10, 1.1, 0.9), "fab_yield"),
         (lambda: backlog_bridge(10, 10, 0, 0, 20), "revenue_recognized"),
-        (lambda: capacity_utilization(101, 100), "cannot exceed"),
+        (lambda: capacity_utilization(-1, 100), "actual_output"),
         (lambda: property_project_bridge(1, 1, 1, 1, 1, 1, 1, -1), "closing_cash"),
         (lambda: real_estate_credit_metrics(1, 2, 0, 1), "ebitda"),
         (lambda: mining_unit_economics(1, 0, 0.9, 0.9, 1), "grade"),

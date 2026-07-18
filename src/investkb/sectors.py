@@ -98,8 +98,8 @@ def semiconductor_output(
 
     wafers = _positive(wafer_starts, "wafer_starts")
     dies = _positive(gross_dies_per_wafer, "gross_dies_per_wafer")
-    fab = _unit_interval(fab_yield, "fab_yield", allow_zero=False)
-    package = _unit_interval(package_test_yield, "package_test_yield", allow_zero=False)
+    fab = _unit_interval(fab_yield, "fab_yield")
+    package = _unit_interval(package_test_yield, "package_test_yield")
     gross = wafers * dies
     good = gross * fab
     shippable = good * package
@@ -140,8 +140,6 @@ def capacity_utilization(actual_output: float, practical_capacity: float) -> flo
 
     actual = _nonnegative(actual_output, "actual_output")
     capacity = _positive(practical_capacity, "practical_capacity")
-    if actual > capacity:
-        raise SectorModelError("actual_output cannot exceed practical_capacity")
     return actual / capacity
 
 
