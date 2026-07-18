@@ -70,6 +70,37 @@ class FeeRule:
             raise MarketOperationError("decimal_places must be an integer between 0 and 8")
 
 
+@dataclass(frozen=True)
+class CorporateAction:
+    action_type: str
+    effective_date: date
+    ratio: float | None = None
+    cash_per_share: float | None = None
+    subscription_price: float | None = None
+
+    def __post_init__(self) -> None:
+        if self.action_type not in {
+            "split",
+            "reverse_split",
+            "cash_dividend",
+            "rights",
+            "delisting",
+        }:
+            raise MarketOperationError("unknown corporate action_type")
+        if self.action_type in {"split", "reverse_split", "rights"}:
+            if self.ratio is None:
+                raise MarketOperationError("corporate action ratio is required")
+            _positive(self.ratio, "corporate action ratio")
+        if self.action_type == "cash_dividend":
+            if self.cash_per_share is None:
+                raise MarketOperationError("cash_per_share is required")
+            _positive(self.cash_per_share, "cash_per_share")
+        if self.action_type == "rights":
+            if self.subscription_price is None:
+                raise MarketOperationError("subscription_price is required")
+            _positive(self.subscription_price, "subscription_price")
+
+
 def _aligned(value: float, increment: float) -> bool:
     quotient = Decimal(str(value)) / Decimal(str(increment))
     return quotient == quotient.to_integral_value()
@@ -219,3 +250,76 @@ def walk_order_book(
             direction * (average_price / benchmark - 1) * 10_000
         )
     return result
+
+
+def apply_corporate_action(
+    *,
+    quantity: int,
+    total_cost_basis: float,
+    action: CorporateAction,
+    as_of: date,
+) -> dict[str, object]:
+    """Apply one effective corporate action without inventing market prices."""
+
+    if isinstance(quantity, bool) or not isinstance(quantity, int) or quantity <= 0:
+        raise MarketOperationError("quantity must be a positive integer")
+    if (
+        isinstance(total_cost_basis, bool)
+        or not math.isfinite(total_cost_basis)
+        or total_cost_basis < 0
+    ):
+        raise MarketOperationError("total_cost_basis must be finite and non-negative")
+    if as_of < action.effective_date:
+        raise MarketOperationError("corporate action is not effective as of the requested date")
+
+    result: dict[str, object] = {
+        "status": "active",
+        "quantity": quantity,
+        "total_cost_basis": float(total_cost_basis),
+        "cost_basis_per_share": float(total_cost_basis / quantity),
+        "cash": 0.0,
+    }
+    if action.action_type in {"split", "reverse_split"}:
+        assert action.ratio is not None
+        new_quantity = quantity * action.ratio
+        if not float(new_quantity).is_integer():
+            raise MarketOperationError("corporate action creates a fractional quantity")
+        integer_quantity = int(new_quantity)
+        if integer_quantity < 1:
+            raise MarketOperationError("corporate action leaves no whole shares")
+        result["quantity"] = integer_quantity
+        result["cost_basis_per_share"] = float(total_cost_basis / integer_quantity)
+    elif action.action_type == "cash_dividend":
+        assert action.cash_per_share is not None
+        result["cash"] = float(quantity * action.cash_per_share)
+    elif action.action_type == "rights":
+        assert action.ratio is not None and action.subscription_price is not None
+        entitlement = quantity * action.ratio
+        if not float(entitlement).is_integer():
+            raise MarketOperationError("rights action creates a fractional entitlement")
+        result["rights_entitlement"] = int(entitlement)
+        result["subscription_cash_required"] = float(entitlement * action.subscription_price)
+    elif action.action_type == "delisting":
+        result["status"] = "delisted"
+        result["price_series_terminated"] = True
+    return result
+
+
+def settlement_date(trade_date: date, *, sessions: Sequence[date], lag: int) -> date:
+    """Advance T+N over an explicit ordered set of eligible market sessions."""
+
+    if isinstance(lag, bool) or not isinstance(lag, int) or lag < 0:
+        raise MarketOperationError("settlement lag must be a non-negative integer")
+    ordered = list(sessions)
+    if len(ordered) != len(set(ordered)):
+        raise MarketOperationError("sessions must be unique")
+    if ordered != sorted(ordered):
+        raise MarketOperationError("sessions must be in ascending order")
+    try:
+        start = ordered.index(trade_date)
+    except ValueError as exc:
+        raise MarketOperationError("trade_date must be an eligible session") from exc
+    target = start + lag
+    if target >= len(ordered):
+        raise MarketOperationError("session horizon is insufficient for settlement lag")
+    return ordered[target]
