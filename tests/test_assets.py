@@ -1,8 +1,12 @@
 from __future__ import annotations
 
+import csv
+import hashlib
 import math
+from pathlib import Path
 
 import pytest
+import yaml
 
 from investkb.assets import (
     AssetModelError,
@@ -16,6 +20,10 @@ from investkb.assets import (
     structured_note_redemption,
     tracking_statistics,
 )
+from investkb.coverage import load_coverage
+
+
+ROOT = Path(__file__).parents[1]
 
 
 def test_option_payoff_preserves_right_obligation_and_premium() -> None:
@@ -107,6 +115,32 @@ def test_futures_roll_decomposition_does_not_call_curve_gap_a_return() -> None:
     assert result["chained_investor_return"] == pytest.approx(1.05 * (110 / 108) - 1)
 
 
+def test_frozen_futures_roll_case_is_synthetic_hashed_and_reproducible() -> None:
+    case_root = ROOT / "raw/cases/futures-roll"
+    content = (case_root / "observations.csv").read_bytes()
+    manifest = yaml.safe_load((case_root / "manifest.yaml").read_text(encoding="utf-8"))
+    assert hashlib.sha256(content).hexdigest() == manifest["snapshot_sha256"]
+    assert manifest["vintage"] == "synthetic-educational-fixture"
+
+    with (case_root / "observations.csv").open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    assert len(rows) == 4
+    assert {row["provider"] for row in rows} == {"investkb_synthetic_fixture"}
+    values = {(row["contract"], row["event"]): float(row["price"]) for row in rows}
+    result = futures_roll_decomposition(
+        values[("OLD", "entry")],
+        values[("OLD", "exit")],
+        values[("NEW", "entry")],
+        values[("NEW", "exit")],
+    )
+    assert result["curve_gap_at_roll"] == pytest.approx(108 / 105 - 1)
+    assert result["chained_investor_return"] == pytest.approx(1.05 * (110 / 108) - 1)
+
+    report = (ROOT / "output/cases/futures-roll.md").read_text(encoding="utf-8")
+    for phrase in ("完全合成", "预注册问题", "来源事实", "计算结果", "失败教训", "离线复现"):
+        assert phrase in report
+
+
 def test_structured_note_redemption_captures_barrier_cap_and_issuer_recovery() -> None:
     protected = structured_note_redemption(
         [100, 95, 110], principal=1_000, barrier_ratio=0.70, participation=1.0, cap=0.15
@@ -132,6 +166,25 @@ def test_structured_note_redemption_captures_barrier_cap_and_issuer_recovery() -
     assert knocked_in["contractual_redemption"] == pytest.approx(800.0)
     assert defaulted["contractual_redemption"] == pytest.approx(1_100.0)
     assert defaulted["redemption_after_issuer_credit"] == pytest.approx(440.0)
+
+
+def test_all_asset_requirements_have_stage_appropriate_evidence() -> None:
+    manifest = load_coverage(ROOT / "config/knowledge-coverage.yaml")
+    assets = [item for item in manifest.requirements if item.axis == "assets"]
+    assert len(assets) == 18
+    assert all(item.status == "validated" and not item.gap for item in assets)
+    requirements = {item.id: item for item in assets}
+    assert {item.kind for item in requirements["asset-options-math"].evidence} >= {
+        "synthesis",
+        "implementation",
+        "test",
+    }
+    assert {item.kind for item in requirements["asset-futures"].evidence} >= {
+        "source",
+        "synthesis",
+        "report",
+        "test",
+    }
 
 
 @pytest.mark.parametrize(
