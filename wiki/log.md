@@ -6,7 +6,7 @@ markets: [A股, 港股]
 level: beginner
 status: active
 sources: []
-updated: 2026-07-17
+updated: 2026-07-18
 ---
 
 # 维护日志
@@ -95,3 +95,8 @@ updated: 2026-07-17
 - changed: [[研究预注册与证据等级]], [[因果推断与识别]], [[事件研究]], [[样本外测试]], [[时间序列与预测]], [[因子研究]], [[幸存者偏差]], [[未来函数]], [[经验与失败教训]], [[dashboard]]
 - sources: raw-book-causal-inference-what-if, raw-paper-mackinlay-event-studies, raw-paper-shumway-delisting-bias, raw-research-kenneth-french-data-library
 - result: 建立带 embargo 的 expanding/rolling walk-forward、规范预注册哈希、自相关/随机游走/EWMA 基线和市场模型 CAR；研究方法轴 18/18 validated，仓库就绪度升至 79.5%。
+
+## [2026-07-18] research | 数学、统计、经济、会计与危机史基础实验室
+- changed: [[投资数学与优化]], [[微观经济与产业组织]], [[宏观账户周期与货币传导]], [[金融危机与机制复盘]], [[假设检验与多重比较]], [[回归与诊断]], [[财务三表]], [[盈利质量]], [[论文阅读与复现]], [[经验与失败教训]]
+- sources: raw-course-mit-linear-algebra, raw-course-mit-calculus, raw-book-openstax-principles-economics, raw-official-us-bea-national-accounts, raw-official-us-federal-reserve-monetary-policy, raw-official-us-federal-reserve-history-crises, IFRS 官方卡与冻结 HML 数据
+- result: 建立效应量/功效、HC1/杠杆/Cook 距离、显式种子 bootstrap，补齐数学优化、微观产业、宏观账户、货币传导、会计应计与危机机制；基础学科轴 20/20 validated，仓库就绪度升至 85.5%。
