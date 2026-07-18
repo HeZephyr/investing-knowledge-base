@@ -163,5 +163,11 @@ def test_sector_coverage_records_reviewed_evidence_without_fake_validation() -> 
         assert not requirement.gap
 
     framework = requirements["sector-framework"]
-    assert framework.status == "reviewed"
-    assert framework.gap
+    assert framework.status == "validated"
+    assert not framework.gap
+    assert {item.kind for item in framework.evidence} == {
+        "source",
+        "synthesis",
+        "implementation",
+        "test",
+    }
