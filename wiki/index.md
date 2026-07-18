@@ -35,7 +35,7 @@ updated: 2026-07-18
 ## 资产与行业
 
 - [[黄金]]、[[大宗商品]]、[[汇率风险]]
-- [[周期行业研究]]、[[存储半导体]]、[[能源]]、[[金融]]、[[消费]]、[[医药医疗]]、[[互联网平台]]
+- [[周期行业研究]]、[[存储半导体]]、[[能源]]、[[金融]]、[[消费]]、[[医药医疗]]、[[互联网平台]]、[[硬件与半导体产业链]]、[[工业与资本品]]、[[地产开发与运营]]、[[材料与矿业]]
 - 冻结案例：[能源](../output/cases/energy.md)、[银行](../output/cases/bank.md)、[消费](../output/cases/consumer.md)、[医药](../output/cases/healthcare.md)、[互联网](../output/cases/internet.md)、[存储](../output/cases/memory.md)、[公司正结果](../output/cases/company-positive.md)、[公司原命题放弃](../output/cases/company-negative.md)、[HML 因子复现](../output/cases/factor-replication.md)、[策略负结果](../output/cases/negative-strategy.md)、[公开多资产组合](../output/cases/portfolio-public.md)、[期货换月](../output/cases/futures-roll.md)
 
 ## 分析与核心概念
