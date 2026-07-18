@@ -9,12 +9,12 @@
 
 ## 2. Primary sources and synthesis
 
-- [ ] Add source cards for ISIC, IFRS 17/IAIS, semiconductor chain, M3 orders, housing, and mining.
-- [ ] Expand the cross-industry framework and insurance page.
-- [ ] Add hardware/semiconductor, industrials, real estate, and materials/mining pages.
-- [ ] Update indexes, dashboard, navigation, source catalog, maintenance log, and lessons.
+- [x] Add source cards for ISIC, IFRS 17/IAIS, semiconductor chain, M3 orders, housing, and mining.
+- [x] Expand the cross-industry framework and insurance page.
+- [x] Add hardware/semiconductor, industrials, real estate, and materials/mining pages.
+- [x] Update indexes, dashboard, navigation, source catalog, maintenance log, and lessons.
 
 ## 3. Coverage and delivery
 
-- [ ] Promote the six requirements only after stage-appropriate evidence exists and assert sectors 18/18.
+- [x] Promote the six requirements only after stage-appropriate evidence exists and assert sectors 18/18.
 - [ ] Run full verification, independent review, CI, PR Policy, and squash merge a fixed SHA.
