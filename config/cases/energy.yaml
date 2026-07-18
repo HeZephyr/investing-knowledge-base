@@ -1,0 +1,7 @@
+case_id: energy
+decision_date: 2026-07-17
+hypothesis: WTI direction alone is sufficient to explain ExxonMobil operating cash-flow direction and magnitude.
+success: Both year-over-year directions match and absolute growth-rate difference is at most 5 percentage points.
+failure: Any direction mismatch or growth-rate difference above 5 percentage points.
+alternative_explanations: [production, realized_price, refining_mix, working_capital, costs, taxes, acquisitions]
+attempts: 1

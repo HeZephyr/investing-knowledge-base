@@ -1,0 +1,16 @@
+case_id: energy
+snapshot: observations.csv
+snapshot_sha256: "beb2028034f662739fd4086ec07d0a9b7f10d3d6de2bb914126ee9237f5c75e8"
+primary_key: [series, period]
+allowed_units: [USD_per_barrel, USD_millions]
+retrieved_at: 2026-07-17T23:00:00+08:00
+vintage: current-corrected-at-retrieval
+upstream:
+  - provider: FRED_EIA
+    endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv
+    parameters: {id: DCOILWTICO, cosd: 2020-01-01, coed: 2024-12-31}
+    input_rows: 1304
+  - provider: ExxonMobil
+    endpoint: https://investor.exxonmobil.com/sec-filings/all-sec-filings/content/0000034088-25-000010/xom-20241231.htm
+    filing_or_release_date: 2025-01-31
+notes: FRED values are a current corrected snapshot; this case is descriptive at the 2026-07-17 decision date and is not an as-released historical backtest.

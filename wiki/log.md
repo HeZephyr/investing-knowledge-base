@@ -65,3 +65,8 @@ updated: 2026-07-17
 - changed: [[金融量化平台与Skill审计|金融量化平台与 Skill 审计]], [[金融研究代码库审计]], [[经验与失败教训]], [[index]]
 - sources: raw-repo-finhack, raw-repo-finance-quant-skills
 - result: 固定审计平台与 13 个 Skill；识别 setup 安装写副作用、缺根许可证、复制文档、Cookie/Token、提示注入与实盘下单面；插件 v0.2 增加只读 `$audit-finance-skills`，不安装第三方 bundle。
+
+## [2026-07-17] research | 能源、银行与消费冻结案例
+- changed: [[能源]], [[金融]], [[消费]], [[经验与失败教训]], [[index]]
+- sources: raw-us-eia-open-data, raw-us-fdic-bankfind-call-reports, raw-us-census-monthly-retail-trade, ExxonMobil/Target/Walmart 法定披露
+- result: 建立三套带 SHA-256、首次可得日、单位与离线验证的公开快照；保留能源幅度失败、SVB 简单资本率反例和 Target 宏观背离，三项 case capability 首次达到 validated。

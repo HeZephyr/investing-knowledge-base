@@ -35,6 +35,7 @@ updated: 2026-07-17
 
 - [[黄金]]、[[大宗商品]]、[[汇率风险]]
 - [[周期行业研究]]、[[存储半导体]]、[[能源]]、[[金融]]、[[消费]]
+- 冻结案例：[能源](../output/cases/energy.md)、[银行](../output/cases/bank.md)、[消费](../output/cases/consumer.md)
 
 ## 分析与核心概念
 

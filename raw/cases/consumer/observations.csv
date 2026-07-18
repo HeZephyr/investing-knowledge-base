@@ -1,0 +1,10 @@
+series,period,value,unit,available_at,source_url,provider
+us_retail_monthly_average,2022,655971.083,USD_millions_per_month,2026-07-17T00:00:00Z,https://fred.stlouisfed.org/series/RSAFS,FRED_Census
+us_retail_monthly_average,2023,679110.333,USD_millions_per_month,2026-07-17T00:00:00Z,https://fred.stlouisfed.org/series/RSAFS,FRED_Census
+us_retail_monthly_average,2024,696878.250,USD_millions_per_month,2026-07-17T00:00:00Z,https://fred.stlouisfed.org/series/RSAFS,FRED_Census
+target_revenue,2022,109120,USD_millions,2025-03-12T00:00:00Z,https://corporate.target.com/investors/annual/2024-annual-report/financials/five-year-financial-summary,Target
+target_revenue,2023,107412,USD_millions,2025-03-12T00:00:00Z,https://corporate.target.com/investors/annual/2024-annual-report/financials/five-year-financial-summary,Target
+target_revenue,2024,106566,USD_millions,2025-03-12T00:00:00Z,https://corporate.target.com/investors/annual/2024-annual-report/financials/five-year-financial-summary,Target
+walmart_revenue,FY2023,611289,USD_millions,2025-04-24T00:00:00Z,https://corporate.walmart.com/news/2025/04/24/walmart-releases-2025-annual-report-and-proxy-statement,Walmart
+walmart_revenue,FY2024,648125,USD_millions,2025-04-24T00:00:00Z,https://corporate.walmart.com/news/2025/04/24/walmart-releases-2025-annual-report-and-proxy-statement,Walmart
+walmart_revenue,FY2025,680985,USD_millions,2025-04-24T00:00:00Z,https://corporate.walmart.com/news/2025/04/24/walmart-releases-2025-annual-report-and-proxy-statement,Walmart

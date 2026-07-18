@@ -1,0 +1,19 @@
+case_id: consumer
+snapshot: observations.csv
+snapshot_sha256: "930d41442fb00eca2aafa96175b10c3398401a706e9a54362d60996cf05a6973"
+primary_key: [series, period]
+allowed_units: [USD_millions_per_month, USD_millions]
+retrieved_at: 2026-07-17T23:20:00+08:00
+vintage: mixed-current-corrected-and-filed
+upstream:
+  - provider: FRED_Census
+    endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv
+    parameters: {id: RSAFS, cosd: 2020-01-01, coed: 2024-12-31}
+    input_rows: 60
+  - provider: Target
+    endpoint: https://corporate.target.com/investors/annual/2024-annual-report/financials/five-year-financial-summary
+    report_date: 2025-03-12
+  - provider: Walmart
+    endpoint: https://corporate.walmart.com/news/2025/04/24/walmart-releases-2025-annual-report-and-proxy-statement
+    report_date: 2025-04-24
+notes: FRED is current corrected; company fiscal calendars differ from calendar-year MRTS. Direction comparisons are descriptive and do not claim equal exposure weights.

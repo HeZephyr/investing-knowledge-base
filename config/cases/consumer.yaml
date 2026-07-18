@@ -1,0 +1,7 @@
+case_id: consumer
+decision_date: 2026-07-17
+hypothesis: Growth in aggregate U.S. retail and food-services sales directly proxies each large retailer's revenue growth.
+success: Macro and both companies have matching direction and growth rates within 3 percentage points after calendar alignment.
+failure: At least one company has the opposite direction or calendar/exposure mismatch prevents the proxy.
+alternative_explanations: [market_share, category_mix, fiscal_calendar, store_count, pricing, advertising, membership_income]
+attempts: 1

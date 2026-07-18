@@ -1,0 +1,7 @@
+case_id: bank
+decision_date: 2026-07-17
+hypothesis: A stable or rising simple equity-to-assets ratio is sufficient to rule out material bank fragility.
+success: Equity-to-assets falls before failure and no contradictory deposit run appears.
+failure: Equity-to-assets is stable or rises while deposits contract materially and the institution subsequently fails.
+alternative_explanations: [uninsured_deposits, securities_duration, collateral_capacity, funding_concentration, entity_scope]
+attempts: 1

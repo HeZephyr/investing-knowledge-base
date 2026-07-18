@@ -108,6 +108,10 @@ nav:
       - 研究事故与教训: output/templates/研究事故与教训.md
       - 复盘: output/templates/复盘.md
       - 投资政策书: output/templates/投资政策书.md
+  - 冻结数据案例:
+      - 能源价格与公司现金流: output/cases/energy.md
+      - 银行资本与流动性: output/cases/bank.md
+      - 宏观零售与公司收入: output/cases/consumer.md
   - 互动:
       - 投资计算器: tools.md
       - 知识图谱: graph.md
