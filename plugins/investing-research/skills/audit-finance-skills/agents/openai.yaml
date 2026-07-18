@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audit Finance Skills"
+  short_description: "Audit finance Skill bundles before installation"
+  default_prompt: "Use $audit-finance-skills to audit an already-local finance Skill bundle without installing or executing it."

@@ -65,6 +65,7 @@ nav:
       - 经验与失败教训: wiki/methods/经验与失败教训.md
   - 工程与插件:
       - 金融研究代码库审计: wiki/engineering/金融研究代码库审计.md
+      - 金融量化平台与 Skill 审计: wiki/engineering/金融量化平台与Skill审计.md
   - 核心概念:
       - 收益率: wiki/concepts/收益率.md
       - 基准: wiki/concepts/基准.md

@@ -1,28 +1,38 @@
 {
   "name": "investing-research",
-  "version": "0.1.0",
-  "description": "Read-only, evidence-first audits of finance repositories and research tooling",
+  "version": "0.2.0+codex.20260718022557",
+  "description": "Read-only, evidence-first audits of finance repositories, Skill bundles, and research tooling",
   "author": {
     "name": "Investing Knowledge Base contributors",
     "url": "https://github.com/HeZephyr/investing-knowledge-base"
   },
-  "homepage": "https://hezephyr.github.io/investing-knowledge-base/wiki/engineering/金融研究代码库审计/",
+  "homepage": "https://hezephyr.github.io/investing-knowledge-base/wiki/engineering/\u91d1\u878d\u7814\u7a76\u4ee3\u7801\u5e93\u5ba1\u8ba1/",
   "repository": "https://github.com/HeZephyr/investing-knowledge-base",
   "license": "MIT",
-  "keywords": ["finance", "repository-audit", "research", "read-only"],
+  "keywords": [
+    "finance",
+    "repository-audit",
+    "skill-audit",
+    "research",
+    "read-only"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Investing Research Auditor",
     "shortDescription": "Audit finance repositories without credentials or trading.",
-    "longDescription": "Evidence-first local repository audits for licenses, data providers, backtests, authentication boundaries, and automated-trading risk. Defaults to offline, read-only analysis.",
+    "longDescription": "Evidence-first local repository and Skill-bundle audits for licenses, copied content, data providers, backtests, authentication boundaries, prompt injection, and automated-trading risk. Defaults to offline, read-only analysis.",
     "developerName": "Investing Knowledge Base contributors",
     "category": "Productivity",
-    "capabilities": ["Read", "Analyze"],
+    "capabilities": [
+      "Read",
+      "Analyze"
+    ],
     "websiteURL": "https://hezephyr.github.io/investing-knowledge-base/",
     "defaultPrompt": [
       "Audit a local finance repository without networking or credentials.",
       "Compare finance data projects by evidence, license, and safety.",
-      "Turn a repository audit into Raw and Wiki knowledge cards."
+      "Turn a repository audit into Raw and Wiki knowledge cards.",
+      "Audit a local finance Skill bundle before installing it."
     ],
     "brandColor": "#0F766E"
   }

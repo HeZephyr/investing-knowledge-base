@@ -1,6 +1,8 @@
 # Investing Research Auditor
 
-一个 repo-local Codex 插件，用只读、离线、证据优先的流程审计金融数据、量化回测和 AI 交易代码库。插件不打包第三方源码，不连接数据商或券商，不读取 Cookie/Token，不下单。
+一个 repo-local Codex 插件，用只读、离线、证据优先的流程审计金融数据、量化回测、AI 交易代码库与可执行 Skill bundle。插件不打包第三方源码，不连接数据商或券商，不读取 Cookie/Token，不下单。
+
+插件包含两个 Skill：`audit-finance-repositories` 检查普通代码库的数据、回测、许可和交易面；`audit-finance-skills` 进一步检查 Skill 的复制文档、安装副作用、提示注入、Cookie/账号、专有客户端与订单权限。完整采用规则见[金融量化平台与 Skill 审计](../../wiki/engineering/金融量化平台与Skill审计.md)。
 
 ## 安装
 
@@ -24,21 +26,25 @@ python plugins/investing-research/scripts/audit_repository.py data/reference-rep
 
 输出只含相对文件路径、类别计数、HEAD 和许可证候选，不含匹配源码行。关键词是人工复核线索，不是功能证明。可以用 `--output /tmp/audit.json` 保存派生报告；不要把包含私人路径的临时文件提交。
 
+审计 Skill bundle 时同样先准备 ignored、already-local clone，再调用 `$audit-finance-skills`。它不会执行上游 SKILL、script、setup、hook 或安装命令；没有根 LICENSE 时使用 `NOASSERTION`，逐 Skill 输出 adopt、optional、link-only、quarantine 或 reject。
+
 ## 认证隔离
 
 扫描器跳过 `.env` 以及文件名含 Cookie、Token、credential、secret 的文件；不导入被审计项目，不发网络请求，不启动容器或服务。OpenBB provider 的 API Key、数据条款和缓存由用户自行合法配置，插件不会帮助绕过登录、风控或供应商限制。
 
-任何 broker、copy trade、trade sync、自动交易、远端 agent 注册或 money-moving 权限都不属于第一版。需要这些能力时必须另开安全评审，明确账户、许可、最小权限、模拟环境和人工确认。
+任何 prompt injection、broker、copy trade、trade sync、自动交易、远端 agent 注册或 money-moving 权限都不属于默认插件。需要这些能力时必须另开安全评审，明确账户、许可、最小权限、模拟环境和人工确认。要求用 F12 复制 Cookie 的 Skill 默认隔离，不作为免费数据适配方案。
 
 ## 更新
 
-仓库更新后先拉取并升级 marketplace 快照，再重新安装。开发者修改插件 manifest 时使用 plugin-creator 的 cachebuster 脚本，不手改本机 marketplace 配置：
+仓库更新后先拉取并重新安装。开发者修改插件 manifest 时使用 plugin-creator 的 cachebuster 脚本，不手改本机 marketplace 配置。本仓库注册的是本地路径 marketplace，`marketplace upgrade` 只支持 Git marketplace，不能用于 `personal`：
 
 ```bash
 git pull --ff-only
-codex plugin marketplace upgrade personal
+codex plugin remove investing-research@personal
 codex plugin add investing-research@personal
 ```
+
+若 marketplace 是用 Git URL/owner-repo 注册的快照，才先运行 `codex plugin marketplace upgrade <name>`。更新后用 `codex plugin list` 核对 cachebuster 版本。
 
 更新后开一个新 Codex task，让新 Skill 被重新加载。
 

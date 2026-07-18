@@ -33,4 +33,6 @@ Issue #17 批次加入 `openintro-statistics.md`、`openstax-principles-finance.
 
 Issue #22 批次固定并审计 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_trade。代码事实、上游声明和我们的推断分栏记录；完整 clone 只留在 ignored 本地目录。OpenBB 的 provider 分层可借鉴，A 股筛选与 AI/自动交易声明必须另做可证伪测试；无根许可证、远端认证、复制交易和自动下单默认隔离。
 
+Issue #26 批次固定 FinHack 与 finance-quant-skills。FinHack 的平台分层和 A 股规则清单作为可证伪设计输入，但当前重构状态、`setup.py` 写副作用和测试缺口阻止默认安装；finance-quant-skills 因缺根许可证记为 NOASSERTION，13 个 Skill 按复制内容、网络、Token/Cookie、提示注入、专有终端和实盘下单逐项分级，完整 bundle 不安装。
+
 Issue #18 批次加入 `jpx-trading-clearing.md`、`fsa-edinet.md`、`esma-trading.md`、`eu-transparency-settlement.md`、`eu-investment-funds-ucits.md`、`imf-areaer.md`、`world-bank-gfdd.md`、`bis-debt-statistics.md`、`sec-bond-bulletins.md` 与 `cftc-futures-basics.md`。它们支撑日本、欧盟、新兴市场访问、债券与商品；动态规则按 2026-07-17 核验，未来生效文本、最终修订数据和当前分类不得回填历史。

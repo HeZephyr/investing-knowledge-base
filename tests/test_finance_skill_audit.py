@@ -97,9 +97,7 @@ def test_finance_skill_auditor_is_read_only_and_install_safe() -> None:
         assert level in reference
     assert "$audit-finance-skills" in agent
 
-    manifest = json.loads(
-        (PLUGIN / ".codex-plugin/plugin.json").read_text(encoding="utf-8")
-    )
+    manifest = json.loads((PLUGIN / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
     assert manifest["version"].startswith("0.2.")
     assert manifest["skills"] == "./skills/"
 

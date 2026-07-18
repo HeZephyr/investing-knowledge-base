@@ -57,3 +57,4 @@ updated: 2026-07-17
 ## 工程与代码库
 
 - [[金融研究代码库审计]]：比较 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_trade，并给出许可证、认证、数据和自动交易边界。
+- [[金融量化平台与Skill审计|金融量化平台与 Skill 审计]]：审计 FinHack 平台和 13 个 finance-quant-skills，建立逐 Skill 许可、提示注入、凭证与实盘隔离矩阵。
