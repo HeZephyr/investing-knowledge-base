@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
-- 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**75.4%**
+- 清单日期：2026-07-18
+- 仓库就绪度，不是预期收益：**79.5%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -16,7 +16,7 @@
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
 | 公司研究 | 0 | 0 | 0 | 16 | 100.0% |
-| 研究方法 | 2 | 1 | 8 | 7 | 69.2% |
+| 研究方法 | 0 | 0 | 0 | 18 | 100.0% |
 | 组合与风控 | 0 | 0 | 0 | 14 | 100.0% |
 | 工程与维护 | 1 | 1 | 0 | 13 | 88.3% |
 
@@ -24,8 +24,8 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 16 | 0 | 17 | 40 | 69.9% |
-| `exercise-tested` | 练习已测 | 6 | 2 | 8 | 29 | 77.1% |
+| `content-ready` | 内容就绪 | 15 | 0 | 13 | 45 | 73.2% |
+| `exercise-tested` | 练习已测 | 5 | 1 | 4 | 35 | 84.1% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
@@ -119,23 +119,23 @@
 | `market-us-disclosure` | 市场 | `content-ready` | 美股披露与投资者保护 | validated | 2026-07-17 | `synthesis:wiki/markets/美股市场.md`<br>`source:raw/official/united-states/sec-edgar.md` | — |
 | `market-us-execution` | 市场 | `exercise-tested` | 美股订单执行、费用与公司行动 | missing | 2026-07-17 | — | 缺官方规则、费用计算和公司行动测试 |
 | `method-backtest` | 研究方法 | `exercise-tested` | 无未来函数日线回测 | validated | 2026-07-17 | `implementation:src/investkb/backtest/engine.py`<br>`test:tests/backtest/test_engine.py` | — |
-| `method-behavior-lessons` | 研究方法 | `content-ready` | 行为偏差、经验与失败教训 | reviewed | 2026-07-17 | `synthesis:wiki/risk/行为偏差.md`<br>`source:raw/experts/cards/shiller-yale-financial-markets.md`<br>`synthesis:wiki/methods/经验与失败教训.md` | 缺预承诺练习与真实决策日志复盘 |
-| `method-causal-inference` | 研究方法 | `content-ready` | 因果推断与识别假设 | missing | 2026-07-17 | — | 缺 DAG、匹配、双重差分和工具变量体系 |
-| `method-costs` | 研究方法 | `exercise-tested` | 换手、费用、滑点与冲击成本 | reviewed | 2026-07-17 | `synthesis:wiki/quant/换手与交易成本.md` | 缺分市场费用模型和冲击成本测试 |
+| `method-behavior-lessons` | 研究方法 | `content-ready` | 行为偏差、经验与失败教训 | validated | 2026-07-18 | `source:raw/experts/cards/shiller-yale-financial-markets.md`<br>`synthesis:wiki/risk/行为偏差.md` | — |
+| `method-causal-inference` | 研究方法 | `content-ready` | 因果推断与识别假设 | validated | 2026-07-18 | `source:raw/books-and-papers/causal-inference-what-if.md`<br>`synthesis:wiki/methods/因果推断与识别.md` | — |
+| `method-costs` | 研究方法 | `exercise-tested` | 换手、费用、滑点与冲击成本 | validated | 2026-07-18 | `implementation:src/investkb/backtest/engine.py`<br>`test:tests/backtest/test_engine.py` | — |
 | `method-data-quality` | 研究方法 | `exercise-tested` | 数据质量与历史时点校验 | validated | 2026-07-17 | `synthesis:wiki/quant/数据质量.md`<br>`test:tests/validation/test_market.py` | — |
-| `method-event-study` | 研究方法 | `exercise-tested` | 事件研究与公告反应 | missing | 2026-07-17 | — | 缺事件窗、基准模型、重叠事件和测试 |
-| `method-evidence-matrix` | 研究方法 | `content-ready` | 跨流派证据矩阵 | reviewed | 2026-07-17 | `synthesis:wiki/methods/投资研究证据矩阵.md` | 缺论文层级、外部效度和更新日期审计 |
-| `method-factor-content` | 研究方法 | `content-ready` | 因子定义、组合与风险调整 | reviewed | 2026-07-17 | `synthesis:wiki/quant/因子研究.md`<br>`source:raw/experts/cards/kenneth-french-data-library.md` | 缺完整因子谱系和口径比较 |
+| `method-event-study` | 研究方法 | `exercise-tested` | 事件研究与公告反应 | validated | 2026-07-18 | `implementation:src/investkb/research_methods.py`<br>`test:tests/test_research_methods.py` | — |
+| `method-evidence-matrix` | 研究方法 | `content-ready` | 跨流派证据矩阵 | validated | 2026-07-18 | `source:raw/experts/cards/aqr-data-library.md`<br>`synthesis:wiki/methods/投资研究证据矩阵.md` | — |
+| `method-factor-content` | 研究方法 | `content-ready` | 因子定义、组合与风险调整 | validated | 2026-07-18 | `source:raw/experts/cards/kenneth-french-data-library.md`<br>`synthesis:wiki/quant/因子研究.md` | — |
 | `method-factor-replication` | 研究方法 | `case-validated` | 公开因子冻结复现 | validated | 2026-07-17 | `source:raw/cases/factor-strategy/manifest.yaml`<br>`report:output/cases/factor-replication.md`<br>`test:tests/test_public_evidence_cases.py` | — |
-| `method-lookahead` | 研究方法 | `exercise-tested` | 未来函数识别与防护 | reviewed | 2026-07-17 | `synthesis:wiki/quant/未来函数.md` | 缺专门的披露时点与特征滞后测试 |
+| `method-lookahead` | 研究方法 | `exercise-tested` | 未来函数识别与防护 | validated | 2026-07-18 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
 | `method-negative-results` | 研究方法 | `case-validated` | 无效策略与负结果复现 | validated | 2026-07-17 | `source:raw/cases/factor-strategy/manifest.yaml`<br>`report:output/cases/negative-strategy.md`<br>`test:tests/test_public_evidence_cases.py` | — |
-| `method-out-of-sample` | 研究方法 | `exercise-tested` | 样本外、滚动与走步验证 | reviewed | 2026-07-17 | `synthesis:wiki/quant/样本外测试.md` | 缺时间切分实现和测试 |
+| `method-out-of-sample` | 研究方法 | `exercise-tested` | 样本外、滚动与走步验证 | validated | 2026-07-18 | `implementation:src/investkb/research_methods.py`<br>`test:tests/test_research_methods.py` | — |
 | `method-overfitting` | 研究方法 | `content-ready` | 回测过拟合与选择偏差 | validated | 2026-07-17 | `synthesis:wiki/quant/过拟合.md`<br>`source:raw/books-and-papers/backtest-overfitting.md` | — |
-| `method-preregistration` | 研究方法 | `exercise-tested` | 研究预注册与假设锁定 | seed | 2026-07-17 | `template:output/templates/实证证据卡.md` | 缺示例、机器校验和一次真实使用 |
+| `method-preregistration` | 研究方法 | `exercise-tested` | 研究预注册与假设锁定 | validated | 2026-07-18 | `implementation:src/investkb/research_methods.py`<br>`test:tests/test_research_methods.py` | — |
 | `method-return-metrics` | 研究方法 | `exercise-tested` | 收益率、年化与复权计算 | validated | 2026-07-17 | `implementation:src/investkb/metrics.py`<br>`test:tests/test_metrics.py` | — |
 | `method-risk-metrics` | 研究方法 | `exercise-tested` | 波动率、回撤与风险指标 | validated | 2026-07-17 | `synthesis:wiki/risk/最大回撤.md`<br>`test:tests/test_metrics.py` | — |
-| `method-survivorship` | 研究方法 | `content-ready` | 幸存者偏差与退市样本 | reviewed | 2026-07-17 | `synthesis:wiki/quant/幸存者偏差.md` | 缺权威来源和含退市样本案例 |
-| `method-time-series` | 研究方法 | `exercise-tested` | 金融时间序列建模 | reviewed | 2026-07-17 | `synthesis:wiki/foundations/时间序列与预测.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | 已测滚动起点切分；仍缺平稳性、自相关、基线预测和波动模型练习 |
+| `method-survivorship` | 研究方法 | `content-ready` | 幸存者偏差与退市样本 | validated | 2026-07-18 | `source:raw/books-and-papers/shumway-delisting-bias.md`<br>`synthesis:wiki/quant/幸存者偏差.md` | — |
+| `method-time-series` | 研究方法 | `exercise-tested` | 金融时间序列建模 | validated | 2026-07-18 | `implementation:src/investkb/research_methods.py`<br>`test:tests/test_research_methods.py` | — |
 | `portfolio-allocation` | 组合与风控 | `exercise-tested` | 战略与战术资产配置 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
 | `portfolio-attribution` | 组合与风控 | `exercise-tested` | 绩效归因与费用后评价 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
 | `portfolio-benchmark` | 组合与风控 | `content-ready` | 基准选择与主动风险 | validated | 2026-07-17 | `source:raw/books-and-papers/sharpe-mutual-fund-performance.md`<br>`synthesis:wiki/portfolio/基准与绩效归因.md` | — |

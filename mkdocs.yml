@@ -104,6 +104,9 @@ nav:
       - 样本外测试: wiki/quant/样本外测试.md
       - 换手与交易成本: wiki/quant/换手与交易成本.md
       - 因子研究: wiki/quant/因子研究.md
+      - 事件研究: wiki/quant/事件研究.md
+      - 研究预注册与证据等级: wiki/methods/研究预注册与证据等级.md
+      - 因果推断与识别: wiki/methods/因果推断与识别.md
   - 原始资料:
       - 来源目录: raw/source-catalog.md
       - 参考代码库: raw/repositories/catalog.md

@@ -90,3 +90,8 @@ updated: 2026-07-17
 - changed: [[投资政策与目标]], [[资产配置与再平衡]], [[组合风险预算与压力测试]], [[基准与绩效归因]], [[决策日志与过程评分]], [[分散化]], [[仓位管理]], [[流动性风险]], [[基准]], [[经验与失败教训]], [[dashboard]]
 - sources: raw-us-investor-asset-allocation, raw-us-sec-fund-liquidity-risk, raw-paper-markowitz-1952, raw-paper-sharpe-1966
 - result: 建立无个人持仓的 IPS 校验、配置集中度、费用后再平衡、退出天数、风险贡献、正反压力、Brinson 归因和过程评分；组合轴 14/14 validated，仓库就绪度升至 75.4%。
+
+## [2026-07-18] research | 预注册、走步、因果与事件研究实验室
+- changed: [[研究预注册与证据等级]], [[因果推断与识别]], [[事件研究]], [[样本外测试]], [[时间序列与预测]], [[因子研究]], [[幸存者偏差]], [[未来函数]], [[经验与失败教训]], [[dashboard]]
+- sources: raw-book-causal-inference-what-if, raw-paper-mackinlay-event-studies, raw-paper-shumway-delisting-bias, raw-research-kenneth-french-data-library
+- result: 建立带 embargo 的 expanding/rolling walk-forward、规范预注册哈希、自相关/随机游走/EWMA 基线和市场模型 CAR；研究方法轴 18/18 validated，仓库就绪度升至 79.5%。
