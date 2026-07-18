@@ -23,6 +23,14 @@ def test_public_boundary_rejects_private_paths_and_strong_secrets(tmp_path: Path
     assert any("GitHub token" in finding for finding in findings)
 
 
+def test_repository_mode_skips_local_private_content_entirely(tmp_path: Path) -> None:
+    private = tmp_path / "private/positions.yaml"
+    private.parent.mkdir()
+    private.write_text("token: do-not-read-or-publish", encoding="utf-8")
+
+    assert audit_public_tree(tmp_path, allow_local_private=True) == []
+
+
 def test_collaboration_and_governance_files_exist() -> None:
     required = [
         "CONTRIBUTING.md",
