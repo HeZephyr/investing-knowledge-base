@@ -55,3 +55,8 @@ updated: 2026-07-17
 - changed: [[金融研究代码库审计]], [[经验与失败教训]], [[index]], [[dashboard]]
 - sources: raw-repo-openbb, raw-repo-myhhub-stock, raw-repo-ai-trader, raw-repo-ai-quant-trade
 - result: 固定 commit 审计 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_trade；新增离线安全扫描器、Codex 插件清单与 fixture 测试，默认隔离凭据、远端 agent、复制交易和自动下单。
+
+## [2026-07-17] ingest | 全球市场、债券与商品体系
+- changed: [[全球市场]], [[日本市场]], [[欧盟市场]], [[新兴市场访问]], [[债券]], [[大宗商品]], [[经验与失败教训]]
+- sources: raw-official-jpx-trading-clearing, raw-official-fsa-edinet, raw-official-esma-trading, raw-official-eu-transparency-settlement, raw-official-eu-investment-funds-ucits, raw-official-imf-areaer, raw-official-world-bank-gfdd, raw-official-bis-debt-statistics, raw-official-sec-bond-bulletins, raw-official-cftc-futures-basics
+- result: 建立市场 × 资产矩阵与十张动态规则卡；新增久期/凸性、YTM、信用损失、基差和展期练习，仓库就绪度从 46.5% 提升到 51.0%，冻结案例仍保持 0/11。

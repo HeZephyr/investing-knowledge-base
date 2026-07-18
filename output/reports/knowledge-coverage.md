@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**46.5%**
+- 仓库就绪度，不是预期收益：**51.0%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -12,8 +12,8 @@
 | 维度 | missing | seed | reviewed | validated | 就绪度 |
 |---|---:|---:|---:|---:|---:|
 | 基础学科 | 6 | 0 | 6 | 8 | 59.5% |
-| 市场 | 10 | 0 | 1 | 5 | 35.3% |
-| 资产与产品 | 6 | 0 | 8 | 4 | 51.1% |
+| 市场 | 7 | 0 | 1 | 8 | 54.1% |
+| 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
 | 行业 | 12 | 0 | 2 | 4 | 29.4% |
 | 公司研究 | 12 | 0 | 3 | 1 | 18.4% |
 | 研究方法 | 4 | 1 | 8 | 5 | 58.1% |
@@ -24,8 +24,8 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 29 | 0 | 23 | 21 | 49.2% |
-| `exercise-tested` | 练习已测 | 17 | 4 | 9 | 15 | 48.6% |
+| `content-ready` | 内容就绪 | 23 | 0 | 24 | 26 | 57.0% |
+| `exercise-tested` | 练习已测 | 17 | 4 | 8 | 16 | 49.3% |
 | `case-validated` | 案例验证 | 11 | 0 | 0 | 0 | 0.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
@@ -33,15 +33,15 @@
 
 | ID | 维度 | 阶段 | 要求 | 状态 | 最后核验 | 证据 | 缺口 |
 |---|---|---|---|---|---|---|---|
-| `asset-bond-math` | 资产与产品 | `exercise-tested` | 债券定价、久期与凸性 | reviewed | 2026-07-17 | `synthesis:wiki/foundations/债券与利率基础.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | 已测平坦收益率价格和 Macaulay 久期；仍缺曲线、修正久期与凸性练习 |
+| `asset-bond-math` | 资产与产品 | `exercise-tested` | 债券定价、久期与凸性 | validated | 2026-07-17 | `synthesis:wiki/products/债券.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | — |
 | `asset-cash` | 资产与产品 | `content-ready` | 现金与货币基金 | reviewed | 2026-07-17 | `synthesis:wiki/products/货币基金.md` | 缺收益来源、流动性和信用风险官方来源 |
-| `asset-commodities` | 资产与产品 | `content-ready` | 大宗商品现货与期货曲线 | missing | 2026-07-17 | — | 缺基差、库存、期限结构和展期体系 |
+| `asset-commodities` | 资产与产品 | `content-ready` | 大宗商品现货与期货曲线 | validated | 2026-07-17 | `source:raw/official/united-states/cftc-futures-basics.md`<br>`source:raw/official/united-states/eia-open-data.md`<br>`synthesis:wiki/assets/大宗商品.md` | — |
 | `asset-convertible` | 资产与产品 | `content-ready` | 可转债条款与风险 | reviewed | 2026-07-17 | `synthesis:wiki/products/可转债.md` | 缺赎回、转股、信用与估值来源 |
-| `asset-credit-bonds` | 资产与产品 | `content-ready` | 信用债、评级与违约 | missing | 2026-07-17 | — | 缺信用利差、回收率、契约与违约案例 |
+| `asset-credit-bonds` | 资产与产品 | `content-ready` | 信用债、评级与违约 | validated | 2026-07-17 | `source:raw/official/united-states/sec-bond-bulletins.md`<br>`source:raw/official/global/bis-debt-statistics.md`<br>`synthesis:wiki/products/债券.md` | — |
 | `asset-derivatives` | 资产与产品 | `content-ready` | 衍生品权利义务与保证金 | missing | 2026-07-17 | — | 缺期权、期货、互换的统一框架 |
 | `asset-equity` | 资产与产品 | `content-ready` | 股票所有权与现金流权利 | reviewed | 2026-07-17 | `synthesis:wiki/products/股票.md` | 缺公司法和市场官方来源 |
 | `asset-etf` | 资产与产品 | `content-ready` | ETF 结构、交易与跟踪误差 | validated | 2026-07-17 | `synthesis:wiki/products/ETF.md`<br>`source:raw/official/mainland/sse-etf.md` | — |
-| `asset-futures` | 资产与产品 | `content-ready` | 期货合约、交割与保证金 | missing | 2026-07-17 | — | 缺交易所规则与连续合约处理 |
+| `asset-futures` | 资产与产品 | `content-ready` | 期货合约、交割与保证金 | reviewed | 2026-07-17 | `source:raw/official/united-states/cftc-futures-basics.md`<br>`synthesis:wiki/assets/大宗商品.md` | 已有通用合约、交割、保证金与连续合约框架；仍缺逐品种交易所规格和冻结合约链案例 |
 | `asset-fx` | 资产与产品 | `content-ready` | 外汇报价与汇率风险 | validated | 2026-07-17 | `synthesis:wiki/concepts/汇率风险.md`<br>`source:raw/official/global/fred-exchange-rates.md` | — |
 | `asset-gold` | 资产与产品 | `content-ready` | 黄金定价与基准 | validated | 2026-07-17 | `synthesis:wiki/assets/黄金.md`<br>`source:raw/official/global/lbma-gold-benchmark.md` | — |
 | `asset-government-bonds` | 资产与产品 | `content-ready` | 国债与收益率曲线 | reviewed | 2026-07-17 | `source:raw/courses/mit-finance-theory.md`<br>`synthesis:wiki/foundations/债券与利率基础.md` | 已有债券入门；仍缺主要市场官方曲线来源和市场制度 |
@@ -107,11 +107,11 @@
 | `market-cn-rules` | 市场 | `content-ready` | A 股交易与披露规则 | validated | 2026-07-17 | `synthesis:wiki/markets/A股市场.md`<br>`source:raw/official/mainland/sse-trading-rules.md` | — |
 | `market-corporate-actions` | 市场 | `exercise-tested` | 分红、拆并股、配股与退市处理 | missing | 2026-07-17 | — | 缺跨市场公司行动数据模型和测试 |
 | `market-cross-border` | 市场 | `content-ready` | 沪深港通与跨境访问 | reviewed | 2026-07-17 | `synthesis:wiki/markets/沪深港通.md` | 缺额度、假日、币种、税费和公司行动官方来源 |
-| `market-emerging-rules` | 市场 | `content-ready` | 新兴市场访问框架 | missing | 2026-07-17 | — | 缺市场分类、资本管制和托管框架 |
-| `market-europe-rules` | 市场 | `content-ready` | 欧盟主要市场与 UCITS | missing | 2026-07-17 | — | 缺 ESMA、交易所和 UCITS 来源 |
+| `market-emerging-rules` | 市场 | `content-ready` | 新兴市场访问框架 | validated | 2026-07-17 | `source:raw/official/global/imf-areaer.md`<br>`source:raw/official/global/world-bank-gfdd.md`<br>`synthesis:wiki/markets/新兴市场访问.md` | — |
+| `market-europe-rules` | 市场 | `content-ready` | 欧盟主要市场与 UCITS | validated | 2026-07-17 | `source:raw/official/europe/esma-trading.md`<br>`source:raw/official/europe/eu-investment-funds-ucits.md`<br>`synthesis:wiki/markets/欧盟市场.md` | — |
 | `market-hk-fees` | 市场 | `content-ready` | 港股费用与风险 | validated | 2026-07-17 | `synthesis:wiki/markets/交易费用.md`<br>`source:raw/official/hong-kong/hkex-transaction-fees.md` | — |
 | `market-hk-rules` | 市场 | `content-ready` | 港股交易与披露规则 | validated | 2026-07-17 | `synthesis:wiki/markets/港股市场.md`<br>`source:raw/official/hong-kong/hkex-trading-rules.md` | — |
-| `market-japan-rules` | 市场 | `content-ready` | 日本交易与披露规则 | missing | 2026-07-17 | — | 缺 JPX 与 FSA 官方来源和 Wiki |
+| `market-japan-rules` | 市场 | `content-ready` | 日本交易与披露规则 | validated | 2026-07-17 | `source:raw/official/japan/jpx-trading-clearing.md`<br>`source:raw/official/japan/fsa-edinet.md`<br>`synthesis:wiki/markets/日本市场.md` | — |
 | `market-korea-rules` | 市场 | `content-ready` | 韩国交易与披露规则 | validated | 2026-07-17 | `synthesis:wiki/markets/韩国股市.md`<br>`source:raw/official/korea/krx-investment-guide.md` | — |
 | `market-microstructure` | 市场 | `content-ready` | 市场微观结构 | missing | 2026-07-17 | — | 缺价差、深度、冲击成本和价格发现体系 |
 | `market-settlement` | 市场 | `content-ready` | 清算、结算与托管 | missing | 2026-07-17 | — | 缺各市场结算周期、失败与托管风险 |

@@ -5,16 +5,22 @@ import math
 import pytest
 
 from investkb.education import (
+    annualized_futures_basis,
     bond_price,
+    bond_convexity,
     bonferroni_threshold,
+    commodity_roll_yield,
+    expected_credit_loss,
     discrete_moments,
     effective_annual_rate,
     future_value,
     macaulay_duration,
+    modified_duration,
     mean_confidence_interval,
     present_value,
     rolling_origin_splits,
     simple_ols,
+    yield_to_maturity,
 )
 
 
@@ -71,6 +77,34 @@ def test_bond_price_and_duration_match_two_year_annual_coupon() -> None:
     assert duration == pytest.approx(expected_duration)
 
 
+def test_modified_duration_and_convexity_match_discounted_cash_flows() -> None:
+    macaulay = macaulay_duration(100, 0.05, 0.05, 2)
+    modified = modified_duration(100, 0.05, 0.05, 2)
+    convexity = bond_convexity(100, 0.05, 0.05, 2)
+
+    expected_convexity = ((1 * 2 * 5 / 1.05**3) + (2 * 3 * 105 / 1.05**4)) / 100
+    assert modified == pytest.approx(macaulay / 1.05)
+    assert convexity == pytest.approx(expected_convexity)
+
+
+def test_yield_to_maturity_recovers_price_input() -> None:
+    price = bond_price(100, 0.04, 0.06, 5, payments_per_year=2)
+
+    solved = yield_to_maturity(100, 0.04, price, 5, payments_per_year=2)
+
+    assert solved == pytest.approx(0.06, abs=1e-10)
+
+
+def test_expected_credit_loss_and_futures_basis_match_hand_calculation() -> None:
+    assert expected_credit_loss(1_000_000, 0.02, recovery_rate=0.40) == pytest.approx(12_000)
+    assert annualized_futures_basis(spot=100, futures=103, days_to_expiry=90) == pytest.approx(
+        (103 / 100 - 1) * 365 / 90
+    )
+    assert commodity_roll_yield(near_contract=100, next_contract=104) == pytest.approx(
+        100 / 104 - 1
+    )
+
+
 @pytest.mark.parametrize(
     ("call", "match"),
     [
@@ -84,6 +118,12 @@ def test_bond_price_and_duration_match_two_year_annual_coupon() -> None:
         (lambda: simple_ols([1, 1], [2, 3]), "variation"),
         (lambda: rolling_origin_splits(5, 5), "room for a test"),
         (lambda: bond_price(100, 0.05, -1.0, 2), "yield"),
+        (lambda: yield_to_maturity(100, 0.05, -1, 2), "price"),
+        (lambda: expected_credit_loss(100, 1.1, 0.4), "probability"),
+        (lambda: expected_credit_loss(100, 0.1, 1.1), "recovery"),
+        (lambda: annualized_futures_basis(0, 100, 30), "spot"),
+        (lambda: annualized_futures_basis(100, 101, 0), "days"),
+        (lambda: commodity_roll_yield(100, -1), "positive"),
     ],
 )
 def test_education_functions_reject_misleading_inputs(call, match: str) -> None:

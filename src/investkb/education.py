@@ -235,3 +235,119 @@ def macaulay_duration(
     )
     price = float(present_values.sum())
     return float(np.dot(times, present_values) / price)
+
+
+def modified_duration(
+    face_value: float,
+    coupon_rate: float,
+    yield_to_maturity: float,
+    years: float,
+    payments_per_year: int = 1,
+) -> float:
+    """Return modified duration for a parallel change in one flat nominal yield."""
+    frequency = _positive_integer(payments_per_year, "payments_per_year")
+    macaulay = macaulay_duration(face_value, coupon_rate, yield_to_maturity, years, frequency)
+    yield_to_maturity = _finite(yield_to_maturity, "yield")
+    return macaulay / (1 + yield_to_maturity / frequency)
+
+
+def bond_convexity(
+    face_value: float,
+    coupon_rate: float,
+    yield_to_maturity: float,
+    years: float,
+    payments_per_year: int = 1,
+) -> float:
+    """Return traditional fixed-cash-flow convexity for one flat nominal yield."""
+    frequency = _positive_integer(payments_per_year, "payments_per_year")
+    times, present_values, _ = _bond_cash_flows(
+        face_value, coupon_rate, yield_to_maturity, years, frequency
+    )
+    yield_to_maturity = _finite(yield_to_maturity, "yield")
+    periods = times * frequency
+    price = float(present_values.sum())
+    scale = frequency**2 * (1 + yield_to_maturity / frequency) ** 2
+    weights = periods * (periods + 1) / scale
+    return float(np.dot(weights, present_values) / price)
+
+
+def yield_to_maturity(
+    face_value: float,
+    coupon_rate: float,
+    market_price: float,
+    years: float,
+    payments_per_year: int = 1,
+    *,
+    tolerance: float = 1e-12,
+    max_iterations: int = 200,
+) -> float:
+    """Solve one flat nominal YTM by bounded bisection for fixed coupon cash flows."""
+    price = _finite(market_price, "market price")
+    if price <= 0:
+        raise ValueError("market price must be positive")
+    frequency = _positive_integer(payments_per_year, "payments_per_year")
+    tolerance = _finite(tolerance, "tolerance")
+    iterations = _positive_integer(max_iterations, "max_iterations")
+    if tolerance <= 0:
+        raise ValueError("tolerance must be positive")
+
+    def difference(rate: float) -> float:
+        return bond_price(face_value, coupon_rate, rate, years, frequency) - price
+
+    lower = -0.95 * frequency
+    upper = 1.0
+    lower_difference = difference(lower)
+    upper_difference = difference(upper)
+    while upper_difference > 0 and upper < 1024:
+        upper *= 2
+        upper_difference = difference(upper)
+    if lower_difference < 0 or upper_difference > 0:
+        raise ValueError("market price does not bracket a finite yield")
+
+    for _ in range(iterations):
+        midpoint = (lower + upper) / 2
+        midpoint_difference = difference(midpoint)
+        if abs(midpoint_difference) <= tolerance or upper - lower <= tolerance:
+            return midpoint
+        if midpoint_difference > 0:
+            lower = midpoint
+        else:
+            upper = midpoint
+    raise ValueError("yield solver did not converge")
+
+
+def expected_credit_loss(
+    exposure: float, default_probability: float, recovery_rate: float
+) -> float:
+    """Return exposure × probability of default × loss given default."""
+    exposure = _finite(exposure, "exposure")
+    probability = _finite(default_probability, "default probability")
+    recovery = _finite(recovery_rate, "recovery rate")
+    if exposure < 0:
+        raise ValueError("exposure must be nonnegative")
+    if not 0 <= probability <= 1:
+        raise ValueError("default probability must be between 0 and 1")
+    if not 0 <= recovery <= 1:
+        raise ValueError("recovery rate must be between 0 and 1")
+    return exposure * probability * (1 - recovery)
+
+
+def annualized_futures_basis(spot: float, futures: float, days_to_expiry: int) -> float:
+    """Return simple annualized futures-minus-spot basis; not an expected return."""
+    spot = _finite(spot, "spot")
+    futures = _finite(futures, "futures")
+    days = _positive_integer(days_to_expiry, "days_to_expiry")
+    if spot <= 0:
+        raise ValueError("spot must be positive")
+    if futures <= 0:
+        raise ValueError("futures must be positive")
+    return (futures / spot - 1) * 365 / days
+
+
+def commodity_roll_yield(near_contract: float, next_contract: float) -> float:
+    """Return a one-roll price-only proxy, near / next - 1, before costs."""
+    near = _finite(near_contract, "near contract")
+    next_price = _finite(next_contract, "next contract")
+    if near <= 0 or next_price <= 0:
+        raise ValueError("contract prices must be positive")
+    return near / next_price - 1
