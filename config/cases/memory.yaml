@@ -1,0 +1,7 @@
+case_id: memory
+decision_date: 2026-07-17
+hypothesis: A decline in absolute ending inventory is necessary before memory revenue and gross margin can recover.
+success: Ending inventory declines before or together with material revenue and gross-margin recovery.
+failure: Revenue and gross margin recover materially while absolute ending inventory is still rising.
+alternative_explanations: [asp, product_mix, nrv_write_downs, revenue_scale, work_in_process, hbm, supply_discipline]
+attempts: 1

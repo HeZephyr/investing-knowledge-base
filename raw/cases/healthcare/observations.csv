@@ -1,0 +1,4 @@
+series,period,value,unit,available_at,source_url,provider
+fda_accelerated_approval,2021-06-07,1,event_count,2021-06-07T20:00:00Z,https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/Aducanumab_BLA761178_Stein_2021_06_07.pdf,FDA
+cms_restricted_coverage,2022-04-07,1,event_count,2022-04-07T20:00:00Z,https://www.cms.gov/newsroom/press-releases/cms-finalizes-medicare-coverage-policy-monoclonal-antibodies-directed-against-amyloid-treatment,CMS
+biogen_aduhelm_inventory_writeoff,2022,275,USD_millions,2025-02-13T21:00:00Z,https://investors.biogen.com/static-files/83353b9c-5396-4420-b0e7-16f71f8703f2,Biogen

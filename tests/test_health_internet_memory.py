@@ -76,9 +76,7 @@ def test_sector_system_has_primary_sources_framework_and_frozen_case(case_name: 
     assert metrics["case_id"] == case_name
     assert metrics["hypothesis_supported"] is False
 
-    config = yaml.safe_load(
-        (ROOT / f"config/cases/{case_name}.yaml").read_text(encoding="utf-8")
-    )
+    config = yaml.safe_load((ROOT / f"config/cases/{case_name}.yaml").read_text(encoding="utf-8"))
     assert config["attempts"] == 1
     assert config["decision_date"].isoformat() == "2026-07-17"
 

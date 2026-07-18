@@ -59,6 +59,8 @@ nav:
       - 能源: wiki/sectors/能源.md
       - 金融: wiki/sectors/金融.md
       - 消费: wiki/sectors/消费.md
+      - 医药医疗: wiki/sectors/医药医疗.md
+      - 互联网平台: wiki/sectors/互联网平台.md
   - 研究方法:
       - 公开投资框架: wiki/methods/公开投资框架.md
       - 投资研究证据矩阵: wiki/methods/投资研究证据矩阵.md
@@ -112,6 +114,9 @@ nav:
       - 能源价格与公司现金流: output/cases/energy.md
       - 银行资本与流动性: output/cases/bank.md
       - 宏观零售与公司收入: output/cases/consumer.md
+      - 医药批准与支付: output/cases/healthcare.md
+      - 平台用户与变现: output/cases/internet.md
+      - 存储库存与盈利: output/cases/memory.md
   - 互动:
       - 投资计算器: tools.md
       - 知识图谱: graph.md

@@ -1,0 +1,17 @@
+case_id: internet
+snapshot: observations.csv
+snapshot_sha256: "095873bc1ff89d1b1790bd6e4d9b7c4984f11c0f1da9e0ad0f6f50a31703baa0"
+primary_key: [series, period]
+allowed_units: [billion_people, USD_millions, percent]
+retrieved_at: 2026-07-17T23:50:00+08:00
+vintage: filed-company-results
+upstream:
+  - provider: Meta
+    endpoint: https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx
+    release_date: 2024-02-01
+    periods: [2023, 2022]
+  - provider: Meta
+    endpoint: https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx
+    release_date: 2025-01-29
+    periods: [2024, 2023]
+notes: DAP is a December average, revenue and ad changes are full-year measures, and the ad indices are not an exact accounting bridge.

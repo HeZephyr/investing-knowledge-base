@@ -254,6 +254,61 @@ def _consumer_metrics(snapshot: CaseSnapshot) -> dict[str, Any]:
     }
 
 
+def _healthcare_metrics(snapshot: CaseSnapshot) -> dict[str, Any]:
+    approval = _series(snapshot, "fda_accelerated_approval")["2021-06-07"] == 1
+    restricted = _series(snapshot, "cms_restricted_coverage")["2022-04-07"] == 1
+    writeoff = _series(snapshot, "biogen_aduhelm_inventory_writeoff")["2022"]
+    return {
+        "case_id": "healthcare",
+        "accelerated_approval": approval,
+        "coverage_restricted": restricted,
+        "inventory_writeoff_usd_millions": writeoff,
+        "hypothesis_supported": approval and not restricted and writeoff == 0,
+    }
+
+
+def _internet_metrics(snapshot: CaseSnapshot) -> dict[str, Any]:
+    dap = _series(snapshot, "meta_family_dap")
+    revenue = _series(snapshot, "meta_revenue")
+    dap_growth = _growth(dap["2024"], dap["2023"])
+    revenue_growth = _growth(revenue["2024"], revenue["2023"])
+    impressions_growth = _series(snapshot, "meta_ad_impressions_growth")["2024"]
+    price_growth = _series(snapshot, "meta_average_price_per_ad_growth")["2024"]
+    gap = abs(revenue_growth - dap_growth)
+    return {
+        "case_id": "internet",
+        "dap_growth_pct": round(dap_growth, 2),
+        "revenue_growth_pct": round(revenue_growth, 2),
+        "growth_gap_percentage_points": round(gap, 2),
+        "ad_impressions_growth_pct": impressions_growth,
+        "average_price_per_ad_growth_pct": price_growth,
+        "hypothesis_supported": gap <= 5 and impressions_growth == 0 and price_growth == 0,
+    }
+
+
+def _memory_metrics(snapshot: CaseSnapshot) -> dict[str, Any]:
+    revenue = _series(snapshot, "micron_revenue")
+    margin = _series(snapshot, "micron_gross_margin_pct")
+    inventory = _series(snapshot, "micron_inventory")
+    capex = _series(snapshot, "micron_capex_net")
+    write_down = _series(snapshot, "micron_inventory_write_down")
+    revenue_growth = _growth(revenue["FY2024"], revenue["FY2023"])
+    inventory_change = _growth(inventory["FY2024"], inventory["FY2023"])
+    margin_change = margin["FY2024"] - margin["FY2023"]
+    recovered = revenue_growth > 20 and margin_change > 10
+    return {
+        "case_id": "memory",
+        "revenue_growth_pct": round(revenue_growth, 2),
+        "inventory_change_pct": round(inventory_change, 2),
+        "gross_margin_change_pp": round(margin_change, 2),
+        "capex_change_pct": round(_growth(capex["FY2024"], capex["FY2023"]), 2),
+        "fy2023_inventory_write_down_usd_millions": write_down["FY2023"],
+        "dram_asp_increased": _series(snapshot, "dram_asp_direction")["Q4-FY2024"] > 0,
+        "nand_asp_increased": _series(snapshot, "nand_asp_direction")["Q4-FY2024"] > 0,
+        "hypothesis_supported": not (recovered and inventory_change > 0),
+    }
+
+
 def case_metrics(snapshot: CaseSnapshot) -> dict[str, Any]:
     """Return deterministic, pre-registered metrics for a known frozen case."""
 
@@ -261,6 +316,9 @@ def case_metrics(snapshot: CaseSnapshot) -> dict[str, Any]:
         "energy": _energy_metrics,
         "bank": _bank_metrics,
         "consumer": _consumer_metrics,
+        "healthcare": _healthcare_metrics,
+        "internet": _internet_metrics,
+        "memory": _memory_metrics,
     }
     try:
         calculator = calculators[snapshot.case_id]

@@ -1,0 +1,16 @@
+series,period,value,unit,available_at,source_url,provider
+micron_revenue,FY2023,15540,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_revenue,FY2024,25111,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_gross_margin_pct,FY2023,-9.1,percent,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_gross_margin_pct,FY2024,22.4,percent,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_inventory,FY2023,8387,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_inventory,FY2024,8875,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_capex_net,FY2023,7012,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_capex_net,FY2024,8121,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_inventory_write_down,FY2023,1831,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+micron_inventory_write_down,FY2024,0,USD_millions,2024-09-25T20:07:00Z,https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-7,Micron
+dram_asp_direction,Q4-FY2024,1,direction_flag,2024-09-25T20:07:00Z,https://investors.micron.com/static-files/5890f96b-bf35-4c4d-b8b8-b9d0f9ed63e4,Micron
+nand_asp_direction,Q4-FY2024,1,direction_flag,2024-09-25T20:07:00Z,https://investors.micron.com/static-files/5890f96b-bf35-4c4d-b8b8-b9d0f9ed63e4,Micron
+dram_bit_shipment_direction,Q4-FY2024,0,direction_flag,2024-09-25T20:07:00Z,https://investors.micron.com/static-files/5890f96b-bf35-4c4d-b8b8-b9d0f9ed63e4,Micron
+nand_bit_shipment_direction,Q4-FY2024,1,direction_flag,2024-09-25T20:07:00Z,https://investors.micron.com/static-files/5890f96b-bf35-4c4d-b8b8-b9d0f9ed63e4,Micron
+industry_wafer_capacity_below_2022,2024,1,event_count,2024-09-25T20:07:00Z,https://investors.micron.com/static-files/5890f96b-bf35-4c4d-b8b8-b9d0f9ed63e4,Micron

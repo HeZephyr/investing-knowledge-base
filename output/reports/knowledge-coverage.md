@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**53.2%**
+- 仓库就绪度，不是预期收益：**56.9%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -14,7 +14,7 @@
 | 基础学科 | 6 | 0 | 6 | 8 | 59.5% |
 | 市场 | 7 | 0 | 1 | 8 | 54.1% |
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
-| 行业 | 9 | 0 | 2 | 7 | 46.1% |
+| 行业 | 4 | 0 | 2 | 12 | 73.9% |
 | 公司研究 | 12 | 0 | 3 | 1 | 18.4% |
 | 研究方法 | 4 | 1 | 8 | 5 | 58.1% |
 | 组合与风控 | 7 | 2 | 4 | 1 | 29.3% |
@@ -24,9 +24,9 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 23 | 0 | 24 | 26 | 57.0% |
+| `content-ready` | 内容就绪 | 21 | 0 | 24 | 28 | 59.7% |
 | `exercise-tested` | 练习已测 | 17 | 4 | 8 | 16 | 49.3% |
-| `case-validated` | 案例验证 | 8 | 0 | 0 | 3 | 27.3% |
+| `case-validated` | 案例验证 | 5 | 0 | 0 | 6 | 54.5% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
 ## 逐项证据与缺口
@@ -157,14 +157,14 @@
 | `sector-energy-content` | 行业 | `content-ready` | 能源供需、成本曲线与公司传导 | validated | 2026-07-17 | `synthesis:wiki/sectors/能源.md`<br>`source:raw/official/united-states/eia-open-data.md` | — |
 | `sector-financial-content` | 行业 | `content-ready` | 银行、保险与券商分析 | validated | 2026-07-17 | `synthesis:wiki/sectors/金融.md`<br>`source:raw/official/global/bis-basel-framework.md` | — |
 | `sector-framework` | 行业 | `content-ready` | 可复用行业研究框架 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/周期行业研究.md` | 缺通用官方分类来源和跨行业练习 |
-| `sector-healthcare-case` | 行业 | `case-validated` | 医药公司冻结数据案例 | missing | 2026-07-17 | — | 缺管线概率、现金消耗和估值报告 |
-| `sector-healthcare-content` | 行业 | `content-ready` | 医药研发、支付与监管 | missing | 2026-07-17 | — | 缺研发概率、专利、支付体系和监管来源 |
+| `sector-healthcare-case` | 行业 | `case-validated` | 医药公司冻结数据案例 | validated | 2026-07-17 | `source:raw/cases/healthcare/manifest.yaml`<br>`report:output/cases/healthcare.md`<br>`test:tests/test_health_internet_memory.py` | — |
+| `sector-healthcare-content` | 行业 | `content-ready` | 医药研发、支付与监管 | validated | 2026-07-17 | `synthesis:wiki/sectors/医药医疗.md`<br>`source:raw/official/united-states/fda-clinical-endpoints.md`<br>`source:raw/official/china/nmpa-drug-registration.md` | — |
 | `sector-industrials` | 行业 | `content-ready` | 工业、资本品与订单周期 | missing | 2026-07-17 | — | 缺订单、积压、产能和售后经济体系 |
 | `sector-insurance-content` | 行业 | `content-ready` | 保险负债、准备金与投资端 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/金融.md` | 缺偿付能力与会计准则官方来源 |
-| `sector-internet-case` | 行业 | `case-validated` | 互联网平台冻结数据案例 | missing | 2026-07-17 | — | 缺用户、广告、电商和公司财务报告 |
-| `sector-internet-content` | 行业 | `content-ready` | 互联网平台网络效应与变现 | missing | 2026-07-17 | — | 缺获客、留存、变现和监管体系 |
+| `sector-internet-case` | 行业 | `case-validated` | 互联网平台冻结数据案例 | validated | 2026-07-17 | `source:raw/cases/internet/manifest.yaml`<br>`report:output/cases/internet.md`<br>`test:tests/test_health_internet_memory.py` | — |
+| `sector-internet-content` | 行业 | `content-ready` | 互联网平台网络效应与变现 | validated | 2026-07-17 | `synthesis:wiki/sectors/互联网平台.md`<br>`source:raw/official/united-states/ftc-platform-data-practices.md`<br>`source:raw/official/europe/eu-digital-markets-act.md` | — |
 | `sector-materials-mining` | 行业 | `content-ready` | 材料与矿业成本曲线 | missing | 2026-07-17 | — | 缺品位、回收率、资本开支和成本曲线体系 |
-| `sector-memory-case` | 行业 | `case-validated` | 存储周期冻结数据案例 | missing | 2026-07-17 | — | 缺价格、库存、供给和公司财务正负结果报告 |
+| `sector-memory-case` | 行业 | `case-validated` | 存储周期冻结数据案例 | validated | 2026-07-17 | `source:raw/cases/memory/manifest.yaml`<br>`report:output/cases/memory.md`<br>`test:tests/test_health_internet_memory.py` | — |
 | `sector-memory-content` | 行业 | `content-ready` | 存储半导体供需与技术代际 | validated | 2026-07-17 | `synthesis:wiki/sectors/存储半导体.md`<br>`source:raw/official/global/jedec-memory-standards.md` | — |
 | `sector-real-estate` | 行业 | `content-ready` | 地产开发、运营与融资 | missing | 2026-07-17 | — | 缺销售、土地、杠杆和区域供需体系 |
 | `sector-technology-hardware` | 行业 | `content-ready` | 硬件与半导体产业链 | missing | 2026-07-17 | — | 缺晶圆、封测、设备和终端周期体系 |
