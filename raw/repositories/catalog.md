@@ -27,6 +27,8 @@
 - [myhhub/stock](cards/myhhub-stock.md)：A 股抓取、指标、筛选与回测参考；自动交易排除。
 - [HKUDS/AI-Trader](cards/ai-trader.md)：根许可证缺失且涉及远端注册、broker sync 与 copy trade，仅链接分析。
 - [ai_quant_trade](cards/ai-quant-trade.md)：Apache-2.0 的大型教学/示例集合，逐示例审计，不采信收益宣传。
+- [FinHack](cards/finhack.md)：GPL/商业双许可的平台架构参考；当前重构版明示可能不可运行，安装有工作树写副作用。
+- [finance-quant-skills](cards/finance-quant-skills.md)：13 个 Skill 的发现入口；根许可未确认，Cookie、专有客户端与实盘能力逐项隔离。
 
 ## 组合、回测与高级研究
 

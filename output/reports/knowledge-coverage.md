@@ -67,7 +67,7 @@
 | `company-scenarios` | 公司研究 | `exercise-tested` | 多情景估值与敏感性 | missing | 2026-07-17 | — | 缺概率加权场景、龙卷风图和测试 |
 | `company-three-statements` | 公司研究 | `content-ready` | 三表结构与勾稽关系 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/财务三表.md` | 缺准则来源和真实报表勾稽 |
 | `company-valuation-content` | 公司研究 | `content-ready` | 绝对与相对估值框架 | validated | 2026-07-17 | `synthesis:wiki/concepts/估值.md`<br>`source:raw/experts/cards/damodaran-valuation.md` | — |
-| `engineering-audit-plugin` | 工程与维护 | `exercise-tested` | 第三方仓库审计与只读研究插件 | validated | 2026-07-17 | `implementation:plugins/investing-research/scripts/audit_repository.py`<br>`test:tests/test_investing_research_plugin.py` | — |
+| `engineering-audit-plugin` | 工程与维护 | `exercise-tested` | 第三方仓库与 Skill 供应链审计插件 | validated | 2026-07-17 | `implementation:plugins/investing-research/scripts/audit_repository.py`<br>`implementation:plugins/investing-research/skills/audit-finance-skills/SKILL.md`<br>`test:tests/test_investing_research_plugin.py`<br>`test:tests/test_finance_skill_audit.py` | — |
 | `engineering-ci` | 工程与维护 | `maintenance-live` | 多版本 CI 与保护检查 | validated | 2026-07-17 | `workflow:.github/workflows/ci.yml`<br>`test:tests/test_github_workflows.py` | — |
 | `engineering-coverage` | 工程与维护 | `exercise-tested` | 机器可审计覆盖报告 | validated | 2026-07-17 | `implementation:src/investkb/coverage.py`<br>`test:tests/test_coverage.py` | — |
 | `engineering-data-adapters` | 工程与维护 | `exercise-tested` | A股、港股与基金免费数据适配 | validated | 2026-07-17 | `implementation:src/investkb/data/providers.py`<br>`test:tests/data/test_providers.py` | — |

@@ -18,6 +18,8 @@
 
 对外部金融代码库的采用先经过[金融研究代码库审计](wiki/engineering/金融研究代码库审计.md)。仓库内的 `investing-research` 插件只扫描已经合法下载的本地代码，不联网、不读取 Cookie/Token、不连接券商或自动下单；安装和更新命令见 [`plugins/investing-research/README.md`](plugins/investing-research/README.md)。
 
+[金融量化平台与 Skill 审计](wiki/engineering/金融量化平台与Skill审计.md)进一步比较 FinHack 与 finance-quant-skills，并把每个 Agent Skill 当作可执行供应链材料检查。插件 v0.2 增加 `$audit-finance-skills`，默认不安装第三方 Skill、不执行上游脚本，并隔离 Cookie、账号和实盘订单能力。
+
 网页版本会由 GitHub Pages 自动发布，提供中文全文搜索、知识图谱、学习进度与复利/费用/回撤计算器。学习进度仅保存在浏览器本地。
 
 ## 完成度怎么计算
