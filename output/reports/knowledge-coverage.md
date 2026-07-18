@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**60.6%**
+- 仓库就绪度，不是预期收益：**68.8%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -15,7 +15,7 @@
 | 市场 | 7 | 0 | 1 | 8 | 54.1% |
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
-| 公司研究 | 10 | 0 | 3 | 3 | 30.9% |
+| 公司研究 | 0 | 0 | 0 | 16 | 100.0% |
 | 研究方法 | 2 | 1 | 8 | 7 | 69.2% |
 | 组合与风控 | 6 | 2 | 4 | 2 | 36.4% |
 | 工程与维护 | 1 | 1 | 0 | 13 | 88.3% |
@@ -24,8 +24,8 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 21 | 0 | 24 | 28 | 59.7% |
-| `exercise-tested` | 练习已测 | 17 | 4 | 8 | 16 | 49.3% |
+| `content-ready` | 内容就绪 | 17 | 0 | 21 | 35 | 66.6% |
+| `exercise-tested` | 练习已测 | 11 | 4 | 8 | 22 | 62.7% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
@@ -51,21 +51,21 @@
 | `asset-overseas-etf` | 资产与产品 | `content-ready` | 海外 ETF 与跨币种暴露 | reviewed | 2026-07-17 | `synthesis:wiki/products/海外ETF.md` | 缺税务、遗产税、预扣税和产品来源 |
 | `asset-reit` | 资产与产品 | `content-ready` | REIT 结构与现金流 | reviewed | 2026-07-17 | `synthesis:wiki/products/REIT.md` | 缺 A股、港股和美股制度对比 |
 | `asset-structured-products` | 资产与产品 | `content-ready` | 结构化产品与路径依赖 | missing | 2026-07-17 | — | 缺条款拆解、发行人信用和压力情景 |
-| `company-capital-allocation` | 公司研究 | `content-ready` | 资本配置与再投资回报 | missing | 2026-07-17 | — | 缺并购、回购、分红、债务和再投资框架 |
+| `company-capital-allocation` | 公司研究 | `content-ready` | 资本配置与再投资回报 | validated | 2026-07-17 | `source:raw/experts/cards/damodaran-valuation.md`<br>`synthesis:wiki/company/资本配置治理与稀释.md` | — |
 | `company-case-negative` | 公司研究 | `case-validated` | 公司研究负结果与放弃案例 | validated | 2026-07-17 | `source:raw/cases/healthcare/manifest.yaml`<br>`report:output/cases/company-negative.md`<br>`test:tests/test_public_evidence_cases.py` | — |
 | `company-case-positive` | 公司研究 | `case-validated` | 公司研究正结果冻结案例 | validated | 2026-07-17 | `source:raw/cases/company-positive/manifest.yaml`<br>`report:output/cases/company-positive.md`<br>`test:tests/test_public_evidence_cases.py` | — |
-| `company-cash-conversion` | 公司研究 | `exercise-tested` | 营运资本与现金转换 | missing | 2026-07-17 | — | 缺 DSO、DIO、DPO 和自由现金流练习 |
-| `company-comparables` | 公司研究 | `content-ready` | 可比公司与估值倍数 | missing | 2026-07-17 | — | 缺业务可比性、口径调整和周期归一化 |
-| `company-dilution` | 公司研究 | `exercise-tested` | 股权激励、增发与稀释计算 | missing | 2026-07-17 | — | 缺完全摊薄股数模型和测试 |
-| `company-disclosure` | 公司研究 | `content-ready` | 法定披露与公告检索 | reviewed | 2026-07-17 | `source:raw/official/united-states/sec-edgar.md`<br>`synthesis:wiki/concepts/财务三表.md` | 缺跨市场表单、公告层级和检索演练 |
-| `company-earnings-quality` | 公司研究 | `content-ready` | 盈利质量与应计分析 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/盈利质量.md` | 缺准则来源、红旗清单和实例 |
-| `company-governance` | 公司研究 | `content-ready` | 治理、激励与关联交易 | missing | 2026-07-17 | — | 缺董事会、薪酬、控股股东和治理案例 |
-| `company-point-in-time` | 公司研究 | `exercise-tested` | 按当时可得信息重建公司档案 | missing | 2026-07-17 | — | 缺披露时点模型、重述与测试 |
-| `company-reconciliation` | 公司研究 | `exercise-tested` | 三表重建与勾稽练习 | missing | 2026-07-17 | — | 缺标准化工作簿、代码和测试 |
-| `company-revenue` | 公司研究 | `content-ready` | 收入确认与合同经济 | missing | 2026-07-17 | — | 缺准则、递延收入和行业案例 |
-| `company-reverse-dcf` | 公司研究 | `exercise-tested` | 反向 DCF 与市场隐含预期 | missing | 2026-07-17 | — | 缺模型实现、敏感性和测试 |
-| `company-scenarios` | 公司研究 | `exercise-tested` | 多情景估值与敏感性 | missing | 2026-07-17 | — | 缺概率加权场景、龙卷风图和测试 |
-| `company-three-statements` | 公司研究 | `content-ready` | 三表结构与勾稽关系 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/财务三表.md` | 缺准则来源和真实报表勾稽 |
+| `company-cash-conversion` | 公司研究 | `exercise-tested` | 营运资本与现金转换 | validated | 2026-07-17 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
+| `company-comparables` | 公司研究 | `content-ready` | 可比公司与估值倍数 | validated | 2026-07-17 | `source:raw/experts/cards/damodaran-valuation.md`<br>`synthesis:wiki/company/估值实验室.md` | — |
+| `company-dilution` | 公司研究 | `exercise-tested` | 股权激励、增发与稀释计算 | validated | 2026-07-17 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
+| `company-disclosure` | 公司研究 | `content-ready` | 法定披露与公告检索 | validated | 2026-07-17 | `source:raw/official/united-states/investor-edgar-research.md`<br>`synthesis:wiki/company/法定披露与历史时点.md` | — |
+| `company-earnings-quality` | 公司研究 | `content-ready` | 盈利质量与应计分析 | validated | 2026-07-17 | `source:raw/official/global/ifrs-ias-7.md`<br>`synthesis:wiki/concepts/盈利质量.md` | — |
+| `company-governance` | 公司研究 | `content-ready` | 治理、激励与关联交易 | validated | 2026-07-17 | `source:raw/official/united-states/sec-edgar.md`<br>`synthesis:wiki/company/资本配置治理与稀释.md` | — |
+| `company-point-in-time` | 公司研究 | `exercise-tested` | 按当时可得信息重建公司档案 | validated | 2026-07-17 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
+| `company-reconciliation` | 公司研究 | `exercise-tested` | 三表重建与勾稽练习 | validated | 2026-07-17 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
+| `company-revenue` | 公司研究 | `content-ready` | 收入确认与合同经济 | validated | 2026-07-17 | `source:raw/official/global/ifrs-15.md`<br>`synthesis:wiki/company/收入确认与合同经济.md` | — |
+| `company-reverse-dcf` | 公司研究 | `exercise-tested` | 反向 DCF 与市场隐含预期 | validated | 2026-07-17 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
+| `company-scenarios` | 公司研究 | `exercise-tested` | 多情景估值与敏感性 | validated | 2026-07-17 | `implementation:src/investkb/company.py`<br>`test:tests/test_company_research.py` | — |
+| `company-three-statements` | 公司研究 | `content-ready` | 三表结构与勾稽关系 | validated | 2026-07-17 | `source:raw/official/global/ifrs-ias-1.md`<br>`synthesis:wiki/concepts/财务三表.md` | — |
 | `company-valuation-content` | 公司研究 | `content-ready` | 绝对与相对估值框架 | validated | 2026-07-17 | `synthesis:wiki/concepts/估值.md`<br>`source:raw/experts/cards/damodaran-valuation.md` | — |
 | `engineering-audit-plugin` | 工程与维护 | `exercise-tested` | 第三方仓库与 Skill 供应链审计插件 | validated | 2026-07-17 | `implementation:plugins/investing-research/scripts/audit_repository.py`<br>`implementation:plugins/investing-research/skills/audit-finance-skills/SKILL.md`<br>`test:tests/test_investing_research_plugin.py`<br>`test:tests/test_finance_skill_audit.py` | — |
 | `engineering-ci` | 工程与维护 | `maintenance-live` | 多版本 CI 与保护检查 | validated | 2026-07-17 | `workflow:.github/workflows/ci.yml`<br>`test:tests/test_github_workflows.py` | — |

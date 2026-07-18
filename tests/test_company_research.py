@@ -15,6 +15,7 @@ from investkb.company import (
     scenario_valuation,
     select_point_in_time_facts,
 )
+from investkb.coverage import load_coverage
 
 
 def _time(year: int, month: int, day: int) -> datetime:
@@ -112,7 +113,7 @@ def test_fully_diluted_shares_applies_treasury_stock_method() -> None:
 
 def test_reverse_dcf_recovers_implied_growth() -> None:
     growth = reverse_dcf_growth(
-        enterprise_value=1_282.93,
+        enterprise_value=3_631.64,
         revenue=1_000,
         free_cash_flow_margin=0.20,
         discount_rate=0.10,
@@ -152,3 +153,28 @@ def test_normalized_multiples_leave_loss_denominators_undefined() -> None:
         net_income=-10,
     )
     assert result == {"ev_to_revenue": 2.0, "ev_to_ebitda": None, "price_to_earnings": None}
+
+
+def test_company_research_chain_has_stage_appropriate_evidence() -> None:
+    manifest = load_coverage("config/knowledge-coverage.yaml")
+    requirements = {item.id: item for item in manifest.requirements}
+    ids = (
+        "company-disclosure",
+        "company-point-in-time",
+        "company-three-statements",
+        "company-reconciliation",
+        "company-revenue",
+        "company-earnings-quality",
+        "company-cash-conversion",
+        "company-capital-allocation",
+        "company-governance",
+        "company-dilution",
+        "company-reverse-dcf",
+        "company-scenarios",
+        "company-comparables",
+    )
+    for requirement_id in ids:
+        requirement = requirements[requirement_id]
+        assert requirement.status == "validated"
+        assert not requirement.gap
+        assert requirement.evidence
