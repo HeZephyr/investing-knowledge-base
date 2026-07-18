@@ -100,3 +100,8 @@ updated: 2026-07-18
 - changed: [[投资数学与优化]], [[微观经济与产业组织]], [[宏观账户周期与货币传导]], [[金融危机与机制复盘]], [[假设检验与多重比较]], [[回归与诊断]], [[财务三表]], [[盈利质量]], [[论文阅读与复现]], [[经验与失败教训]]
 - sources: raw-course-mit-linear-algebra, raw-course-mit-calculus, raw-book-openstax-principles-economics, raw-official-us-bea-national-accounts, raw-official-us-federal-reserve-monetary-policy, raw-official-us-federal-reserve-history-crises, IFRS 官方卡与冻结 HML 数据
 - result: 建立效应量/功效、HC1/杠杆/Cook 距离、显式种子 bootstrap，补齐数学优化、微观产业、宏观账户、货币传导、会计应计与危机机制；基础学科轴 20/20 validated，仓库就绪度升至 85.5%。
+
+## [2026-07-18] research | 全球市场执行、结算与日历实验室
+- changed: [[英国市场]], [[A股市场]], [[美股市场]], [[沪深港通]], [[市场微观结构]], [[清算结算与托管]], [[公司行动与退市]], [[经验与失败教训]]
+- sources: raw-official-uk-fca-markets-disclosure, raw-official-uk-lse-trading-rules, raw-official-uk-hmrc-share-taxes, raw-official-uk-euroclear-crest-settlement, raw-official-us-sec-execution-settlement, raw-official-us-finra-orders-corporate-actions, raw-official-us-dtcc-clearing-custody, raw-official-hkex-stock-connect-operations
+- result: 建立有效期订单/费用、逐档盘口、公司行动、T+N、时区日历和四市场定时 smoke；市场轴 16/16 validated，仓库就绪度升至 90.9%。

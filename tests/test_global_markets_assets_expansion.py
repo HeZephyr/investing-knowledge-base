@@ -112,4 +112,7 @@ def test_coverage_only_upgrades_supported_atomic_capabilities() -> None:
         assert not requirements[requirement_id].gap
     assert requirements["asset-bond-math"].status == "validated"
     assert requirements["asset-futures"].status == "reviewed"
-    assert requirements["market-calendar-monitor"].status == "missing"
+    calendar = requirements["market-calendar-monitor"]
+    assert calendar.status == "validated"
+    assert calendar.stage == "maintenance-live"
+    assert {evidence.kind for evidence in calendar.evidence} == {"workflow", "test"}

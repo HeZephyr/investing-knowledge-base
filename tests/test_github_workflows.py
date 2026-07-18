@@ -8,6 +8,7 @@ def test_required_github_automation_files_exist_and_parse() -> None:
         Path(".github/workflows/ci.yml"),
         Path(".github/workflows/codeql.yml"),
         Path(".github/workflows/link-check.yml"),
+        Path(".github/workflows/market-calendar-smoke.yml"),
         Path(".github/workflows/provider-smoke.yml"),
         Path(".github/workflows/pages.yml"),
         Path(".github/workflows/pr-policy.yml"),
@@ -30,9 +31,14 @@ def test_workflows_use_least_privilege_and_avoid_pull_request_target() -> None:
 def test_ci_and_provider_checks_have_deliberate_schedules() -> None:
     ci = Path(".github/workflows/ci.yml").read_text(encoding="utf-8")
     provider = Path(".github/workflows/provider-smoke.yml").read_text(encoding="utf-8")
+    calendar = Path(".github/workflows/market-calendar-smoke.yml").read_text(encoding="utf-8")
 
     assert 'cron: "20 22 * * 0"' in ci
     assert 'cron: "10 23 * * 1,4"' in provider
+    assert 'cron: "40 22 * * 0,3"' in calendar
+    assert "python -m investkb.market_calendar --smoke" in calendar
+    assert "contents: write" not in calendar
+    assert "secrets." not in calendar
 
 
 def test_test_helpers_are_explicit_python_packages() -> None:

@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-18
-- 仓库就绪度，不是预期收益：**85.5%**
+- 仓库就绪度，不是预期收益：**90.9%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -12,7 +12,7 @@
 | 维度 | missing | seed | reviewed | validated | 就绪度 |
 |---|---:|---:|---:|---:|---:|
 | 基础学科 | 0 | 0 | 0 | 20 | 100.0% |
-| 市场 | 7 | 0 | 1 | 8 | 54.1% |
+| 市场 | 0 | 0 | 0 | 16 | 100.0% |
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
 | 公司研究 | 0 | 0 | 0 | 16 | 100.0% |
@@ -24,10 +24,10 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 9 | 0 | 11 | 53 | 82.4% |
-| `exercise-tested` | 练习已测 | 5 | 1 | 0 | 39 | 87.2% |
+| `content-ready` | 内容就绪 | 6 | 0 | 10 | 57 | 87.0% |
+| `exercise-tested` | 练习已测 | 2 | 1 | 0 | 42 | 93.9% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
-| `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
+| `maintenance-live` | 维护在线 | 0 | 0 | 0 | 6 | 100.0% |
 
 ## 逐项证据与缺口
 
@@ -102,22 +102,22 @@
 | `foundation-sampling` | 基础学科 | `content-ready` | 抽样、选择偏差与误差 | validated | 2026-07-17 | `source:raw/books-and-papers/openintro-statistics.md`<br>`synthesis:wiki/foundations/抽样与估计.md` | — |
 | `foundation-statistical-coding` | 基础学科 | `exercise-tested` | Python 统计计算基础 | validated | 2026-07-18 | `implementation:src/investkb/advanced_foundations.py`<br>`test:tests/test_advanced_foundations.py`<br>`report:pyproject.toml` | — |
 | `foundation-tvm` | 基础学科 | `content-ready` | 货币时间价值 | validated | 2026-07-17 | `source:raw/books-and-papers/openstax-principles-finance.md`<br>`synthesis:wiki/foundations/复利与贴现.md` | — |
-| `market-calendar-monitor` | 市场 | `maintenance-live` | 全球交易日历持续校验 | missing | 2026-07-17 | — | 缺免费来源、离线契约和定时监控 |
-| `market-cn-execution` | 市场 | `exercise-tested` | A 股订单、涨跌停与结算练习 | missing | 2026-07-17 | — | 缺订单状态机、费用和异常交易练习 |
+| `market-calendar-monitor` | 市场 | `maintenance-live` | 全球交易日历持续校验 | validated | 2026-07-18 | `workflow:.github/workflows/market-calendar-smoke.yml`<br>`test:tests/test_market_calendar.py` | — |
+| `market-cn-execution` | 市场 | `exercise-tested` | A 股订单、涨跌停与结算练习 | validated | 2026-07-18 | `implementation:src/investkb/market_operations.py`<br>`test:tests/test_market_operations.py` | — |
 | `market-cn-rules` | 市场 | `content-ready` | A 股交易与披露规则 | validated | 2026-07-17 | `synthesis:wiki/markets/A股市场.md`<br>`source:raw/official/mainland/sse-trading-rules.md` | — |
-| `market-corporate-actions` | 市场 | `exercise-tested` | 分红、拆并股、配股与退市处理 | missing | 2026-07-17 | — | 缺跨市场公司行动数据模型和测试 |
-| `market-cross-border` | 市场 | `content-ready` | 沪深港通与跨境访问 | reviewed | 2026-07-17 | `synthesis:wiki/markets/沪深港通.md` | 缺额度、假日、币种、税费和公司行动官方来源 |
+| `market-corporate-actions` | 市场 | `exercise-tested` | 分红、拆并股、配股与退市处理 | validated | 2026-07-18 | `implementation:src/investkb/market_operations.py`<br>`test:tests/test_market_operations.py` | — |
+| `market-cross-border` | 市场 | `content-ready` | 沪深港通与跨境访问 | validated | 2026-07-18 | `source:raw/official/hong-kong/hkex-stock-connect-operations.md`<br>`synthesis:wiki/markets/沪深港通.md` | — |
 | `market-emerging-rules` | 市场 | `content-ready` | 新兴市场访问框架 | validated | 2026-07-17 | `source:raw/official/global/imf-areaer.md`<br>`source:raw/official/global/world-bank-gfdd.md`<br>`synthesis:wiki/markets/新兴市场访问.md` | — |
 | `market-europe-rules` | 市场 | `content-ready` | 欧盟主要市场与 UCITS | validated | 2026-07-17 | `source:raw/official/europe/esma-trading.md`<br>`source:raw/official/europe/eu-investment-funds-ucits.md`<br>`synthesis:wiki/markets/欧盟市场.md` | — |
 | `market-hk-fees` | 市场 | `content-ready` | 港股费用与风险 | validated | 2026-07-17 | `synthesis:wiki/markets/交易费用.md`<br>`source:raw/official/hong-kong/hkex-transaction-fees.md` | — |
 | `market-hk-rules` | 市场 | `content-ready` | 港股交易与披露规则 | validated | 2026-07-17 | `synthesis:wiki/markets/港股市场.md`<br>`source:raw/official/hong-kong/hkex-trading-rules.md` | — |
 | `market-japan-rules` | 市场 | `content-ready` | 日本交易与披露规则 | validated | 2026-07-17 | `source:raw/official/japan/jpx-trading-clearing.md`<br>`source:raw/official/japan/fsa-edinet.md`<br>`synthesis:wiki/markets/日本市场.md` | — |
 | `market-korea-rules` | 市场 | `content-ready` | 韩国交易与披露规则 | validated | 2026-07-17 | `synthesis:wiki/markets/韩国股市.md`<br>`source:raw/official/korea/krx-investment-guide.md` | — |
-| `market-microstructure` | 市场 | `content-ready` | 市场微观结构 | missing | 2026-07-17 | — | 缺价差、深度、冲击成本和价格发现体系 |
-| `market-settlement` | 市场 | `content-ready` | 清算、结算与托管 | missing | 2026-07-17 | — | 缺各市场结算周期、失败与托管风险 |
-| `market-uk-rules` | 市场 | `content-ready` | 英国交易与披露规则 | missing | 2026-07-17 | — | 缺 FCA、LSE 与税费来源 |
+| `market-microstructure` | 市场 | `content-ready` | 市场微观结构 | validated | 2026-07-18 | `source:raw/official/united-states/sec-execution-settlement.md`<br>`synthesis:wiki/markets/市场微观结构.md` | — |
+| `market-settlement` | 市场 | `content-ready` | 清算、结算与托管 | validated | 2026-07-18 | `source:raw/official/united-states/dtcc-clearing-custody.md`<br>`synthesis:wiki/markets/清算结算与托管.md` | — |
+| `market-uk-rules` | 市场 | `content-ready` | 英国交易与披露规则 | validated | 2026-07-18 | `source:raw/official/united-kingdom/fca-markets-disclosure.md`<br>`synthesis:wiki/markets/英国市场.md` | — |
 | `market-us-disclosure` | 市场 | `content-ready` | 美股披露与投资者保护 | validated | 2026-07-17 | `synthesis:wiki/markets/美股市场.md`<br>`source:raw/official/united-states/sec-edgar.md` | — |
-| `market-us-execution` | 市场 | `exercise-tested` | 美股订单执行、费用与公司行动 | missing | 2026-07-17 | — | 缺官方规则、费用计算和公司行动测试 |
+| `market-us-execution` | 市场 | `exercise-tested` | 美股订单执行、费用与公司行动 | validated | 2026-07-18 | `implementation:src/investkb/market_operations.py`<br>`test:tests/test_market_operations.py` | — |
 | `method-backtest` | 研究方法 | `exercise-tested` | 无未来函数日线回测 | validated | 2026-07-17 | `implementation:src/investkb/backtest/engine.py`<br>`test:tests/backtest/test_engine.py` | — |
 | `method-behavior-lessons` | 研究方法 | `content-ready` | 行为偏差、经验与失败教训 | validated | 2026-07-18 | `source:raw/experts/cards/shiller-yale-financial-markets.md`<br>`synthesis:wiki/risk/行为偏差.md` | — |
 | `method-causal-inference` | 研究方法 | `content-ready` | 因果推断与识别假设 | validated | 2026-07-18 | `source:raw/books-and-papers/causal-inference-what-if.md`<br>`synthesis:wiki/methods/因果推断与识别.md` | — |
