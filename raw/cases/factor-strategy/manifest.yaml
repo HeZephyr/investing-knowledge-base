@@ -1,0 +1,12 @@
+case_id: factor-strategy
+snapshot: observations.csv
+snapshot_sha256: "9d281587d0e1fcbf3eb9dd1fc12311a95acc42bed777171f367ea6c2ff097bb8"
+primary_key: [series, period]
+allowed_units: [percent]
+retrieved_at: 2026-07-17T20:00:00+08:00
+vintage: 202605-CRSP-database
+upstream:
+  - provider: Kenneth French Data Library
+    endpoint: https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors_CSV.zip
+    period: 2000-2025 annual observations
+notes: Minimal derived annual facts are retained for reproducibility. Copyright 2026 Eugene F. Fama and Kenneth R. French; link to the official library instead of redistributing the full upstream archive.

@@ -1,0 +1,13 @@
+series,period,value,unit,available_at,source_url,provider
+meta_revenue,2022,116609,USD_millions,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_revenue,2023,134902,USD_millions,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_revenue,2024,164501,USD_millions,2025-01-29T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx,Meta
+meta_operating_income,2022,28944,USD_millions,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_operating_income,2023,46751,USD_millions,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_operating_income,2024,69380,USD_millions,2025-01-29T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx,Meta
+meta_free_cash_flow,2022,18439,USD_millions,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_free_cash_flow,2023,43010,USD_millions,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_free_cash_flow,2024,52103,USD_millions,2025-01-29T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx,Meta
+meta_diluted_shares,2022,2702,million_shares,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_diluted_shares,2023,2629,million_shares,2024-02-01T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx,Meta
+meta_diluted_shares,2024,2614,million_shares,2025-01-29T21:00:00Z,https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx,Meta

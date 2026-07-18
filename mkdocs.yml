@@ -117,6 +117,11 @@ nav:
       - 医药批准与支付: output/cases/healthcare.md
       - 平台用户与变现: output/cases/internet.md
       - 存储库存与盈利: output/cases/memory.md
+      - Meta 经营改善: output/cases/company-positive.md
+      - Aduhelm 原命题放弃: output/cases/company-negative.md
+      - HML 因子复现: output/cases/factor-replication.md
+      - 反向择时负结果: output/cases/negative-strategy.md
+      - 公开多资产组合: output/cases/portfolio-public.md
   - 互动:
       - 投资计算器: tools.md
       - 知识图谱: graph.md

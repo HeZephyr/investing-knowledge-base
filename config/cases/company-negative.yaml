@@ -1,0 +1,9 @@
+case_id: company-negative
+source_case: healthcare
+decision_date: 2026-07-17
+hypothesis: Aduhelm accelerated approval is sufficient for broad payer access and sustainable demand.
+success: No material coverage restriction and no demand-linked inventory write-off.
+failure: Coverage is restricted or a material demand-linked write-off occurs.
+abandon_scope: original_commercialization_thesis_only
+alternative_explanations: [surrogate_uncertainty, safety_monitoring, price, diagnosis_capacity, infusion_capacity]
+attempts: 1

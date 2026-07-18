@@ -40,3 +40,5 @@ Issue #18 批次加入 `jpx-trading-clearing.md`、`fsa-edinet.md`、`esma-tradi
 Issue #19 批次在 `raw/cases/` 固定 EIA/FRED、FDIC、Census/FRED 与公司法定披露的最小规范化事实。三套 manifest 保存上游参数、索引/报告时间、行数、单位和 SHA-256；current-corrected 序列只用于 2026-07-17 决策日的回顾性框架验证，不能冒充历史首次发布值。负结果与访问失败同样保留。
 
 Issue #20 批次加入 FDA 临床终点、ClinicalTrials.gov API、CMS 覆盖、NMPA、HKEX 18A、MFDS、FTC、EU DMA、SAMR 以及 Meta/Micron/Samsung/SK hynix 官方披露。三套新 manifest 把 Aduhelm 批准—支付—减值、Meta 用户—展示—价格—收入、Micron ASP—库存—毛利—Capex 固定为离线反例；监管批准不能替代支付，用户总量不能替代变现拆解，公司 ASP 方向也不能冒充独立现货/合约价格。
+
+Issue #31 批次加入 Meta 官方年度财务、Kenneth French Data Library 2026-05 CRSP vintage，以及通过 AKShare 无认证 Sina 接口取得的 510300/511010/518880 年末价格代理。只保存支持计算的最小年度事实和 SHA-256，不重分发完整上游档案；ETF 未复权价格不能冒充总收益，正回测与单一失败策略都不能外推成投资建议。

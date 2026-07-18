@@ -75,3 +75,8 @@ updated: 2026-07-17
 - changed: [[医药医疗]], [[互联网平台]], [[存储半导体]], [[经验与失败教训]], [[index]], [[dashboard]]
 - sources: raw-us-fda-clinical-endpoints, raw-us-clinicaltrials-gov-api, raw-us-cms-amyloid-coverage, raw-cn-nmpa-drug-registration, raw-hk-hkex-biotech-18a, raw-kr-mfds-drug-approval, raw-us-ftc-platform-data-practices, raw-eu-digital-markets-act, raw-cn-samr-platform-antitrust, raw-company-meta-platform-metrics, raw-company-micron-memory-results, raw-kr-memory-company-disclosures
 - result: 建立研发—支付—现金流、用户—变现—治理、bit—价格—库存—Capex 三条证据链；冻结 Aduhelm、Meta 与 Micron 反例，六项行业内容/案例能力完成，仓库就绪度升至 56.9%。
+
+## [2026-07-18] research | 公司、因子、失败策略与公开组合案例
+- changed: [[经验与失败教训]], [[index]], output/cases/company-positive.md, output/cases/company-negative.md, output/cases/factor-replication.md, output/cases/negative-strategy.md, output/cases/portfolio-public.md
+- sources: Meta 官方年度业绩、Kenneth French Data Library 2026-05 CRSP vintage、Sina via AKShare 公开 ETF 历史价格
+- result: 完成公司正结果与明确放弃原命题、HML 因子复现、费用后失败策略及三资产组合；11/11 案例能力全部具备来源、报告和测试，仓库就绪度升至 60.6%。

@@ -13,9 +13,7 @@ ROOT = Path(__file__).parents[1]
 
 
 def _snapshot(name: str):
-    return load_case_snapshot(
-        ROOT / f"raw/cases/{name}/manifest.yaml", decision_date="2026-07-17"
-    )
+    return load_case_snapshot(ROOT / f"raw/cases/{name}/manifest.yaml", decision_date="2026-07-17")
 
 
 def test_company_positive_case_reconciles_growth_margin_cash_and_shares() -> None:
@@ -32,7 +30,12 @@ def test_company_negative_case_explicitly_abandons_only_the_failed_thesis() -> N
     metrics = case_metrics(_snapshot("healthcare"))
     assert metrics["hypothesis_supported"] is False
     report = (ROOT / "output/cases/company-negative.md").read_text(encoding="utf-8")
-    for phrase in ("放弃原命题", "abandon_original_thesis=true", "不等于放弃整家公司", "重新研究条件"):
+    for phrase in (
+        "放弃原命题",
+        "abandon_original_thesis=true",
+        "不等于放弃整家公司",
+        "重新研究条件",
+    ):
         assert phrase in report
 
 
@@ -77,7 +80,13 @@ def test_public_case_rejects_impossible_fee(fee_bps: int) -> None:
 
 @pytest.mark.parametrize(
     "name",
-    ("company-positive", "company-negative", "factor-replication", "negative-strategy", "portfolio-public"),
+    (
+        "company-positive",
+        "company-negative",
+        "factor-replication",
+        "negative-strategy",
+        "portfolio-public",
+    ),
 )
 def test_public_case_reports_keep_preregistration_provenance_and_limits(name: str) -> None:
     report = (ROOT / f"output/cases/{name}.md").read_text(encoding="utf-8")

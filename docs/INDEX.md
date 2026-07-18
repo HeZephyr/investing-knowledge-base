@@ -32,7 +32,7 @@
 - `skills/maintain-investing-knowledge-base/`：可移植的知识库维护 Skill、来源评估参考与脚手架。
 - `plugins/investing-research/`：可安装的只读金融仓库与 Skill bundle 审计插件；采用规则见“金融研究代码库审计”和“金融量化平台与 Skill 审计”（`wiki/engineering/`）。
 - `config/knowledge-coverage.yaml`：版本化完成要求与证据；生成 `output/reports/knowledge-coverage.md`，不以页面数量冒充完成。
-- `raw/cases/` + `config/cases/` + `output/cases/`：冻结公开数据、预注册和可离线复现的能源/银行/消费/医药/互联网/存储正负案例。
+- `raw/cases/` + `config/cases/` + `output/cases/`：冻结公开数据、预注册和可离线复现的行业、公司、因子、失败策略与多资产组合案例。
 
 ## 维护入口
 

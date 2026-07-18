@@ -122,5 +122,11 @@ def test_coverage_separates_curriculum_content_from_exercises_and_cases() -> Non
         assert requirement.evidence
         assert requirement.gap
 
-    assert requirements["method-negative-results"].status == "missing"
-    assert requirements["method-negative-results"].stage == "case-validated"
+    negative_result = requirements["method-negative-results"]
+    assert negative_result.status == "validated"
+    assert negative_result.stage == "case-validated"
+    assert {evidence.kind for evidence in negative_result.evidence} == {
+        "source",
+        "report",
+        "test",
+    }
