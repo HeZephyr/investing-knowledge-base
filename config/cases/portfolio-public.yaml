@@ -1,0 +1,8 @@
+case_id: portfolio-public
+decision_date: 2026-07-17
+hypothesis: Annual equal-weight rebalancing across China equity bond and gold ETF price proxies improves CAGR and reduces annual volatility versus the equity price benchmark after 10 basis points per rebalance turnover.
+success: Portfolio CAGR exceeds the equity benchmark and annual volatility is lower after costs.
+failure: Either condition is not met.
+fee_bps: 10
+alternative_explanations: [gold_regime, omitted_distributions, etf_discount, endpoint_selection, tax, liquidity]
+attempts: 1

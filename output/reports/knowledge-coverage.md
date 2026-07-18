@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**56.9%**
+- 仓库就绪度，不是预期收益：**60.6%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -15,9 +15,9 @@
 | 市场 | 7 | 0 | 1 | 8 | 54.1% |
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
-| 公司研究 | 12 | 0 | 3 | 1 | 18.4% |
-| 研究方法 | 4 | 1 | 8 | 5 | 58.1% |
-| 组合与风控 | 7 | 2 | 4 | 1 | 29.3% |
+| 公司研究 | 10 | 0 | 3 | 3 | 30.9% |
+| 研究方法 | 2 | 1 | 8 | 7 | 69.2% |
+| 组合与风控 | 6 | 2 | 4 | 2 | 36.4% |
 | 工程与维护 | 1 | 1 | 0 | 13 | 88.3% |
 
 ## 分能力阶段状态
@@ -26,7 +26,7 @@
 |---|---|---:|---:|---:|---:|---:|
 | `content-ready` | 内容就绪 | 21 | 0 | 24 | 28 | 59.7% |
 | `exercise-tested` | 练习已测 | 17 | 4 | 8 | 16 | 49.3% |
-| `case-validated` | 案例验证 | 5 | 0 | 0 | 6 | 54.5% |
+| `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
 ## 逐项证据与缺口
@@ -52,8 +52,8 @@
 | `asset-reit` | 资产与产品 | `content-ready` | REIT 结构与现金流 | reviewed | 2026-07-17 | `synthesis:wiki/products/REIT.md` | 缺 A股、港股和美股制度对比 |
 | `asset-structured-products` | 资产与产品 | `content-ready` | 结构化产品与路径依赖 | missing | 2026-07-17 | — | 缺条款拆解、发行人信用和压力情景 |
 | `company-capital-allocation` | 公司研究 | `content-ready` | 资本配置与再投资回报 | missing | 2026-07-17 | — | 缺并购、回购、分红、债务和再投资框架 |
-| `company-case-negative` | 公司研究 | `case-validated` | 公司研究负结果与放弃案例 | missing | 2026-07-17 | — | 缺证伪过程、放弃理由和可复现报告 |
-| `company-case-positive` | 公司研究 | `case-validated` | 公司研究正结果冻结案例 | missing | 2026-07-17 | — | 缺来源、冻结数据、报告和自动校验 |
+| `company-case-negative` | 公司研究 | `case-validated` | 公司研究负结果与放弃案例 | validated | 2026-07-17 | `source:raw/cases/healthcare/manifest.yaml`<br>`report:output/cases/company-negative.md`<br>`test:tests/test_public_evidence_cases.py` | — |
+| `company-case-positive` | 公司研究 | `case-validated` | 公司研究正结果冻结案例 | validated | 2026-07-17 | `source:raw/cases/company-positive/manifest.yaml`<br>`report:output/cases/company-positive.md`<br>`test:tests/test_public_evidence_cases.py` | — |
 | `company-cash-conversion` | 公司研究 | `exercise-tested` | 营运资本与现金转换 | missing | 2026-07-17 | — | 缺 DSO、DIO、DPO 和自由现金流练习 |
 | `company-comparables` | 公司研究 | `content-ready` | 可比公司与估值倍数 | missing | 2026-07-17 | — | 缺业务可比性、口径调整和周期归一化 |
 | `company-dilution` | 公司研究 | `exercise-tested` | 股权激励、增发与稀释计算 | missing | 2026-07-17 | — | 缺完全摊薄股数模型和测试 |
@@ -126,9 +126,9 @@
 | `method-event-study` | 研究方法 | `exercise-tested` | 事件研究与公告反应 | missing | 2026-07-17 | — | 缺事件窗、基准模型、重叠事件和测试 |
 | `method-evidence-matrix` | 研究方法 | `content-ready` | 跨流派证据矩阵 | reviewed | 2026-07-17 | `synthesis:wiki/methods/投资研究证据矩阵.md` | 缺论文层级、外部效度和更新日期审计 |
 | `method-factor-content` | 研究方法 | `content-ready` | 因子定义、组合与风险调整 | reviewed | 2026-07-17 | `synthesis:wiki/quant/因子研究.md`<br>`source:raw/experts/cards/kenneth-french-data-library.md` | 缺完整因子谱系和口径比较 |
-| `method-factor-replication` | 研究方法 | `case-validated` | 公开因子冻结复现 | missing | 2026-07-17 | — | 缺来源、冻结数据、报告和测试 |
+| `method-factor-replication` | 研究方法 | `case-validated` | 公开因子冻结复现 | validated | 2026-07-17 | `source:raw/cases/factor-strategy/manifest.yaml`<br>`report:output/cases/factor-replication.md`<br>`test:tests/test_public_evidence_cases.py` | — |
 | `method-lookahead` | 研究方法 | `exercise-tested` | 未来函数识别与防护 | reviewed | 2026-07-17 | `synthesis:wiki/quant/未来函数.md` | 缺专门的披露时点与特征滞后测试 |
-| `method-negative-results` | 研究方法 | `case-validated` | 无效策略与负结果复现 | missing | 2026-07-17 | — | 缺预注册失败策略、报告和测试 |
+| `method-negative-results` | 研究方法 | `case-validated` | 无效策略与负结果复现 | validated | 2026-07-17 | `source:raw/cases/factor-strategy/manifest.yaml`<br>`report:output/cases/negative-strategy.md`<br>`test:tests/test_public_evidence_cases.py` | — |
 | `method-out-of-sample` | 研究方法 | `exercise-tested` | 样本外、滚动与走步验证 | reviewed | 2026-07-17 | `synthesis:wiki/quant/样本外测试.md` | 缺时间切分实现和测试 |
 | `method-overfitting` | 研究方法 | `content-ready` | 回测过拟合与选择偏差 | validated | 2026-07-17 | `synthesis:wiki/quant/过拟合.md`<br>`source:raw/books-and-papers/backtest-overfitting.md` | — |
 | `method-preregistration` | 研究方法 | `exercise-tested` | 研究预注册与假设锁定 | seed | 2026-07-17 | `template:output/templates/实证证据卡.md` | 缺示例、机器校验和一次真实使用 |
@@ -146,7 +146,7 @@
 | `portfolio-ips` | 组合与风控 | `exercise-tested` | 投资政策书与治理 | seed | 2026-07-17 | `template:output/templates/投资政策书.md` | 缺新手示例、校验规则和年度复核流程 |
 | `portfolio-liquidity` | 组合与风控 | `content-ready` | 流动性、容量与变现风险 | reviewed | 2026-07-17 | `synthesis:wiki/risk/流动性风险.md` | 缺成交量、价差和极端赎回案例 |
 | `portfolio-position-sizing` | 组合与风控 | `content-ready` | 仓位、容量与风险承受 | reviewed | 2026-07-17 | `synthesis:wiki/risk/仓位管理.md` | 缺风险预算来源与数值练习 |
-| `portfolio-public-case` | 组合与风控 | `case-validated` | 公开多资产组合冻结案例 | missing | 2026-07-17 | — | 缺假设、冻结数据、费用后报告和自动测试 |
+| `portfolio-public-case` | 组合与风控 | `case-validated` | 公开多资产组合冻结案例 | validated | 2026-07-17 | `source:raw/cases/portfolio-public/manifest.yaml`<br>`report:output/cases/portfolio-public.md`<br>`test:tests/test_public_evidence_cases.py` | — |
 | `portfolio-rebalancing` | 组合与风控 | `exercise-tested` | 再平衡规则与成本权衡 | missing | 2026-07-17 | — | 缺日历、阈值和现金流再平衡测试 |
 | `portfolio-risk-budget` | 组合与风控 | `exercise-tested` | 风险预算与贡献分解 | missing | 2026-07-17 | — | 缺边际风险、成分风险实现和测试 |
 | `portfolio-stress` | 组合与风控 | `exercise-tested` | 情景分析与压力测试 | missing | 2026-07-17 | — | 缺历史、假设和反向压力测试 |

@@ -1,0 +1,14 @@
+case_id: portfolio-public
+snapshot: observations.csv
+snapshot_sha256: "20952f43012b5cd47bd1e8fa04c40056264c9ccf38bd537f548d82057a7b3d4a"
+primary_key: [series, period]
+allowed_units: [CNY_price]
+retrieved_at: 2026-07-17T20:00:00+08:00
+vintage: Sina-year-end-closes-retrieved-2026-07-17
+upstream:
+  - provider: Sina via AKShare
+    endpoint: https://finance.sina.com.cn/realstock/company/sh510300/nc.shtml
+    interface: fund_etf_hist_sina
+    symbols: [sh510300, sh511010, sh518880]
+    period: 2019-2025 year-end closes
+notes: Eastmoney access failed in this environment, so the documented no-auth Sina interface was used. These are unadjusted price proxies; distributions and total-return adjustment are not proven.

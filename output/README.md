@@ -3,7 +3,7 @@
 此目录保存可以从 Wiki、配置和数据重新生成的研究结果。
 
 - `reports/`：Markdown 研究、回测与知识覆盖审计报告；`knowledge-coverage.md` 明确列出仍未完成的要求。
-- `cases/`：由冻结公开快照、预注册配置和测试支持的正/负行业案例；首批为[能源](cases/energy.md)、[银行](cases/bank.md) 与[消费](cases/consumer.md)，扩展批次为[医药](cases/healthcare.md)、[互联网](cases/internet.md) 与[存储](cases/memory.md)。
+- `cases/`：由冻结公开快照、预注册配置和测试支持的证据案例；包括[能源](cases/energy.md)、[银行](cases/bank.md)、[消费](cases/consumer.md)、[医药](cases/healthcare.md)、[互联网](cases/internet.md)、[存储](cases/memory.md)、[公司正结果](cases/company-positive.md)、[公司原命题放弃](cases/company-negative.md)、[HML 因子复现](cases/factor-replication.md)、[策略负结果](cases/negative-strategy.md)与[公开多资产组合](cases/portfolio-public.md)。
 - `charts/`：PNG/SVG 图表。
 - `screens/`：筛选结果和候选清单，不等同于买入建议。
 - `templates/`：投资政策、公司/基金分析、交易前检查、复盘、通用实证证据卡与行业证据卡模板。

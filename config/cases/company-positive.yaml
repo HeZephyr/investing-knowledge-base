@@ -1,0 +1,7 @@
+case_id: company-positive
+decision_date: 2026-07-17
+hypothesis: Meta can grow revenue while improving GAAP operating margin and free-cash-flow margin by at least 10 percentage points from 2022 to 2024 without diluted share growth.
+success: Revenue is higher; both margins improve by at least 10 percentage points; diluted shares do not increase.
+failure: Revenue contracts, either margin improvement is below 10 percentage points, or diluted shares increase.
+alternative_explanations: [restructuring, ad_cycle, foreign_exchange, legal_accruals, capex_timing, working_capital]
+attempts: 1

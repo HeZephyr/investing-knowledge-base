@@ -1,0 +1,15 @@
+case_id: company-positive
+snapshot: observations.csv
+snapshot_sha256: "70e81cdfabffdeb5e05572184542babd23d2c68e7a7f13f3bd59ef12af00d508"
+primary_key: [series, period]
+allowed_units: [USD_millions, million_shares]
+retrieved_at: 2026-07-17T20:00:00+08:00
+vintage: Meta-2023-and-2024-full-year-results
+upstream:
+  - provider: Meta
+    endpoint: https://investor.atmeta.com/investor-news/press-release-details/2024/Meta-Reports-Fourth-Quarter-and-Full-Year-2023-Results-Initiates-Quarterly-Dividend/default.aspx
+    report_period: 2023-12-31
+  - provider: Meta
+    endpoint: https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Reports-Fourth-Quarter-and-Full-Year-2024-Results/default.aspx
+    report_period: 2024-12-31
+notes: Official reported facts only; the case tests a preregistered operating-improvement claim and is not a valuation or recommendation.

@@ -1,0 +1,9 @@
+case_id: negative-strategy
+source_case: factor-strategy
+decision_date: 2026-07-17
+hypothesis: Holding the market only after a negative prior calendar year beats continuous market exposure after 10 basis points per position change.
+success: Strategy CAGR is above the market benchmark CAGR over 2001-2025 after costs.
+failure: Strategy CAGR does not exceed the benchmark.
+fee_bps: 10
+alternative_explanations: [market_drift, sparse_exposure, annual_sampling, tax, unmodeled_spread]
+attempts: 1

@@ -1,0 +1,8 @@
+case_id: factor-replication
+source_case: factor-strategy
+decision_date: 2026-07-17
+hypothesis: The published HML factor has a positive arithmetic mean and positive compounded return over the fixed 2000-2025 window.
+success: Both arithmetic mean and compounded return are above zero without changing the window.
+failure: Either measure is zero or negative.
+alternative_explanations: [factor_definition, annual_compounding, sample_window, CRSP_revision, implementation_cost]
+attempts: 1
