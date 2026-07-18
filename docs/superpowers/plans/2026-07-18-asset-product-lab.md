@@ -26,5 +26,5 @@
 
 - [x] Promote the eleven incomplete asset requirements only after stage-appropriate evidence exists.
 - [x] Assert the assets axis is 18/18 validated and regenerate the coverage report.
-- [ ] Run targeted tests, real full verification, secret/public-boundary checks, and site build.
+- [x] Run targeted tests, real full verification, secret/public-boundary checks, and site build.
 - [ ] Commit in reviewable stages, push, open a ready PR closing #43, inspect CI/reviews/threads, and squash merge the verified SHA.
