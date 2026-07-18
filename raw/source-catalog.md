@@ -46,3 +46,5 @@ Issue #31 批次加入 Meta 官方年度财务、Kenneth French Data Library 202
 Issue #33 批次加入 IFRS Foundation 的 IAS 1、IAS 7、IFRS 15、IAS 33 概览/实施材料及 SEC Investor.gov 的 EDGAR 研究入口。来源卡只链接和独立摘要，不复制标准全文；公式练习覆盖历史时点、重述、勾稽、现金周期、稀释和估值边界，不能替代适用司法辖区准则或专业意见。
 
 Issue #35 批次加入 Investor.gov 资产配置/分散/再平衡入口与 SEC 开放式基金流动性规则指南，并复用 Markowitz 与 Sharpe 原始论文卡。监管基金规则不直接套到个人账户；公开模块只提炼目标、市场深度和定期复核原则，所有示例保持无个人持仓。
+
+Issue #37 批次加入 Hernán/Robins《Causal Inference: What If》原作者入口、MacKinlay 事件研究综述和 Shumway 退市偏差论文，并更新 Kenneth French 因子构造/version 边界。教材和论文均采用 link-and-summarize；事件 CAR 只表示相对正常收益模型的关联，不自动升级为因果或交易信号。

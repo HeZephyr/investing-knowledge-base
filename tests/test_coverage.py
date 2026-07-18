@@ -14,7 +14,7 @@ from investkb.coverage import (
 )
 
 
-TODAY = date(2026, 7, 17)
+TODAY = date(2026, 7, 18)
 
 
 def _requirement(
@@ -104,12 +104,12 @@ def test_validation_rejects_future_dates_and_missing_evidence(tmp_path: Path) ->
         [
             _requirement(
                 status="reviewed",
-                verified="2026-07-18",
+                verified="2026-07-19",
                 evidence=[{"path": "wiki/missing.md", "kind": "synthesis"}],
                 gap="补自动复验",
             )
         ],
-        as_of="2026-07-18",
+        as_of="2026-07-19",
     )
 
     errors = validate_coverage(load_coverage(path), tmp_path, TODAY)

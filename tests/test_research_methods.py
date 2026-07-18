@@ -25,9 +25,7 @@ def _utc(year: int, month: int, day: int) -> datetime:
 def test_walk_forward_splits_keep_embargo_and_chronology() -> None:
     expanding = walk_forward_splits(20, train_size=8, test_size=3, step=3, embargo=1)
     assert expanding == [(0, 8, 9, 12), (0, 11, 12, 15), (0, 14, 15, 18)]
-    rolling = walk_forward_splits(
-        20, train_size=8, test_size=3, step=3, embargo=1, expanding=False
-    )
+    rolling = walk_forward_splits(20, train_size=8, test_size=3, step=3, embargo=1, expanding=False)
     assert rolling == [(0, 8, 9, 12), (3, 11, 12, 15), (6, 14, 15, 18)]
     assert all(train_end + 1 <= test_start for _, train_end, test_start, _ in expanding)
 
