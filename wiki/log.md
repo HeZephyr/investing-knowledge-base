@@ -115,3 +115,8 @@ updated: 2026-07-18
 - changed: [[周期行业研究]], [[金融]], [[硬件与半导体产业链]], [[工业与资本品]], [[地产开发与运营]], [[材料与矿业]], [[经验与失败教训]]
 - sources: UNSD ISIC Rev.5、IFRS 15/17、IAS 7、IAIS ICS、NIST CHIPS、TSMC 2025 20-F、Census M3/SOC、USGS MCS 2026、SEC S-K 1300
 - result: 建立分类版本与本地映射日期、保险准备金分期、晶圆—封测良率、订单—积压—收入、地产融资缺口、显式质量分数矿石桥；行业轴 18/18 validated，仓库就绪度升至 98.7%。
+
+## [2026-07-18] research | 全球免费数据与私人研究工作区
+- changed: [[全球免费数据适配]], [[私人研究工作区]], [[经验与失败教训]], [[index]], [[dashboard]]
+- sources: raw-repo-yfinance, raw-repo-openbb, raw-repo-finhack, raw-us-investor-asset-allocation
+- result: 将外部项目经验转成显式证券登记、价格/公司行动谱系和离线失败契约；建立允许空持仓且拒绝凭证/订单字段的本地私密层，工程轴 15/15、全库 135/135 validated。

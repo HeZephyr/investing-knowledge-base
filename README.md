@@ -16,7 +16,7 @@
 
 维护者和 AI 代理可复用仓库内的 [`maintain-investing-knowledge-base` Skill](skills/maintain-investing-knowledge-base/SKILL.md)，统一执行来源摄取、知识合成、索引、数据验证、公开边界和 PR 发布。
 
-对外部金融代码库的采用先经过[金融研究代码库审计](wiki/engineering/金融研究代码库审计.md)。仓库内的 `investing-research` 插件只扫描已经合法下载的本地代码，不联网、不读取 Cookie/Token、不连接券商或自动下单；安装和更新命令见 [`plugins/investing-research/README.md`](plugins/investing-research/README.md)。
+对外部金融代码库的采用先经过[金融研究代码库审计](wiki/engineering/金融研究代码库审计.md)。[全球免费数据适配](wiki/engineering/全球免费数据适配.md)已把 OpenBB、FinHack 与 yfinance 的可复用经验转成独立、离线可测的价格/公司行动契约；仓库内的 `investing-research` 插件只扫描已经合法下载的本地代码，不联网、不读取 Cookie/Token、不连接券商或自动下单。
 
 [金融量化平台与 Skill 审计](wiki/engineering/金融量化平台与Skill审计.md)进一步比较 FinHack 与 finance-quant-skills，并把每个 Agent Skill 当作可执行供应链材料检查。插件 v0.2 增加 `$audit-finance-skills`，默认不安装第三方 Skill、不执行上游脚本，并隔离 Cookie、账号和实盘订单能力。
 
@@ -24,7 +24,7 @@
 
 ## 完成度怎么计算
 
-[覆盖审计](output/reports/knowledge-coverage.md)把体系拆成基础学科、市场、资产、行业、公司、方法、组合和工程 8 个轴，共 135 项原子能力。v2 初始基线为 36.5%；完成金融统计、代码库审计、冻结证据能力，以及基础学科、全球市场、资产产品、行业、公司、研究方法与组合实验室后为 **98.7%**。基础学科 20/20、市场制度 16/16、资产产品 18/18、行业研究 18/18、公司研究 16/16、研究方法 18/18、组合与风控 14/14 已验证；最后只剩工程轴的全球免费数据和私密研究层两项能力。
+[覆盖审计](output/reports/knowledge-coverage.md)把体系拆成基础学科、市场、资产、行业、公司、方法、组合和工程 8 个轴，共 135 项原子能力。v2 初始基线为 36.5%；现在 **135/135、100.0%** 达到各自声明的证据阶段。基础学科 20/20、市场制度 16/16、资产产品 18/18、行业研究 18/18、公司研究 16/16、研究方法 18/18、组合与风控 14/14、工程与维护 15/15 已验证。
 
 - `content-ready`：权威来源与中文合成均就绪。
 - `exercise-tested`：计算、代码或练习有自动测试。
@@ -56,6 +56,8 @@ investkb sources audit raw
 investkb wiki lint
 investkb data fetch CN 510300 --start 2024-01-01 --end 2024-12-31 --adjustment none
 investkb fund nav 000001 --start 2024-01-01 --end 2024-12-31
+investkb private init --root .
+investkb private validate --root .
 investkb demo backtest --offline
 python -m investkb.site
 mkdocs serve
@@ -71,7 +73,7 @@ mkdocs serve
 
 ## 项目状态
 
-第一版已具备 Raw/Wiki 审计、免费 A/HK 日线与基金净值适配、数据质量检查、次日成交回测、指标和报告生成。设计和实施计划位于 `docs/superpowers/`，实际验收结果见 [第一版验收记录](docs/verification/first-release.md)。
+最终版已具备 Raw/Wiki 审计、免费 A/HK 与显式登记的全球日线/公司行动适配、基金净值、数据质量、次日成交回测、指标、报告和本地私密研究工作区。`private/` 被 Git 忽略；仓库不附带真实个人文件，初始化器允许空持仓且拒绝覆盖。
 
 运行完整健康检查：
 

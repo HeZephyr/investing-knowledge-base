@@ -56,3 +56,5 @@ Issue #41 批次加入 FCA/LSE/HMRC/CREST、SEC/FINRA/DTCC 与 HKEX Stock Connec
 Issue #43 批次加入股票权利、货币基金、中美国债曲线、上交所可转债、内地/香港/美国 REIT、CFTC 衍生品、SEC 期权/指数基金/结构化票据、S&P 指数数学及 IRS 2026 跨境税务入口。税务只形成按年度复验的问题清单，不推断个人身份；期货换月案例使用明确标注的合成价格与 SHA-256，避免重分发行情或把连续合约跳空伪装成收益。
 
 Issue #45 批次加入 UNSD ISIC Rev.5、IFRS 17、IAIS ICS、NIST CHIPS、TSMC 2025 20-F、美国 Census M3/SOC、USGS MCS 2026 与 SEC S-K 1300。官方分类只作索引，宏观订单/住房/矿产统计不直接映射公司；法定公司披露只示范字段，不升级为全行业事实。
+
+Issue #47 批次复核固定 yfinance commit，并把 OpenBB 的标准模型/provider 分层、FinHack 的失败分类和 yfinance 的无 Key 便利层转成独立实现与离线契约。Star 仍只作发现信号；Cookie、Token、完整上游响应、broker 和订单接口均不进入公共适配器。
