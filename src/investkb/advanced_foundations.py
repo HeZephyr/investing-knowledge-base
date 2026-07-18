@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Hashable, Mapping
 from statistics import NormalDist
-from typing import Sequence
+from typing import Any, Sequence
 
 import numpy as np
 from numpy.typing import NDArray
@@ -85,8 +86,10 @@ def ols_hc1_diagnostics(
     leverage = np.einsum("ij,jk,ik->i", matrix, cross_product_inverse, matrix)
 
     meat = matrix.T @ (matrix * residuals[:, None] ** 2)
-    hc1_covariance = observations / (observations - parameters) * (
-        cross_product_inverse @ meat @ cross_product_inverse
+    hc1_covariance = (
+        observations
+        / (observations - parameters)
+        * (cross_product_inverse @ meat @ cross_product_inverse)
     )
     hc1_standard_errors = np.sqrt(np.maximum(np.diag(hc1_covariance), 0.0))
 
@@ -119,3 +122,37 @@ def seeded_bootstrap_mean(
     generator = np.random.default_rng(int(seed))
     samples = generator.choice(observations, size=(int(resamples), observations.size), replace=True)
     return np.mean(samples, axis=1)
+
+
+def grouped_table_summary(
+    rows: Sequence[Mapping[str, Any]], *, group_key: str, value_key: str
+) -> list[dict[str, Any]]:
+    """Return first-seen group counts and means from explicit row mappings."""
+
+    if not rows:
+        raise FoundationError("rows must contain at least one record")
+    groups: dict[Hashable, list[float]] = {}
+    for index, row in enumerate(rows):
+        if not isinstance(row, Mapping):
+            raise FoundationError(f"row {index} must be a mapping")
+        if group_key not in row:
+            raise FoundationError(f"row {index} is missing group_key {group_key}")
+        if value_key not in row:
+            raise FoundationError(f"row {index} is missing value_key {value_key}")
+        group = row[group_key]
+        if not isinstance(group, Hashable):
+            raise FoundationError(f"row {index} group must be hashable")
+        value = row[value_key]
+        if isinstance(value, bool):
+            raise FoundationError(f"row {index} value must be numeric and finite")
+        try:
+            numeric = float(value)
+        except (TypeError, ValueError) as exc:
+            raise FoundationError(f"row {index} value must be numeric and finite") from exc
+        if not np.isfinite(numeric):
+            raise FoundationError(f"row {index} value must be finite")
+        groups.setdefault(group, []).append(numeric)
+    return [
+        {"group": group, "count": len(values), "mean": float(np.mean(values))}
+        for group, values in groups.items()
+    ]

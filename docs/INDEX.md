@@ -29,6 +29,7 @@
 - `src/investkb/company.py`：历史时点、三表、现金转换、稀释、反向 DCF、情景和可比估值练习。
 - `src/investkb/portfolio.py`：公开无持仓的 IPS、配置、再平衡、流动性、风险预算、压力和归因练习。
 - `src/investkb/research_methods.py`：walk-forward、预注册哈希、时间序列基线与事件研究练习。
+- `src/investkb/advanced_foundations.py`：效应量/功效、HC1 回归诊断和显式种子 bootstrap 练习。
 - `src/investkb/site.py`：Obsidian 内容转静态站与知识图谱。
 - `src/investkb/publication.py`：公开/私人边界检查。
 - `.github/workflows/`：CI、安全、定时数据健康检查与 Pages 发布。

@@ -25,9 +25,13 @@ nav:
       - 抽样与估计: wiki/foundations/抽样与估计.md
       - 假设检验与多重比较: wiki/foundations/假设检验与多重比较.md
       - 回归与诊断: wiki/foundations/回归与诊断.md
+      - 投资数学与优化: wiki/foundations/投资数学与优化.md
+      - 微观经济与产业组织: wiki/foundations/微观经济与产业组织.md
+      - 宏观账户周期与货币传导: wiki/foundations/宏观账户周期与货币传导.md
       - 时间序列与预测: wiki/foundations/时间序列与预测.md
       - 债券与利率基础: wiki/foundations/债券与利率基础.md
       - 公司金融基础: wiki/foundations/公司金融基础.md
+      - 金融危机与机制复盘: wiki/foundations/金融危机与机制复盘.md
       - 论文阅读与复现: wiki/foundations/论文阅读与复现.md
   - 市场:
       - 全球市场: wiki/markets/全球市场.md

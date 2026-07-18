@@ -6,10 +6,12 @@ import pytest
 from investkb.advanced_foundations import (
     FoundationError,
     cohens_d,
+    grouped_table_summary,
     normal_power_two_sample,
     ols_hc1_diagnostics,
     seeded_bootstrap_mean,
 )
+from investkb.coverage import load_coverage
 
 
 def test_cohens_d_uses_pooled_sample_standard_deviation() -> None:
@@ -24,7 +26,9 @@ def test_cohens_d_uses_pooled_sample_standard_deviation() -> None:
         ([1, np.inf], [2, 3], "finite"),
     ],
 )
-def test_cohens_d_rejects_invalid_samples(first: list[float], second: list[float], message: str) -> None:
+def test_cohens_d_rejects_invalid_samples(
+    first: list[float], second: list[float], message: str
+) -> None:
     with pytest.raises(FoundationError, match=message):
         cohens_d(first, second)
 
@@ -98,3 +102,36 @@ def test_seeded_bootstrap_rejects_invalid_data_and_counts() -> None:
         seeded_bootstrap_mean([1, np.nan], resamples=10, seed=1)
     with pytest.raises(FoundationError, match="resamples"):
         seeded_bootstrap_mean([1, 2], resamples=0, seed=1)
+
+
+def test_grouped_table_summary_preserves_groups_counts_and_means() -> None:
+    rows = [
+        {"market": "CN", "return": 0.1},
+        {"market": "HK", "return": -0.1},
+        {"market": "CN", "return": 0.3},
+    ]
+    assert grouped_table_summary(rows, group_key="market", value_key="return") == [
+        {"group": "CN", "count": 2, "mean": pytest.approx(0.2)},
+        {"group": "HK", "count": 1, "mean": pytest.approx(-0.1)},
+    ]
+
+
+def test_grouped_table_summary_rejects_missing_nonfinite_and_unhashable_cells() -> None:
+    with pytest.raises(FoundationError, match="missing value_key"):
+        grouped_table_summary([{"market": "CN"}], group_key="market", value_key="return")
+    with pytest.raises(FoundationError, match="finite"):
+        grouped_table_summary(
+            [{"market": "CN", "return": np.inf}], group_key="market", value_key="return"
+        )
+    with pytest.raises(FoundationError, match="hashable"):
+        grouped_table_summary(
+            [{"market": ["CN"], "return": 0.1}], group_key="market", value_key="return"
+        )
+
+
+def test_foundations_axis_is_complete_with_stage_appropriate_evidence() -> None:
+    manifest = load_coverage("config/knowledge-coverage.yaml")
+    foundations = [item for item in manifest.requirements if item.axis == "foundations"]
+    assert len(foundations) == 20
+    assert {item.status for item in foundations} == {"validated"}
+    assert all(item.evidence and not item.gap for item in foundations)

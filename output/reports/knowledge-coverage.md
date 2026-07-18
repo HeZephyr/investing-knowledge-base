@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-18
-- 仓库就绪度，不是预期收益：**79.5%**
+- 仓库就绪度，不是预期收益：**85.5%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -11,7 +11,7 @@
 
 | 维度 | missing | seed | reviewed | validated | 就绪度 |
 |---|---:|---:|---:|---:|---:|
-| 基础学科 | 6 | 0 | 6 | 8 | 59.5% |
+| 基础学科 | 0 | 0 | 0 | 20 | 100.0% |
 | 市场 | 7 | 0 | 1 | 8 | 54.1% |
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
@@ -24,8 +24,8 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 15 | 0 | 13 | 45 | 73.2% |
-| `exercise-tested` | 练习已测 | 5 | 1 | 4 | 35 | 84.1% |
+| `content-ready` | 内容就绪 | 9 | 0 | 11 | 53 | 82.4% |
+| `exercise-tested` | 练习已测 | 5 | 1 | 0 | 39 | 87.2% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
@@ -82,25 +82,25 @@
 | `engineering-public-boundary` | 工程与维护 | `exercise-tested` | 公开与私人边界 | validated | 2026-07-17 | `implementation:src/investkb/publication.py`<br>`test:tests/test_public_boundary.py` | — |
 | `engineering-reporting` | 工程与维护 | `exercise-tested` | 可复现研究报告生成 | validated | 2026-07-17 | `implementation:src/investkb/reporting.py`<br>`test:tests/test_reporting.py` | — |
 | `engineering-source-lineage` | 工程与维护 | `exercise-tested` | Raw 来源谱系审计 | validated | 2026-07-17 | `implementation:src/investkb/sources.py`<br>`test:tests/test_sources.py` | — |
-| `foundation-accounting-accrual` | 基础学科 | `content-ready` | 权责发生制与会计判断 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/盈利质量.md` | 缺准则来源和应计项目拆解练习 |
-| `foundation-accounting-statements` | 基础学科 | `content-ready` | 会计恒等式与三张报表 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/财务三表.md` | 缺准则来源、练习与勾稽案例 |
-| `foundation-calculus` | 基础学科 | `content-ready` | 投资所需微积分与优化 | missing | 2026-07-17 | — | 缺导数、凸性和约束优化基础 |
+| `foundation-accounting-accrual` | 基础学科 | `content-ready` | 权责发生制与会计判断 | validated | 2026-07-18 | `source:raw/official/global/ifrs-15.md`<br>`synthesis:wiki/concepts/盈利质量.md`<br>`test:tests/test_company_research.py` | — |
+| `foundation-accounting-statements` | 基础学科 | `content-ready` | 会计恒等式与三张报表 | validated | 2026-07-18 | `source:raw/official/global/ifrs-ias-1.md`<br>`synthesis:wiki/concepts/财务三表.md`<br>`test:tests/test_company_research.py` | — |
+| `foundation-calculus` | 基础学科 | `content-ready` | 投资所需微积分与优化 | validated | 2026-07-18 | `source:raw/courses/mit-calculus.md`<br>`synthesis:wiki/foundations/投资数学与优化.md` | — |
 | `foundation-compounding` | 基础学科 | `exercise-tested` | 复利、贴现与年化换算 | validated | 2026-07-17 | `implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | — |
 | `foundation-corporate-finance` | 基础学科 | `content-ready` | 公司金融基础 | validated | 2026-07-17 | `source:raw/courses/mit-finance-theory.md`<br>`synthesis:wiki/foundations/公司金融基础.md` | — |
 | `foundation-distributions` | 基础学科 | `content-ready` | 常见分布与厚尾 | validated | 2026-07-17 | `source:raw/books-and-papers/openintro-statistics.md`<br>`synthesis:wiki/foundations/概率与收益分布.md` | — |
 | `foundation-estimation` | 基础学科 | `exercise-tested` | 点估计、区间估计与不确定性 | validated | 2026-07-17 | `implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | — |
-| `foundation-hypothesis` | 基础学科 | `exercise-tested` | 假设检验、效应量与多重检验 | reviewed | 2026-07-17 | `synthesis:wiki/foundations/假设检验与多重比较.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | 已测 Bonferroni；仍缺效应量、功效和依赖检验练习 |
-| `foundation-linear-algebra` | 基础学科 | `content-ready` | 投资所需线性代数 | missing | 2026-07-17 | — | 缺向量、矩阵、协方差与优化基础 |
-| `foundation-macroeconomics` | 基础学科 | `content-ready` | 宏观经济账户与周期 | missing | 2026-07-17 | — | 缺国民账户、通胀、就业和周期框架 |
-| `foundation-market-history` | 基础学科 | `content-ready` | 金融史与市场危机 | missing | 2026-07-17 | — | 缺跨市场危机时间线与机制复盘 |
-| `foundation-microeconomics` | 基础学科 | `content-ready` | 微观经济与产业组织 | missing | 2026-07-17 | — | 缺供需、弹性、竞争结构和定价权体系 |
-| `foundation-monetary-policy` | 基础学科 | `content-ready` | 货币政策与利率传导 | missing | 2026-07-17 | — | 缺央行工具、收益率曲线和资产价格传导 |
+| `foundation-hypothesis` | 基础学科 | `exercise-tested` | 假设检验、效应量与多重检验 | validated | 2026-07-18 | `synthesis:wiki/foundations/假设检验与多重比较.md`<br>`implementation:src/investkb/advanced_foundations.py`<br>`test:tests/test_advanced_foundations.py` | — |
+| `foundation-linear-algebra` | 基础学科 | `content-ready` | 投资所需线性代数 | validated | 2026-07-18 | `source:raw/courses/mit-linear-algebra.md`<br>`synthesis:wiki/foundations/投资数学与优化.md` | — |
+| `foundation-macroeconomics` | 基础学科 | `content-ready` | 宏观经济账户与周期 | validated | 2026-07-18 | `source:raw/official/united-states/bea-national-accounts.md`<br>`synthesis:wiki/foundations/宏观账户周期与货币传导.md` | — |
+| `foundation-market-history` | 基础学科 | `content-ready` | 金融史与市场危机 | validated | 2026-07-18 | `source:raw/official/united-states/federal-reserve-history-crises.md`<br>`synthesis:wiki/foundations/金融危机与机制复盘.md` | — |
+| `foundation-microeconomics` | 基础学科 | `content-ready` | 微观经济与产业组织 | validated | 2026-07-18 | `source:raw/books-and-papers/openstax-principles-economics.md`<br>`synthesis:wiki/foundations/微观经济与产业组织.md` | — |
+| `foundation-monetary-policy` | 基础学科 | `content-ready` | 货币政策与利率传导 | validated | 2026-07-18 | `source:raw/official/united-states/federal-reserve-monetary-policy.md`<br>`synthesis:wiki/foundations/宏观账户周期与货币传导.md` | — |
 | `foundation-probability` | 基础学科 | `content-ready` | 概率与条件概率 | validated | 2026-07-17 | `source:raw/books-and-papers/openintro-statistics.md`<br>`synthesis:wiki/foundations/概率与收益分布.md` | — |
 | `foundation-random-variables` | 基础学科 | `content-ready` | 随机变量与期望方差 | validated | 2026-07-17 | `source:raw/books-and-papers/openintro-statistics.md`<br>`synthesis:wiki/foundations/概率与收益分布.md` | — |
-| `foundation-reading-papers` | 基础学科 | `exercise-tested` | 阅读论文与复现实证 | reviewed | 2026-07-17 | `synthesis:wiki/foundations/论文阅读与复现.md`<br>`test:tests/test_foundations_curriculum.py` | 已有阅读合同；仍缺一篇论文的公开冻结数据复现练习 |
-| `foundation-regression` | 基础学科 | `exercise-tested` | 线性回归与诊断 | reviewed | 2026-07-17 | `synthesis:wiki/foundations/回归与诊断.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | 已测一元 OLS；仍缺稳健误差、残差和影响点诊断练习 |
+| `foundation-reading-papers` | 基础学科 | `exercise-tested` | 阅读论文与复现实证 | validated | 2026-07-18 | `synthesis:wiki/foundations/论文阅读与复现.md`<br>`implementation:src/investkb/evidence_cases.py`<br>`test:tests/test_public_evidence_cases.py` | — |
+| `foundation-regression` | 基础学科 | `exercise-tested` | 线性回归与诊断 | validated | 2026-07-18 | `synthesis:wiki/foundations/回归与诊断.md`<br>`implementation:src/investkb/advanced_foundations.py`<br>`test:tests/test_advanced_foundations.py` | — |
 | `foundation-sampling` | 基础学科 | `content-ready` | 抽样、选择偏差与误差 | validated | 2026-07-17 | `source:raw/books-and-papers/openintro-statistics.md`<br>`synthesis:wiki/foundations/抽样与估计.md` | — |
-| `foundation-statistical-coding` | 基础学科 | `exercise-tested` | Python 统计计算基础 | reviewed | 2026-07-17 | `implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | 已测数组与确定性纯函数；仍缺表格、随机种子和环境锁定练习 |
+| `foundation-statistical-coding` | 基础学科 | `exercise-tested` | Python 统计计算基础 | validated | 2026-07-18 | `implementation:src/investkb/advanced_foundations.py`<br>`test:tests/test_advanced_foundations.py`<br>`report:pyproject.toml` | — |
 | `foundation-tvm` | 基础学科 | `content-ready` | 货币时间价值 | validated | 2026-07-17 | `source:raw/books-and-papers/openstax-principles-finance.md`<br>`synthesis:wiki/foundations/复利与贴现.md` | — |
 | `market-calendar-monitor` | 市场 | `maintenance-live` | 全球交易日历持续校验 | missing | 2026-07-17 | — | 缺免费来源、离线契约和定时监控 |
 | `market-cn-execution` | 市场 | `exercise-tested` | A 股订单、涨跌停与结算练习 | missing | 2026-07-17 | — | 缺订单状态机、费用和异常交易练习 |
