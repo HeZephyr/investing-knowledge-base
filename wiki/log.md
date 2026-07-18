@@ -80,3 +80,8 @@ updated: 2026-07-17
 - changed: [[经验与失败教训]], [[index]], output/cases/company-positive.md, output/cases/company-negative.md, output/cases/factor-replication.md, output/cases/negative-strategy.md, output/cases/portfolio-public.md
 - sources: Meta 官方年度业绩、Kenneth French Data Library 2026-05 CRSP vintage、Sina via AKShare 公开 ETF 历史价格
 - result: 完成公司正结果与明确放弃原命题、HML 因子复现、费用后失败策略及三资产组合；11/11 案例能力全部具备来源、报告和测试，仓库就绪度升至 60.6%。
+
+## [2026-07-17] research | 公司研究可计算实验室
+- changed: [[法定披露与历史时点]], [[三表勾稽与现金转换]], [[收入确认与合同经济]], [[资本配置治理与稀释]], [[估值实验室]], [[财务三表]], [[盈利质量]], [[经验与失败教训]], [[dashboard]]
+- sources: raw-global-ifrs-ias-1, raw-global-ifrs-ias-7, raw-global-ifrs-15, raw-global-ifrs-ias-33, raw-us-investor-edgar-research, raw-expert-damodaran-valuation
+- result: 建立历史时点与重述、双重三表勾稽、现金周期、完全稀释股数、反向 DCF、概率情景和亏损倍数边界；公司研究轴 16/16 validated，仓库就绪度升至 68.8%。
