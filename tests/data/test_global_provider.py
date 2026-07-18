@@ -108,6 +108,4 @@ def test_global_provider_rejects_ambiguous_adjustment_modes(adjustment: str) -> 
 
 def test_global_provider_fails_closed_on_invalid_ohlc() -> None:
     with pytest.raises(DataUnavailableError, match="OHLC"):
-        YFinanceProvider(BrokenYFinance(), registry()).daily_bars(
-            "US", "AAPL", START, END, "none"
-        )
+        YFinanceProvider(BrokenYFinance(), registry()).daily_bars("US", "AAPL", START, END, "none")
