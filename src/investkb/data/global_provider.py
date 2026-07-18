@@ -58,7 +58,7 @@ def _digest(frame: pd.DataFrame) -> str:
 
 
 class YFinanceProvider:
-    """Normalize yfinance convenience data without treating it as an official source."""
+    """Normalize yfinance data; timeout governs downloads, not upstream Ticker.actions."""
 
     def __init__(
         self,

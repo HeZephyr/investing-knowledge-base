@@ -119,6 +119,17 @@ def test_private_validator_preserves_mandatory_policy_prohibitions(tmp_path: Pat
         validate_private_workspace(tmp_path)
 
 
+def test_private_validator_reports_missing_top_level_fields_cleanly(tmp_path: Path) -> None:
+    initialize_private_workspace(tmp_path)
+    policy = tmp_path / "private/policy.yaml"
+    payload = yaml.safe_load(policy.read_text(encoding="utf-8"))
+    del payload["base_currency"]
+    policy.write_text(yaml.safe_dump(payload), encoding="utf-8")
+
+    with pytest.raises(PrivateWorkspaceError, match="missing field in policy.yaml: base_currency"):
+        validate_private_workspace(tmp_path)
+
+
 def test_private_validator_rejects_unknown_workspace_entries(tmp_path: Path) -> None:
     initialize_private_workspace(tmp_path)
     (tmp_path / "private/credentials.yaml").write_text("schema_version: 1\n", encoding="utf-8")

@@ -156,6 +156,9 @@ def _load_document(path: Path) -> dict[str, Any]:
     _reject_forbidden_keys(payload)
     if payload.get("schema_version") != 1:
         raise PrivateWorkspaceError(f"unsupported schema_version: {path.name}")
+    missing = sorted(TOP_LEVEL_FIELDS[path.name] - set(payload))
+    if missing:
+        raise PrivateWorkspaceError(f"missing field in {path.name}: {missing[0]}")
     unexpected = sorted(set(payload) - TOP_LEVEL_FIELDS[path.name])
     if unexpected:
         raise PrivateWorkspaceError(f"unexpected field in {path.name}: {unexpected[0]}")
