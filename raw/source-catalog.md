@@ -52,3 +52,5 @@ Issue #37 批次加入 Hernán/Robins《Causal Inference: What If》原作者入
 Issue #39 批次加入 `mit-linear-algebra.md`、`mit-calculus.md`、`openstax-principles-economics.md`、`bea-national-accounts.md`、`federal-reserve-monetary-policy.md` 与 `federal-reserve-history-crises.md`。OpenStax 页面同时出现开放许可和生成式 AI 摄取限制，因此继续采用 link-and-summarize-only/NOASSERTION；宏观历史修订不回填实时决策，危机史按触发、资产负债表放大、market plumbing、政策与结果分层。
 
 Issue #41 批次加入 FCA/LSE/HMRC/CREST、SEC/FINRA/DTCC 与 HKEX Stock Connect 八张运行来源卡。动态规则保存检索日与生效边界；英国 2027 Securities Transfer Tax 草案不提前替代现行 SDRT，T+1、配额、假日、币种和公司行动不跨市场硬编码。
+
+Issue #43 批次加入股票权利、货币基金、中美国债曲线、上交所可转债、内地/香港/美国 REIT、CFTC 衍生品、SEC 期权/指数基金/结构化票据、S&P 指数数学及 IRS 2026 跨境税务入口。税务只形成按年度复验的问题清单，不推断个人身份；期货换月案例使用明确标注的合成价格与 SHA-256，避免重分发行情或把连续合约跳空伪装成收益。
