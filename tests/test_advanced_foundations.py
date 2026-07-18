@@ -19,7 +19,7 @@ def test_cohens_d_uses_pooled_sample_standard_deviation() -> None:
 @pytest.mark.parametrize(
     ("first", "second", "message"),
     [
-        ([1], [2, 3], "two observations"),
+        ([1], [2, 3], "2 observations"),
         ([1, 1], [1, 1], "variance"),
         ([1, np.inf], [2, 3], "finite"),
     ],
