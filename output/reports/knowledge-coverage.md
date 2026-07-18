@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-18
-- 仓库就绪度，不是预期收益：**90.9%**
+- 仓库就绪度，不是预期收益：**95.2%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -13,7 +13,7 @@
 |---|---:|---:|---:|---:|---:|
 | 基础学科 | 0 | 0 | 0 | 20 | 100.0% |
 | 市场 | 0 | 0 | 0 | 16 | 100.0% |
-| 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
+| 资产与产品 | 0 | 0 | 0 | 18 | 100.0% |
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
 | 公司研究 | 0 | 0 | 0 | 16 | 100.0% |
 | 研究方法 | 0 | 0 | 0 | 18 | 100.0% |
@@ -24,8 +24,8 @@
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 6 | 0 | 10 | 57 | 87.0% |
-| `exercise-tested` | 练习已测 | 2 | 1 | 0 | 42 | 93.9% |
+| `content-ready` | 内容就绪 | 4 | 0 | 2 | 67 | 93.6% |
+| `exercise-tested` | 练习已测 | 1 | 1 | 0 | 43 | 96.1% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 0 | 0 | 0 | 6 | 100.0% |
 
@@ -34,23 +34,23 @@
 | ID | 维度 | 阶段 | 要求 | 状态 | 最后核验 | 证据 | 缺口 |
 |---|---|---|---|---|---|---|---|
 | `asset-bond-math` | 资产与产品 | `exercise-tested` | 债券定价、久期与凸性 | validated | 2026-07-17 | `synthesis:wiki/products/债券.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | — |
-| `asset-cash` | 资产与产品 | `content-ready` | 现金与货币基金 | reviewed | 2026-07-17 | `synthesis:wiki/products/货币基金.md` | 缺收益来源、流动性和信用风险官方来源 |
+| `asset-cash` | 资产与产品 | `content-ready` | 现金与货币基金 | validated | 2026-07-18 | `synthesis:wiki/products/货币基金.md`<br>`source:raw/official/united-states/sec-money-market-funds.md` | — |
 | `asset-commodities` | 资产与产品 | `content-ready` | 大宗商品现货与期货曲线 | validated | 2026-07-17 | `source:raw/official/united-states/cftc-futures-basics.md`<br>`source:raw/official/united-states/eia-open-data.md`<br>`synthesis:wiki/assets/大宗商品.md` | — |
-| `asset-convertible` | 资产与产品 | `content-ready` | 可转债条款与风险 | reviewed | 2026-07-17 | `synthesis:wiki/products/可转债.md` | 缺赎回、转股、信用与估值来源 |
+| `asset-convertible` | 资产与产品 | `content-ready` | 可转债条款与风险 | validated | 2026-07-18 | `synthesis:wiki/products/可转债.md`<br>`source:raw/official/mainland/sse-convertible-bonds.md`<br>`implementation:src/investkb/assets.py`<br>`test:tests/test_assets.py` | — |
 | `asset-credit-bonds` | 资产与产品 | `content-ready` | 信用债、评级与违约 | validated | 2026-07-17 | `source:raw/official/united-states/sec-bond-bulletins.md`<br>`source:raw/official/global/bis-debt-statistics.md`<br>`synthesis:wiki/products/债券.md` | — |
-| `asset-derivatives` | 资产与产品 | `content-ready` | 衍生品权利义务与保证金 | missing | 2026-07-17 | — | 缺期权、期货、互换的统一框架 |
-| `asset-equity` | 资产与产品 | `content-ready` | 股票所有权与现金流权利 | reviewed | 2026-07-17 | `synthesis:wiki/products/股票.md` | 缺公司法和市场官方来源 |
+| `asset-derivatives` | 资产与产品 | `content-ready` | 衍生品权利义务与保证金 | validated | 2026-07-18 | `synthesis:wiki/products/衍生品.md`<br>`source:raw/official/united-states/cftc-derivatives-framework.md` | — |
+| `asset-equity` | 资产与产品 | `content-ready` | 股票所有权与现金流权利 | validated | 2026-07-18 | `synthesis:wiki/products/股票.md`<br>`source:raw/official/united-states/sec-stocks-ownership.md` | — |
 | `asset-etf` | 资产与产品 | `content-ready` | ETF 结构、交易与跟踪误差 | validated | 2026-07-17 | `synthesis:wiki/products/ETF.md`<br>`source:raw/official/mainland/sse-etf.md` | — |
-| `asset-futures` | 资产与产品 | `content-ready` | 期货合约、交割与保证金 | reviewed | 2026-07-17 | `source:raw/official/united-states/cftc-futures-basics.md`<br>`synthesis:wiki/assets/大宗商品.md` | 已有通用合约、交割、保证金与连续合约框架；仍缺逐品种交易所规格和冻结合约链案例 |
+| `asset-futures` | 资产与产品 | `content-ready` | 期货合约、交割与保证金 | validated | 2026-07-18 | `source:raw/official/united-states/cftc-derivatives-framework.md`<br>`synthesis:wiki/assets/大宗商品.md`<br>`report:output/cases/futures-roll.md`<br>`test:tests/test_assets.py` | — |
 | `asset-fx` | 资产与产品 | `content-ready` | 外汇报价与汇率风险 | validated | 2026-07-17 | `synthesis:wiki/concepts/汇率风险.md`<br>`source:raw/official/global/fred-exchange-rates.md` | — |
 | `asset-gold` | 资产与产品 | `content-ready` | 黄金定价与基准 | validated | 2026-07-17 | `synthesis:wiki/assets/黄金.md`<br>`source:raw/official/global/lbma-gold-benchmark.md` | — |
-| `asset-government-bonds` | 资产与产品 | `content-ready` | 国债与收益率曲线 | reviewed | 2026-07-17 | `source:raw/courses/mit-finance-theory.md`<br>`synthesis:wiki/foundations/债券与利率基础.md` | 已有债券入门；仍缺主要市场官方曲线来源和市场制度 |
-| `asset-index` | 资产与产品 | `content-ready` | 指数编制与基准治理 | reviewed | 2026-07-17 | `synthesis:wiki/products/指数.md`<br>`synthesis:wiki/concepts/基准.md` | 缺指数公司方法论和调整案例 |
+| `asset-government-bonds` | 资产与产品 | `content-ready` | 国债与收益率曲线 | validated | 2026-07-18 | `source:raw/official/united-states/us-treasury-yield-curve.md`<br>`source:raw/official/mainland/chinabond-government-curve.md`<br>`synthesis:wiki/products/债券.md` | — |
+| `asset-index` | 资产与产品 | `content-ready` | 指数编制与基准治理 | validated | 2026-07-18 | `synthesis:wiki/products/指数.md`<br>`source:raw/official/global/sp-index-mathematics.md`<br>`implementation:src/investkb/assets.py`<br>`test:tests/test_assets.py` | — |
 | `asset-mutual-fund` | 资产与产品 | `content-ready` | 公募基金结构与费用 | validated | 2026-07-17 | `synthesis:wiki/products/公募基金.md`<br>`source:raw/official/mainland/csrc-fund-law.md` | — |
-| `asset-options-math` | 资产与产品 | `exercise-tested` | 期权收益、希腊字母与波动率 | missing | 2026-07-17 | — | 缺收益图、定价实现和边界测试 |
-| `asset-overseas-etf` | 资产与产品 | `content-ready` | 海外 ETF 与跨币种暴露 | reviewed | 2026-07-17 | `synthesis:wiki/products/海外ETF.md` | 缺税务、遗产税、预扣税和产品来源 |
-| `asset-reit` | 资产与产品 | `content-ready` | REIT 结构与现金流 | reviewed | 2026-07-17 | `synthesis:wiki/products/REIT.md` | 缺 A股、港股和美股制度对比 |
-| `asset-structured-products` | 资产与产品 | `content-ready` | 结构化产品与路径依赖 | missing | 2026-07-17 | — | 缺条款拆解、发行人信用和压力情景 |
+| `asset-options-math` | 资产与产品 | `exercise-tested` | 期权收益、希腊字母与波动率 | validated | 2026-07-18 | `synthesis:wiki/products/期权与波动率.md`<br>`implementation:src/investkb/assets.py`<br>`test:tests/test_assets.py` | — |
+| `asset-overseas-etf` | 资产与产品 | `content-ready` | 海外 ETF 与跨币种暴露 | validated | 2026-07-18 | `synthesis:wiki/products/海外ETF.md`<br>`source:raw/official/united-states/irs-overseas-etf-taxes.md`<br>`implementation:src/investkb/assets.py`<br>`test:tests/test_assets.py` | — |
+| `asset-reit` | 资产与产品 | `content-ready` | REIT 结构与现金流 | validated | 2026-07-18 | `synthesis:wiki/products/REIT.md`<br>`source:raw/official/mainland/sse-infrastructure-reits.md`<br>`source:raw/official/hong-kong/hkex-reits.md`<br>`source:raw/official/united-states/sec-reits.md` | — |
+| `asset-structured-products` | 资产与产品 | `content-ready` | 结构化产品与路径依赖 | validated | 2026-07-18 | `synthesis:wiki/products/结构化产品.md`<br>`source:raw/official/united-states/sec-structured-notes.md`<br>`implementation:src/investkb/assets.py`<br>`test:tests/test_assets.py` | — |
 | `company-capital-allocation` | 公司研究 | `content-ready` | 资本配置与再投资回报 | validated | 2026-07-17 | `source:raw/experts/cards/damodaran-valuation.md`<br>`synthesis:wiki/company/资本配置治理与稀释.md` | — |
 | `company-case-negative` | 公司研究 | `case-validated` | 公司研究负结果与放弃案例 | validated | 2026-07-17 | `source:raw/cases/healthcare/manifest.yaml`<br>`report:output/cases/company-negative.md`<br>`test:tests/test_public_evidence_cases.py` | — |
 | `company-case-positive` | 公司研究 | `case-validated` | 公司研究正结果冻结案例 | validated | 2026-07-17 | `source:raw/cases/company-positive/manifest.yaml`<br>`report:output/cases/company-positive.md`<br>`test:tests/test_public_evidence_cases.py` | — |
