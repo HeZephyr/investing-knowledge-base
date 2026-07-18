@@ -1,0 +1,7 @@
+case_id: healthcare
+decision_date: 2026-07-17
+hypothesis: FDA accelerated approval is sufficient to produce broad payer access and sustainable demand.
+success: No material payer restriction and no demand-related inventory write-off within the observed window.
+failure: Coverage is restricted to evidence development or the company records a material demand-related write-off.
+alternative_explanations: [surrogate_uncertainty, safety_monitoring, price, diagnosis_capacity, infusion_capacity, competition]
+attempts: 1

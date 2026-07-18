@@ -70,3 +70,8 @@ updated: 2026-07-17
 - changed: [[能源]], [[金融]], [[消费]], [[经验与失败教训]], [[index]]
 - sources: raw-us-eia-open-data, raw-us-fdic-bankfind-call-reports, raw-us-census-monthly-retail-trade, ExxonMobil/Target/Walmart 法定披露
 - result: 建立三套带 SHA-256、首次可得日、单位与离线验证的公开快照；保留能源幅度失败、SVB 简单资本率反例和 Target 宏观背离，三项 case capability 首次达到 validated。
+
+## [2026-07-17] research | 医药、互联网与存储研究系统
+- changed: [[医药医疗]], [[互联网平台]], [[存储半导体]], [[经验与失败教训]], [[index]], [[dashboard]]
+- sources: raw-us-fda-clinical-endpoints, raw-us-clinicaltrials-gov-api, raw-us-cms-amyloid-coverage, raw-cn-nmpa-drug-registration, raw-hk-hkex-biotech-18a, raw-kr-mfds-drug-approval, raw-us-ftc-platform-data-practices, raw-eu-digital-markets-act, raw-cn-samr-platform-antitrust, raw-company-meta-platform-metrics, raw-company-micron-memory-results, raw-kr-memory-company-disclosures
+- result: 建立研发—支付—现金流、用户—变现—治理、bit—价格—库存—Capex 三条证据链；冻结 Aduhelm、Meta 与 Micron 反例，六项行业内容/案例能力完成，仓库就绪度升至 56.9%。

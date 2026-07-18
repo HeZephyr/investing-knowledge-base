@@ -1,0 +1,21 @@
+case_id: healthcare
+snapshot: observations.csv
+snapshot_sha256: "29f1040401f2d1344f0dda07c3832df7782878eb1f21b1971cee5dadfdef481b"
+primary_key: [series, period]
+allowed_units: [event_count, USD_millions]
+retrieved_at: 2026-07-17T23:45:00+08:00
+vintage: filed-regulatory-events-and-current-company-filing
+upstream:
+  - provider: FDA
+    endpoint: https://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/Aducanumab_BLA761178_Stein_2021_06_07.pdf
+    decision_date: 2021-06-07
+    fact: accelerated approval based on a surrogate endpoint
+  - provider: CMS
+    endpoint: https://www.cms.gov/newsroom/press-releases/cms-finalizes-medicare-coverage-policy-monoclonal-antibodies-directed-against-amyloid-treatment
+    decision_date: 2022-04-07
+    fact: accelerated-approval products covered only in qualifying trials under the NCD
+  - provider: Biogen
+    endpoint: https://investors.biogen.com/static-files/83353b9c-5396-4420-b0e7-16f71f8703f2
+    report_period: 2024-12-31
+    fact: approximately USD 275 million write-off tied to the final NCD
+notes: The case links three public events; it is a framework falsification, not a treatment comparison or an estimate of class-wide approval probability.

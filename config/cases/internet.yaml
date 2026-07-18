@@ -1,0 +1,7 @@
+case_id: internet
+decision_date: 2026-07-17
+hypothesis: Growth in Meta Family daily active people is sufficient to explain full-year revenue growth.
+success: DAP and revenue have the same direction and their growth rates differ by no more than 5 percentage points.
+failure: The growth gap exceeds 5 percentage points or ad impressions and price changes are material.
+alternative_explanations: [ad_impressions, price_per_ad, geography, foreign_exchange, non_ad_revenue, product_mix]
+attempts: 1
