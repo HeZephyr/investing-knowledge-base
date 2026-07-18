@@ -32,6 +32,13 @@ def _positive(value: float, name: str) -> float:
     return number
 
 
+def _nonnegative(value: float, name: str) -> float:
+    number = _finite(value, name)
+    if number < 0:
+        raise AssetModelError(f"{name} must be non-negative")
+    return number
+
+
 def _option_type(value: str) -> str:
     if value not in {"call", "put"}:
         raise AssetModelError("option_type must be call or put")
@@ -48,7 +55,7 @@ def option_payoff(
     """Return expiry payoff, keeping intrinsic value and premium separate."""
 
     option_type = _option_type(option_type)
-    spot = _positive(spot, "spot")
+    spot = _nonnegative(spot, "spot")
     strike = _positive(strike, "strike")
     premium = _finite(premium, "premium")
     if premium < 0:
@@ -247,8 +254,8 @@ def cross_currency_return(local_return: float, fx_return: float) -> float:
 
     local = _finite(local_return, "local_return")
     fx = _finite(fx_return, "fx_return")
-    if local <= -1 or fx <= -1:
-        raise AssetModelError("local_return and fx_return must be greater than -1")
+    if local < -1 or fx < -1:
+        raise AssetModelError("local_return and fx_return must be at least -1")
     return (1 + local) * (1 + fx) - 1
 
 
@@ -300,7 +307,8 @@ def structured_note_redemption(
 
     if not reference_path:
         raise AssetModelError("reference path must not be empty")
-    path = [_positive(value, "reference path value") for value in reference_path]
+    initial = _positive(reference_path[0], "initial reference value")
+    path = [initial] + [_nonnegative(value, "reference path value") for value in reference_path[1:]]
     principal = _positive(principal, "principal")
     barrier = _finite(barrier_ratio, "barrier_ratio")
     participation = _finite(participation, "participation")
@@ -313,9 +321,8 @@ def structured_note_redemption(
     if not 0 <= recovery <= 1:
         raise AssetModelError("issuer_recovery must be between 0 and 1")
 
-    initial = path[0]
     terminal_ratio = path[-1] / initial
-    breached = min(path) / initial < barrier
+    breached = min(path) / initial <= barrier
     if breached and terminal_ratio < 1:
         contractual = principal * terminal_ratio
     else:

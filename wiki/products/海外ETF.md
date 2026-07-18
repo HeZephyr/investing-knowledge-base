@@ -5,7 +5,7 @@ category: products
 markets: [全球, 美股, 港股]
 level: beginner
 status: validated
-sources: [raw-official-sec-etf-bulletin, raw-official-sec-edgar, raw-official-irs-overseas-etf-taxes, raw-official-sec-index-funds]
+sources: [raw-official-sec-etf-bulletin, raw-official-sec-edgar, raw-official-irs-overseas-etf-taxes, raw-official-irs-nonresident-estate-tax, raw-official-sec-index-funds]
 updated: 2026-07-18
 ---
 
@@ -35,7 +35,7 @@ home_return = cross_currency_return(local_return=0.10, fx_return=-0.05)
 
 ## 税务只做风险清单
 
-IRS 2026 Publication 515 展示美国来源收入对外国收款人的一般预扣框架，协定、受益所有人资格和收入分类可能改变税率。IRS 2026-06-27 页面还提示：美国法下公司股票可能构成非居民非公民的美国所在地遗产资产，并存在 Form 706-NA 门槛与协定问题。
+IRS 2026 Publication 515 展示美国来源收入对外国收款人的一般预扣框架，协定、受益所有人资格和收入分类可能改变税率。独立的 IRS 2026-06-27 遗产税页面还提示：美国法下公司股票可能构成非居民非公民的美国所在地遗产资产，并存在 Form 706-NA 门槛与协定问题。
 
 这些事实不能自动映射到某位读者。注册地相同的 ETF 也可能因分派性质、持有人身份、账户和协定不同而结果不同；同时还需核对居住地税制。仓库不提供个税结论，交易前应按当年规则咨询合资格专业人士。
 

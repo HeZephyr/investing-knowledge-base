@@ -35,6 +35,9 @@ def test_option_payoff_preserves_right_obligation_and_premium() -> None:
     assert put["net_payoff"] == pytest.approx(15.0)
     assert short_call["net_payoff"] == pytest.approx(-14.0)
 
+    worthless = option_payoff("call", spot=0, strike=100, premium=6, position="long")
+    assert worthless == {"intrinsic": 0.0, "premium_cash_flow": -6.0, "net_payoff": -6.0}
+
 
 def test_black_scholes_matches_reference_values_and_put_call_parity() -> None:
     call = black_scholes("call", spot=100, strike=100, years=1, rate=0.05, volatility=0.20)
@@ -87,6 +90,8 @@ def test_fund_tracking_and_currency_returns_are_explicit() -> None:
         pytest.importorskip("numpy").std(active, ddof=1) * math.sqrt(12)
     )
     assert cross_currency_return(local_return=0.10, fx_return=-0.05) == pytest.approx(0.045)
+    assert cross_currency_return(local_return=-1.0, fx_return=0.20) == -1.0
+    assert cross_currency_return(local_return=0.20, fx_return=-1.0) == -1.0
 
 
 def test_index_divisor_preserves_level_across_non_market_change() -> None:
@@ -167,6 +172,17 @@ def test_structured_note_redemption_captures_barrier_cap_and_issuer_recovery() -
     assert defaulted["contractual_redemption"] == pytest.approx(1_100.0)
     assert defaulted["redemption_after_issuer_credit"] == pytest.approx(440.0)
 
+    touched = structured_note_redemption(
+        [100, 70, 80], principal=1_000, barrier_ratio=0.70, participation=1.0, cap=0.15
+    )
+    wiped_out = structured_note_redemption(
+        [100, 0], principal=1_000, barrier_ratio=0.70, participation=1.0, cap=0.15
+    )
+    assert touched["barrier_breached"] is True
+    assert touched["contractual_redemption"] == pytest.approx(800.0)
+    assert wiped_out["barrier_breached"] is True
+    assert wiped_out["contractual_redemption"] == 0.0
+
 
 def test_all_asset_requirements_have_stage_appropriate_evidence() -> None:
     manifest = load_coverage(ROOT / "config/knowledge-coverage.yaml")
@@ -197,7 +213,7 @@ def test_all_asset_requirements_have_stage_appropriate_evidence() -> None:
         (lambda: convertible_metrics(100, 0, 10, 90, 80), "conversion_price"),
         (lambda: tracking_statistics([0.1], [0.1], 12), "at least two"),
         (lambda: tracking_statistics([0.1, 0.2], [0.1], 12), "equal length"),
-        (lambda: cross_currency_return(-1.1, 0), "greater than -1"),
+        (lambda: cross_currency_return(-1.1, 0), "at least -1"),
         (lambda: index_divisor_after_rebalance(100, 0, 100), "old_divisor"),
         (lambda: futures_roll_decomposition(100, 0, 101, 102), "old_exit"),
         (lambda: structured_note_redemption([], 100, 0.7, 1, 0.2), "path"),
