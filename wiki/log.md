@@ -85,3 +85,8 @@ updated: 2026-07-17
 - changed: [[法定披露与历史时点]], [[三表勾稽与现金转换]], [[收入确认与合同经济]], [[资本配置治理与稀释]], [[估值实验室]], [[财务三表]], [[盈利质量]], [[经验与失败教训]], [[dashboard]]
 - sources: raw-global-ifrs-ias-1, raw-global-ifrs-ias-7, raw-global-ifrs-15, raw-global-ifrs-ias-33, raw-us-investor-edgar-research, raw-expert-damodaran-valuation
 - result: 建立历史时点与重述、双重三表勾稽、现金周期、完全稀释股数、反向 DCF、概率情景和亏损倍数边界；公司研究轴 16/16 validated，仓库就绪度升至 68.8%。
+
+## [2026-07-17] research | 组合治理、风险与归因实验室
+- changed: [[投资政策与目标]], [[资产配置与再平衡]], [[组合风险预算与压力测试]], [[基准与绩效归因]], [[决策日志与过程评分]], [[分散化]], [[仓位管理]], [[流动性风险]], [[基准]], [[经验与失败教训]], [[dashboard]]
+- sources: raw-us-investor-asset-allocation, raw-us-sec-fund-liquidity-risk, raw-paper-markowitz-1952, raw-paper-sharpe-1966
+- result: 建立无个人持仓的 IPS 校验、配置集中度、费用后再平衡、退出天数、风险贡献、正反压力、Brinson 归因和过程评分；组合轴 14/14 validated，仓库就绪度升至 75.4%。

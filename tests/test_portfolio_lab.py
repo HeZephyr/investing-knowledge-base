@@ -35,7 +35,9 @@ def test_ips_requires_constraints_and_future_review() -> None:
     )
     assert result["review_interval_days"] == 365
     with pytest.raises(PortfolioLabError, match="review"):
-        validate_ips({**result["policy"], "next_review_date": "2026-01-01"}, as_of=date(2026, 7, 17))
+        validate_ips(
+            {**result["policy"], "next_review_date": "2026-01-01"}, as_of=date(2026, 7, 17)
+        )
 
 
 def test_allocation_diagnostics_measure_concentration() -> None:
@@ -64,8 +66,9 @@ def test_rebalance_plan_uses_cash_flow_and_charges_turnover() -> None:
     )
     assert result["trades"] == pytest.approx({"equity": -5, "bond": 3, "gold": 12})
     assert result["one_way_turnover"] == pytest.approx(10 / 110)
-    assert result["estimated_cost"] == pytest.approx(0.02)
-    assert result["post_cost_value"] == pytest.approx(109.98)
+    assert result["gross_traded_value"] == pytest.approx(20)
+    assert result["estimated_cost"] == pytest.approx(0.04)
+    assert result["post_cost_value"] == pytest.approx(109.96)
 
 
 def test_liquidity_diagnostics_use_participation_cap() -> None:
@@ -81,10 +84,8 @@ def test_liquidity_diagnostics_use_participation_cap() -> None:
 
 
 def test_risk_contributions_reconcile_and_reject_bad_covariance() -> None:
-    result = risk_contributions(
-        [0.6, 0.4], np.array([[0.04, 0.006], [0.006, 0.01]])
-    )
-    assert result["portfolio_volatility"] == pytest.approx(0.13206, abs=0.00001)
+    result = risk_contributions([0.6, 0.4], np.array([[0.04, 0.006], [0.006, 0.01]]))
+    assert result["portfolio_volatility"] == pytest.approx(0.13740, abs=0.00001)
     assert sum(result["component_contributions"]) == pytest.approx(result["portfolio_volatility"])
     assert sum(result["contribution_shares"]) == pytest.approx(1)
     with pytest.raises(PortfolioLabError, match="symmetric"):
@@ -93,7 +94,9 @@ def test_risk_contributions_reconcile_and_reject_bad_covariance() -> None:
 
 def test_stress_and_reverse_stress_keep_loss_sign_explicit() -> None:
     weights = {"equity": 0.5, "bond": 0.3, "gold": 0.2}
-    assert stress_loss(weights, {"equity": -0.30, "bond": -0.05, "gold": 0.10}) == pytest.approx(-0.145)
+    assert stress_loss(weights, {"equity": -0.30, "bond": -0.05, "gold": 0.10}) == pytest.approx(
+        -0.145
+    )
     assert reverse_stress_shock(
         weights, known_shocks={"bond": -0.05, "gold": 0.10}, solve_asset="equity", target_loss=-0.20
     ) == pytest.approx(-0.41)
@@ -109,7 +112,9 @@ def test_brinson_attribution_reconciles_active_return() -> None:
     assert result["portfolio_return"] == pytest.approx(0.08)
     assert result["benchmark_return"] == pytest.approx(0.065)
     assert result["active_return"] == pytest.approx(0.015)
-    assert result["allocation"] + result["selection"] + result["interaction"] == pytest.approx(0.015)
+    assert result["allocation"] + result["selection"] + result["interaction"] == pytest.approx(
+        0.015
+    )
 
 
 def test_decision_journal_scores_process_not_outcome() -> None:

@@ -90,6 +90,11 @@ nav:
       - 流动性风险: wiki/risk/流动性风险.md
       - 行为偏差: wiki/risk/行为偏差.md
       - 投资骗局: wiki/risk/投资骗局.md
+      - 投资政策与目标: wiki/portfolio/投资政策与目标.md
+      - 资产配置与再平衡: wiki/portfolio/资产配置与再平衡.md
+      - 组合风险预算与压力测试: wiki/portfolio/组合风险预算与压力测试.md
+      - 基准与绩效归因: wiki/portfolio/基准与绩效归因.md
+      - 决策日志与过程评分: wiki/portfolio/决策日志与过程评分.md
   - 量化研究:
       - 数据质量: wiki/quant/数据质量.md
       - 回测基础: wiki/quant/回测基础.md
