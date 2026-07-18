@@ -22,6 +22,11 @@ from investkb.coverage import (
 from investkb.data.models import normalize_bars
 from investkb.data.providers import AKShareProvider, BaoStockProvider, DataUnavailableError
 from investkb.data.store import ParquetStore
+from investkb.private_research import (
+    PrivateWorkspaceError,
+    initialize_private_workspace,
+    validate_private_workspace,
+)
 from investkb.reporting import build_report
 from investkb.sources import SourceFormatError, audit_source_card
 from investkb.strategies import buy_and_hold_signal, moving_average_signal
@@ -36,6 +41,7 @@ fund_app = typer.Typer(help="开放式基金净值数据", no_args_is_help=True)
 backtest_app = typer.Typer(help="策略回测", no_args_is_help=True)
 demo_app = typer.Typer(help="可离线运行的教程示例", no_args_is_help=True)
 coverage_app = typer.Typer(help="知识覆盖与完成证据", no_args_is_help=True)
+private_app = typer.Typer(help="本地私密研究工作区", no_args_is_help=True)
 app.add_typer(sources_app, name="sources")
 app.add_typer(wiki_app, name="wiki")
 app.add_typer(data_app, name="data")
@@ -43,6 +49,7 @@ app.add_typer(fund_app, name="fund")
 app.add_typer(backtest_app, name="backtest")
 app.add_typer(demo_app, name="demo")
 app.add_typer(coverage_app, name="coverage")
+app.add_typer(private_app, name="private")
 
 NON_CARDS = {"README.md", "catalog.md", "source-catalog.md"}
 
@@ -122,6 +129,36 @@ def coverage_report(
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(render_coverage_report(manifest), encoding="utf-8")
     typer.echo(f"PASS: {coverage_score(manifest):.1f}% -> {output}")
+
+
+def _private_summary(action: str, root: Path) -> None:
+    try:
+        summary = (
+            initialize_private_workspace(root)
+            if action == "init"
+            else validate_private_workspace(root)
+        )
+    except PrivateWorkspaceError as exc:
+        typer.echo(f"ERROR: {exc}", err=True)
+        raise typer.Exit(1) from exc
+    typer.echo(
+        f"PASS: private workspace {action}; watchlist={summary.watchlist}, "
+        f"positions={summary.positions}, journal={summary.journal_entries}"
+    )
+
+
+@private_app.command("init")
+def private_init(root: Path = typer.Option(Path("."))) -> None:
+    """创建被 Git 忽略的空白私人研究层；绝不覆盖已有内容。"""
+
+    _private_summary("init", root)
+
+
+@private_app.command("validate")
+def private_validate(root: Path = typer.Option(Path("."))) -> None:
+    """只验证私人层结构并输出计数，不回显内容。"""
+
+    _private_summary("validate", root)
 
 
 @data_app.command("fetch")

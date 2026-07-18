@@ -25,6 +25,8 @@
 ## 工程入口
 
 - `src/investkb/data/`：免费数据适配器与缓存模型。
+- `src/investkb/data/global_provider.py`：显式证券登记、全球价格/公司行动和离线谱系契约。
+- `src/investkb/private_research.py`：只在本地创建并验证被忽略的私人研究工作区，不读取到公开产物。
 - `src/investkb/backtest/`：避免未来函数的日线回测。
 - `src/investkb/company.py`：历史时点、三表、现金转换、稀释、反向 DCF、情景和可比估值练习。
 - `src/investkb/portfolio.py`：公开无持仓的 IPS、配置、再平衡、流动性、风险预算、压力和归因练习。

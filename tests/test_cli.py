@@ -45,3 +45,18 @@ def test_coverage_cli_validates_and_reproduces_committed_report(tmp_path: Path) 
     assert "PASS:" in validation.output
     assert report.exit_code == 0, report.output
     assert generated.read_bytes() == (ROOT / "output/reports/knowledge-coverage.md").read_bytes()
+
+
+def test_private_workspace_cli_initializes_and_validates_without_content_echo(
+    tmp_path: Path,
+) -> None:
+    runner = CliRunner()
+
+    initialized = runner.invoke(app, ["private", "init", "--root", str(tmp_path)])
+    validated = runner.invoke(app, ["private", "validate", "--root", str(tmp_path)])
+
+    assert initialized.exit_code == 0, initialized.output
+    assert "positions=0" in initialized.output
+    assert validated.exit_code == 0, validated.output
+    assert "watchlist=0" in validated.output
+    assert "thesis" not in validated.output

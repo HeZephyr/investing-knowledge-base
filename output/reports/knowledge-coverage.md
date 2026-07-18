@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-18
-- 仓库就绪度，不是预期收益：**98.7%**
+- 仓库就绪度，不是预期收益：**100.0%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -18,14 +18,14 @@
 | 公司研究 | 0 | 0 | 0 | 16 | 100.0% |
 | 研究方法 | 0 | 0 | 0 | 18 | 100.0% |
 | 组合与风控 | 0 | 0 | 0 | 14 | 100.0% |
-| 工程与维护 | 1 | 1 | 0 | 13 | 88.3% |
+| 工程与维护 | 0 | 0 | 0 | 15 | 100.0% |
 
 ## 分能力阶段状态
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
 | `content-ready` | 内容就绪 | 0 | 0 | 0 | 73 | 100.0% |
-| `exercise-tested` | 练习已测 | 1 | 1 | 0 | 43 | 96.1% |
+| `exercise-tested` | 练习已测 | 0 | 0 | 0 | 45 | 100.0% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 0 | 0 | 0 | 6 | 100.0% |
 
@@ -72,12 +72,12 @@
 | `engineering-coverage` | 工程与维护 | `exercise-tested` | 机器可审计覆盖报告 | validated | 2026-07-17 | `implementation:src/investkb/coverage.py`<br>`test:tests/test_coverage.py` | — |
 | `engineering-data-adapters` | 工程与维护 | `exercise-tested` | A股、港股与基金免费数据适配 | validated | 2026-07-17 | `implementation:src/investkb/data/providers.py`<br>`test:tests/data/test_providers.py` | — |
 | `engineering-dependencies` | 工程与维护 | `maintenance-live` | 依赖更新与兼容性守护 | validated | 2026-07-17 | `workflow:.github/dependabot.yml`<br>`test:tests/test_github_workflows.py` | — |
-| `engineering-global-data` | 工程与维护 | `exercise-tested` | 美股、韩国与全球免费数据适配 | seed | 2026-07-17 | `source:raw/repositories/cards/yfinance.md` | 缺标准化适配器、公司行动和离线契约测试 |
+| `engineering-global-data` | 工程与维护 | `exercise-tested` | 美股、韩国与全球免费数据适配 | validated | 2026-07-18 | `source:raw/repositories/cards/yfinance.md`<br>`synthesis:wiki/engineering/全球免费数据适配.md`<br>`implementation:src/investkb/data/global_provider.py`<br>`test:tests/data/test_global_provider.py` | — |
 | `engineering-link-health` | 工程与维护 | `maintenance-live` | 来源链接健康检查 | validated | 2026-07-17 | `workflow:.github/workflows/link-check.yml`<br>`test:tests/test_github_workflows.py` | — |
 | `engineering-maintenance-skill` | 工程与维护 | `exercise-tested` | 可复用知识库维护 Skill | validated | 2026-07-17 | `implementation:skills/maintain-investing-knowledge-base/SKILL.md`<br>`test:tests/test_knowledge_skill.py` | — |
 | `engineering-offline-store` | 工程与维护 | `exercise-tested` | 离线数据缓存与可重复运行 | validated | 2026-07-17 | `implementation:src/investkb/data/store.py`<br>`test:tests/data/test_store.py` | — |
 | `engineering-pages` | 工程与维护 | `maintenance-live` | 可搜索互动 GitHub Pages | validated | 2026-07-17 | `workflow:.github/workflows/pages.yml`<br>`test:tests/test_site.py` | — |
-| `engineering-private-research` | 工程与维护 | `exercise-tested` | 私人观察池、持仓与决策日志 | missing | 2026-07-17 | — | 用户暂无持仓；需在本地 private 层建立不公开的投资政策与观察池 |
+| `engineering-private-research` | 工程与维护 | `exercise-tested` | 私人观察池、持仓与决策日志 | validated | 2026-07-18 | `synthesis:wiki/engineering/私人研究工作区.md`<br>`implementation:src/investkb/private_research.py`<br>`test:tests/test_private_research.py` | — |
 | `engineering-provider-monitoring` | 工程与维护 | `maintenance-live` | 免费数据源定时烟测 | validated | 2026-07-17 | `workflow:.github/workflows/provider-smoke.yml`<br>`test:tests/test_github_workflows.py` | — |
 | `engineering-public-boundary` | 工程与维护 | `exercise-tested` | 公开与私人边界 | validated | 2026-07-17 | `implementation:src/investkb/publication.py`<br>`test:tests/test_public_boundary.py` | — |
 | `engineering-reporting` | 工程与维护 | `exercise-tested` | 可复现研究报告生成 | validated | 2026-07-17 | `implementation:src/investkb/reporting.py`<br>`test:tests/test_reporting.py` | — |
