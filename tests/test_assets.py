@@ -43,9 +43,7 @@ def test_black_scholes_matches_reference_values_and_put_call_parity() -> None:
 
 def test_implied_volatility_recovers_input_and_rejects_no_arbitrage_violation() -> None:
     observed = black_scholes("call", 100, 105, 0.75, 0.03, 0.27, dividend_yield=0.01).price
-    solved = implied_volatility(
-        "call", observed, 100, 105, 0.75, 0.03, dividend_yield=0.01
-    )
+    solved = implied_volatility("call", observed, 100, 105, 0.75, 0.03, dividend_yield=0.01)
     assert solved == pytest.approx(0.27, abs=1e-8)
 
     with pytest.raises(AssetModelError, match="bounds"):
@@ -125,7 +123,11 @@ def test_structured_note_redemption_captures_barrier_cap_and_issuer_recovery() -
         issuer_recovery=0.40,
     )
 
-    assert protected == {"barrier_breached": False, "contractual_redemption": 1_100.0, "redemption_after_issuer_credit": 1_100.0}
+    assert protected == {
+        "barrier_breached": False,
+        "contractual_redemption": 1_100.0,
+        "redemption_after_issuer_credit": 1_100.0,
+    }
     assert knocked_in["barrier_breached"] is True
     assert knocked_in["contractual_redemption"] == pytest.approx(800.0)
     assert defaulted["contractual_redemption"] == pytest.approx(1_100.0)

@@ -6,9 +6,9 @@
 
 ## 1. Numerical contracts
 
-- [ ] Write failing tests for option payoff, Black-Scholes price/Greeks, parity, implied volatility, and invalid domains.
-- [ ] Write failing tests for convertible, ETF tracking/currency, index-divisor, futures-roll, and structured-note contracts.
-- [ ] Implement `src/investkb/assets.py` with explicit assumptions and domain errors.
+- [x] Write failing tests for option payoff, Black-Scholes price/Greeks, parity, implied volatility, and invalid domains.
+- [x] Write failing tests for convertible, ETF tracking/currency, index-divisor, futures-roll, and structured-note contracts.
+- [x] Implement `src/investkb/assets.py` with explicit assumptions and domain errors.
 
 ## 2. Primary evidence
 
