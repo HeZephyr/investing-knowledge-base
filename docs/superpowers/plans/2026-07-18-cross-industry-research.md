@@ -4,8 +4,8 @@
 
 ## 1. Test-first operating bridges
 
-- [ ] Write failing tests for insurance, semiconductor, industrial, property, mining, and classification contracts.
-- [ ] Implement `src/investkb/sectors.py` with explicit units and fail-closed domains.
+- [x] Write failing tests for insurance, semiconductor, industrial, property, mining, and classification contracts.
+- [x] Implement `src/investkb/sectors.py` with explicit units and fail-closed domains.
 
 ## 2. Primary sources and synthesis
 
