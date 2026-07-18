@@ -61,22 +61,26 @@ def insurance_underwriting_metrics(
 
 def reserve_roll_forward(
     opening_reserve: float,
-    incurred_claims: float,
+    current_accident_year_incurred: float,
+    prior_period_development: float,
     claims_paid: float,
+    other_movements: float,
     closing_reserve: float,
 ) -> dict[str, float]:
-    """Reconcile one simplified claims reserve roll-forward."""
+    """Reconcile claims reserves with development and other movements explicit."""
 
     opening = _nonnegative(opening_reserve, "opening_reserve")
-    incurred = _nonnegative(incurred_claims, "incurred_claims")
+    current = _nonnegative(current_accident_year_incurred, "current_accident_year_incurred")
+    development = _finite(prior_period_development, "prior_period_development")
     paid = _nonnegative(claims_paid, "claims_paid")
+    other = _finite(other_movements, "other_movements")
     closing = _nonnegative(closing_reserve, "closing_reserve")
-    expected = opening + incurred - paid
+    expected = opening + current + development - paid + other
     if expected < 0:
-        raise SectorModelError("claims_paid cannot exceed available reserve plus incurred claims")
+        raise SectorModelError("reserve movements imply a negative closing reserve")
     return {
         "expected_closing_reserve": expected,
-        "unexplained_development": closing - expected,
+        "reconciliation_gap": closing - expected,
     }
 
 
@@ -96,7 +100,7 @@ def semiconductor_output(
 ) -> dict[str, float]:
     """Bridge wafer starts through fabrication and package/test yield."""
 
-    wafers = _positive(wafer_starts, "wafer_starts")
+    wafers = _nonnegative(wafer_starts, "wafer_starts")
     dies = _positive(gross_dies_per_wafer, "gross_dies_per_wafer")
     fab = _unit_interval(fab_yield, "fab_yield")
     package = _unit_interval(package_test_yield, "package_test_yield")
@@ -167,8 +171,15 @@ def property_project_bridge(
         )
     )
     closing = _nonnegative(closing_cash, "closing_cash")
-    expected = opening + presales + inflows - costs
-    return {"expected_closing_cash": expected, "reconciliation_gap": closing - expected}
+    cash_before_financing = opening + presales + inflows - costs
+    shortfall = max(0.0, -cash_before_financing)
+    expected = cash_before_financing + shortfall
+    return {
+        "cash_before_required_financing": cash_before_financing,
+        "funding_shortfall": shortfall,
+        "expected_closing_cash": expected,
+        "reconciliation_gap": closing - expected,
+    }
 
 
 def real_estate_credit_metrics(
@@ -190,15 +201,15 @@ def real_estate_credit_metrics(
 
 def mining_unit_economics(
     ore_tonnes: float,
-    grade: float,
+    grade_fraction: float,
     recovery_rate: float,
     payable_rate: float,
     cash_cost: float,
 ) -> dict[str, float]:
-    """Bridge ore, grade, process recovery and payability into unit cash cost."""
+    """Bridge ore through dimensionless grade fraction, recovery, and payability."""
 
     ore = _positive(ore_tonnes, "ore_tonnes")
-    grade = _unit_interval(grade, "grade", allow_zero=False)
+    grade = _unit_interval(grade_fraction, "grade_fraction", allow_zero=False)
     recovery = _unit_interval(recovery_rate, "recovery_rate", allow_zero=False)
     payable = _unit_interval(payable_rate, "payable_rate", allow_zero=False)
     cost = _nonnegative(cash_cost, "cash_cost")
@@ -221,7 +232,7 @@ class IndustryClassification:
     revision: str
     code: str
     primary_activity: str
-    effective_from: date
+    mapping_effective_from: date
 
     def __post_init__(self) -> None:
         if not all(
@@ -229,5 +240,5 @@ class IndustryClassification:
             for value in (self.scheme, self.revision, self.code, self.primary_activity)
         ):
             raise SectorModelError("scheme, revision, code, and primary_activity are required")
-        if not isinstance(self.effective_from, date):
-            raise SectorModelError("effective_from must be a date")
+        if not isinstance(self.mapping_effective_from, date):
+            raise SectorModelError("mapping_effective_from must be a date")

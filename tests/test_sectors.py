@@ -26,7 +26,14 @@ ROOT = Path(__file__).parents[1]
 
 def test_insurance_metrics_keep_underwriting_reserves_and_capital_separate() -> None:
     underwriting = insurance_underwriting_metrics(1_000, incurred_claims=620, expenses=280)
-    reserve = reserve_roll_forward(500, incurred_claims=620, claims_paid=580, closing_reserve=550)
+    reserve = reserve_roll_forward(
+        500,
+        current_accident_year_incurred=600,
+        prior_period_development=20,
+        claims_paid=580,
+        other_movements=0,
+        closing_reserve=550,
+    )
     solvency = solvency_coverage(eligible_capital=180, required_capital=120)
 
     assert underwriting == {
@@ -35,7 +42,7 @@ def test_insurance_metrics_keep_underwriting_reserves_and_capital_separate() -> 
         "combined_ratio": 0.90,
         "underwriting_result": 100.0,
     }
-    assert reserve == {"expected_closing_reserve": 540.0, "unexplained_development": 10.0}
+    assert reserve == {"expected_closing_reserve": 540.0, "reconciliation_gap": 10.0}
     assert solvency == {"coverage_ratio": 1.5, "capital_buffer": 60.0}
 
 
@@ -55,6 +62,8 @@ def test_semiconductor_output_exposes_each_yield_stage() -> None:
     zero_yield = semiconductor_output(100, 10, fab_yield=0.0, package_test_yield=0.95)
     assert zero_yield["shippable_units"] == 0.0
     assert zero_yield["end_to_end_yield"] == 0.0
+    zero_starts = semiconductor_output(0, 10, fab_yield=0.8, package_test_yield=0.95)
+    assert zero_starts["shippable_units"] == 0.0
 
 
 def test_industrial_backlog_and_capacity_do_not_treat_orders_as_revenue() -> None:
@@ -86,7 +95,12 @@ def test_property_bridge_and_credit_metrics_reconcile_cash_and_financing() -> No
         closing_cash=160,
     )
     credit = real_estate_credit_metrics(debt=500, cash=100, ebitda=120, interest_expense=40)
-    assert project == {"expected_closing_cash": 160.0, "reconciliation_gap": 0.0}
+    assert project == {
+        "cash_before_required_financing": 160.0,
+        "funding_shortfall": 0.0,
+        "expected_closing_cash": 160.0,
+        "reconciliation_gap": 0.0,
+    }
     assert credit == {
         "net_debt": 400.0,
         "net_debt_to_ebitda": pytest.approx(400 / 120),
@@ -94,10 +108,29 @@ def test_property_bridge_and_credit_metrics_reconcile_cash_and_financing() -> No
     }
 
 
+def test_property_bridge_surfaces_required_financing_instead_of_negative_cash() -> None:
+    project = property_project_bridge(
+        opening_cash=10,
+        presales_collected=20,
+        other_inflows=0,
+        land_cost=25,
+        construction_cost=20,
+        interest_paid=5,
+        taxes_paid=0,
+        closing_cash=0,
+    )
+    assert project == {
+        "cash_before_required_financing": -20.0,
+        "funding_shortfall": 20.0,
+        "expected_closing_cash": 0.0,
+        "reconciliation_gap": 0.0,
+    }
+
+
 def test_mining_bridge_converts_grade_recovery_and_payability_into_unit_cost() -> None:
     result = mining_unit_economics(
         ore_tonnes=1_000_000,
-        grade=0.01,
+        grade_fraction=0.01,
         recovery_rate=0.90,
         payable_rate=0.95,
         cash_cost=42_750_000,
@@ -116,7 +149,7 @@ def test_classification_preserves_scheme_revision_activity_and_effective_date() 
         revision="Rev.5",
         code="2610",
         primary_activity="Manufacture of electronic components and boards",
-        effective_from=date(2025, 1, 1),
+        mapping_effective_from=date(2025, 1, 1),
     )
     assert record.code == "2610"
     assert record.revision == "Rev.5"
@@ -126,14 +159,17 @@ def test_classification_preserves_scheme_revision_activity_and_effective_date() 
     ("call", "message"),
     [
         (lambda: insurance_underwriting_metrics(0, 1, 1), "earned_premium"),
-        (lambda: reserve_roll_forward(10, -1, 1, 10), "incurred_claims"),
+        (
+            lambda: reserve_roll_forward(10, -1, 0, 1, 0, 10),
+            "current_accident_year_incurred",
+        ),
         (lambda: solvency_coverage(10, 0), "required_capital"),
         (lambda: semiconductor_output(10, 10, 1.1, 0.9), "fab_yield"),
         (lambda: backlog_bridge(10, 10, 0, 0, 20), "revenue_recognized"),
         (lambda: capacity_utilization(-1, 100), "actual_output"),
         (lambda: property_project_bridge(1, 1, 1, 1, 1, 1, 1, -1), "closing_cash"),
         (lambda: real_estate_credit_metrics(1, 2, 0, 1), "ebitda"),
-        (lambda: mining_unit_economics(1, 0, 0.9, 0.9, 1), "grade"),
+        (lambda: mining_unit_economics(1, 0, 0.9, 0.9, 1), "grade_fraction"),
         (
             lambda: IndustryClassification("", "Rev.5", "1", "activity", date(2025, 1, 1)),
             "required",

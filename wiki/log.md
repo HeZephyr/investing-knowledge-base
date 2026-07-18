@@ -113,5 +113,5 @@ updated: 2026-07-18
 
 ## [2026-07-18] research | 跨行业经营系统
 - changed: [[周期行业研究]], [[金融]], [[硬件与半导体产业链]], [[工业与资本品]], [[地产开发与运营]], [[材料与矿业]], [[经验与失败教训]]
-- sources: UNSD ISIC Rev.5、IFRS 17、IAIS ICS、NIST CHIPS、TSMC 2025 20-F、Census M3/SOC、USGS MCS 2026、SEC S-K 1300
-- result: 建立分类版本、保险承保/准备金/资本、晶圆—封测良率、订单—积压—收入、地产项目现金/信用、矿石—回收—可支付金属桥；行业轴 18/18 validated，仓库就绪度升至 98.7%。
+- sources: UNSD ISIC Rev.5、IFRS 15/17、IAS 7、IAIS ICS、NIST CHIPS、TSMC 2025 20-F、Census M3/SOC、USGS MCS 2026、SEC S-K 1300
+- result: 建立分类版本与本地映射日期、保险准备金分期、晶圆—封测良率、订单—积压—收入、地产融资缺口、显式质量分数矿石桥；行业轴 18/18 validated，仓库就绪度升至 98.7%。
