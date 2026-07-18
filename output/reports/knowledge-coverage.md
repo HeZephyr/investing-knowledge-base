@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**51.0%**
+- 仓库就绪度，不是预期收益：**53.2%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -14,7 +14,7 @@
 | 基础学科 | 6 | 0 | 6 | 8 | 59.5% |
 | 市场 | 7 | 0 | 1 | 8 | 54.1% |
 | 资产与产品 | 3 | 0 | 8 | 7 | 67.8% |
-| 行业 | 12 | 0 | 2 | 4 | 29.4% |
+| 行业 | 9 | 0 | 2 | 7 | 46.1% |
 | 公司研究 | 12 | 0 | 3 | 1 | 18.4% |
 | 研究方法 | 4 | 1 | 8 | 5 | 58.1% |
 | 组合与风控 | 7 | 2 | 4 | 1 | 29.3% |
@@ -26,7 +26,7 @@
 |---|---|---:|---:|---:|---:|---:|
 | `content-ready` | 内容就绪 | 23 | 0 | 24 | 26 | 57.0% |
 | `exercise-tested` | 练习已测 | 17 | 4 | 8 | 16 | 49.3% |
-| `case-validated` | 案例验证 | 11 | 0 | 0 | 0 | 0.0% |
+| `case-validated` | 案例验证 | 8 | 0 | 0 | 3 | 27.3% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
 ## 逐项证据与缺口
@@ -150,10 +150,10 @@
 | `portfolio-rebalancing` | 组合与风控 | `exercise-tested` | 再平衡规则与成本权衡 | missing | 2026-07-17 | — | 缺日历、阈值和现金流再平衡测试 |
 | `portfolio-risk-budget` | 组合与风控 | `exercise-tested` | 风险预算与贡献分解 | missing | 2026-07-17 | — | 缺边际风险、成分风险实现和测试 |
 | `portfolio-stress` | 组合与风控 | `exercise-tested` | 情景分析与压力测试 | missing | 2026-07-17 | — | 缺历史、假设和反向压力测试 |
-| `sector-bank-case` | 行业 | `case-validated` | 银行资产负债表冻结案例 | missing | 2026-07-17 | — | 缺历史 Call Report、压力情景和负结果报告 |
-| `sector-consumer-case` | 行业 | `case-validated` | 消费单位经济冻结案例 | missing | 2026-07-17 | — | 缺渠道库存、公司三表和反例报告 |
+| `sector-bank-case` | 行业 | `case-validated` | 银行资产负债表冻结案例 | validated | 2026-07-17 | `source:raw/cases/bank/manifest.yaml`<br>`report:output/cases/bank.md`<br>`test:tests/test_frozen_sector_cases.py` | — |
+| `sector-consumer-case` | 行业 | `case-validated` | 消费单位经济冻结案例 | validated | 2026-07-17 | `source:raw/cases/consumer/manifest.yaml`<br>`report:output/cases/consumer.md`<br>`test:tests/test_frozen_sector_cases.py` | — |
 | `sector-consumer-content` | 行业 | `content-ready` | 消费量价、渠道与单位经济 | validated | 2026-07-17 | `synthesis:wiki/sectors/消费.md`<br>`source:raw/official/united-states/census-monthly-retail-trade.md` | — |
-| `sector-energy-case` | 行业 | `case-validated` | 能源周期冻结数据案例 | missing | 2026-07-17 | — | 缺历史 vintage、公司财务和反例报告 |
+| `sector-energy-case` | 行业 | `case-validated` | 能源周期冻结数据案例 | validated | 2026-07-17 | `source:raw/cases/energy/manifest.yaml`<br>`report:output/cases/energy.md`<br>`test:tests/test_frozen_sector_cases.py` | — |
 | `sector-energy-content` | 行业 | `content-ready` | 能源供需、成本曲线与公司传导 | validated | 2026-07-17 | `synthesis:wiki/sectors/能源.md`<br>`source:raw/official/united-states/eia-open-data.md` | — |
 | `sector-financial-content` | 行业 | `content-ready` | 银行、保险与券商分析 | validated | 2026-07-17 | `synthesis:wiki/sectors/金融.md`<br>`source:raw/official/global/bis-basel-framework.md` | — |
 | `sector-framework` | 行业 | `content-ready` | 可复用行业研究框架 | reviewed | 2026-07-17 | `synthesis:wiki/sectors/周期行业研究.md` | 缺通用官方分类来源和跨行业练习 |

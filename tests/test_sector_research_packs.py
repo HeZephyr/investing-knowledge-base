@@ -158,9 +158,9 @@ def test_sector_coverage_records_reviewed_evidence_without_fake_validation() -> 
     ):
         requirement = requirements[requirement_id]
         assert requirement.stage == "case-validated"
-        assert requirement.status == "missing"
-        assert not requirement.evidence
-        assert requirement.gap
+        assert requirement.status == "validated"
+        assert {item.kind for item in requirement.evidence} == {"source", "report", "test"}
+        assert not requirement.gap
 
     framework = requirements["sector-framework"]
     assert framework.status == "reviewed"

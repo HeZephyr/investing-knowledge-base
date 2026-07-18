@@ -1,0 +1,18 @@
+case_id: bank
+snapshot: observations.csv
+snapshot_sha256: "1ae0718b8d015e687952b8e574d5ab2df309ee379303528d7ee2b896e175d5dd"
+primary_key: [series, period]
+allowed_units: [USD_thousands, percent, event_count]
+retrieved_at: 2026-07-17T23:10:00+08:00
+vintage: fdic-current-corrected-index
+upstream:
+  - provider: FDIC
+    endpoint: https://banks.data.fdic.gov/api/financials
+    parameters: {filters: "CERT:24735", fields: "REPDTE,CERT,NAME,ASSET,DEP,EQ,NETINC,ROA", sort_by: REPDTE, sort_order: DESC, limit: 10}
+    index_created_at: 2026-06-08T21:06:18Z
+    api_total_rows: 156
+  - provider: FDIC
+    endpoint: https://banks.data.fdic.gov/api/failures
+    parameters: {filters: "CERT:24735", fields: "FAILDATE,CERT,BANKNAME,CITYST,COST,RESTYPE", limit: 10}
+    index_created_at: 2026-05-27T14:01:07Z
+notes: Values are current corrected FDIC records for CERT 24735, not the historical first-release vintage; the decision date is after the index timestamps.

@@ -1,0 +1,7 @@
+series,period,value,unit,available_at,source_url,provider
+wti_annual_average,2022,94.903,USD_per_barrel,2026-07-17T00:00:00Z,https://fred.stlouisfed.org/series/DCOILWTICO,FRED_EIA
+wti_annual_average,2023,77.577,USD_per_barrel,2026-07-17T00:00:00Z,https://fred.stlouisfed.org/series/DCOILWTICO,FRED_EIA
+wti_annual_average,2024,76.632,USD_per_barrel,2026-07-17T00:00:00Z,https://fred.stlouisfed.org/series/DCOILWTICO,FRED_EIA
+xom_operating_cash_flow,2022,76797,USD_millions,2025-01-31T11:30:00Z,https://investor.exxonmobil.com/sec-filings/all-sec-filings/content/0000034088-25-000010/xom-20241231.htm,ExxonMobil
+xom_operating_cash_flow,2023,55369,USD_millions,2025-01-31T11:30:00Z,https://investor.exxonmobil.com/sec-filings/all-sec-filings/content/0000034088-25-000010/xom-20241231.htm,ExxonMobil
+xom_operating_cash_flow,2024,55022,USD_millions,2025-01-31T11:30:00Z,https://investor.exxonmobil.com/sec-filings/all-sec-filings/content/0000034088-25-000010/xom-20241231.htm,ExxonMobil

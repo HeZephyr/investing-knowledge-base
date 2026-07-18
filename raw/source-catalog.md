@@ -36,3 +36,5 @@ Issue #22 批次固定并审计 OpenBB、myhhub/stock、AI-Trader 与 ai_quant_t
 Issue #26 批次固定 FinHack 与 finance-quant-skills。FinHack 的平台分层和 A 股规则清单作为可证伪设计输入，但当前重构状态、`setup.py` 写副作用和测试缺口阻止默认安装；finance-quant-skills 因缺根许可证记为 NOASSERTION，13 个 Skill 按复制内容、网络、Token/Cookie、提示注入、专有终端和实盘下单逐项分级，完整 bundle 不安装。
 
 Issue #18 批次加入 `jpx-trading-clearing.md`、`fsa-edinet.md`、`esma-trading.md`、`eu-transparency-settlement.md`、`eu-investment-funds-ucits.md`、`imf-areaer.md`、`world-bank-gfdd.md`、`bis-debt-statistics.md`、`sec-bond-bulletins.md` 与 `cftc-futures-basics.md`。它们支撑日本、欧盟、新兴市场访问、债券与商品；动态规则按 2026-07-17 核验，未来生效文本、最终修订数据和当前分类不得回填历史。
+
+Issue #19 批次在 `raw/cases/` 固定 EIA/FRED、FDIC、Census/FRED 与公司法定披露的最小规范化事实。三套 manifest 保存上游参数、索引/报告时间、行数、单位和 SHA-256；current-corrected 序列只用于 2026-07-17 决策日的回顾性框架验证，不能冒充历史首次发布值。负结果与访问失败同样保留。
