@@ -4,6 +4,7 @@ from datetime import date
 
 import pytest
 
+from investkb.coverage import load_coverage
 from investkb.market_operations import (
     CorporateAction,
     FeeRule,
@@ -225,3 +226,11 @@ def test_settlement_rejects_non_session_duplicates_and_insufficient_horizon() ->
         settlement_date(date(2026, 7, 17), sessions=[sessions[0], sessions[0]], lag=1)
     with pytest.raises(MarketOperationError, match="horizon"):
         settlement_date(date(2026, 7, 17), sessions=sessions, lag=2)
+
+
+def test_market_axis_is_complete_with_stage_appropriate_evidence() -> None:
+    manifest = load_coverage("config/knowledge-coverage.yaml")
+    markets = [item for item in manifest.requirements if item.axis == "markets"]
+    assert len(markets) == 16
+    assert {item.status for item in markets} == {"validated"}
+    assert all(item.evidence and not item.gap for item in markets)

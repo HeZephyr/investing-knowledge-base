@@ -16,11 +16,11 @@
 - Create: `tests/test_market_operations.py`
 - Create: `src/investkb/market_operations.py`
 
-- [ ] Write failing tests for tick/lot/reference-band/suspension/effective-date validation and exact component fee rounding.
-- [ ] Run the focused test and confirm the import fails for the missing module.
-- [ ] Commit the red contract.
-- [ ] Implement `validate_order`, `calculate_fees`, `quoted_spread`, and `walk_order_book` as pure functions.
-- [ ] Run focused tests and Ruff; reject crossed/unsorted books, invalid rates, and implicit currency while reporting insufficient depth as unfilled quantity.
+- [x] Write failing tests for tick/lot/reference-band/suspension/effective-date validation and exact component fee rounding.
+- [x] Run the focused test and confirm the import fails for the missing module.
+- [x] Commit the red contract.
+- [x] Implement `validate_order`, `calculate_fees`, `quoted_spread`, and `walk_order_book` as pure functions.
+- [x] Run focused tests and Ruff; reject crossed/unsorted books, invalid rates, and implicit currency while reporting insufficient depth as unfilled quantity.
 
 ### Task 2: Corporate actions and settlement
 
@@ -28,10 +28,10 @@
 - Modify: `tests/test_market_operations.py`
 - Modify: `src/investkb/market_operations.py`
 
-- [ ] Add failing fixtures for forward/reverse splits, cash dividends, rights, delisting, eligible-session T+N, and impossible chronology.
-- [ ] Implement point-in-time `apply_corporate_action` and `settlement_date` without forward-filling delisted securities.
-- [ ] Verify cost-basis conservation where applicable and explicit cash/rights outputs.
-- [ ] Run focused tests and commit.
+- [x] Add failing fixtures for forward/reverse splits, cash dividends, rights, delisting, eligible-session T+N, and impossible chronology.
+- [x] Implement point-in-time `apply_corporate_action` and `settlement_date` without forward-filling delisted securities.
+- [x] Verify cost-basis conservation where applicable and explicit cash/rights outputs.
+- [x] Run focused tests and commit.
 
 ### Task 3: Calendar contract and scheduled monitor
 
@@ -41,10 +41,10 @@
 - Create: `.github/workflows/market-calendar-smoke.yml`
 - Modify: `tests/test_github_workflows.py`
 
-- [ ] Write failing tests for timezone-aware ordered sessions, duplicates, overlaps, missing/unexpected/changed comparisons, and workflow least privilege/schedule.
-- [ ] Implement session normalisation and deterministic drift reports.
-- [ ] Add a credential-free, read-only, rate-limited schedule plus manual dispatch; it must not commit or place orders.
-- [ ] Run calendar/workflow tests and commit.
+- [x] Write failing tests for timezone-aware ordered sessions, duplicates, overlaps, missing/unexpected/changed comparisons, and workflow least privilege/schedule.
+- [x] Implement session normalisation and deterministic drift reports.
+- [x] Add a credential-free, read-only, rate-limited schedule plus manual dispatch; it must not commit or place orders.
+- [x] Run calendar/workflow tests and commit.
 
 ### Task 4: Current primary sources and synthesis
 
@@ -56,10 +56,10 @@
 - Create: `wiki/markets/公司行动与退市.md`
 - Modify: A-share, US, Stock Connect, fees, global market, indexes, dashboard, and MkDocs navigation.
 
-- [ ] Verify every dynamic URL, retrieval date, effective-date boundary, jurisdiction, timezone, currency, and reuse limit.
-- [ ] Build cross-market maps without presenting them as current broker instructions.
-- [ ] Link code exercises, failure examples, and falsification checks from synthesis pages.
-- [ ] Run source audit and Wiki lint.
+- [x] Verify every dynamic URL, retrieval date, effective-date boundary, jurisdiction, timezone, currency, and reuse limit.
+- [x] Build cross-market maps without presenting them as current broker instructions.
+- [x] Link code exercises, failure examples, and falsification checks from synthesis pages.
+- [x] Run source audit and Wiki lint.
 
 ### Task 5: Coverage and full delivery
 
@@ -67,6 +67,6 @@
 - Modify: `config/knowledge-coverage.yaml`
 - Modify: coverage report, README, source catalog, log, lessons, indexes, and implementation plan.
 
-- [ ] Promote all eight market requirements only after stage-appropriate evidence exists and assert markets 16/16.
-- [ ] Run `./scripts/verify.sh` through tests, sources, Wiki, coverage, privacy, strict Pages, and offline demo.
+- [x] Promote all eight market requirements only after stage-appropriate evidence exists and assert markets 16/16.
+- [x] Run `./scripts/verify.sh` through tests, sources, Wiki, coverage, privacy, strict Pages, and offline demo.
 - [ ] Commit, push, create a ready PR closing #41, wait for CI/PR Policy, inspect comments/reviews/threads, and squash merge with expected head SHA.
