@@ -20,7 +20,7 @@
 - [ ] Run the focused test and confirm the import fails for the missing module.
 - [ ] Commit the red contract.
 - [ ] Implement `validate_order`, `calculate_fees`, `quoted_spread`, and `walk_order_book` as pure functions.
-- [ ] Run focused tests and Ruff; reject crossed books, insufficient depth, invalid rates, and implicit currency.
+- [ ] Run focused tests and Ruff; reject crossed/unsorted books, invalid rates, and implicit currency while reporting insufficient depth as unfilled quantity.
 
 ### Task 2: Corporate actions and settlement
 
