@@ -105,3 +105,8 @@ updated: 2026-07-18
 - changed: [[英国市场]], [[A股市场]], [[美股市场]], [[沪深港通]], [[市场微观结构]], [[清算结算与托管]], [[公司行动与退市]], [[经验与失败教训]]
 - sources: raw-official-uk-fca-markets-disclosure, raw-official-uk-lse-trading-rules, raw-official-uk-hmrc-share-taxes, raw-official-uk-euroclear-crest-settlement, raw-official-us-sec-execution-settlement, raw-official-us-finra-orders-corporate-actions, raw-official-us-dtcc-clearing-custody, raw-official-hkex-stock-connect-operations
 - result: 建立有效期订单/费用、逐档盘口、公司行动、T+N、时区日历和四市场定时 smoke；市场轴 16/16 validated，仓库就绪度升至 90.9%。
+
+## [2026-07-18] research | 多资产与产品实验室
+- changed: [[股票]], [[货币基金]], [[债券]], [[可转债]], [[REIT]], [[指数]], [[ETF]], [[海外ETF]], [[衍生品]], [[期权与波动率]], [[结构化产品]], [[经验与失败教训]]
+- sources: SEC/Investor.gov 股票、货币基金、REIT、指数基金、结构化票据与期权入口；美国财政部、中债、上交所、港交所、CFTC、S&P DJI、IRS 2026 官方入口
+- result: 建立期权收益/Greeks/IV、可转债、跟踪误差、跨币种收益、指数除数、期货换月和路径依赖票据练习；冻结合成换月案例并明确税务身份边界，资产轴 18/18 validated，仓库就绪度升至 95.2%。

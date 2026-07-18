@@ -1,0 +1,5 @@
+contract,event,price,unit,observed_at,source_url,provider
+OLD,entry,100.0,index_points,2026-01-02T16:00:00Z,https://www.cftc.gov/LearnAndProtect/EducationCenter/FuturesMarketBasics/index2.htm,investkb_synthetic_fixture
+OLD,exit,105.0,index_points,2026-01-23T16:00:00Z,https://www.cftc.gov/LearnAndProtect/EducationCenter/FuturesMarketBasics/index2.htm,investkb_synthetic_fixture
+NEW,entry,108.0,index_points,2026-01-23T16:00:00Z,https://www.cftc.gov/LearnAndProtect/EducationCenter/FuturesMarketBasics/index2.htm,investkb_synthetic_fixture
+NEW,exit,110.0,index_points,2026-02-20T16:00:00Z,https://www.cftc.gov/LearnAndProtect/EducationCenter/FuturesMarketBasics/index2.htm,investkb_synthetic_fixture

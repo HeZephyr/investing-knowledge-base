@@ -61,6 +61,9 @@ nav:
       - REIT: wiki/products/REIT.md
       - 可转债: wiki/products/可转债.md
       - 债券: wiki/products/债券.md
+      - 衍生品: wiki/products/衍生品.md
+      - 期权与波动率: wiki/products/期权与波动率.md
+      - 结构化产品: wiki/products/结构化产品.md
   - 行业研究:
       - 周期行业研究: wiki/sectors/周期行业研究.md
       - 存储半导体: wiki/sectors/存储半导体.md
@@ -143,6 +146,7 @@ nav:
       - HML 因子复现: output/cases/factor-replication.md
       - 反向择时负结果: output/cases/negative-strategy.md
       - 公开多资产组合: output/cases/portfolio-public.md
+      - 期货换月与曲线价差: output/cases/futures-roll.md
   - 互动:
       - 投资计算器: tools.md
       - 知识图谱: graph.md

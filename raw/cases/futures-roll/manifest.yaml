@@ -1,0 +1,12 @@
+case_id: futures-roll
+snapshot: observations.csv
+snapshot_sha256: "e26922c09f9ff4a8fc441639cc8ada8722d7553916859225488b7a16de1467d4"
+primary_key: [contract, event]
+allowed_units: [index_points]
+retrieved_at: 2026-07-18T16:40:00+08:00
+vintage: synthetic-educational-fixture
+upstream:
+  - provider: CFTC
+    endpoint: https://www.cftc.gov/LearnAndProtect/EducationCenter/FuturesMarketBasics/index2.htm
+    role: contract-mechanics-only
+notes: Prices are explicitly synthetic and make no claim about any real contract. The fixture isolates roll arithmetic without redistributing licensed exchange data.

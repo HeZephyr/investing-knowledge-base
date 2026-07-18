@@ -104,6 +104,7 @@ def test_coverage_separates_curriculum_content_from_exercises_and_cases() -> Non
         "foundation-reading-papers": "exercise-tested",
         "foundation-statistical-coding": "exercise-tested",
         "asset-bond-math": "exercise-tested",
+        "asset-government-bonds": "content-ready",
         "method-time-series": "exercise-tested",
     }
     for requirement_id, stage in validated.items():
@@ -112,15 +113,12 @@ def test_coverage_separates_curriculum_content_from_exercises_and_cases() -> Non
         assert requirement.status == "validated"
         assert not requirement.gap
 
-    reviewed = {
-        "asset-government-bonds": "content-ready",
+    government_bonds = requirements["asset-government-bonds"]
+    assert {evidence.kind for evidence in government_bonds.evidence} == {
+        "source",
+        "synthesis",
     }
-    for requirement_id, stage in reviewed.items():
-        requirement = requirements[requirement_id]
-        assert requirement.stage == stage
-        assert requirement.status == "reviewed"
-        assert requirement.evidence
-        assert requirement.gap
+    assert sum(evidence.kind == "source" for evidence in government_bonds.evidence) == 2
 
     negative_result = requirements["method-negative-results"]
     assert negative_result.status == "validated"
