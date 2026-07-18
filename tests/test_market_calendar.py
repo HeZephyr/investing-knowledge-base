@@ -3,12 +3,15 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 import pytest
+import pandas as pd
 
+import investkb.market_calendar as market_calendar
 from investkb.market_calendar import (
     CalendarError,
     MarketSession,
     compare_calendars,
     normalize_sessions,
+    smoke_exchange_calendars,
 )
 
 
@@ -47,7 +50,10 @@ def test_market_session_rejects_naive_reversed_duplicate_and_overlap() -> None:
         normalize_sessions([same, same])
     with pytest.raises(CalendarError, match="overlap"):
         normalize_sessions(
-            [same, MarketSession("XNYS", _utc(20, 19), _utc(21, 1))]
+            [
+                MarketSession("XNYS", _utc(20, 13), _utc(21, 2)),
+                MarketSession("XNYS", _utc(21, 1), _utc(21, 8)),
+            ]
         )
 
 
@@ -78,3 +84,28 @@ def test_compare_calendars_is_clean_for_equivalent_inputs() -> None:
         "changed": [],
         "matches": True,
     }
+
+
+def test_exchange_calendar_adapter_uses_naive_labels_and_aware_session_times(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class FakeCalendar:
+        def sessions_in_range(self, start: pd.Timestamp, end: pd.Timestamp):
+            assert start.tz is None
+            assert end.tz is None
+            return [pd.Timestamp("2026-07-20")]
+
+        def session_open(self, label: pd.Timestamp) -> pd.Timestamp:
+            return pd.Timestamp(f"{label.date()} 13:30", tz="UTC")
+
+        def session_close(self, label: pd.Timestamp) -> pd.Timestamp:
+            return pd.Timestamp(f"{label.date()} 20:00", tz="UTC")
+
+    class FakeExchangeCalendars:
+        @staticmethod
+        def get_calendar(market: str) -> FakeCalendar:
+            assert market == "XNYS"
+            return FakeCalendar()
+
+    monkeypatch.setattr(market_calendar, "import_module", lambda _: FakeExchangeCalendars())
+    assert smoke_exchange_calendars(["XNYS"]) == {"XNYS": 1}
