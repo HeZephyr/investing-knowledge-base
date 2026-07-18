@@ -246,9 +246,7 @@ def modified_duration(
 ) -> float:
     """Return modified duration for a parallel change in one flat nominal yield."""
     frequency = _positive_integer(payments_per_year, "payments_per_year")
-    macaulay = macaulay_duration(
-        face_value, coupon_rate, yield_to_maturity, years, frequency
-    )
+    macaulay = macaulay_duration(face_value, coupon_rate, yield_to_maturity, years, frequency)
     yield_to_maturity = _finite(yield_to_maturity, "yield")
     return macaulay / (1 + yield_to_maturity / frequency)
 

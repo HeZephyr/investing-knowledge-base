@@ -99,6 +99,7 @@ def test_coverage_separates_curriculum_content_from_exercises_and_cases() -> Non
         "foundation-sampling": "content-ready",
         "foundation-estimation": "exercise-tested",
         "foundation-corporate-finance": "content-ready",
+        "asset-bond-math": "exercise-tested",
     }
     for requirement_id, stage in validated.items():
         requirement = requirements[requirement_id]
@@ -112,7 +113,6 @@ def test_coverage_separates_curriculum_content_from_exercises_and_cases() -> Non
         "foundation-reading-papers": "exercise-tested",
         "foundation-statistical-coding": "exercise-tested",
         "asset-government-bonds": "content-ready",
-        "asset-bond-math": "exercise-tested",
         "method-time-series": "exercise-tested",
     }
     for requirement_id, stage in reviewed.items():
