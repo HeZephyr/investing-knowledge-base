@@ -1,7 +1,7 @@
 # 知识库覆盖审计
 
 - 清单日期：2026-07-17
-- 仓库就绪度，不是预期收益：**68.8%**
+- 仓库就绪度，不是预期收益：**75.4%**
 - 需求总数：135
 
 > v2 基线变更：清单从粗主题升级为原子能力；分母扩大导致的分数下降不表示成果被删除。
@@ -17,15 +17,15 @@
 | 行业 | 4 | 0 | 2 | 12 | 73.9% |
 | 公司研究 | 0 | 0 | 0 | 16 | 100.0% |
 | 研究方法 | 2 | 1 | 8 | 7 | 69.2% |
-| 组合与风控 | 6 | 2 | 4 | 2 | 36.4% |
+| 组合与风控 | 0 | 0 | 0 | 14 | 100.0% |
 | 工程与维护 | 1 | 1 | 0 | 13 | 88.3% |
 
 ## 分能力阶段状态
 
 | 阶段 | 含义 | missing | seed | reviewed | validated | 就绪度 |
 |---|---|---:|---:|---:|---:|---:|
-| `content-ready` | 内容就绪 | 17 | 0 | 21 | 35 | 66.6% |
-| `exercise-tested` | 练习已测 | 11 | 4 | 8 | 22 | 62.7% |
+| `content-ready` | 内容就绪 | 16 | 0 | 17 | 40 | 69.9% |
+| `exercise-tested` | 练习已测 | 6 | 2 | 8 | 29 | 77.1% |
 | `case-validated` | 案例验证 | 0 | 0 | 0 | 11 | 100.0% |
 | `maintenance-live` | 维护在线 | 1 | 0 | 0 | 5 | 83.3% |
 
@@ -136,20 +136,20 @@
 | `method-risk-metrics` | 研究方法 | `exercise-tested` | 波动率、回撤与风险指标 | validated | 2026-07-17 | `synthesis:wiki/risk/最大回撤.md`<br>`test:tests/test_metrics.py` | — |
 | `method-survivorship` | 研究方法 | `content-ready` | 幸存者偏差与退市样本 | reviewed | 2026-07-17 | `synthesis:wiki/quant/幸存者偏差.md` | 缺权威来源和含退市样本案例 |
 | `method-time-series` | 研究方法 | `exercise-tested` | 金融时间序列建模 | reviewed | 2026-07-17 | `synthesis:wiki/foundations/时间序列与预测.md`<br>`implementation:src/investkb/education.py`<br>`test:tests/test_education.py` | 已测滚动起点切分；仍缺平稳性、自相关、基线预测和波动模型练习 |
-| `portfolio-allocation` | 组合与风控 | `exercise-tested` | 战略与战术资产配置 | missing | 2026-07-17 | — | 缺长期假设、约束配置和测试 |
-| `portfolio-attribution` | 组合与风控 | `exercise-tested` | 绩效归因与费用后评价 | missing | 2026-07-17 | — | 缺配置、选择、交互和多期链接测试 |
-| `portfolio-benchmark` | 组合与风控 | `content-ready` | 基准选择与主动风险 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/基准.md`<br>`source:raw/books-and-papers/sharpe-mutual-fund-performance.md` | 缺基准错配和风格漂移案例 |
-| `portfolio-decision-journal` | 组合与风控 | `exercise-tested` | 决策日志与过程评分 | seed | 2026-07-17 | `template:output/templates/复盘.md` | 用户暂无持仓；缺私人层示例与偏差复盘校验 |
-| `portfolio-diversification` | 组合与风控 | `content-ready` | 分散化与相关性失稳 | reviewed | 2026-07-17 | `synthesis:wiki/concepts/分散化.md`<br>`source:raw/books-and-papers/markowitz-portfolio-selection.md` | 缺危机相关性和集中度案例 |
+| `portfolio-allocation` | 组合与风控 | `exercise-tested` | 战略与战术资产配置 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
+| `portfolio-attribution` | 组合与风控 | `exercise-tested` | 绩效归因与费用后评价 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
+| `portfolio-benchmark` | 组合与风控 | `content-ready` | 基准选择与主动风险 | validated | 2026-07-17 | `source:raw/books-and-papers/sharpe-mutual-fund-performance.md`<br>`synthesis:wiki/portfolio/基准与绩效归因.md` | — |
+| `portfolio-decision-journal` | 组合与风控 | `exercise-tested` | 决策日志与过程评分 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
+| `portfolio-diversification` | 组合与风控 | `content-ready` | 分散化与相关性失稳 | validated | 2026-07-17 | `source:raw/books-and-papers/markowitz-portfolio-selection.md`<br>`synthesis:wiki/concepts/分散化.md` | — |
 | `portfolio-drawdown` | 组合与风控 | `exercise-tested` | 最大回撤与恢复期 | validated | 2026-07-17 | `synthesis:wiki/risk/最大回撤.md`<br>`test:tests/test_metrics.py` | — |
-| `portfolio-goals` | 组合与风控 | `content-ready` | 目标、期限与约束 | missing | 2026-07-17 | — | 缺现金需求、期限、税务和能力边界框架 |
-| `portfolio-ips` | 组合与风控 | `exercise-tested` | 投资政策书与治理 | seed | 2026-07-17 | `template:output/templates/投资政策书.md` | 缺新手示例、校验规则和年度复核流程 |
-| `portfolio-liquidity` | 组合与风控 | `content-ready` | 流动性、容量与变现风险 | reviewed | 2026-07-17 | `synthesis:wiki/risk/流动性风险.md` | 缺成交量、价差和极端赎回案例 |
-| `portfolio-position-sizing` | 组合与风控 | `content-ready` | 仓位、容量与风险承受 | reviewed | 2026-07-17 | `synthesis:wiki/risk/仓位管理.md` | 缺风险预算来源与数值练习 |
+| `portfolio-goals` | 组合与风控 | `content-ready` | 目标、期限与约束 | validated | 2026-07-17 | `source:raw/official/united-states/investor-asset-allocation.md`<br>`synthesis:wiki/portfolio/投资政策与目标.md` | — |
+| `portfolio-ips` | 组合与风控 | `exercise-tested` | 投资政策书与治理 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
+| `portfolio-liquidity` | 组合与风控 | `content-ready` | 流动性、容量与变现风险 | validated | 2026-07-17 | `source:raw/official/united-states/sec-fund-liquidity-risk.md`<br>`synthesis:wiki/risk/流动性风险.md` | — |
+| `portfolio-position-sizing` | 组合与风控 | `content-ready` | 仓位、容量与风险承受 | validated | 2026-07-17 | `source:raw/official/united-states/investor-asset-allocation.md`<br>`synthesis:wiki/risk/仓位管理.md` | — |
 | `portfolio-public-case` | 组合与风控 | `case-validated` | 公开多资产组合冻结案例 | validated | 2026-07-17 | `source:raw/cases/portfolio-public/manifest.yaml`<br>`report:output/cases/portfolio-public.md`<br>`test:tests/test_public_evidence_cases.py` | — |
-| `portfolio-rebalancing` | 组合与风控 | `exercise-tested` | 再平衡规则与成本权衡 | missing | 2026-07-17 | — | 缺日历、阈值和现金流再平衡测试 |
-| `portfolio-risk-budget` | 组合与风控 | `exercise-tested` | 风险预算与贡献分解 | missing | 2026-07-17 | — | 缺边际风险、成分风险实现和测试 |
-| `portfolio-stress` | 组合与风控 | `exercise-tested` | 情景分析与压力测试 | missing | 2026-07-17 | — | 缺历史、假设和反向压力测试 |
+| `portfolio-rebalancing` | 组合与风控 | `exercise-tested` | 再平衡规则与成本权衡 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
+| `portfolio-risk-budget` | 组合与风控 | `exercise-tested` | 风险预算与贡献分解 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
+| `portfolio-stress` | 组合与风控 | `exercise-tested` | 情景分析与压力测试 | validated | 2026-07-17 | `implementation:src/investkb/portfolio.py`<br>`test:tests/test_portfolio_lab.py` | — |
 | `sector-bank-case` | 行业 | `case-validated` | 银行资产负债表冻结案例 | validated | 2026-07-17 | `source:raw/cases/bank/manifest.yaml`<br>`report:output/cases/bank.md`<br>`test:tests/test_frozen_sector_cases.py` | — |
 | `sector-consumer-case` | 行业 | `case-validated` | 消费单位经济冻结案例 | validated | 2026-07-17 | `source:raw/cases/consumer/manifest.yaml`<br>`report:output/cases/consumer.md`<br>`test:tests/test_frozen_sector_cases.py` | — |
 | `sector-consumer-content` | 行业 | `content-ready` | 消费量价、渠道与单位经济 | validated | 2026-07-17 | `synthesis:wiki/sectors/消费.md`<br>`source:raw/official/united-states/census-monthly-retail-trade.md` | — |

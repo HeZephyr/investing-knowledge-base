@@ -44,3 +44,5 @@ Issue #20 批次加入 FDA 临床终点、ClinicalTrials.gov API、CMS 覆盖、
 Issue #31 批次加入 Meta 官方年度财务、Kenneth French Data Library 2026-05 CRSP vintage，以及通过 AKShare 无认证 Sina 接口取得的 510300/511010/518880 年末价格代理。只保存支持计算的最小年度事实和 SHA-256，不重分发完整上游档案；ETF 未复权价格不能冒充总收益，正回测与单一失败策略都不能外推成投资建议。
 
 Issue #33 批次加入 IFRS Foundation 的 IAS 1、IAS 7、IFRS 15、IAS 33 概览/实施材料及 SEC Investor.gov 的 EDGAR 研究入口。来源卡只链接和独立摘要，不复制标准全文；公式练习覆盖历史时点、重述、勾稽、现金周期、稀释和估值边界，不能替代适用司法辖区准则或专业意见。
+
+Issue #35 批次加入 Investor.gov 资产配置/分散/再平衡入口与 SEC 开放式基金流动性规则指南，并复用 Markowitz 与 Sharpe 原始论文卡。监管基金规则不直接套到个人账户；公开模块只提炼目标、市场深度和定期复核原则，所有示例保持无个人持仓。
