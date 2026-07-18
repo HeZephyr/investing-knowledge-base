@@ -69,6 +69,32 @@ def test_yfinance_adapter_normalizes_unadjusted_bars_and_provenance() -> None:
     assert len(bars.attrs["provenance"]["sha256"]) == 64
 
 
+class AdjustedYFinance(FakeYFinance):
+    def download(self, ticker, **kwargs):
+        assert kwargs["auto_adjust"] is True
+        return pd.DataFrame(
+            {
+                "Open": [180.0],
+                "High": [184.0],
+                "Low": [179.0],
+                "Close": [183.0],
+                "Volume": [900],
+            },
+            index=pd.to_datetime(["2024-01-02"]),
+        )
+
+
+def test_yfinance_adapter_locks_adjusted_ohlc_and_provenance() -> None:
+    bars = YFinanceProvider(AdjustedYFinance(), registry(), retrieved_at=STAMP).daily_bars(
+        "US", "AAPL", START, END, "adjusted"
+    )
+
+    assert bars["open"].tolist() == [180.0]
+    assert bars["close"].tolist() == [183.0]
+    assert bars["adjustment"].unique().tolist() == ["adjusted"]
+    assert bars.attrs["provenance"]["adjustment"] == "adjusted"
+
+
 def test_company_actions_keep_dividends_and_splits_separate() -> None:
     actions = YFinanceProvider(FakeYFinance(), registry(), retrieved_at=STAMP).company_actions(
         "US", "AAPL", START, END
@@ -80,6 +106,42 @@ def test_company_actions_keep_dividends_and_splits_separate() -> None:
     assert actions.iloc[0]["currency"] == "USD"
     assert pd.isna(actions.iloc[1]["currency"])
     assert len(actions.attrs["provenance"]["sha256"]) == 64
+
+
+class ActionClient(FakeYFinance):
+    def __init__(self, actions: pd.DataFrame):
+        self._actions = actions
+
+    def Ticker(self, ticker):
+        return type("Ticker", (), {"actions": self._actions})()
+
+
+@pytest.mark.parametrize("invalid", [float("nan"), float("inf"), "not-a-number"])
+def test_company_actions_reject_malformed_nonfinite_values(invalid) -> None:
+    actions = pd.DataFrame(
+        {"Dividends": [invalid], "Stock Splits": [0.0]},
+        index=pd.to_datetime(["2024-01-05"]),
+    )
+
+    with pytest.raises(DataUnavailableError, match="action values"):
+        YFinanceProvider(ActionClient(actions), registry()).company_actions(
+            "US", "AAPL", START, END
+        )
+
+
+def test_company_actions_accept_verified_empty_table_but_reject_untyped_blank() -> None:
+    verified_empty = pd.DataFrame(columns=["Dividends", "Stock Splits"])
+    actions = YFinanceProvider(ActionClient(verified_empty), registry()).company_actions(
+        "US", "AAPL", START, END
+    )
+
+    assert actions.empty
+    assert actions.columns.tolist() == ACTION_COLUMNS
+    assert actions.attrs["provenance"]["rows"] == 0
+    with pytest.raises(DataUnavailableError, match="columns changed"):
+        YFinanceProvider(ActionClient(pd.DataFrame()), registry()).company_actions(
+            "US", "AAPL", START, END
+        )
 
 
 def test_registry_never_guesses_korean_provider_symbol() -> None:

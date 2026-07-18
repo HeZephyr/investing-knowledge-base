@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 import hashlib
 from importlib import import_module
+import math
 from typing import Any, Iterable
 
 import pandas as pd
@@ -194,12 +195,11 @@ class YFinanceProvider:
             ) from exc
         if not isinstance(response, pd.DataFrame):
             raise DataUnavailableError("yfinance actions response is not a table")
-        if not response.empty:
-            missing = sorted({"Dividends", "Stock Splits"} - set(response.columns))
-            if missing:
-                raise DataUnavailableError(
-                    f"yfinance action columns changed; missing: {', '.join(missing)}"
-                )
+        missing = sorted({"Dividends", "Stock Splits"} - set(response.columns))
+        if missing:
+            raise DataUnavailableError(
+                f"yfinance action columns changed; missing: {', '.join(missing)}"
+            )
         rows: list[dict[str, Any]] = []
         dates = (
             self._dates(response.index, instrument)
@@ -210,10 +210,17 @@ class YFinanceProvider:
             ex_date = dates.iloc[offset]
             if not start <= ex_date.date() <= end:
                 continue
-            dividend = float(source["Dividends"])
-            split = float(source["Stock Splits"])
-            if dividend < 0 or split < 0:
-                raise DataUnavailableError("yfinance action values must be non-negative")
+            try:
+                dividend = float(source["Dividends"])
+                split = float(source["Stock Splits"])
+            except (TypeError, ValueError) as exc:
+                raise DataUnavailableError(
+                    "yfinance action values must be numeric, finite, and non-negative"
+                ) from exc
+            if not all(math.isfinite(value) and value >= 0 for value in (dividend, split)):
+                raise DataUnavailableError(
+                    "yfinance action values must be numeric, finite, and non-negative"
+                )
             if dividend:
                 rows.append(
                     {

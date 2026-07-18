@@ -119,4 +119,4 @@ updated: 2026-07-18
 ## [2026-07-18] research | 全球免费数据与私人研究工作区
 - changed: [[全球免费数据适配]], [[私人研究工作区]], [[经验与失败教训]], [[index]], [[dashboard]]
 - sources: raw-repo-yfinance, raw-repo-openbb, raw-repo-finhack, raw-us-investor-asset-allocation
-- result: 将外部项目经验转成显式证券登记、价格/公司行动谱系和离线失败契约；建立允许空持仓且拒绝凭证/订单字段的本地私密层，工程轴 15/15、全库 135/135 validated。
+- result: 将外部项目经验转成显式证券登记、复权/未复权价格、公司行动谱系和离线失败契约；真实 yfinance smoke 的 DNS 超时未写缓存。私人层验证必填字段/数值/日期/最低禁止项，并以 Git index 区分 ignored 与 force-tracked 文件；工程轴 15/15、全库 135/135 validated。
