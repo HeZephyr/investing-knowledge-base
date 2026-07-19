@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-data = ["akshare>=1.17", "baostock>=0.8.9", "exchange-calendars>=4.13,<5", "yfinance>=0.2,<1"]
+data = ["akshare>=1.17", "baostock>=0.8.9", "exchange-calendars>=4.13,<5", "yfinance>=0.2,<2"]
 dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.6"]
 site = ["mkdocs-material>=9,<10"]
 
